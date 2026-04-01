@@ -2,9 +2,9 @@ id: phases-github
 name: PHASES GitHub Repository
 type: Repository
 description: The GitHub repository for the PHASES project (Promoting Health Aging through Semantic Enrichment of Solitude Research), containing ontology source files and related resources.
-developedBy:
+developedByProjects:
   - PHASES
-usedBy: []
+usedByProjects: []
 links:
   - label: GitHub
     url: https://github.com/Buffalo-Ontology-Group/phases

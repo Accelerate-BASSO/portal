@@ -2,9 +2,9 @@ id: accelerate-basso-website
 name: Accelerate BASSO Network Website
 type: Website
 description: The main public website for the Accelerate BASSO Network Center, providing an overview of the network, its goals, projects, and working groups.
-developedBy:
+developedByProjects:
   - DCC
-usedBy: []
+usedByProjects: []
 links:
   - label: Website
     url: https://accelerate-basso.regenstrief.org

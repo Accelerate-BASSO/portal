@@ -2,8 +2,8 @@ id: mfoem
 name: Emotion Ontology (MFOEM)
 type: Ontology
 description: An ontology of affective phenomena including emotions, moods, and related processes.
-developedBy: []
-usedBy:
+developedByProjects: []
+usedByProjects:
   - ODFA
 links:
   - label: BioPortal

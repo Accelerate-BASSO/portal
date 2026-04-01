@@ -3,9 +3,9 @@ name: "Annotating datasets in behavioural and social sciences to promote interop
 type: Publication
 publishedDate: "2025-01"
 description: Describes the development of SODA, a schema for ontology-based dataset annotation to promote interoperability in the behavioural and social sciences. Published in Wellcome Open Research.
-developedBy:
+developedByProjects:
   - APRICOT
-usedBy: []
+usedByProjects: []
 links:
   - label: DOI
     url: https://doi.org/10.12688/wellcomeopenres.24234.1

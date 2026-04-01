@@ -3,9 +3,9 @@ name: "The Human Behaviour-Change Project Phase 2: Advancing behavioural and soc
 type: Publication
 publishedDate: "2024-12"
 description: Describes the second phase of the Human Behaviour-Change Project, advancing behavioural and social sciences through ontology tools. Published in Wellcome Open Research.
-developedBy:
+developedByProjects:
   - APRICOT
-usedBy: []
+usedByProjects: []
 links:
   - label: DOI
     url: https://doi.org/10.12688/wellcomeopenres.23520.1

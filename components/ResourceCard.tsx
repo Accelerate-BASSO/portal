@@ -1,4 +1,5 @@
 import type { Resource } from "@/lib/resources";
+import { getAllProjects } from "@/lib/resource-utils";
 import { platformLabels, platformTooltips } from "./PlatformIcon";
 import { ExternalLink } from "lucide-react";
 
@@ -87,33 +88,51 @@ export default function ResourceCard({ resource }: ResourceCardProps) {
 
       {/* Meta row */}
       <div className="flex flex-col gap-1.5 text-xs text-gray-500">
-        {resource.developedBy && resource.developedBy.length > 0 && (
-          <div className="flex flex-wrap items-center gap-1.5">
-            <span className="text-gray-400">Developed by</span>
-            {resource.developedBy.map((project) => (
-              <span
-                key={project}
-                title={`Developed by the ${project} project`}
-                className="cursor-help rounded bg-gray-100 px-2 py-0.5 font-medium"
-              >
-                {project}
-              </span>
-            ))}
-          </div>
-        )}
-        {resource.usedBy && resource.usedBy.length > 0 && (
-          <div className="flex flex-wrap items-center gap-1.5">
-            <span className="text-gray-400">Used by</span>
-            {resource.usedBy.map((project) => (
-              <span
-                key={project}
-                title={`Used by the ${project} project`}
-                className="cursor-help rounded bg-gray-100 px-2 py-0.5 font-medium"
-              >
-                {project}
-              </span>
-            ))}
-          </div>
+        {resource.type === "Ontology" ? (
+          <>
+            {resource.developedByProjects && resource.developedByProjects.length > 0 && (
+              <div className="flex flex-wrap items-center gap-1.5">
+                <span className="text-gray-400">Developed by</span>
+                {resource.developedByProjects.map((project) => (
+                  <span
+                    key={project}
+                    title={`Developed by the ${project} project`}
+                    className="cursor-help rounded bg-gray-100 px-2 py-0.5 font-medium"
+                  >
+                    {project}
+                  </span>
+                ))}
+              </div>
+            )}
+            {resource.usedByProjects && resource.usedByProjects.length > 0 && (
+              <div className="flex flex-wrap items-center gap-1.5">
+                <span className="text-gray-400">Used by</span>
+                {resource.usedByProjects.map((project) => (
+                  <span
+                    key={project}
+                    title={`Used by the ${project} project`}
+                    className="cursor-help rounded bg-gray-100 px-2 py-0.5 font-medium"
+                  >
+                    {project}
+                  </span>
+                ))}
+              </div>
+            )}
+          </>
+        ) : (
+          getAllProjects(resource).length > 0 && (
+            <div className="flex flex-wrap items-center gap-1.5">
+              {getAllProjects(resource).map((project) => (
+                <span
+                  key={project}
+                  title={`Affiliated with the ${project} project`}
+                  className="cursor-help rounded bg-gray-100 px-2 py-0.5 font-medium"
+                >
+                  {project}
+                </span>
+              ))}
+            </div>
+          )
         )}
         {resource.bssoFoundry && (
           <div className="flex items-center">

@@ -3,9 +3,9 @@ name: "Initial Steps in Developing an Ontology of Dental Care-Related Fear, Anxi
 type: Publication
 publishedDate: "2024-07"
 description: Describes the initial development of the ODFA ontology for representing dental fear, anxiety, and phobia concepts. Published at ICBO 2024.
-developedBy:
+developedByProjects:
   - ODFA
-usedBy: []
+usedByProjects: []
 links:
   - label: CEUR-WS
     url: https://ceur-ws.org/Vol-3939/abstract5.pdf

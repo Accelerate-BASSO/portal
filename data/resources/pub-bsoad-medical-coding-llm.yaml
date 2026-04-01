@@ -3,9 +3,9 @@ name: "Enhancing medical coding efficiency through domain-specific fine-tuned la
 type: Publication
 publishedDate: "2025-01"
 description: Explores the use of domain-specific fine-tuned large language models for enhancing medical coding efficiency. Published in npj Health Systems.
-developedBy:
+developedByProjects:
   - BSO-AD
-usedBy: []
+usedByProjects: []
 links:
   - label: DOI
     url: https://doi.org/10.1038/s44401-025-00018-3

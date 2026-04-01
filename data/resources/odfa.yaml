@@ -2,9 +2,9 @@ id: odfa
 name: Ontology of Dental care-related Fear, Anxiety, and/or Phobia (ODFA)
 type: Ontology
 description: An ontology for representing dental fear, anxiety, and phobia concepts to support standardised research.
-developedBy:
+developedByProjects:
   - ODFA
-usedBy: []
+usedByProjects: []
 links:
   - label: GitHub
     url: https://github.com/odfa-ontology/odfa

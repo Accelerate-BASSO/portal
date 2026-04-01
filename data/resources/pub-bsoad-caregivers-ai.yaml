@@ -3,9 +3,9 @@ name: "Empowering Alzheimer's caregivers with conversational AI: a novel approac
 type: Publication
 publishedDate: "2024-10"
 description: Presents a conversational AI approach for supporting Alzheimer's caregivers with enhanced communication and personalized assistance. Published in npj Biomedical Innovations.
-developedBy:
+developedByProjects:
   - BSO-AD
-usedBy: []
+usedByProjects: []
 links:
   - label: DOI
     url: https://doi.org/10.1038/s44385-024-00004-8
