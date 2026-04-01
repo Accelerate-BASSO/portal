@@ -2,8 +2,9 @@ id: apricot-community
 name: APRICOT Community of Practice
 type: Community
 description: A Discourse-based community of practice for sharing knowledge and discussion about cancer prevention ontology tools.
-projects:
+developedBy:
   - APRICOT
+usedBy: []
 links:
   - label: Discourse
     url: https://apricot.community

@@ -2,8 +2,9 @@ id: phases-website
 name: PHASES Project Website
 type: Website
 description: Project website for PHASES (Promoting Health Aging through Semantic Enrichment of Solitude Research), which develops interoperable ontologies and tools to advance understanding of solitude's role in healthy aging.
-projects:
+developedBy:
   - PHASES
+usedBy: []
 links:
   - label: Website
     url: https://accelerate-basso.regenstrief.org/pages/phases.html

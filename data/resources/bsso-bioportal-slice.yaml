@@ -2,8 +2,9 @@ id: bsso-bioportal-slice
 name: BSSO BioPortal Slice
 type: Repository
 description: A curated subset of BioPortal providing a focused browsing experience for behavioural and social sciences ontologies.
-projects:
+developedBy:
   - DCC
+usedBy: []
 links:
   - label: Website
     url: https://bsso.bioportal.bioontology.org

@@ -3,8 +3,9 @@ name: "From smoking cessation to physical activity: Can ontology-based methods f
 type: Publication
 publishedDate: "2025-01"
 description: Evaluates whether ontology-based methods for automated evidence synthesis can generalise from smoking cessation to physical activity domains. Published in Wellcome Open Research.
-projects:
+developedBy:
   - APRICOT
+usedBy: []
 links:
   - label: DOI
     url: https://doi.org/10.12688/wellcomeopenres.21664.2

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getAllResources, getResourceTypes, getProjects } from "@/lib/resources";
+import { getAllResources, getResourceTypes, getProjects, getAllProjects } from "@/lib/resources";
 
 export default function Home() {
   const resources = getAllResources();
@@ -8,7 +8,7 @@ export default function Home() {
 
   const ontologyCount = resources.filter((r) => r.type === "Ontology").length;
   const foundryCount = resources.filter((r) => r.bssoFoundry).length;
-  const projectCount = new Set(resources.flatMap((r) => r.projects)).size;
+  const projectCount = new Set(resources.flatMap((r) => getAllProjects(r))).size;
 
   return (
     <div className="flex flex-col">

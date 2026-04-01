@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react";
 import type { Resource } from "@/lib/resources";
+import { getAllProjects } from "@/lib/resource-utils";
 import ResourceCard from "./ResourceCard";
 import { Search, X } from "lucide-react";
 
@@ -60,7 +61,7 @@ export default function ResourceBrowser({
 
   const matchesType = (r: Resource) => selectedTypes.size === 0 || selectedTypes.has(r.type);
   const matchesProject = (r: Resource) =>
-    selectedProjects.size === 0 || r.projects.some((p) => selectedProjects.has(p));
+    selectedProjects.size === 0 || getAllProjects(r).some((p) => selectedProjects.has(p));
   const matchesFoundry = (r: Resource) => !foundryOnly || r.bssoFoundry === true;
 
   const filtered = useMemo(() => {
@@ -83,7 +84,7 @@ export default function ResourceBrowser({
       (r) => matchesSearch(r) && matchesType(r) && matchesFoundry(r)
     );
     return Object.fromEntries(
-      projects.map((p) => [p, base.filter((r) => r.projects.includes(p as never)).length])
+      projects.map((p) => [p, base.filter((r) => getAllProjects(r).includes(p as never)).length])
     );
   }, [resources, search, selectedTypes, foundryOnly, projects]);
 

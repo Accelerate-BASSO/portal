@@ -2,7 +2,8 @@ id: addicto
 name: Addiction Ontology (ADDICTO)
 type: Ontology
 description: An ontology of entities relevant to addictions and their treatment.
-projects:
+developedBy: []
+usedBy:
   - APRICOT
 links:
   - label: GitHub

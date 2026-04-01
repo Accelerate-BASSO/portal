@@ -15,7 +15,8 @@ export interface Resource {
   name: string;
   type: "Ontology" | "Publication" | "Tool" | "Community" | "Repository" | "Dataset" | "Website" | "Registry";
   description: string;
-  projects: ProjectName[];
+  developedBy: ProjectName[];
+  usedBy: ProjectName[];
   links: ResourceLink[];
   bssoFoundry?: boolean;
   publishedDate?: string;
@@ -45,8 +46,11 @@ export function getResourceTypes(resources: Resource[]): string[] {
   return [...new Set(resources.map((r) => r.type))].sort();
 }
 
+export { getAllProjects } from "./resource-utils";
+
 export function getProjects(resources: Resource[]): string[] {
-  return [...new Set(resources.flatMap((r) => r.projects))].sort();
+  const { getAllProjects } = require("./resource-utils");
+  return [...new Set(resources.flatMap((r: Resource) => getAllProjects(r)))].sort();
 }
 
 export function getAllTags(resources: Resource[]): string[] {
