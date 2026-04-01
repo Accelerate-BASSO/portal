@@ -1,6 +1,7 @@
 id: pub-phases-bertopic
 name: "Utilizing BERTopic Modeling for Concept Discovery in the Domain of Gerotranscendence and Solitude"
 type: Publication
+publishedDate: "2025-01"
 description: Applies BERTopic modeling to discover concepts in the domains of gerotranscendence and solitude for the PHASES ontology. Published in Journal of Biomedical Semantics.
 projects:
   - PHASES
@@ -9,6 +10,9 @@ tags:
   - topic-modeling
   - solitude
   - gerotranscendence
-links: []
+links:
+  - label: PubMed
+    url: https://pubmed.ncbi.nlm.nih.gov/41001555/
+    platform: Website
 status: Active
 lastUpdated: "2026-04-01"

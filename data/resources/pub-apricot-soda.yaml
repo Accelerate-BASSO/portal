@@ -1,6 +1,7 @@
 id: pub-apricot-soda
 name: "Annotating datasets in behavioural and social sciences to promote interoperability: development of the Schema for Ontology-based Dataset Annotation (SODA)"
 type: Publication
+publishedDate: "2025-01"
 description: Describes the development of SODA, a schema for ontology-based dataset annotation to promote interoperability in the behavioural and social sciences. Published in Wellcome Open Research.
 projects:
   - APRICOT

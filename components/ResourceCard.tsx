@@ -74,6 +74,13 @@ export default function ResourceCard({ resource }: ResourceCardProps) {
       {/* Name */}
       <h3 className="text-lg font-semibold text-black">{resource.name}</h3>
 
+      {/* Published date */}
+      {resource.publishedDate && (
+        <p className="text-xs text-gray-400">
+          {new Date(resource.publishedDate + "T00:00:00").toLocaleDateString("en-US", { year: "numeric", month: "long" })}
+        </p>
+      )}
+
       {/* Description */}
       <p className="text-sm leading-relaxed text-gray-text">{resource.description}</p>
 

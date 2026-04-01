@@ -1,6 +1,7 @@
 id: pub-odfa-initial-steps
 name: "Initial Steps in Developing an Ontology of Dental Care-Related Fear, Anxiety, and Phobia"
 type: Publication
+publishedDate: "2024-07"
 description: Describes the initial development of the ODFA ontology for representing dental fear, anxiety, and phobia concepts. Published at ICBO 2024.
 projects:
   - ODFA
