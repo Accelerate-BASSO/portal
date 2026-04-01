@@ -2,11 +2,7 @@ id: gmho
 name: GALENOS Mental Health Ontology (GMHO)
 type: Ontology
 description: An ontology covering mental health concepts including disorders, symptoms, and treatments.
-projects:
-  - PHASES
-  - BSO-AD
-  - APRICOT
-  - ODFA
+projects: []
 links:
   - label: GitHub
     url: https://github.com/galenos-project/gmho

@@ -3,10 +3,7 @@ name: Relationships Between Behaviours Ontology (RBBO)
 type: Ontology
 description: An ontology for representing relationships between different behaviours.
 projects:
-  - PHASES
-  - BSO-AD
   - APRICOT
-  - ODFA
 links: []
 bssoFoundry: true
 tags:

@@ -3,10 +3,7 @@ name: COntextualised and Personalised Physical Activity and Exercise Recommendat
 type: Ontology
 description: An ontology for contextualised physical activity and exercise recommendations.
 projects:
-  - PHASES
-  - BSO-AD
   - APRICOT
-  - ODFA
 links:
   - label: BioPortal
     url: https://bioportal.bioontology.org/ontologies/COPPER

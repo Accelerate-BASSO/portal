@@ -3,10 +3,7 @@ name: Addiction Ontology (ADDICTO)
 type: Ontology
 description: An ontology of entities relevant to addictions and their treatment.
 projects:
-  - PHASES
-  - BSO-AD
   - APRICOT
-  - ODFA
 links:
   - label: GitHub
     url: https://github.com/addicto-org/addiction-ontology
