@@ -1,0 +1,16 @@
+id: copper
+name: COntextualised and Personalised Physical Activity and Exercise Recommendations Ontology (COPPER)
+type: Ontology
+description: An ontology for contextualised physical activity and exercise recommendations.
+project: Cross-cutting
+links:
+  - label: BioPortal
+    url: https://bioportal.bioontology.org/ontologies/COPPER
+    platform: BioPortal
+bssoFoundry: true
+tags:
+  - ontology
+  - physical-activity
+  - exercise
+status: Active
+lastUpdated: "2026-04-01"

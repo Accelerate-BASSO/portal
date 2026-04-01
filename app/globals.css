@@ -1,26 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap");
 @import "tailwindcss";
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --accent: #bbf7d0;
+  --accent-dark: #4ade80;
+  --gray-text: #595959;
+  --card-bg: #edecec79;
+  --border: #e5e7eb;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-accent: var(--accent);
+  --color-accent-dark: var(--accent-dark);
+  --color-gray-text: var(--gray-text);
+  --color-card-bg: var(--card-bg);
+  --color-card-border: var(--border);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Roboto", sans-serif;
 }
+
+/* Platform icon colors */
+.platform-github { color: #333; }
+.platform-bioportal { color: #2563eb; }
+.platform-zenodo { color: #1d4ed8; }
+.platform-osf { color: #2b8a3e; }
+.platform-website { color: #6366f1; }
+.platform-discourse { color: #f59e0b; }
+.platform-other { color: #6b7280; }

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Accelerate BASSO Portal — RSWG Meeting April 2026</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css" />
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap");
+    :root {
+      --r-main-font: "Roboto", sans-serif;
+      --r-heading-font: "Roboto", sans-serif;
+      --r-main-font-size: 28px;
+      --r-heading-color: #000;
+      --r-main-color: #333;
+      --r-link-color: #333;
+    }
+    .reveal h1, .reveal h2, .reveal h3 {
+      text-transform: none;
+      font-weight: 600;
+    }
+    .reveal h1 { font-size: 2.2em; }
+    .reveal h2 { font-size: 1.6em; }
+    .reveal h3 { font-size: 1.2em; }
+    .reveal .accent {
+      background-color: #bbf7d0;
+      padding: 2px 16px;
+      display: inline-block;
+    }
+    .reveal ul { text-align: left; }
+    .reveal li { margin-bottom: 0.5em; line-height: 1.4; }
+    .reveal .small { font-size: 0.7em; color: #666; }
+    .reveal .left-align { text-align: left; }
+    .reveal table { font-size: 0.75em; margin: 0 auto; }
+    .reveal table th { background: #f3f4f6; font-weight: 600; }
+    .reveal table td, .reveal table th { padding: 8px 16px; border: 1px solid #e5e7eb; }
+    .reveal .two-col { display: flex; gap: 40px; text-align: left; }
+    .reveal .two-col > div { flex: 1; }
+    .reveal .highlight-box {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: left;
+      margin: 10px 0;
+    }
+    .reveal .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .reveal .stat-box {
+      background: #f9fafb;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+    }
+    .reveal .stat-box .number { font-size: 2.5em; font-weight: 700; }
+    .reveal .stat-box .label { font-size: 0.7em; color: #666; margin-top: 5px; }
+    .reveal .badge {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-size: 0.65em;
+      font-weight: 500;
+    }
+    .reveal .badge-green { background: #dcfce7; color: #166534; }
+    .reveal .badge-blue { background: #dbeafe; color: #1e40af; }
+    .reveal .badge-purple { background: #f3e8ff; color: #6b21a8; }
+    .reveal .badge-amber { background: #fef3c7; color: #92400e; }
+    .reveal .badge-gray { background: #f3f4f6; color: #374151; }
+    .reveal .roadmap-item {
+      background: #f9fafb;
+      border-left: 4px solid #bbf7d0;
+      padding: 12px 20px;
+      margin: 10px 0;
+      text-align: left;
+      border-radius: 0 8px 8px 0;
+    }
+    .reveal .roadmap-item.current { border-left-color: #4ade80; background: #f0fdf4; }
+    .reveal section { padding: 20px !important; }
+    .reveal .footer-note {
+      position: absolute;
+      bottom: 20px;
+      left: 0;
+      right: 0;
+      font-size: 0.5em;
+      color: #999;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Title -->
+      <section>
+        <h1><span class="accent">Accelerate BASSO</span></h1>
+        <h2 style="font-weight: 300;">Resource Portal</h2>
+        <p style="margin-top: 40px; font-size: 0.8em; color: #666;">
+          Resource Sharing Working Group<br />
+          April 7, 2026
+        </p>
+        <p class="small">Matthew Horridge — DCC</p>
+      </section>
+
+      <!-- Agenda -->
+      <section>
+        <h2>Agenda</h2>
+        <div class="left-align" style="max-width: 600px; margin: 0 auto;">
+          <ul>
+            <li>Recap: what is the portal?</li>
+            <li>Design decisions</li>
+            <li>Resource model &amp; inclusion criteria</li>
+            <li>Technical approach</li>
+            <li>Live demo of the prototype</li>
+            <li>Discussion &amp; next steps</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Recap: What is the portal? -->
+      <section>
+        <h2>What is the Portal?</h2>
+        <div class="highlight-box" style="max-width: 700px; margin: 30px auto;">
+          <p style="font-size: 1.1em; font-weight: 500; margin-bottom: 15px;">A curated discovery layer across distributed resources</p>
+          <ul style="font-size: 0.85em;">
+            <li>A <strong>complement</strong> to existing platforms (GitHub, BioPortal, BSSO Foundry, Zenodo)</li>
+            <li>An evolving <strong>index</strong> of Network outputs</li>
+            <li>A transparent <strong>entry point</strong> for all audiences</li>
+            <li>Infrastructure that can <strong>grow without centralizing</strong> everything</li>
+          </ul>
+        </div>
+        <p class="small" style="margin-top: 20px;">Aim 1: FAIR-compliant public-facing portal &nbsp;|&nbsp; Aim 3: Resource "toolbox"</p>
+      </section>
+
+      <!-- Core principle -->
+      <section>
+        <h2>Core Principle</h2>
+        <p style="font-size: 1.4em; font-weight: 300; margin: 40px 0;">
+          <strong>Link</strong>, don&rsquo;t duplicate.<br/>
+          <strong>Curate</strong>, don&rsquo;t automate.<br/>
+          <strong>Complement</strong>, don&rsquo;t compete.
+        </p>
+        <p style="font-size: 0.8em; color: #666;">
+          The portal is metadata + links.<br/>Content stays where it lives.
+        </p>
+      </section>
+
+      <!-- Who is this for? -->
+      <section>
+        <h2>Who is This For?</h2>
+        <div class="two-col" style="margin-top: 30px;">
+          <div class="highlight-box">
+            <h3 style="margin-top: 0;">Beginners</h3>
+            <p style="font-size: 0.8em;">&ldquo;I don&rsquo;t know what I don&rsquo;t know.&rdquo;</p>
+            <p style="font-size: 0.75em; color: #666;">Guided discovery &mdash; browse by project, topic, type</p>
+          </div>
+          <div class="highlight-box">
+            <h3 style="margin-top: 0;">Advanced Users</h3>
+            <p style="font-size: 0.8em;">&ldquo;I know what I need.&rdquo;</p>
+            <p style="font-size: 0.75em; color: #666;">Efficient access &mdash; search, filter, direct links</p>
+          </div>
+          <div class="highlight-box">
+            <h3 style="margin-top: 0;">Funders</h3>
+            <p style="font-size: 0.8em;">&ldquo;What has the Network produced?&rdquo;</p>
+            <p style="font-size: 0.75em; color: #666;">Visibility &mdash; stats, overview, breadth of outputs</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Resource locations -->
+      <section>
+        <h2>Resources Are Distributed</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 30px;">
+          <span class="badge badge-gray">GitHub</span>
+          <span class="badge badge-blue">BioPortal</span>
+          <span class="badge badge-green">BSSO Foundry</span>
+          <span class="badge badge-blue">Zenodo</span>
+          <span class="badge badge-green">OSF</span>
+          <span class="badge badge-amber">Discourse</span>
+          <span class="badge badge-purple">Project Websites</span>
+          <span class="badge badge-blue">OLS / OntoBee / AberOWL</span>
+        </div>
+        <p style="margin-top: 30px; font-size: 0.9em; color: #666;">
+          A wide variety of resources spread across many platforms.<br/>
+          The portal provides <strong>one place to find everything</strong>.
+        </p>
+      </section>
+
+      <!-- Resource model -->
+      <section>
+        <h2>Resource Model</h2>
+        <p style="font-size: 0.8em; color: #666; margin-bottom: 20px;">Each resource is a lightweight metadata record stored as a YAML file</p>
+        <table>
+          <thead>
+            <tr><th>Field</th><th>Description</th><th>Example</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>name</strong></td><td>Human-readable title</td><td>Behaviour Change Intervention Ontology</td></tr>
+            <tr><td><strong>type</strong></td><td>Resource category</td><td>Ontology, Publication, Tool, Community</td></tr>
+            <tr><td><strong>description</strong></td><td>1&ndash;3 sentence summary</td><td>&mdash;</td></tr>
+            <tr><td><strong>project</strong></td><td>Network project affiliation</td><td>APRICOT, Cross-cutting, DCC</td></tr>
+            <tr><td><strong>links</strong></td><td>Where the resource lives</td><td>GitHub, BioPortal, Zenodo URLs</td></tr>
+            <tr><td><strong>bssoFoundry</strong></td><td>Foundry membership</td><td>true / false</td></tr>
+            <tr><td><strong>tags</strong></td><td>Searchable keywords</td><td>ontology, cancer-prevention</td></tr>
+            <tr><td><strong>status</strong></td><td>Maturity level</td><td>Active, In Development, Archived</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- YAML example -->
+      <section>
+        <h2>What a Resource Looks Like</h2>
+        <pre style="text-align: left; font-size: 0.6em; background: #f9fafb; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb;"><code>id: bcio
+name: Behaviour Change Intervention Ontology (BCIO)
+type: Ontology
+description: >
+  An ontology for annotating and synthesising evidence
+  about behaviour change interventions.
+project: Cross-cutting
+links:
+  - label: BioPortal
+    url: https://bioportal.bioontology.org/ontologies/BCIO
+    platform: BioPortal
+  - label: GitHub
+    url: https://github.com/HumanBehaviourChangeProject/ontologies
+    platform: GitHub
+bssoFoundry: true
+tags: [ontology, behaviour-change, interventions]
+status: Active</code></pre>
+        <p class="small">One YAML file per resource &mdash; version-controlled in Git, easy to update via PR</p>
+      </section>
+
+      <!-- Inclusion criteria -->
+      <section>
+        <h2>Inclusion Criteria</h2>
+        <div class="left-align" style="max-width: 650px; margin: 20px auto;">
+          <div class="highlight-box">
+            <p style="font-weight: 500; margin-bottom: 15px;">A resource is included if:</p>
+            <ol style="font-size: 0.85em;">
+              <li>It is a <strong>product of</strong>, or directly relevant to, a Network project</li>
+              <li>It has at least one <strong>accessible public link</strong></li>
+              <li>It is <strong>vouched for</strong> by a Network member</li>
+            </ol>
+          </div>
+          <ul style="font-size: 0.8em; margin-top: 15px; color: #666;">
+            <li>Initially curated by DCC; later open to submissions via PR or form</li>
+            <li>&ldquo;In Development&rdquo; resources welcome &mdash; inclusion is not endorsement of completeness</li>
+            <li>Lightweight by design &mdash; low barrier to add a resource</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Technical approach -->
+      <section>
+        <h2>Technical Approach</h2>
+        <table>
+          <thead>
+            <tr><th>Aspect</th><th>Decision</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Framework</strong></td><td>Next.js + TypeScript + Tailwind CSS</td></tr>
+            <tr><td><strong>Data store</strong></td><td>YAML files in Git (one per resource)</td></tr>
+            <tr><td><strong>Hosting</strong></td><td>Static export &mdash; GitHub Pages, Vercel, Netlify, or institutional</td></tr>
+            <tr><td><strong>Database</strong></td><td>None needed</td></tr>
+            <tr><td><strong>Visual design</strong></td><td>Mirrors accelerate-basso.regenstrief.org</td></tr>
+            <tr><td><strong>Content</strong></td><td>Metadata + links only &mdash; no content duplication</td></tr>
+          </tbody>
+        </table>
+        <p class="small" style="margin-top: 20px;">Can evolve: add headless CMS for non-technical editors, API integrations, metrics</p>
+      </section>
+
+      <!-- Proof of concept stats -->
+      <section>
+        <h2>Proof of Concept</h2>
+        <div class="stat-grid">
+          <div class="stat-box">
+            <div class="number">14</div>
+            <div class="label">Resources</div>
+          </div>
+          <div class="stat-box">
+            <div class="number">9</div>
+            <div class="label">Ontologies</div>
+          </div>
+          <div class="stat-box">
+            <div class="number">8</div>
+            <div class="label">BSSO Foundry</div>
+          </div>
+          <div class="stat-box">
+            <div class="number">4</div>
+            <div class="label">Resource Types</div>
+          </div>
+        </div>
+        <p style="font-size: 0.8em; color: #666; margin-top: 25px;">
+          8 BSSO Foundry ontologies + ODFA + BSSO Foundry + BioPortal Slice + NAS Report + APRICOT Community + Network Website
+        </p>
+      </section>
+
+      <!-- Demo slide -->
+      <section data-background-color="#f0fdf4">
+        <h1 style="margin-bottom: 40px;">Live Demo</h1>
+        <p style="font-size: 1.2em; color: #333;">
+          Landing page &bull; Resource browser &bull; Search &amp; filter
+        </p>
+        <p class="small" style="margin-top: 40px;">
+          Prototype includes: search, filtering by type/project/BSSO Foundry status,<br/>
+          platform badges (GitHub, BioPortal, Zenodo, etc.), resource cards with metadata
+        </p>
+      </section>
+
+      <!-- Open questions -->
+      <section>
+        <h2>Open Questions</h2>
+        <div class="left-align" style="max-width: 700px; margin: 20px auto;">
+          <ol style="font-size: 0.85em;">
+            <li><strong>Hosting</strong> &mdash; Where should the portal live? (institutional vs. cloud)</li>
+            <li><strong>Governance</strong> &mdash; Who can add/update resources long-term?</li>
+            <li><strong>Automation</strong> &mdash; Should we pull metadata from APIs (GitHub, BioPortal)?</li>
+            <li><strong>Scope</strong> &mdash; What other resource types should we include?</li>
+            <li><strong>Metrics</strong> &mdash; What analytics do funders need?</li>
+            <li><strong>Integration</strong> &mdash; Relationship with the BSSO BioPortal slice?</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- Roadmap -->
+      <section>
+        <h2>Roadmap</h2>
+        <div style="max-width: 650px; margin: 20px auto;">
+          <div class="roadmap-item current">
+            <strong>Phase 1 (Now)</strong><br/>
+            <span style="font-size: 0.85em;">Proof of concept with ~15 curated resources. Agree on scope and inclusion criteria.</span>
+          </div>
+          <div class="roadmap-item">
+            <strong>Phase 2</strong><br/>
+            <span style="font-size: 0.85em;">Expand resource coverage. Add CMS for non-technical editors.</span>
+          </div>
+          <div class="roadmap-item">
+            <strong>Phase 3</strong><br/>
+            <span style="font-size: 0.85em;">API integrations (GitHub releases, BioPortal metadata). Metrics dashboard.</span>
+          </div>
+          <div class="roadmap-item">
+            <strong>Phase 4</strong><br/>
+            <span style="font-size: 0.85em;">Community submissions. Automated freshness checks.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- What I need -->
+      <section>
+        <h2>What I Need From This Group</h2>
+        <div class="left-align" style="max-width: 650px; margin: 30px auto;">
+          <ul style="font-size: 0.95em;">
+            <li><strong>Agreement</strong> on scope and direction</li>
+            <li><strong>Feedback</strong> on the resource model and inclusion criteria</li>
+            <li><strong>Input</strong> on what resources to add next</li>
+            <li><strong>Preferences</strong> or constraints on hosting/technology</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Thank you -->
+      <section>
+        <h1><span class="accent">Thank You</span></h1>
+        <p style="margin-top: 30px; font-size: 0.9em; color: #666;">
+          Design document &amp; prototype available for review
+        </p>
+        <p style="margin-top: 15px; font-size: 0.8em; color: #999;">
+          Matthew Horridge &mdash; DCC<br/>
+          Accelerate BASSO Network (NIA U24AG088019)
+        </p>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: true,
+      width: 1280,
+      height: 720,
+      margin: 0.1,
+      transition: "fade",
+      transitionSpeed: "fast",
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+id: rbbo
+name: Relationships Between Behaviours Ontology (RBBO)
+type: Ontology
+description: An ontology for representing relationships between different behaviours.
+project: Cross-cutting
+links: []
+bssoFoundry: true
+tags:
+  - ontology
+  - behaviour
+  - relationships
+status: Active
+lastUpdated: "2026-04-01"

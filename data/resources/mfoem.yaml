@@ -1,0 +1,19 @@
+id: mfoem
+name: Emotion Ontology (MFOEM)
+type: Ontology
+description: An ontology of affective phenomena including emotions, moods, and related processes.
+project: Cross-cutting
+links:
+  - label: BioPortal
+    url: https://bioportal.bioontology.org/ontologies/MFOEM
+    platform: BioPortal
+  - label: GitHub
+    url: https://github.com/jannahastings/emotion-ontology
+    platform: GitHub
+bssoFoundry: true
+tags:
+  - ontology
+  - emotion
+  - affective
+status: Active
+lastUpdated: "2026-04-01"

@@ -1,0 +1,15 @@
+id: bsso-foundry
+name: BSSO Foundry
+type: Tool
+description: The Behavioural and Social Sciences Ontology Foundry — a community of interoperable ontologies relevant to the behavioural and social sciences.
+project: Cross-cutting
+links:
+  - label: Website
+    url: https://bssofoundry.github.io
+    platform: Website
+tags:
+  - foundry
+  - interoperability
+  - standards
+status: Active
+lastUpdated: "2026-04-01"

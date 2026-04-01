@@ -1,0 +1,19 @@
+id: mf
+name: Mental Functioning Ontology (MF)
+type: Ontology
+description: An ontology for mental functioning including cognitive and emotional processes.
+project: Cross-cutting
+links:
+  - label: BioPortal
+    url: https://bioportal.bioontology.org/ontologies/MF
+    platform: BioPortal
+  - label: GitHub
+    url: https://github.com/jannahastings/mental-functioning-ontology
+    platform: GitHub
+bssoFoundry: true
+tags:
+  - ontology
+  - mental-functioning
+  - cognitive
+status: Active
+lastUpdated: "2026-04-01"

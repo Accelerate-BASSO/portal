@@ -1,0 +1,20 @@
+id: omrse
+name: Ontology for Modeling and Representation of Social Entities (OMRSE)
+type: Ontology
+description: An ontology for social entities including roles, organizations, and demographic categories.
+project: Cross-cutting
+links:
+  - label: BioPortal
+    url: https://bioportal.bioontology.org/ontologies/OMRSE
+    platform: BioPortal
+  - label: GitHub
+    url: https://github.com/OMRSEOntology/OMRSE
+    platform: GitHub
+bssoFoundry: true
+tags:
+  - ontology
+  - social-entities
+  - roles
+  - demographics
+status: Active
+lastUpdated: "2026-04-01"
