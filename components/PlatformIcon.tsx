@@ -4,7 +4,7 @@ interface PlatformIconProps {
   className?: string;
 }
 
-const platformLabels: Record<string, string> = {
+export const platformLabels: Record<string, string> = {
   GitHub: "GitHub",
   BioPortal: "BioPortal",
   Zenodo: "Zenodo",
@@ -28,7 +28,7 @@ const platformColors: Record<string, string> = {
   Other: "border border-gray-300 text-gray-600 bg-transparent",
 };
 
-const platformTooltips: Record<string, string> = {
+export const platformTooltips: Record<string, string> = {
   GitHub: "View on GitHub — source code, releases, and issue tracking",
   BioPortal: "View on BioPortal — browse ontology classes and relationships",
   Zenodo: "View on Zenodo — archived release with a DOI",

@@ -1,5 +1,6 @@
 import type { Resource } from "@/lib/resources";
-import PlatformIcon from "./PlatformIcon";
+import { platformLabels, platformTooltips } from "./PlatformIcon";
+import { ExternalLink } from "lucide-react";
 
 interface ResourceCardProps {
   resource: Resource;
@@ -16,15 +17,15 @@ const typeColors: Record<string, string> = {
   Registry: "bg-teal-600 text-white",
 };
 
-const typePlatformColors: Record<string, string> = {
-  Ontology: "border border-violet-400 text-violet-700 bg-transparent",
-  Publication: "border border-orange-400 text-orange-700 bg-transparent",
-  Tool: "border border-purple-400 text-purple-700 bg-transparent",
-  Community: "border border-amber-400 text-amber-700 bg-transparent",
-  Repository: "border border-cyan-400 text-cyan-700 bg-transparent",
-  Dataset: "border border-rose-400 text-rose-700 bg-transparent",
-  Website: "border border-indigo-400 text-indigo-700 bg-transparent",
-  Registry: "border border-teal-400 text-teal-700 bg-transparent",
+const typeLinkColors: Record<string, string> = {
+  Ontology: "text-violet-600 hover:text-violet-800",
+  Publication: "text-orange-600 hover:text-orange-800",
+  Tool: "text-purple-600 hover:text-purple-800",
+  Community: "text-amber-600 hover:text-amber-800",
+  Repository: "text-cyan-600 hover:text-cyan-800",
+  Dataset: "text-rose-600 hover:text-rose-800",
+  Website: "text-indigo-600 hover:text-indigo-800",
+  Registry: "text-teal-600 hover:text-teal-800",
 };
 
 const typeTooltips: Record<string, string> = {
@@ -107,16 +108,18 @@ export default function ResourceCard({ resource }: ResourceCardProps) {
 
       {/* Links */}
       {resource.links && resource.links.length > 0 && (
-        <div className="mt-auto flex flex-wrap gap-2 border-t border-gray-100 pt-3">
+        <div className="mt-auto flex flex-wrap gap-x-4 gap-y-1 border-t border-gray-100 pt-3">
           {resource.links.map((link) => (
             <a
               key={link.url}
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center text-sm no-underline transition-opacity hover:opacity-80"
+              title={platformTooltips[link.platform] || "Visit external link"}
+              className={`inline-flex items-center gap-1 text-sm underline decoration-1 underline-offset-2 transition-colors ${typeLinkColors[resource.type] || "text-gray-500 hover:text-gray-800"}`}
             >
-              <PlatformIcon platform={link.platform} colorClass={typePlatformColors[resource.type]} />
+              {platformLabels[link.platform] || link.platform}
+              <ExternalLink size={16} strokeWidth={3} />
             </a>
           ))}
         </div>
