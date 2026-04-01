@@ -29,7 +29,7 @@ export default function ResourceBrowser({
         r.tags.some((t) => t.toLowerCase().includes(search.toLowerCase()));
 
       const matchesType = typeFilter === "All" || r.type === typeFilter;
-      const matchesProject = projectFilter === "All" || r.project === projectFilter;
+      const matchesProject = projectFilter === "All" || r.projects.includes(projectFilter as never);
       const matchesFoundry = !foundryOnly || r.bssoFoundry === true;
 
       return matchesSearch && matchesType && matchesProject && matchesFoundry;
@@ -53,6 +53,7 @@ export default function ResourceBrowser({
 
         {/* Type filter */}
         <select
+          title="Filter by resource type (e.g. Ontology, Tool, Publication)"
           value={typeFilter}
           onChange={(e) => setTypeFilter(e.target.value)}
           className="rounded-full border-2 border-gray-300 bg-white px-4 py-2 text-sm focus:border-black focus:outline-none"
@@ -67,6 +68,7 @@ export default function ResourceBrowser({
 
         {/* Project filter */}
         <select
+          title="Filter by network project affiliation"
           value={projectFilter}
           onChange={(e) => setProjectFilter(e.target.value)}
           className="rounded-full border-2 border-gray-300 bg-white px-4 py-2 text-sm focus:border-black focus:outline-none"
@@ -80,7 +82,10 @@ export default function ResourceBrowser({
         </select>
 
         {/* Foundry toggle */}
-        <label className="flex cursor-pointer items-center gap-2 text-sm text-gray-600">
+        <label
+          title="Show only ontologies that are members of the Behavioural and Social Sciences Ontology Foundry"
+          className="flex cursor-pointer items-center gap-2 text-sm text-gray-600"
+        >
           <input
             type="checkbox"
             checked={foundryOnly}

@@ -23,10 +23,21 @@ const platformColors: Record<string, string> = {
   Other: "bg-gray-500 text-white",
 };
 
+const platformTooltips: Record<string, string> = {
+  GitHub: "View on GitHub — source code, releases, and issue tracking",
+  BioPortal: "View on BioPortal — browse ontology classes and relationships",
+  Zenodo: "View on Zenodo — archived release with a DOI",
+  OSF: "View on OSF — publications and datasets",
+  Website: "Visit the resource website",
+  Discourse: "Visit the Discourse community forum",
+  Other: "Visit external link",
+};
+
 export default function PlatformIcon({ platform, className = "" }: PlatformIconProps) {
   return (
     <span
-      className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${platformColors[platform] || platformColors.Other} ${className}`}
+      title={platformTooltips[platform] || platformTooltips.Other}
+      className={`inline-flex cursor-help items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${platformColors[platform] || platformColors.Other} ${className}`}
     >
       {platformLabels[platform] || platform}
     </span>

@@ -2,7 +2,11 @@ id: nas-report-2022
 name: "National Academies Report: Ontologies in the Behavioral Sciences (2022)"
 type: Publication
 description: A report describing how ontologies support science and its application to real-world problems, detailing how ontologies can be engineered to better support the behavioral sciences.
-project: Cross-cutting
+projects:
+  - PHASES
+  - BSO-AD
+  - APRICOT
+  - ODFA
 links:
   - label: Website
     url: https://nap.nationalacademies.org/catalog/26755/ontologies-in-the-behavioral-sciences-accelerating-research-and-the-spread-of-knowledge

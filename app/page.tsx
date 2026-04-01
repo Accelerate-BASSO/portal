@@ -8,7 +8,7 @@ export default function Home() {
 
   const ontologyCount = resources.filter((r) => r.type === "Ontology").length;
   const foundryCount = resources.filter((r) => r.bssoFoundry).length;
-  const projectCount = new Set(resources.map((r) => r.project)).size;
+  const projectCount = new Set(resources.flatMap((r) => r.projects)).size;
 
   return (
     <div className="flex flex-col">
@@ -46,19 +46,19 @@ export default function Home() {
       {/* Stats */}
       <section className="border-y border-gray-200 bg-gray-50 px-6 py-16">
         <div className="mx-auto grid max-w-4xl grid-cols-2 gap-8 text-center md:grid-cols-4">
-          <div>
+          <div title="Total number of resources indexed in the portal">
             <p className="text-4xl font-semibold">{resources.length}</p>
             <p className="mt-1 text-sm text-gray-text">Resources</p>
           </div>
-          <div>
+          <div title="Formal representations of knowledge in specific domains">
             <p className="text-4xl font-semibold">{ontologyCount}</p>
             <p className="mt-1 text-sm text-gray-text">Ontologies</p>
           </div>
-          <div>
+          <div title="Ontologies that are members of the Behavioural and Social Sciences Ontology Foundry">
             <p className="text-4xl font-semibold">{foundryCount}</p>
             <p className="mt-1 text-sm text-gray-text">BSSO Foundry</p>
           </div>
-          <div>
+          <div title="Distinct network project affiliations represented">
             <p className="text-4xl font-semibold">{projectCount}</p>
             <p className="mt-1 text-sm text-gray-text">Projects</p>
           </div>
@@ -135,10 +135,14 @@ export default function Home() {
                 <Link
                   key={type}
                   href={`/resources?type=${type}`}
+                  title={`Browse all ${count} ${type.toLowerCase()} resource${count !== 1 ? "s" : ""}`}
                   className="flex items-center justify-between rounded-lg border border-card-border bg-white p-5 no-underline shadow-sm transition-shadow hover:shadow-md"
                 >
                   <span className="text-lg font-medium text-black">{type}</span>
-                  <span className="rounded-full bg-accent px-3 py-1 text-sm font-medium text-green-800">
+                  <span
+                    title={`${count} ${type.toLowerCase()} resource${count !== 1 ? "s" : ""} in the portal`}
+                    className="rounded-full bg-accent px-3 py-1 text-sm font-medium text-green-800"
+                  >
                     {count}
                   </span>
                 </Link>

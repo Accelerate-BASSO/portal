@@ -2,7 +2,11 @@ id: mf
 name: Mental Functioning Ontology (MF)
 type: Ontology
 description: An ontology for mental functioning including cognitive and emotional processes.
-project: Cross-cutting
+projects:
+  - PHASES
+  - BSO-AD
+  - APRICOT
+  - ODFA
 links:
   - label: BioPortal
     url: https://bioportal.bioontology.org/ontologies/MF

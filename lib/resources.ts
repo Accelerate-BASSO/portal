@@ -8,12 +8,14 @@ export interface ResourceLink {
   platform: "GitHub" | "BioPortal" | "Zenodo" | "OSF" | "Website" | "Discourse" | "Other";
 }
 
+export type ProjectName = "PHASES" | "BSO-AD" | "APRICOT" | "ODFA" | "DCC";
+
 export interface Resource {
   id: string;
   name: string;
   type: "Ontology" | "Publication" | "Tool" | "Community" | "Repository" | "Dataset";
   description: string;
-  project: "PHASES" | "BSO-AD" | "APRICOT" | "ODFA" | "Cross-cutting" | "DCC";
+  projects: ProjectName[];
   links: ResourceLink[];
   bssoFoundry?: boolean;
   tags: string[];
@@ -43,7 +45,7 @@ export function getResourceTypes(resources: Resource[]): string[] {
 }
 
 export function getProjects(resources: Resource[]): string[] {
-  return [...new Set(resources.map((r) => r.project))].sort();
+  return [...new Set(resources.flatMap((r) => r.projects))].sort();
 }
 
 export function getAllTags(resources: Resource[]): string[] {

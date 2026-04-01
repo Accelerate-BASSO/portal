@@ -2,7 +2,11 @@ id: bcio
 name: Behaviour Change Intervention Ontology (BCIO)
 type: Ontology
 description: An ontology for annotating and synthesising evidence about behaviour change interventions.
-project: Cross-cutting
+projects:
+  - PHASES
+  - BSO-AD
+  - APRICOT
+  - ODFA
 links:
   - label: BioPortal
     url: https://bioportal.bioontology.org/ontologies/BCIO

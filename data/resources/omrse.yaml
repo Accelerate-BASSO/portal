@@ -2,7 +2,11 @@ id: omrse
 name: Ontology for Modeling and Representation of Social Entities (OMRSE)
 type: Ontology
 description: An ontology for social entities including roles, organizations, and demographic categories.
-project: Cross-cutting
+projects:
+  - PHASES
+  - BSO-AD
+  - APRICOT
+  - ODFA
 links:
   - label: BioPortal
     url: https://bioportal.bioontology.org/ontologies/OMRSE
