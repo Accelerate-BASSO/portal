@@ -3,6 +3,7 @@
 import { useState, useMemo } from "react";
 import type { Resource } from "@/lib/resources";
 import ResourceCard from "./ResourceCard";
+import { Search, X } from "lucide-react";
 
 interface ResourceBrowserProps {
   resources: Resource[];
@@ -16,89 +17,186 @@ export default function ResourceBrowser({
   projects,
 }: ResourceBrowserProps) {
   const [search, setSearch] = useState("");
-  const [typeFilter, setTypeFilter] = useState<string>("All");
-  const [projectFilter, setProjectFilter] = useState<string>("All");
+  const [selectedTypes, setSelectedTypes] = useState<Set<string>>(new Set());
+  const [selectedProjects, setSelectedProjects] = useState<Set<string>>(new Set());
   const [foundryOnly, setFoundryOnly] = useState(false);
 
-  const filtered = useMemo(() => {
-    return resources.filter((r) => {
-      const matchesSearch =
-        search === "" ||
-        r.name.toLowerCase().includes(search.toLowerCase()) ||
-        r.description.toLowerCase().includes(search.toLowerCase()) ||
-        r.tags.some((t) => t.toLowerCase().includes(search.toLowerCase()));
-
-      const matchesType = typeFilter === "All" || r.type === typeFilter;
-      const matchesProject = projectFilter === "All" || r.projects.includes(projectFilter as never);
-      const matchesFoundry = !foundryOnly || r.bssoFoundry === true;
-
-      return matchesSearch && matchesType && matchesProject && matchesFoundry;
+  const toggleType = (type: string) => {
+    setSelectedTypes((prev) => {
+      const next = new Set(prev);
+      if (next.has(type)) next.delete(type);
+      else next.add(type);
+      return next;
     });
-  }, [resources, search, typeFilter, projectFilter, foundryOnly]);
+  };
+
+  const toggleProject = (project: string) => {
+    setSelectedProjects((prev) => {
+      const next = new Set(prev);
+      if (next.has(project)) next.delete(project);
+      else next.add(project);
+      return next;
+    });
+  };
+
+  const hasActiveFilters = selectedTypes.size > 0 || selectedProjects.size > 0 || foundryOnly;
+
+  const clearFilters = () => {
+    setSelectedTypes(new Set());
+    setSelectedProjects(new Set());
+    setFoundryOnly(false);
+  };
+
+  const clearAll = () => {
+    setSearch("");
+    clearFilters();
+  };
+
+  const matchesSearch = (r: Resource) =>
+    search === "" ||
+    r.name.toLowerCase().includes(search.toLowerCase()) ||
+    r.description.toLowerCase().includes(search.toLowerCase()) ||
+    r.tags.some((t) => t.toLowerCase().includes(search.toLowerCase()));
+
+  const matchesType = (r: Resource) => selectedTypes.size === 0 || selectedTypes.has(r.type);
+  const matchesProject = (r: Resource) =>
+    selectedProjects.size === 0 || r.projects.some((p) => selectedProjects.has(p));
+  const matchesFoundry = (r: Resource) => !foundryOnly || r.bssoFoundry === true;
+
+  const filtered = useMemo(() => {
+    return resources.filter(
+      (r) => matchesSearch(r) && matchesType(r) && matchesProject(r) && matchesFoundry(r)
+    );
+  }, [resources, search, selectedTypes, selectedProjects, foundryOnly]);
+
+  // Counts for type chips: apply all filters except type
+  const typeCounts = useMemo(() => {
+    const base = resources.filter(
+      (r) => matchesSearch(r) && matchesProject(r) && matchesFoundry(r)
+    );
+    return Object.fromEntries(types.map((t) => [t, base.filter((r) => r.type === t).length]));
+  }, [resources, search, selectedProjects, foundryOnly, types]);
+
+  // Counts for project chips: apply all filters except project
+  const projectCounts = useMemo(() => {
+    const base = resources.filter(
+      (r) => matchesSearch(r) && matchesType(r) && matchesFoundry(r)
+    );
+    return Object.fromEntries(
+      projects.map((p) => [p, base.filter((r) => r.projects.includes(p as never)).length])
+    );
+  }, [resources, search, selectedTypes, foundryOnly, projects]);
 
   return (
     <div>
-      {/* Filters */}
-      <div className="mb-8 flex flex-col gap-4 rounded-lg bg-gray-50 p-4 sm:flex-row sm:items-center sm:flex-wrap">
-        {/* Search */}
-        <div className="flex-1 sm:min-w-[250px]">
-          <input
-            type="text"
-            placeholder="Search resources..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="w-full rounded-full border-2 border-gray-300 bg-white px-4 py-2 text-sm transition-colors focus:border-black focus:outline-none"
-          />
+      {/* Search bar */}
+      <div className="relative mb-3">
+        <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+        <input
+          type="text"
+          placeholder="Search resources by name, description, or keyword..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="w-full rounded-lg border-2 border-gray-200 bg-white py-3 pl-11 pr-10 text-sm transition-colors focus:border-black focus:outline-none"
+        />
+        {search && (
+          <button
+            onClick={() => setSearch("")}
+            className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-600"
+          >
+            <X size={16} />
+          </button>
+        )}
+      </div>
+
+      {/* Filter bar */}
+      <div className="mb-8 rounded-lg border border-gray-200 bg-gray-50 p-4">
+        {/* Type chips */}
+        <div className="mb-3">
+          <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-400">Type</p>
+          <div className="flex flex-wrap gap-2">
+            {types.map((type) => {
+              const active = selectedTypes.has(type);
+              const count = typeCounts[type] || 0;
+              return (
+                <button
+                  key={type}
+                  onClick={() => toggleType(type)}
+                  title={`Filter by ${type} resources`}
+                  className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-colors ${
+                    active
+                      ? "bg-black text-white"
+                      : "bg-white text-gray-600 border border-gray-200 hover:border-gray-400"
+                  } ${count === 0 && !active ? "opacity-40" : ""}`}
+                >
+                  {type}
+                  <span className={`inline-block min-w-[1.25rem] text-center text-xs font-semibold ${active ? "text-green-300" : "text-violet-500"}`}>
+                    {count}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
         </div>
 
-        {/* Type filter */}
-        <select
-          title="Filter by resource type (e.g. Ontology, Tool, Publication)"
-          value={typeFilter}
-          onChange={(e) => setTypeFilter(e.target.value)}
-          className="rounded-full border-2 border-gray-300 bg-white px-4 py-2 text-sm focus:border-black focus:outline-none"
-        >
-          <option value="All">All Types</option>
-          {types.map((t) => (
-            <option key={t} value={t}>
-              {t}
-            </option>
-          ))}
-        </select>
+        {/* Project chips */}
+        <div className="mb-3">
+          <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-400">Project</p>
+          <div className="flex flex-wrap gap-2">
+            {projects.map((project) => {
+              const active = selectedProjects.has(project);
+              const count = projectCounts[project] || 0;
+              return (
+                <button
+                  key={project}
+                  onClick={() => toggleProject(project)}
+                  title={`Filter by ${project} project`}
+                  className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-colors ${
+                    active
+                      ? "bg-black text-white"
+                      : "bg-white text-gray-600 border border-gray-200 hover:border-gray-400"
+                  } ${count === 0 && !active ? "opacity-40" : ""}`}
+                >
+                  {project}
+                  <span className={`inline-block min-w-[1.25rem] text-center text-xs font-semibold ${active ? "text-green-300" : "text-violet-500"}`}>
+                    {count}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
 
-        {/* Project filter */}
-        <select
-          title="Filter by network project affiliation"
-          value={projectFilter}
-          onChange={(e) => setProjectFilter(e.target.value)}
-          className="rounded-full border-2 border-gray-300 bg-white px-4 py-2 text-sm focus:border-black focus:outline-none"
-        >
-          <option value="All">All Projects</option>
-          {projects.map((p) => (
-            <option key={p} value={p}>
-              {p}
-            </option>
-          ))}
-        </select>
+        {/* Bottom row: Foundry toggle + clear */}
+        <div className="flex items-center justify-between border-t border-gray-200 pt-3">
+          <label
+            title="Show only ontologies that are members of the Behavioural and Social Sciences Ontology Foundry"
+            className="flex cursor-pointer items-center gap-2 text-xs text-gray-500"
+          >
+            <input
+              type="checkbox"
+              checked={foundryOnly}
+              onChange={(e) => setFoundryOnly(e.target.checked)}
+              className="h-3.5 w-3.5 rounded accent-green-600"
+            />
+            BSSO Foundry only
+          </label>
 
-        {/* Foundry toggle */}
-        <label
-          title="Show only ontologies that are members of the Behavioural and Social Sciences Ontology Foundry"
-          className="flex cursor-pointer items-center gap-2 text-sm text-gray-600"
-        >
-          <input
-            type="checkbox"
-            checked={foundryOnly}
-            onChange={(e) => setFoundryOnly(e.target.checked)}
-            className="h-4 w-4 rounded accent-green-600"
-          />
-          BSSO Foundry only
-        </label>
+          {hasActiveFilters && (
+            <button
+              onClick={clearFilters}
+              className="text-xs text-gray-400 underline hover:text-gray-600"
+            >
+              Clear filters
+            </button>
+          )}
+        </div>
       </div>
 
       {/* Results count */}
       <p className="mb-4 text-sm text-gray-500">
         Showing {filtered.length} of {resources.length} resources
+        {search && <span> matching &ldquo;{search}&rdquo;</span>}
       </p>
 
       {/* Resource grid */}
@@ -110,17 +208,12 @@ export default function ResourceBrowser({
         </div>
       ) : (
         <div className="rounded-lg border-2 border-dashed border-gray-200 py-16 text-center">
-          <p className="text-lg text-gray-400">No resources match your filters</p>
+          <p className="text-lg text-gray-400">No resources match your criteria</p>
           <button
-            onClick={() => {
-              setSearch("");
-              setTypeFilter("All");
-              setProjectFilter("All");
-              setFoundryOnly(false);
-            }}
+            onClick={clearAll}
             className="mt-3 text-sm text-black underline"
           >
-            Clear all filters
+            Clear search and filters
           </button>
         </div>
       )}
