@@ -5,7 +5,7 @@ import yaml from "js-yaml";
 export interface ResourceLink {
   label: string;
   url: string;
-  platform: "GitHub" | "BioPortal" | "Zenodo" | "OSF" | "Website" | "Discourse" | "Other";
+  platform: "GitHub" | "BioPortal" | "Zenodo" | "OSF" | "Website" | "Discourse" | "OLS" | "Ontobee" | "Other";
 }
 
 export type ProjectName = "PHASES" | "BSO-AD" | "APRICOT" | "ODFA" | "DCC";
@@ -13,7 +13,7 @@ export type ProjectName = "PHASES" | "BSO-AD" | "APRICOT" | "ODFA" | "DCC";
 export interface Resource {
   id: string;
   name: string;
-  type: "Ontology" | "Publication" | "Tool" | "Community" | "Repository" | "Dataset";
+  type: "Ontology" | "Publication" | "Tool" | "Community" | "Repository" | "Dataset" | "Website" | "Registry";
   description: string;
   projects: ProjectName[];
   links: ResourceLink[];

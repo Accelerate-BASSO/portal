@@ -14,6 +14,9 @@ links:
   - label: GitHub
     url: https://github.com/jannahastings/mental-functioning-ontology
     platform: GitHub
+  - label: Ontobee
+    url: https://ontobee.org/ontology/MF
+    platform: Ontobee
 bssoFoundry: true
 tags:
   - ontology

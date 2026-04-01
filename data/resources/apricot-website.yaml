@@ -1,0 +1,16 @@
+id: apricot-website
+name: APRICOT Project Website
+type: Website
+description: Project website for APRICOT (Advancing Prevention Research in Cancer through Ontology Tools), which develops and refines ontologies to standardize behavioral science constructs in cancer prevention research.
+projects:
+  - APRICOT
+links:
+  - label: Website
+    url: https://accelerate-basso.regenstrief.org/pages/apricot.html
+    platform: Website
+tags:
+  - website
+  - cancer-prevention
+  - tobacco
+status: Active
+lastUpdated: "2026-04-01"

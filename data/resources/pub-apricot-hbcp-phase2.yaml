@@ -1,0 +1,16 @@
+id: pub-apricot-hbcp-phase2
+name: "The Human Behaviour-Change Project Phase 2: Advancing behavioural and social sciences through ontology tools"
+type: Publication
+description: Describes the second phase of the Human Behaviour-Change Project, advancing behavioural and social sciences through ontology tools. Published in Wellcome Open Research.
+projects:
+  - APRICOT
+links:
+  - label: DOI
+    url: https://doi.org/10.12688/wellcomeopenres.23520.1
+    platform: Website
+tags:
+  - paper
+  - behaviour-change
+  - ontology-tools
+status: Active
+lastUpdated: "2026-04-01"

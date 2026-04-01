@@ -14,6 +14,9 @@ links:
   - label: GitHub
     url: https://github.com/OMRSEOntology/OMRSE
     platform: GitHub
+  - label: Ontobee
+    url: https://ontobee.org/ontology/OMRSE
+    platform: Ontobee
 bssoFoundry: true
 tags:
   - ontology

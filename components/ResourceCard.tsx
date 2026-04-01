@@ -6,21 +6,36 @@ interface ResourceCardProps {
 }
 
 const typeColors: Record<string, string> = {
-  Ontology: "bg-emerald-100 text-emerald-800",
-  Publication: "bg-blue-100 text-blue-800",
-  Tool: "bg-purple-100 text-purple-800",
-  Community: "bg-amber-100 text-amber-800",
-  Repository: "bg-gray-100 text-gray-800",
-  Dataset: "bg-rose-100 text-rose-800",
+  Ontology: "bg-violet-600 text-white",
+  Publication: "bg-orange-600 text-white",
+  Tool: "bg-purple-600 text-white",
+  Community: "bg-amber-600 text-white",
+  Repository: "bg-cyan-600 text-white",
+  Dataset: "bg-rose-600 text-white",
+  Website: "bg-indigo-600 text-white",
+  Registry: "bg-teal-600 text-white",
+};
+
+const typePlatformColors: Record<string, string> = {
+  Ontology: "border border-violet-400 text-violet-700 bg-transparent",
+  Publication: "border border-orange-400 text-orange-700 bg-transparent",
+  Tool: "border border-purple-400 text-purple-700 bg-transparent",
+  Community: "border border-amber-400 text-amber-700 bg-transparent",
+  Repository: "border border-cyan-400 text-cyan-700 bg-transparent",
+  Dataset: "border border-rose-400 text-rose-700 bg-transparent",
+  Website: "border border-indigo-400 text-indigo-700 bg-transparent",
+  Registry: "border border-teal-400 text-teal-700 bg-transparent",
 };
 
 const typeTooltips: Record<string, string> = {
   Ontology: "A formal representation of knowledge in a specific domain",
   Publication: "A published report, paper, or document",
-  Tool: "A platform, service, or utility supporting the network",
+  Tool: "A software tool, editor, converter, or utility",
   Community: "A forum or group for discussion and collaboration",
-  Repository: "A collection of files, code, or data",
+  Repository: "A browsable collection of ontologies or data",
   Dataset: "A structured collection of data",
+  Website: "A project or network website",
+  Registry: "A standards body or curated registry of resources",
 };
 
 const statusColors: Record<string, string> = {
@@ -38,24 +53,26 @@ const statusTooltips: Record<string, string> = {
 export default function ResourceCard({ resource }: ResourceCardProps) {
   return (
     <div className="flex flex-col gap-3 rounded-lg border border-card-border bg-white p-5 shadow-sm transition-shadow hover:shadow-md">
-      {/* Header row */}
-      <div className="flex flex-wrap items-start justify-between gap-2">
-        <h3 className="text-lg font-semibold text-black">{resource.name}</h3>
-        <div className="flex gap-1.5">
-          <span
-            title={typeTooltips[resource.type] || `Resource type: ${resource.type}`}
-            className={`cursor-help rounded-full px-2.5 py-0.5 text-xs font-medium ${typeColors[resource.type] || "bg-gray-100 text-gray-800"}`}
-          >
-            {resource.type}
-          </span>
+      {/* Type badge */}
+      <div className="flex gap-1.5">
+        <span
+          title={typeTooltips[resource.type] || `Resource type: ${resource.type}`}
+          className={`cursor-help rounded-full px-2.5 py-0.5 text-xs font-medium ${typeColors[resource.type] || "bg-gray-100 text-gray-800"}`}
+        >
+          {resource.type}
+        </span>
+        {resource.status !== "Active" && (
           <span
             title={statusTooltips[resource.status] || `Status: ${resource.status}`}
             className={`cursor-help rounded-full px-2.5 py-0.5 text-xs font-medium ${statusColors[resource.status] || ""}`}
           >
             {resource.status}
           </span>
-        </div>
+        )}
       </div>
+
+      {/* Name */}
+      <h3 className="text-lg font-semibold text-black">{resource.name}</h3>
 
       {/* Description */}
       <p className="text-sm leading-relaxed text-gray-text">{resource.description}</p>
@@ -81,19 +98,6 @@ export default function ResourceCard({ resource }: ResourceCardProps) {
         )}
       </div>
 
-      {/* Tags */}
-      <div className="flex flex-wrap gap-1.5">
-        {resource.tags.map((tag) => (
-          <span
-            key={tag}
-            title={`Filter by tag: ${tag}`}
-            className="cursor-help rounded-full border border-gray-200 px-2 py-0.5 text-xs text-gray-500"
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
-
       {/* Links */}
       {resource.links && resource.links.length > 0 && (
         <div className="mt-auto flex flex-wrap gap-2 border-t border-gray-100 pt-3">
@@ -105,7 +109,7 @@ export default function ResourceCard({ resource }: ResourceCardProps) {
               rel="noopener noreferrer"
               className="inline-flex items-center text-sm no-underline transition-opacity hover:opacity-80"
             >
-              <PlatformIcon platform={link.platform} />
+              <PlatformIcon platform={link.platform} colorClass={typePlatformColors[resource.type]} />
             </a>
           ))}
         </div>

@@ -1,5 +1,6 @@
 interface PlatformIconProps {
   platform: string;
+  colorClass?: string;
   className?: string;
 }
 
@@ -10,17 +11,21 @@ const platformLabels: Record<string, string> = {
   OSF: "OSF",
   Website: "Web",
   Discourse: "Discourse",
+  OLS: "OLS",
+  Ontobee: "Ontobee",
   Other: "Link",
 };
 
 const platformColors: Record<string, string> = {
-  GitHub: "bg-gray-800 text-white",
-  BioPortal: "bg-blue-600 text-white",
-  Zenodo: "bg-blue-800 text-white",
-  OSF: "bg-green-700 text-white",
-  Website: "bg-indigo-500 text-white",
-  Discourse: "bg-amber-500 text-white",
-  Other: "bg-gray-500 text-white",
+  GitHub: "border border-gray-300 text-gray-600 bg-transparent",
+  BioPortal: "border border-gray-300 text-gray-600 bg-transparent",
+  Zenodo: "border border-gray-300 text-gray-600 bg-transparent",
+  OSF: "border border-gray-300 text-gray-600 bg-transparent",
+  Website: "border border-gray-300 text-gray-600 bg-transparent",
+  Discourse: "border border-gray-300 text-gray-600 bg-transparent",
+  OLS: "border border-gray-300 text-gray-600 bg-transparent",
+  Ontobee: "border border-gray-300 text-gray-600 bg-transparent",
+  Other: "border border-gray-300 text-gray-600 bg-transparent",
 };
 
 const platformTooltips: Record<string, string> = {
@@ -30,14 +35,17 @@ const platformTooltips: Record<string, string> = {
   OSF: "View on OSF — publications and datasets",
   Website: "Visit the resource website",
   Discourse: "Visit the Discourse community forum",
+  OLS: "View on OLS — the EMBL-EBI Ontology Lookup Service",
+  Ontobee: "View on Ontobee — linked data server for OBO ontologies",
   Other: "Visit external link",
 };
 
-export default function PlatformIcon({ platform, className = "" }: PlatformIconProps) {
+export default function PlatformIcon({ platform, colorClass, className = "" }: PlatformIconProps) {
+  const colors = colorClass || platformColors[platform] || platformColors.Other;
   return (
     <span
       title={platformTooltips[platform] || platformTooltips.Other}
-      className={`inline-flex cursor-help items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${platformColors[platform] || platformColors.Other} ${className}`}
+      className={`inline-flex cursor-help items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${colors} ${className}`}
     >
       {platformLabels[platform] || platform}
     </span>

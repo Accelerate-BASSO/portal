@@ -1,0 +1,16 @@
+id: pub-odfa-pain-ontology
+name: "Building an Ontology of Pain"
+type: Publication
+description: Describes the development of an ontology of pain, related to dental care fear and anxiety research. Published at ICBO 2024.
+projects:
+  - ODFA
+links:
+  - label: CEUR-WS
+    url: https://ceur-ws.org/Vol-3939/abstract8.pdf
+    platform: Website
+tags:
+  - paper
+  - pain
+  - ontology-development
+status: Active
+lastUpdated: "2026-04-01"

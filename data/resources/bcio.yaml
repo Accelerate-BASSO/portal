@@ -14,6 +14,9 @@ links:
   - label: GitHub
     url: https://github.com/HumanBehaviourChangeProject/ontologies
     platform: GitHub
+  - label: OLS
+    url: https://www.ebi.ac.uk/ols4/ontologies/bcio
+    platform: OLS
 bssoFoundry: true
 tags:
   - ontology

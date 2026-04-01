@@ -1,6 +1,6 @@
 id: bsso-foundry
 name: BSSO Foundry
-type: Tool
+type: Registry
 description: The Behavioural and Social Sciences Ontology Foundry — a community of interoperable ontologies relevant to the behavioural and social sciences.
 projects:
   - PHASES

@@ -1,0 +1,16 @@
+id: pub-bsoad-caregivers-ai
+name: "Empowering Alzheimer's caregivers with conversational AI: a novel approach for enhanced communication and personalized support"
+type: Publication
+description: Presents a conversational AI approach for supporting Alzheimer's caregivers with enhanced communication and personalized assistance. Published in npj Biomedical Innovations.
+projects:
+  - BSO-AD
+links:
+  - label: DOI
+    url: https://doi.org/10.1038/s44385-024-00004-8
+    platform: Website
+tags:
+  - paper
+  - alzheimers
+  - conversational-ai
+status: Active
+lastUpdated: "2026-04-01"
