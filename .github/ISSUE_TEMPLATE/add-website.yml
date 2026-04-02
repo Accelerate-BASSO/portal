@@ -1,7 +1,7 @@
 name: Add a website
 description: Submit a project or network website to be listed on the portal
 title: "[Website] "
-labels: ["new-resource", "website"]
+labels: ["resource: new", "resource: website"]
 body:
   - type: input
     id: name

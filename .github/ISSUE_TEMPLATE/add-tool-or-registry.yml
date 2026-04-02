@@ -1,7 +1,7 @@
 name: Add a tool, registry, or dataset
 description: Submit a tool, standards registry, or dataset to be listed on the portal
 title: "[Resource] "
-labels: ["new-resource"]
+labels: ["resource: new"]
 body:
   - type: input
     id: name

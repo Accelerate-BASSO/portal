@@ -1,7 +1,7 @@
 name: Update an existing resource
 description: Suggest changes to a resource already listed on the portal
 title: "[Update] "
-labels: ["update-resource"]
+labels: ["resource: update"]
 body:
   - type: input
     id: resource-name

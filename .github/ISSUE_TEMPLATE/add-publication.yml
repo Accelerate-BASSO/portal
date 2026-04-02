@@ -1,7 +1,7 @@
 name: Add a publication
 description: Submit a publication to be listed on the portal
 title: "[Publication] "
-labels: ["new-resource", "publication"]
+labels: ["resource: new", "resource: publication"]
 body:
   - type: markdown
     attributes:

@@ -1,7 +1,7 @@
 name: Add an ontology
 description: Submit an ontology to be listed on the portal
 title: "[Ontology] "
-labels: ["new-resource", "ontology"]
+labels: ["resource: new", "resource: ontology"]
 body:
   - type: input
     id: name

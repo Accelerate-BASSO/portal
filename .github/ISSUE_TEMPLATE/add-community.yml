@@ -1,7 +1,7 @@
 name: Add a community
 description: Submit a community forum or group to be listed on the portal
 title: "[Community] "
-labels: ["new-resource", "community"]
+labels: ["resource: new", "resource: community"]
 body:
   - type: input
     id: name

@@ -6,7 +6,7 @@ on:
 
 jobs:
   generate-publication:
-    if: contains(github.event.issue.labels.*.name, 'publication')
+    if: contains(github.event.issue.labels.*.name, 'resource: publication')
     runs-on: ubuntu-latest
     permissions:
       contents: write

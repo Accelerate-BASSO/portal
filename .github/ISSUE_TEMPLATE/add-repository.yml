@@ -1,7 +1,7 @@
 name: Add a repository
 description: Submit a code or data repository to be listed on the portal
 title: "[Repository] "
-labels: ["new-resource", "repository"]
+labels: ["resource: new", "resource: repository"]
 body:
   - type: input
     id: name
