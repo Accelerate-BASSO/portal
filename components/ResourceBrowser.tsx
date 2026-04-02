@@ -5,6 +5,7 @@ import type { Resource } from "@/lib/resources";
 import { getAllProjects } from "@/lib/resource-utils";
 import ResourceCard from "./ResourceCard";
 import { Search, X } from "lucide-react";
+import { typeColors } from "@/lib/type-colors";
 
 interface ResourceBrowserProps {
   resources: Resource[];
@@ -126,12 +127,12 @@ export default function ResourceBrowser({
                   title={`Filter by ${type} resources`}
                   className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-colors ${
                     active
-                      ? "bg-black text-white"
+                      ? typeColors[type] || "bg-black text-white"
                       : "bg-white text-gray-600 border border-gray-200 hover:border-gray-400"
                   } ${count === 0 && !active ? "opacity-40" : ""}`}
                 >
                   {type}
-                  <span className={`inline-block min-w-[1.25rem] text-center text-xs font-semibold ${active ? "text-green-300" : "text-violet-500"}`}>
+                  <span className={`inline-block min-w-[1.25rem] text-center text-xs font-semibold ${active ? "text-white/70" : "text-gray-400"}`}>
                     {count}
                   </span>
                 </button>
