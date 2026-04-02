@@ -3,31 +3,26 @@ description: Submit a publication to be listed on the portal
 title: "[Publication] "
 labels: ["new-resource", "publication"]
 body:
-  - type: input
-    id: name
+  - type: markdown
     attributes:
-      label: Publication title
-      placeholder: e.g. Ontologies in the Behavioral Sciences
-    validations:
-      required: true
+      value: |
+        You can either paste a BibTeX entry below (recommended — we'll extract the details automatically) or fill in the fields manually.
 
   - type: textarea
-    id: description
+    id: bibtex
     attributes:
-      label: Description
-      description: A brief description (1-3 sentences). Include the journal/venue if applicable.
-      placeholder: What is this publication about and where was it published?
-    validations:
-      required: true
-
-  - type: input
-    id: published-date
-    attributes:
-      label: Published date
-      description: Format YYYY-MM
-      placeholder: "2025-03"
-    validations:
-      required: true
+      label: BibTeX entry
+      description: Paste the BibTeX entry for this publication. If provided, the title, date, DOI, and description can be generated from it.
+      placeholder: |
+        @article{smith2025example,
+          title={An Example Paper Title},
+          author={Smith, Jane and Doe, John},
+          journal={Journal of Examples},
+          year={2025},
+          month={3},
+          doi={10.1234/example.2025}
+        }
+      render: bibtex
 
   - type: checkboxes
     id: projects
@@ -40,11 +35,28 @@ body:
         - label: ODFA
         - label: PHASES
         - label: DCC
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description (optional if BibTeX provided)
+      description: A brief description (1-3 sentences). If left blank and BibTeX is provided, one will be generated from the BibTeX abstract or title.
+      placeholder: What is this publication about?
+
+  - type: input
+    id: published-date
+    attributes:
+      label: Published date (optional if BibTeX provided)
+      description: Format YYYY-MM. Will be extracted from BibTeX if available.
+      placeholder: "2025-03"
 
   - type: input
     id: doi
     attributes:
-      label: DOI URL
+      label: DOI URL (optional if BibTeX provided)
+      description: Will be extracted from BibTeX if available.
       placeholder: https://doi.org/10.1234/example
 
   - type: input

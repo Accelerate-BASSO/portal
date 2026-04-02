@@ -149,6 +149,30 @@ Or edit the YAML file directly and submit a pull request.
 
 ---
 
+## Adding Publications from BibTeX
+
+You can generate a publication YAML file from a BibTeX entry:
+
+```bash
+# From a file
+node scripts/bibtex-to-yaml.js paper.bib --projects APRICOT
+
+# From clipboard / stdin
+pbpaste | node scripts/bibtex-to-yaml.js --projects APRICOT --pubmed https://pubmed.ncbi.nlm.nih.gov/12345/
+
+# Write directly to a file
+node scripts/bibtex-to-yaml.js paper.bib --projects PHASES --output data/resources/pub-my-paper.yaml
+```
+
+Options:
+- `--projects` — comma-separated project names (e.g. `APRICOT,PHASES`)
+- `--pubmed` — PubMed URL
+- `--link` — additional link in `"Label - URL"` format
+- `--description` — override the generated description
+- `--output` — write to a file instead of stdout
+
+---
+
 ## Running the Portal Locally
 
 ```bash
