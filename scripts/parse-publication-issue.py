@@ -108,9 +108,14 @@ def main():
     pub_script = os.path.join(script_dir, "pub-to-yaml.py")
 
     # Extract fields from issue body
-    pubmed = extract_field(body, "PubMed URL or PMID")
-    doi = extract_field(body, "DOI")
+    source_input = extract_field(body, "Publication source")
+    # If the source field contains a BibTeX code block, extract it
     bibtex = extract_bibtex(body)
+    if not source_input and bibtex:
+        source_input = bibtex
+    elif not source_input:
+        print("Error: No publication source found in issue body.", file=sys.stderr)
+        sys.exit(1)
 
     projects_section = extract_section(body, "Project(s)")
     projects = extract_checked_items(projects_section)
@@ -118,48 +123,28 @@ def main():
     description = extract_field(body, "Description (optional)")
     published_year = extract_field(body, "Published year (optional)")
     published_month = extract_field(body, "Published month (optional)")
-    other_link = extract_field(body, "Other link")
 
-    # Determine source — prefer PubMed > DOI > BibTeX
-    cmd = [sys.executable, pub_script]
-    source_label = ""
-
-    if pubmed:
-        cmd.extend(["--pmid", pubmed])
-        source_label = f"PubMed ({pubmed})"
-    elif doi:
-        cmd.extend(["--doi", doi])
-        source_label = f"DOI ({doi})"
-    elif bibtex:
-        bib_file = tempfile.NamedTemporaryFile(mode="w", suffix=".bib", delete=False)
-        bib_file.write(bibtex)
-        bib_file.close()
-        cmd.extend(["--bibtex", bib_file.name])
-        source_label = "BibTeX entry"
-    else:
-        print("Error: No PubMed ID, DOI, or BibTeX entry found in issue body.", file=sys.stderr)
-        sys.exit(1)
-
-    cmd.extend(["--output", args.output])
+    # Use --source for auto-detection
+    cmd = [sys.executable, pub_script, "--source", source_input, "--output", args.output]
 
     if projects:
         cmd.extend(["--projects"] + projects)
     if description:
         cmd.extend(["--description", description])
-    if other_link:
-        cmd.extend(["--link", f"Link - {other_link}"])
 
     # Run the converter
-    try:
-        result = subprocess.run(cmd, capture_output=True, text=True)
-        if result.returncode != 0:
-            print(f"Error running pub-to-yaml.py:\n{result.stderr}", file=sys.stderr)
-            sys.exit(1)
-        if result.stderr:
-            print(result.stderr, file=sys.stderr, end="")
-    finally:
-        if bibtex and not pubmed and not doi:
-            os.unlink(bib_file.name)
+    result = subprocess.run(cmd, capture_output=True, text=True)
+    if result.returncode != 0:
+        print(f"Error running pub-to-yaml.py:\n{result.stderr}", file=sys.stderr)
+        sys.exit(1)
+    # Extract source label from stderr output
+    source_label = "auto-detected source"
+    if result.stderr:
+        print(result.stderr, file=sys.stderr, end="")
+        for line in result.stderr.splitlines():
+            if line.startswith("Detected source:"):
+                source_label = line.replace("Detected source:", "").strip()
+                break
 
     # Patch in manual overrides if provided
     if os.path.exists(args.output):

@@ -499,6 +499,183 @@ def fetch_from_arxiv(arxiv_id: str) -> dict:
     }
 
 
+# --- OSF Preprints source (PsyArXiv, SocArXiv, etc.) ---
+
+def extract_osf_id(osf_input: str) -> str:
+    """Extract OSF preprint ID from a URL or plain ID."""
+    osf_input = osf_input.strip()
+    # Match URLs like https://osf.io/preprints/psyarxiv/abc12 or https://psyarxiv.com/abc12
+    match = re.search(r"(?:osf\.io/(?:preprints/\w+/|))([a-z0-9]{3,})", osf_input)
+    if match:
+        return match.group(1)
+    # Match psyarxiv.com/ID or socarxiv.org/ID style
+    match = re.search(r"(?:psyarxiv|socarxiv)\.\w+/([a-z0-9]{3,})", osf_input)
+    if match:
+        return match.group(1)
+    # Plain ID
+    if re.match(r"^[a-z0-9]{3,}$", osf_input):
+        return osf_input
+    print(f"Error: Could not extract an OSF preprint ID from '{osf_input}'", file=sys.stderr)
+    sys.exit(1)
+
+
+def fetch_from_osf(osf_id: str) -> dict:
+    """Fetch publication metadata from the OSF Preprints API."""
+    url = f"https://api.osf.io/v2/preprints/{osf_id}/"
+    print(f"Fetching from OSF Preprints: {osf_id}...", file=sys.stderr)
+
+    req = urllib.request.Request(url, headers={"Accept": "application/json"})
+
+    try:
+        with urllib.request.urlopen(req) as response:
+            data = json.loads(response.read().decode("utf-8"))
+    except Exception as e:
+        print(f"Error fetching from OSF: {e}", file=sys.stderr)
+        sys.exit(1)
+
+    attrs = data.get("data", {}).get("attributes", {})
+
+    # Title
+    title = attrs.get("title", "Untitled").strip()
+
+    # Date
+    year = None
+    month = None
+    date_published = attrs.get("date_published") or attrs.get("date_created")
+    if date_published:
+        date_match = re.match(r"(\d{4})-(\d{2})", date_published)
+        if date_match:
+            year = int(date_match.group(1))
+            month = int(date_match.group(2))
+
+    # DOI
+    doi = attrs.get("doi")
+    if doi and not doi.startswith("http"):
+        doi = f"https://doi.org/{doi}"
+
+    # Abstract
+    abstract = attrs.get("description")
+    if abstract:
+        # OSF may return HTML
+        abstract = re.sub(r"<[^>]+>", "", abstract).strip()
+
+    # Tags/keywords
+    keywords = attrs.get("tags", [])
+
+    # Contributors — need a separate API call
+    contributors = []
+    contribs_link = data.get("data", {}).get("relationships", {}).get("contributors", {}).get("links", {}).get("related", {}).get("href")
+    if contribs_link:
+        try:
+            req2 = urllib.request.Request(contribs_link, headers={"Accept": "application/json"})
+            with urllib.request.urlopen(req2) as response2:
+                contribs_data = json.loads(response2.read().decode("utf-8"))
+            for contrib in contribs_data.get("data", []):
+                users_link = contrib.get("relationships", {}).get("users", {}).get("links", {}).get("related", {}).get("href")
+                if users_link:
+                    try:
+                        req3 = urllib.request.Request(users_link, headers={"Accept": "application/json"})
+                        with urllib.request.urlopen(req3) as response3:
+                            user_data = json.loads(response3.read().decode("utf-8"))
+                        user_attrs = user_data.get("data", {}).get("attributes", {})
+                        full_name = user_attrs.get("full_name", "").strip()
+                        if full_name:
+                            contributor = {"name": full_name}
+                            # OSF doesn't directly expose ORCID in this endpoint
+                            contributors.append(contributor)
+                    except Exception:
+                        pass
+        except Exception:
+            pass
+
+    # Determine venue from provider
+    provider = attrs.get("reviews_state", "")
+    provider_link = data.get("data", {}).get("relationships", {}).get("provider", {}).get("links", {}).get("related", {}).get("href", "")
+    venue = "OSF Preprints"
+    if "psyarxiv" in provider_link.lower() or "psyarxiv" in str(data):
+        venue = "PsyArXiv"
+    elif "socarxiv" in provider_link.lower() or "socarxiv" in str(data):
+        venue = "SocArXiv"
+
+    return {
+        "title": title,
+        "key": f"osf-{osf_id}",
+        "year": year,
+        "month": month,
+        "doi": doi,
+        "venue": venue,
+        "abstract": abstract,
+        "keywords": keywords,
+        "contributors": contributors,
+        "pmid": None,
+        "osf_id": osf_id,
+    }
+
+
+# --- Auto-detect source from input ---
+
+def detect_and_fetch(source_input: str) -> tuple[dict, str]:
+    """Auto-detect the source type from the input and fetch metadata.
+    Returns (data_dict, source_label)."""
+    source = source_input.strip()
+
+    # BibTeX — starts with @
+    if source.startswith("@"):
+        data = fetch_from_bibtex(source)
+        return data, "BibTeX entry"
+
+    # PubMed URL
+    if "pubmed.ncbi.nlm.nih.gov" in source:
+        pmid = extract_pmid(source)
+        data = fetch_from_pubmed(pmid)
+        return data, f"PubMed ({pmid})"
+
+    # PMC URL
+    if "pmc.ncbi.nlm.nih.gov" in source or re.search(r"PMC\d+", source, re.IGNORECASE):
+        pmid = extract_pmid(source)
+        data = fetch_from_pubmed(pmid)
+        return data, f"PubMed (via PMC, PMID {pmid})"
+
+    # arXiv URL or ID
+    if "arxiv.org" in source:
+        arxiv_id = extract_arxiv_id(source)
+        data = fetch_from_arxiv(arxiv_id)
+        return data, f"arXiv ({arxiv_id})"
+
+    # OSF / PsyArXiv / SocArXiv
+    if any(domain in source for domain in ["osf.io", "psyarxiv.com", "socarxiv.org"]):
+        osf_id = extract_osf_id(source)
+        data = fetch_from_osf(osf_id)
+        return data, f"OSF Preprints ({osf_id})"
+
+    # DOI URL
+    if "doi.org/" in source:
+        doi = extract_doi(source)
+        data = fetch_from_crossref(doi)
+        return data, f"DOI ({doi})"
+
+    # Bare DOI — starts with 10.
+    if re.match(r"^10\.\d{4,}/", source):
+        doi = extract_doi(source)
+        data = fetch_from_crossref(doi)
+        return data, f"DOI ({doi})"
+
+    # Bare number — assume PMID
+    if source.isdigit() and len(source) >= 5:
+        data = fetch_from_pubmed(source)
+        return data, f"PubMed ({source})"
+
+    # arXiv-style ID (e.g. 2301.12345)
+    if re.match(r"^\d{4}\.\d{4,}", source):
+        arxiv_id = extract_arxiv_id(source)
+        data = fetch_from_arxiv(arxiv_id)
+        return data, f"arXiv ({arxiv_id})"
+
+    print(f"Error: Could not detect source type from '{source}'.", file=sys.stderr)
+    print("Supported inputs: PubMed URL/PMID, PMC URL, DOI, arXiv URL/ID, OSF/PsyArXiv/SocArXiv URL, or BibTeX.", file=sys.stderr)
+    sys.exit(1)
+
+
 # --- Build resource from normalized data ---
 
 def build_resource(data: dict, args) -> dict:
@@ -529,6 +706,8 @@ def build_resource(data: dict, args) -> dict:
         links.append({"label": "PubMed", "url": f"https://pubmed.ncbi.nlm.nih.gov/{pmid}/", "platform": "Website"})
     if data.get("arxiv_id"):
         links.append({"label": "arXiv", "url": f"https://arxiv.org/abs/{data['arxiv_id']}", "platform": "Website"})
+    if data.get("osf_id"):
+        links.append({"label": data.get("venue", "OSF"), "url": f"https://osf.io/{data['osf_id']}", "platform": "Website"})
     for extra in (args.link or []):
         parts = extra.split(" - ", 1)
         if len(parts) == 2:
@@ -619,14 +798,17 @@ def resource_to_yaml(resource: dict) -> str:
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Generate a portal resource YAML file for a publication from BibTeX, PubMed, or DOI."
+        description="Generate a portal resource YAML file for a publication.",
+        epilog="You can also use --source to auto-detect the input type."
     )
 
     source = parser.add_mutually_exclusive_group(required=True)
+    source.add_argument("--source", help="Auto-detect: paste a URL, ID, or BibTeX and the script figures out the source")
     source.add_argument("--bibtex", help="BibTeX file path, or - for stdin")
     source.add_argument("--pmid", help="PubMed ID (numeric) or PubMed URL")
     source.add_argument("--doi", help="DOI string or DOI URL")
-    source.add_argument("--arxiv", help="arXiv ID or URL (e.g. 2301.12345 or https://arxiv.org/abs/2301.12345)")
+    source.add_argument("--arxiv", help="arXiv ID or URL")
+    source.add_argument("--osf", help="OSF/PsyArXiv/SocArXiv preprint ID or URL")
 
     parser.add_argument("--projects", nargs="+", help="Project names (e.g. APRICOT PHASES)")
     parser.add_argument("--pubmed", help="PubMed URL (to add as a link, when using --bibtex or --doi)")
@@ -637,7 +819,11 @@ def main():
     args = parser.parse_args()
 
     # Fetch metadata from the appropriate source
-    if args.bibtex:
+    if args.source:
+        data, source_label = detect_and_fetch(args.source)
+        print(f"Detected source: {source_label}", file=sys.stderr)
+
+    elif args.bibtex:
         if args.bibtex == "-":
             if sys.stdin.isatty():
                 print("Error: No BibTeX data on stdin.", file=sys.stderr)
@@ -659,6 +845,10 @@ def main():
     elif args.arxiv:
         arxiv_id = extract_arxiv_id(args.arxiv)
         data = fetch_from_arxiv(arxiv_id)
+
+    elif args.osf:
+        osf_id = extract_osf_id(args.osf)
+        data = fetch_from_osf(osf_id)
 
     resource = build_resource(data, args)
     yaml_str = resource_to_yaml(resource)

@@ -151,28 +151,28 @@ Or edit the YAML file directly and submit a pull request.
 
 ## Generating Publication YAML
 
-You can generate a publication YAML file from a PubMed ID, DOI, or BibTeX entry. First install dependencies:
+You can generate a publication YAML file from any supported source. First install dependencies:
 
 ```bash
 pip install bibtexparser pyyaml
 ```
 
-Then use any of the three input modes:
+The easiest way is `--source`, which auto-detects the input type:
 
 ```bash
-# From PubMed (easiest — pulls title, journal, date, DOI, abstract)
-python scripts/pub-to-yaml.py --pmid 41001555 --projects PHASES
-python scripts/pub-to-yaml.py --pmid https://pubmed.ncbi.nlm.nih.gov/41001555/ --projects PHASES
-
-# From DOI (pulls metadata from CrossRef)
-python scripts/pub-to-yaml.py --doi 10.12688/wellcomeopenres.23520.1 --projects APRICOT
-
-# From BibTeX file
-python scripts/pub-to-yaml.py --bibtex paper.bib --projects APRICOT
+# Auto-detect — just paste a URL, ID, or BibTeX
+python scripts/pub-to-yaml.py --source "https://pubmed.ncbi.nlm.nih.gov/41001555/" --projects PHASES
+python scripts/pub-to-yaml.py --source "10.12688/wellcomeopenres.23520.1" --projects APRICOT
+python scripts/pub-to-yaml.py --source "https://arxiv.org/abs/2301.12345" --projects APRICOT
+python scripts/pub-to-yaml.py --source "https://psyarxiv.com/abc12" --projects PHASES
 
 # Write directly to a file
-python scripts/pub-to-yaml.py --pmid 41001555 --projects PHASES --output data/resources/pub-example.yaml
+python scripts/pub-to-yaml.py --source "41001555" --projects PHASES --output data/resources/pub-example.yaml
 ```
+
+Supported sources: PubMed, PMC, DOI/CrossRef, arXiv, PsyArXiv, SocArXiv, OSF Preprints, BibTeX.
+
+You can also use explicit flags: `--pmid`, `--doi`, `--arxiv`, `--osf`, `--bibtex`.
 
 Options:
 - `--pmid` — PubMed ID or URL

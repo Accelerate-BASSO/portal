@@ -6,44 +6,32 @@ body:
   - type: markdown
     attributes:
       value: |
-        Provide **one** of the following and we'll extract the details automatically:
-        - A **PubMed URL** or PMID (easiest)
-        - A **DOI** URL
-        - A **BibTeX** entry
+        Paste a link or identifier and we'll extract the details automatically. Supported sources:
+        - **PubMed** URL or PMID
+        - **PMC** URL
+        - **DOI** URL or string
+        - **arXiv** URL or ID
+        - **PsyArXiv / SocArXiv / OSF Preprints** URL
+        - **BibTeX** entry
 
         You can leave the title above as-is — it will be updated automatically with the publication name.
 
-        You can also fill in fields manually if needed.
-
-  - type: input
-    id: pubmed
-    attributes:
-      label: PubMed URL or PMID
-      description: We'll pull title, journal, date, DOI, and abstract from PubMed automatically.
-      placeholder: https://pubmed.ncbi.nlm.nih.gov/12345678/ or just 12345678
-
-  - type: input
-    id: doi
-    attributes:
-      label: DOI
-      description: If not in PubMed, provide a DOI and we'll pull metadata from CrossRef.
-      placeholder: https://doi.org/10.1234/example or 10.1234/example
-
   - type: textarea
-    id: bibtex
+    id: source
     attributes:
-      label: BibTeX entry
-      description: Alternatively, paste a BibTeX entry.
+      label: Publication source
+      description: Paste a URL, ID, or BibTeX entry. We'll detect the source automatically.
       placeholder: |
-        @article{smith2025example,
-          title={An Example Paper Title},
-          author={Smith, Jane and Doe, John},
-          journal={Journal of Examples},
-          year={2025},
-          month={3},
-          doi={10.1234/example.2025}
-        }
-      render: bibtex
+        Examples:
+          https://pubmed.ncbi.nlm.nih.gov/12345678/
+          https://doi.org/10.1234/example
+          https://arxiv.org/abs/2301.12345
+          https://psyarxiv.com/abc12
+          12345678
+          10.1234/example
+          @article{...}
+    validations:
+      required: true
 
   - type: checkboxes
     id: projects
@@ -63,7 +51,7 @@ body:
     id: description
     attributes:
       label: Description (optional)
-      description: Override the auto-generated description if needed (1-3 sentences).
+      description: Override the auto-generated description if needed.
       placeholder: What is this publication about?
 
   - type: input
@@ -79,13 +67,6 @@ body:
       label: Published month (optional)
       description: Numeric month (1-12). Override if needed.
       placeholder: "3"
-
-  - type: input
-    id: other-link
-    attributes:
-      label: Other link
-      description: Any other URL where this publication can be accessed
-      placeholder: https://example.com/paper.pdf
 
   - type: textarea
     id: additional-context
