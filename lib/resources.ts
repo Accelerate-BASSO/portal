@@ -22,6 +22,7 @@ export interface Resource {
   publishedYear?: number;
   publishedMonth?: number;
   publishedDay?: number;
+  keywords?: string[];
   tags: string[];
   status: "Active" | "In Development" | "Archived";
   lastUpdated: string;

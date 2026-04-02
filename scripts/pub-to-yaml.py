@@ -130,6 +130,13 @@ def fetch_from_bibtex(bibtex_str: str) -> dict:
     if "abstract" in entry:
         data["abstract"] = clean_latex(entry["abstract"])
 
+    # Keywords — BibTeX uses "keywords" field, usually comma or semicolon separated
+    keywords = []
+    if "keywords" in entry:
+        raw = clean_latex(entry["keywords"])
+        keywords = [kw.strip() for kw in re.split(r"[;,]", raw) if kw.strip()]
+    data["keywords"] = keywords
+
     return data
 
 
@@ -246,6 +253,23 @@ def fetch_from_pubmed(pmid: str) -> dict:
         # Handle mixed content (text + child elements)
         abstract = "".join(abstract_el.itertext()).strip()
 
+    # Keywords — from MeSH headings and author keywords
+    keywords = []
+    for kw_el in article.findall(".//KeywordList/Keyword"):
+        if kw_el.text:
+            keywords.append(kw_el.text.strip())
+    for mesh_el in article.findall(".//MeshHeadingList/MeshHeading/DescriptorName"):
+        if mesh_el.text:
+            keywords.append(mesh_el.text.strip())
+
+    # Deduplicate (case-insensitive) while preserving order
+    seen = set()
+    unique_keywords = []
+    for kw in keywords:
+        if kw.lower() not in seen:
+            seen.add(kw.lower())
+            unique_keywords.append(kw)
+
     return {
         "title": title,
         "key": f"pmid{pmid}",
@@ -254,6 +278,7 @@ def fetch_from_pubmed(pmid: str) -> dict:
         "doi": doi,
         "venue": venue,
         "abstract": abstract,
+        "keywords": unique_keywords,
         "pmid": pmid,
     }
 
@@ -318,6 +343,9 @@ def fetch_from_crossref(doi: str) -> dict:
         # CrossRef abstracts often have JATS XML tags
         abstract = re.sub(r"<[^>]+>", "", abstract).strip()
 
+    # Keywords — CrossRef uses "subject" field
+    keywords = work.get("subject", [])
+
     return {
         "title": title,
         "key": re.sub(r"[^a-z0-9]+", "", doi.lower())[:30],
@@ -326,6 +354,7 @@ def fetch_from_crossref(doi: str) -> dict:
         "doi": f"https://doi.org/{doi}",
         "venue": venue,
         "abstract": abstract,
+        "keywords": keywords,
         "pmid": None,
     }
 
@@ -384,6 +413,7 @@ def build_resource(data: dict, args) -> dict:
     resource["developedByProjects"] = projects if projects else []
     resource["usedByProjects"] = []
     resource["links"] = links if links else []
+    resource["keywords"] = data.get("keywords", [])
     resource["tags"] = tags
     resource["status"] = "Active"
     resource["lastUpdated"] = date.today().isoformat()
@@ -394,8 +424,8 @@ def build_resource(data: dict, args) -> dict:
 def resource_to_yaml(resource: dict) -> str:
     field_order = [
         "id", "name", "type", "publishedYear", "publishedMonth",
-        "description", "developedByProjects", "usedByProjects", "links",
-        "tags", "status", "lastUpdated",
+        "description", "keywords", "developedByProjects", "usedByProjects",
+        "links", "tags", "status", "lastUpdated",
     ]
 
     lines = []
