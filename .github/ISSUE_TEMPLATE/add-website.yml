@@ -1,0 +1,45 @@
+name: Add a website
+description: Submit a project or network website to be listed on the portal
+title: "[Website] "
+labels: ["new-resource", "website"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Website name
+      placeholder: e.g. APRICOT Project Website
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A brief description (1-3 sentences)
+      placeholder: What is this website for?
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: projects
+    attributes:
+      label: Project(s)
+      description: Which project(s) is this website associated with?
+      options:
+        - label: APRICOT
+        - label: BSO-AD
+        - label: ODFA
+        - label: PHASES
+        - label: DCC
+
+  - type: input
+    id: url
+    attributes:
+      label: Website URL
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context

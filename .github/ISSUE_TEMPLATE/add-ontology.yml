@@ -1,0 +1,96 @@
+name: Add an ontology
+description: Submit an ontology to be listed on the portal
+title: "[Ontology] "
+labels: ["new-resource", "ontology"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Ontology name
+      description: Include the acronym in parentheses
+      placeholder: e.g. Behaviour Change Intervention Ontology (BCIO)
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A brief description of the ontology (1-3 sentences)
+      placeholder: What does this ontology represent?
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: developed-by
+    attributes:
+      label: Developed by (projects)
+      description: Which project(s) develop or maintain this ontology?
+      options:
+        - label: APRICOT
+        - label: BSO-AD
+        - label: ODFA
+        - label: PHASES
+        - label: DCC
+
+  - type: checkboxes
+    id: used-by
+    attributes:
+      label: Used by (projects)
+      description: Which project(s) use this ontology?
+      options:
+        - label: APRICOT
+        - label: BSO-AD
+        - label: ODFA
+        - label: PHASES
+        - label: DCC
+
+  - type: dropdown
+    id: bsso-foundry
+    attributes:
+      label: BSSO Foundry member?
+      options:
+        - "Yes"
+        - "No"
+    validations:
+      required: true
+
+  - type: input
+    id: github
+    attributes:
+      label: GitHub repository URL
+      placeholder: https://github.com/org/repo
+
+  - type: input
+    id: bioportal
+    attributes:
+      label: BioPortal URL
+      placeholder: https://bioportal.bioontology.org/ontologies/EXAMPLE
+
+  - type: input
+    id: ols
+    attributes:
+      label: OLS URL
+      placeholder: https://www.ebi.ac.uk/ols4/ontologies/example
+
+  - type: input
+    id: ontobee
+    attributes:
+      label: Ontobee URL
+      placeholder: https://ontobee.org/ontology/EXAMPLE
+
+  - type: dropdown
+    id: status
+    attributes:
+      label: Status
+      options:
+        - Active
+        - In Development
+        - Archived
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
