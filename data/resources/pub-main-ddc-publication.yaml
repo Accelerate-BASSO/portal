@@ -1,0 +1,17 @@
+id: pub-national2022ontologies
+name: "Ontologies in the Behavioral Sciences: Accelerating Research and the Spread of Knowledge"
+type: Publication
+publishedDate: 2022-01
+description: "Ontologies in the Behavioral Sciences: Accelerating Research and the Spread of Knowledge. Published in The National Academies Press."
+developedByProjects:
+  - DCC
+usedByProjects: []
+links:
+  - label: DOI
+    url: https://doi.org/10.17226/26464
+    platform: Website
+tags:
+  - paper
+  - the-national-academies-press
+status: Active
+lastUpdated: 2026-04-02
