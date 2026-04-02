@@ -11,6 +11,8 @@ body:
         - A **DOI** URL
         - A **BibTeX** entry
 
+        You can leave the title above as-is — it will be updated automatically with the publication name.
+
         You can also fill in fields manually if needed.
 
   - type: input

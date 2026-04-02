@@ -50,9 +50,13 @@ jobs:
             FINAL_OUTPUT="$TEMP_OUTPUT"
           fi
 
+          # Extract the publication title from the generated YAML
+          PUB_TITLE=$(grep '^name:' "$FINAL_OUTPUT" | head -1 | sed 's/^name: *//' | sed 's/^"//' | sed 's/"$//')
+
           echo "output=${FINAL_OUTPUT}" >> "$GITHUB_OUTPUT"
           echo "resource-id=${RESOURCE_ID}" >> "$GITHUB_OUTPUT"
           echo "branch=add-pub-issue-${ISSUE_NUM}" >> "$GITHUB_OUTPUT"
+          echo "pub-title=${PUB_TITLE}" >> "$GITHUB_OUTPUT"
 
           cat /tmp/summary.md >> "$GITHUB_STEP_SUMMARY"
 
@@ -113,3 +117,13 @@ jobs:
             cat /tmp/summary.md
           } > /tmp/comment.md
           gh issue comment "$ISSUE_NUM" --body-file /tmp/comment.md
+
+      - name: Update issue title with extracted publication name
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PUB_TITLE="${{ steps.generate.outputs.pub-title }}"
+          if [ -n "$PUB_TITLE" ]; then
+            gh issue edit "${{ github.event.issue.number }}" \
+              --title "[Publication] ${PUB_TITLE}"
+          fi
