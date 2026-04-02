@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -25,61 +27,62 @@ jobs:
       - name: Install dependencies
         run: pip install bibtexparser pyyaml
 
-      - name: Extract resource ID from issue
-        id: resource-id
-        env:
-          ISSUE_BODY: ${{ github.event.issue.body }}
-        run: |
-          # Extract a slug from the issue title for the branch and filename
-          SLUG=$(echo "${{ github.event.issue.title }}" | \
-            sed 's/\[Publication\]//g' | \
-            tr '[:upper:]' '[:lower:]' | \
-            sed 's/[^a-z0-9]/-/g' | \
-            sed 's/--*/-/g' | \
-            sed 's/^-//' | \
-            sed 's/-$//' | \
-            cut -c1-50)
-          if [ -z "$SLUG" ]; then
-            SLUG="publication-${{ github.event.issue.number }}"
-          fi
-          echo "slug=pub-${SLUG}" >> "$GITHUB_OUTPUT"
-          echo "branch=add-pub-${SLUG}" >> "$GITHUB_OUTPUT"
-
       - name: Generate YAML from issue
+        id: generate
         env:
           ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_NUM: ${{ github.event.issue.number }}
         run: |
-          OUTPUT="data/resources/${{ steps.resource-id.outputs.slug }}.yaml"
+          # Use issue number for a predictable, collision-free name
+          TEMP_OUTPUT="data/resources/pub-issue-${ISSUE_NUM}.yaml"
           python scripts/parse-publication-issue.py \
             --issue-body "$ISSUE_BODY" \
-            --output "$OUTPUT" \
+            --output "$TEMP_OUTPUT" \
             --summary /tmp/summary.md
+
+          # Extract the generated resource ID from the YAML for a better filename
+          RESOURCE_ID=$(grep '^id:' "$TEMP_OUTPUT" | head -1 | sed 's/^id: *//')
+          if [ -n "$RESOURCE_ID" ] && [ "$RESOURCE_ID" != "pub-issue-${ISSUE_NUM}" ]; then
+            FINAL_OUTPUT="data/resources/${RESOURCE_ID}.yaml"
+            mv "$TEMP_OUTPUT" "$FINAL_OUTPUT"
+          else
+            RESOURCE_ID="pub-issue-${ISSUE_NUM}"
+            FINAL_OUTPUT="$TEMP_OUTPUT"
+          fi
+
+          echo "output=${FINAL_OUTPUT}" >> "$GITHUB_OUTPUT"
+          echo "resource-id=${RESOURCE_ID}" >> "$GITHUB_OUTPUT"
+          echo "branch=add-pub-issue-${ISSUE_NUM}" >> "$GITHUB_OUTPUT"
+
           cat /tmp/summary.md >> "$GITHUB_STEP_SUMMARY"
 
       - name: Create pull request
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          BRANCH="${{ steps.resource-id.outputs.branch }}"
-          SLUG="${{ steps.resource-id.outputs.slug }}"
+          BRANCH="${{ steps.generate.outputs.branch }}"
+          RESOURCE_ID="${{ steps.generate.outputs.resource-id }}"
           ISSUE_NUM="${{ github.event.issue.number }}"
           ISSUE_TITLE="${{ github.event.issue.title }}"
-          OUTPUT="data/resources/${SLUG}.yaml"
+          OUTPUT="${{ steps.generate.outputs.output }}"
 
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
+          # Delete remote branch if it exists from a previous failed run
+          git push origin --delete "$BRANCH" 2>/dev/null || true
+
           git checkout -b "$BRANCH"
           git add "$OUTPUT"
-          git commit -m "Add publication: ${SLUG}
+          git commit -m "Add publication: ${RESOURCE_ID}
 
           Generated from issue #${ISSUE_NUM}"
 
           git push origin "$BRANCH"
 
           gh pr create \
-            --title "Add publication from issue #${ISSUE_NUM}" \
-            --body "$(cat <<EOF
+            --title "Add publication: ${RESOURCE_ID}" \
+            --body-file <(cat <<EOF
           ## Auto-generated from issue #${ISSUE_NUM}
 
           **Issue:** ${ISSUE_TITLE}
@@ -95,7 +98,7 @@ jobs:
           ---
           Closes #${ISSUE_NUM}
           EOF
-          )" \
+          ) \
             --base main \
             --head "$BRANCH"
 
