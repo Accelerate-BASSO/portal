@@ -81,7 +81,8 @@ def main():
 
     # Extract optional manual fields
     description = extract_field(body, "Description (optional if BibTeX provided)")
-    published_date = extract_field(body, "Published date (optional if BibTeX provided)")
+    published_year = extract_field(body, "Published year (optional if BibTeX provided)")
+    published_month = extract_field(body, "Published month (optional if BibTeX provided)")
     doi = extract_field(body, "DOI URL (optional if BibTeX provided)")
     pubmed = extract_field(body, "PubMed URL")
     other_link = extract_field(body, "Other link")
@@ -135,17 +136,32 @@ def main():
                 with open(args.output, "w") as f:
                     f.write(content)
 
-        # If published date was provided manually, patch the file
-        if published_date and os.path.exists(args.output):
+        # If published year/month were provided manually, patch the file
+        if os.path.exists(args.output):
             with open(args.output) as f:
                 content = f.read()
-            if "publishedDate:" not in content:
+            patched = False
+            if published_year and "publishedYear:" not in content:
                 content = content.replace(
                     "type: Publication",
-                    f"type: Publication\npublishedDate: {published_date}"
+                    f"type: Publication\npublishedYear: {published_year}"
                 )
-            with open(args.output, "w") as f:
-                f.write(content)
+                patched = True
+            if published_month and "publishedMonth:" not in content:
+                if "publishedYear:" in content:
+                    content = content.replace(
+                        f"publishedYear: {published_year}",
+                        f"publishedYear: {published_year}\npublishedMonth: {published_month}"
+                    )
+                else:
+                    content = content.replace(
+                        "type: Publication",
+                        f"type: Publication\npublishedMonth: {published_month}"
+                    )
+                patched = True
+            if patched:
+                with open(args.output, "w") as f:
+                    f.write(content)
 
         print(f"Generated: {args.output}", file=sys.stderr)
 

@@ -1,7 +1,8 @@
 id: pub-bsoad-medical-coding-llm
 name: "Enhancing medical coding efficiency through domain-specific fine-tuned large language models"
 type: Publication
-publishedDate: "2025-01"
+publishedYear: 2025
+publishedMonth: 1
 description: Explores the use of domain-specific fine-tuned large language models for enhancing medical coding efficiency. Published in npj Health Systems.
 developedByProjects:
   - BSO-AD

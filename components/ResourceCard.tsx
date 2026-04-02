@@ -3,6 +3,17 @@ import { getAllProjects } from "@/lib/resource-utils";
 import { platformLabels, platformTooltips } from "./PlatformIcon";
 import { ExternalLink } from "lucide-react";
 
+const MONTH_NAMES = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December",
+];
+
+function formatPublishedDate(year: number, month?: number, day?: number): string {
+  if (day && month) return `${MONTH_NAMES[month - 1]} ${day}, ${year}`;
+  if (month) return `${MONTH_NAMES[month - 1]} ${year}`;
+  return `${year}`;
+}
+
 interface ResourceCardProps {
   resource: Resource;
 }
@@ -68,9 +79,9 @@ export default function ResourceCard({ resource }: ResourceCardProps) {
       <h3 className="text-lg font-semibold text-black">{resource.name}</h3>
 
       {/* Published date */}
-      {resource.publishedDate && (
+      {resource.publishedYear && (
         <p className="text-xs text-gray-400">
-          {new Date(resource.publishedDate + "T00:00:00").toLocaleDateString("en-US", { year: "numeric", month: "long" })}
+          {formatPublishedDate(resource.publishedYear, resource.publishedMonth, resource.publishedDay)}
         </p>
       )}
 

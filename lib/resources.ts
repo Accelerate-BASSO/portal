@@ -19,7 +19,9 @@ export interface Resource {
   usedByProjects: ProjectName[];
   links: ResourceLink[];
   bssoFoundry?: boolean;
-  publishedDate?: string;
+  publishedYear?: number;
+  publishedMonth?: number;
+  publishedDay?: number;
   tags: string[];
   status: "Active" | "In Development" | "Archived";
   lastUpdated: string;

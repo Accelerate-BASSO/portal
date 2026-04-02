@@ -96,10 +96,12 @@ def build_resource(entry: dict, args) -> dict:
     # Date
     year = entry.get("year")
     month_str = entry.get("month")
-    published_date = None
-    if year:
-        m = parse_month(month_str or "")
-        published_date = f"{year}-{m}" if m else f"{year}-01"
+    pub_year = int(year) if year else None
+    pub_month = None
+    if month_str:
+        m = parse_month(month_str)
+        if m:
+            pub_month = int(m)
 
     # DOI
     doi = None
@@ -151,8 +153,10 @@ def build_resource(entry: dict, args) -> dict:
         "name": title,
         "type": "Publication",
     }
-    if published_date:
-        resource["publishedDate"] = published_date
+    if pub_year:
+        resource["publishedYear"] = pub_year
+    if pub_month:
+        resource["publishedMonth"] = pub_month
     resource["description"] = description
     resource["developedByProjects"] = projects if projects else []
     resource["usedByProjects"] = []
@@ -167,9 +171,9 @@ def build_resource(entry: dict, args) -> dict:
 def resource_to_yaml(resource: dict) -> str:
     """Produce clean YAML output with controlled field order."""
     field_order = [
-        "id", "name", "type", "publishedDate", "description",
-        "developedByProjects", "usedByProjects", "links", "tags",
-        "status", "lastUpdated",
+        "id", "name", "type", "publishedYear", "publishedMonth",
+        "description", "developedByProjects", "usedByProjects", "links",
+        "tags", "status", "lastUpdated",
     ]
 
     lines = []

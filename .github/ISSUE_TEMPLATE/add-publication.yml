@@ -46,11 +46,18 @@ body:
       placeholder: What is this publication about?
 
   - type: input
-    id: published-date
+    id: published-year
     attributes:
-      label: Published date (optional if BibTeX provided)
-      description: Format YYYY-MM. Will be extracted from BibTeX if available.
-      placeholder: "2025-03"
+      label: Published year (optional if BibTeX provided)
+      description: Will be extracted from BibTeX if available.
+      placeholder: "2025"
+
+  - type: input
+    id: published-month
+    attributes:
+      label: Published month (optional if BibTeX provided)
+      description: Numeric month (1-12). Will be extracted from BibTeX if available.
+      placeholder: "3"
 
   - type: input
     id: doi
