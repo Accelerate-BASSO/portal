@@ -405,6 +405,100 @@ def fetch_from_crossref(doi: str) -> dict:
     }
 
 
+# --- arXiv source ---
+
+def extract_arxiv_id(arxiv_input: str) -> str:
+    """Extract arXiv ID from a URL or plain ID string."""
+    arxiv_input = arxiv_input.strip()
+    # Match URLs like https://arxiv.org/abs/2301.12345 or https://arxiv.org/pdf/2301.12345
+    match = re.search(r"arxiv\.org/(?:abs|pdf)/(\S+?)(?:\.pdf)?$", arxiv_input)
+    if match:
+        return match.group(1)
+    # Plain ID like 2301.12345 or cs/0123456
+    match = re.match(r"^[\w\-./]+$", arxiv_input)
+    if match:
+        return arxiv_input
+    print(f"Error: Could not extract an arXiv ID from '{arxiv_input}'", file=sys.stderr)
+    sys.exit(1)
+
+
+def fetch_from_arxiv(arxiv_id: str) -> dict:
+    """Fetch publication metadata from the arXiv API."""
+    url = f"http://export.arxiv.org/api/query?id_list={arxiv_id}"
+    print(f"Fetching from arXiv: {arxiv_id}...", file=sys.stderr)
+
+    try:
+        with urllib.request.urlopen(url) as response:
+            xml_str = response.read().decode("utf-8")
+    except Exception as e:
+        print(f"Error fetching from arXiv: {e}", file=sys.stderr)
+        sys.exit(1)
+
+    # arXiv API uses Atom namespace
+    ns = {"atom": "http://www.w3.org/2005/Atom", "arxiv": "http://arxiv.org/schemas/atom"}
+    root = ET.fromstring(xml_str)
+    entry = root.find("atom:entry", ns)
+    if entry is None:
+        print(f"Error: No entry found for arXiv ID {arxiv_id}", file=sys.stderr)
+        sys.exit(1)
+
+    # Title
+    title_el = entry.find("atom:title", ns)
+    title = title_el.text.strip().replace("\n", " ") if title_el is not None and title_el.text else "Untitled"
+    title = re.sub(r"\s+", " ", title)
+
+    # Published date
+    published_el = entry.find("atom:published", ns)
+    year = None
+    month = None
+    if published_el is not None and published_el.text:
+        date_match = re.match(r"(\d{4})-(\d{2})", published_el.text)
+        if date_match:
+            year = int(date_match.group(1))
+            month = int(date_match.group(2))
+
+    # Abstract
+    summary_el = entry.find("atom:summary", ns)
+    abstract = None
+    if summary_el is not None and summary_el.text:
+        abstract = summary_el.text.strip().replace("\n", " ")
+        abstract = re.sub(r"\s+", " ", abstract)
+
+    # DOI (if linked)
+    doi = None
+    doi_el = entry.find("arxiv:doi", ns)
+    if doi_el is not None and doi_el.text:
+        doi = f"https://doi.org/{doi_el.text.strip()}"
+
+    # Categories as keywords
+    keywords = []
+    for cat_el in entry.findall("atom:category", ns):
+        term = cat_el.get("term")
+        if term:
+            keywords.append(term)
+
+    # Contributors
+    contributors = []
+    for author_el in entry.findall("atom:author", ns):
+        name_el = author_el.find("atom:name", ns)
+        if name_el is not None and name_el.text:
+            contributors.append({"name": name_el.text.strip()})
+
+    return {
+        "title": title,
+        "key": f"arxiv-{arxiv_id.replace('/', '-')}",
+        "year": year,
+        "month": month,
+        "doi": doi,
+        "venue": "arXiv",
+        "abstract": abstract,
+        "keywords": keywords,
+        "contributors": contributors,
+        "pmid": None,
+        "arxiv_id": arxiv_id,
+    }
+
+
 # --- Build resource from normalized data ---
 
 def build_resource(data: dict, args) -> dict:
@@ -433,6 +527,8 @@ def build_resource(data: dict, args) -> dict:
     if args.pubmed and not data.get("pmid"):
         pmid = extract_pmid(args.pubmed)
         links.append({"label": "PubMed", "url": f"https://pubmed.ncbi.nlm.nih.gov/{pmid}/", "platform": "Website"})
+    if data.get("arxiv_id"):
+        links.append({"label": "arXiv", "url": f"https://arxiv.org/abs/{data['arxiv_id']}", "platform": "Website"})
     for extra in (args.link or []):
         parts = extra.split(" - ", 1)
         if len(parts) == 2:
@@ -530,6 +626,7 @@ def main():
     source.add_argument("--bibtex", help="BibTeX file path, or - for stdin")
     source.add_argument("--pmid", help="PubMed ID (numeric) or PubMed URL")
     source.add_argument("--doi", help="DOI string or DOI URL")
+    source.add_argument("--arxiv", help="arXiv ID or URL (e.g. 2301.12345 or https://arxiv.org/abs/2301.12345)")
 
     parser.add_argument("--projects", nargs="+", help="Project names (e.g. APRICOT PHASES)")
     parser.add_argument("--pubmed", help="PubMed URL (to add as a link, when using --bibtex or --doi)")
@@ -558,6 +655,10 @@ def main():
     elif args.doi:
         doi = extract_doi(args.doi)
         data = fetch_from_crossref(doi)
+
+    elif args.arxiv:
+        arxiv_id = extract_arxiv_id(args.arxiv)
+        data = fetch_from_arxiv(arxiv_id)
 
     resource = build_resource(data, args)
     yaml_str = resource_to_yaml(resource)
