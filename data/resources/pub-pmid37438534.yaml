@@ -1,0 +1,20 @@
+id: pub-pmid37438534
+name: Large language models encode clinical knowledge.
+type: Publication
+publishedYear: 2023
+publishedMonth: 8
+description: Large language models (LLMs) have demonstrated impressive capabilities, but the bar for clinical applications is high.
+developedByProjects: []
+usedByProjects: []
+links:
+  - label: DOI
+    url: https://doi.org/10.1038/s41586-023-06291-2
+    platform: Website
+  - label: PubMed
+    url: https://pubmed.ncbi.nlm.nih.gov/37438534/
+    platform: Website
+tags:
+  - paper
+  - nature
+status: Active
+lastUpdated: 2026-04-02
