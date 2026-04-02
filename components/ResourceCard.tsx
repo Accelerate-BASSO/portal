@@ -78,10 +78,35 @@ export default function ResourceCard({ resource }: ResourceCardProps) {
       {/* Name */}
       <h3 className="text-lg font-semibold text-black">{resource.name}</h3>
 
-      {/* Published date */}
+      {/* Published date and venue */}
       {resource.publishedYear && (
         <p className="text-xs text-gray-400">
           {formatPublishedDate(resource.publishedYear, resource.publishedMonth, resource.publishedDay)}
+          {resource.venue && <>{" "}&middot; {resource.venue}</>}
+        </p>
+      )}
+
+      {/* Contributors */}
+      {resource.contributors && resource.contributors.length > 0 && (
+        <p className="text-xs leading-relaxed text-gray-500">
+          {resource.contributors.map((c, i) => (
+            <span key={i}>
+              {i > 0 && ", "}
+              {c.orcid ? (
+                <a
+                  href={`https://orcid.org/${c.orcid}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={`ORCID: ${c.orcid}`}
+                  className="underline decoration-1 underline-offset-2 hover:text-gray-800"
+                >
+                  {c.name}
+                </a>
+              ) : (
+                <span>{c.name}</span>
+              )}
+            </span>
+          ))}
         </p>
       )}
 
