@@ -1,0 +1,40 @@
+id: pub-10-12688-wellcomeopenres-24234-1
+name: >-
+  Annotating datasets in behavioural and social sciences to promote
+  interoperability: development of the Schema for Ontology-based Dataset
+  Annotation (SODA) version 1.0 [version 1; peer review: 1 approved with
+  reservations]
+type: Publication
+publishedYear: 2025
+doi: "https://doi.org/10.12688/wellcomeopenres.24234.1"
+venue: Wellcome Open Research
+description: >-
+  Annotating datasets in behavioural and social sciences to promote
+  interoperability: development of t. Published in Wellcome Open Research.
+keywords: []
+contributors:
+  - name: R West
+  - name: J Brown
+  - name: L Shahab
+  - name: H Baird
+  - name: T Webb
+  - name: H Squires
+  - name: H Tattan-Birch
+  - name: D Gillespie
+  - name: R Purshouse
+  - name: A Brennan
+  - name: S Mazumdar
+  - name: V Lamfranchi
+  - name: S Michie
+producedByProjects:
+  - APRICOT
+usedByProjects: []
+links:
+  - label: DOI
+    url: https://doi.org/10.12688/wellcomeopenres.24234.1
+    platform: Website
+tags:
+  - paper
+  - wellcome-open-research
+status: Active
+lastUpdated: 2026-04-02
