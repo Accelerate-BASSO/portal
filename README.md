@@ -151,23 +151,29 @@ Or edit the YAML file directly and submit a pull request.
 
 ## Adding Publications from BibTeX
 
-You can generate a publication YAML file from a BibTeX entry:
+You can generate a publication YAML file from a BibTeX entry using the Python script. First install the dependencies:
+
+```bash
+pip install bibtexparser pyyaml
+```
+
+Then convert:
 
 ```bash
 # From a file
-node scripts/bibtex-to-yaml.js paper.bib --projects APRICOT
+python scripts/bibtex-to-yaml.py paper.bib --projects APRICOT
 
 # From clipboard / stdin
-pbpaste | node scripts/bibtex-to-yaml.js --projects APRICOT --pubmed https://pubmed.ncbi.nlm.nih.gov/12345/
+pbpaste | python scripts/bibtex-to-yaml.py --projects APRICOT --pubmed https://pubmed.ncbi.nlm.nih.gov/12345/
 
 # Write directly to a file
-node scripts/bibtex-to-yaml.js paper.bib --projects PHASES --output data/resources/pub-my-paper.yaml
+python scripts/bibtex-to-yaml.py paper.bib --projects PHASES --output data/resources/pub-my-paper.yaml
 ```
 
 Options:
-- `--projects` — comma-separated project names (e.g. `APRICOT,PHASES`)
+- `--projects` — project names (e.g. `--projects APRICOT PHASES`)
 - `--pubmed` — PubMed URL
-- `--link` — additional link in `"Label - URL"` format
+- `--link` — additional link as `"Label - URL"` (can be repeated)
 - `--description` — override the generated description
 - `--output` — write to a file instead of stdout
 
