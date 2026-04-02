@@ -27,6 +27,7 @@ export interface Resource {
   publishedYear?: number;
   publishedMonth?: number;
   publishedDay?: number;
+  doi?: string;
   keywords?: string[];
   contributors?: Contributor[];
   tags: string[];
