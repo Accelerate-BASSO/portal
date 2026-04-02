@@ -28,6 +28,8 @@ export interface Resource {
   publishedMonth?: number;
   publishedDay?: number;
   doi?: string;
+  pmid?: string;
+  venue?: string;
   keywords?: string[];
   contributors?: Contributor[];
   tags: string[];

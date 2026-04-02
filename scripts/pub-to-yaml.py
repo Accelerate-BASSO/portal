@@ -733,6 +733,10 @@ def build_resource(data: dict, args) -> dict:
     resource["description"] = description
     if data.get("doi"):
         resource["doi"] = data["doi"]
+    if data.get("pmid"):
+        resource["pmid"] = data["pmid"]
+    if data.get("venue"):
+        resource["venue"] = data["venue"]
     resource["producedByProjects"] = projects if projects else []
     resource["usedByProjects"] = []
     resource["links"] = links if links else []
@@ -748,9 +752,9 @@ def build_resource(data: dict, args) -> dict:
 def resource_to_yaml(resource: dict) -> str:
     field_order = [
         "id", "name", "type", "publishedYear", "publishedMonth",
-        "doi", "description", "keywords", "contributors",
-        "producedByProjects", "usedByProjects", "links", "tags",
-        "status", "lastUpdated",
+        "doi", "pmid", "venue", "description", "keywords",
+        "contributors", "producedByProjects", "usedByProjects",
+        "links", "tags", "status", "lastUpdated",
     ]
 
     lines = []
