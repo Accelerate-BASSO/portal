@@ -4,17 +4,6 @@ A curated discovery portal for resources produced by the [Accelerate BASSO Netwo
 
 Supported by the National Institute of Aging (NIA) U24AG088019.
 
-## Running the Portal Locally
-
-```bash
-npm install
-npm run dev
-```
-
-Then open [http://localhost:3000](http://localhost:3000) in your browser.
-
----
-
 ## Adding a New Resource
 
 There are two ways to add a resource to the portal:
@@ -157,6 +146,17 @@ lastUpdated: "2026-04-01"
 To suggest changes to an existing resource, [open an Update Resource issue](../../issues/new?template=update-resource.yml).
 
 Or edit the YAML file directly and submit a pull request.
+
+---
+
+## Running the Portal Locally
+
+```bash
+npm install
+npm run dev
+```
+
+Then open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
