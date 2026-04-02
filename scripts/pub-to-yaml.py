@@ -339,13 +339,11 @@ def build_resource(data: dict, args) -> dict:
     pub_year = data.get("year")
     pub_month = data.get("month")
 
-    # Description
+    # Description — use full abstract if available
     if args.description:
         description = args.description
     elif data.get("abstract"):
-        abstract = data["abstract"]
-        first_sentence = re.match(r"^[^.!?]+[.!?]", abstract)
-        description = first_sentence.group(0) if first_sentence else abstract[:200] + "..."
+        description = data["abstract"]
     elif data.get("venue"):
         description = f"{title[:100]}. Published in {data['venue']}."
     else:
@@ -418,6 +416,20 @@ def resource_to_yaml(resource: dict) -> str:
             lines.append(f"{key}:")
             for item in value:
                 lines.append(f"  - {item}")
+        elif isinstance(value, str) and (len(value) > 120 or "\n" in value):
+            # Use folded block scalar for long text (wraps but preserves paragraphs)
+            lines.append(f"{key}: >-")
+            # Wrap at ~76 chars for readability
+            words = value.split()
+            line = "  "
+            for word in words:
+                if len(line) + len(word) + 1 > 78:
+                    lines.append(line)
+                    line = "  " + word
+                else:
+                    line = line + " " + word if line.strip() else "  " + word
+            if line.strip():
+                lines.append(line)
         elif isinstance(value, str) and any(c in value for c in ":\"'#[]{}&*!|>%@`"):
             lines.append(f'{key}: "{value}"')
         else:
