@@ -43,7 +43,7 @@ Every resource file has these fields:
 | `name` | Yes | Display name |
 | `type` | Yes | One of: `Ontology`, `Publication`, `Repository`, `Website`, `Registry`, `Community`, `Tool`, `Dataset` |
 | `description` | Yes | 1-3 sentence summary |
-| `developedByProjects` | Yes | List of projects that develop/maintain this resource |
+| `producedByProjects` | Yes | List of projects that produced this resource |
 | `usedByProjects` | Yes | List of projects that use this resource |
 | `links` | Yes | List of links (see below) |
 | `status` | Yes | One of: `Active`, `In Development`, `Archived` |
@@ -59,7 +59,7 @@ Every resource file has these fields:
 - `url` — the full URL
 - `platform` — one of: `GitHub`, `BioPortal`, `OLS`, `Ontobee`, `Zenodo`, `OSF`, `Website`, `Discourse`, `Other`
 
-Use `developedByProjects: []` or `usedByProjects: []` if a field doesn't apply.
+Use `producedByProjects: []` or `usedByProjects: []` if a field doesn't apply.
 
 ---
 
@@ -72,7 +72,7 @@ id: bcio
 name: Behaviour Change Intervention Ontology (BCIO)
 type: Ontology
 description: An ontology for annotating and synthesising evidence about behaviour change interventions.
-developedByProjects:
+producedByProjects:
   - APRICOT
 usedByProjects:
   - PHASES
@@ -103,7 +103,7 @@ name: "The Human Behaviour-Change Project Phase 2: Advancing behavioural and soc
 type: Publication
 publishedDate: "2024-12"
 description: Describes the second phase of the Human Behaviour-Change Project. Published in Wellcome Open Research.
-developedByProjects:
+producedByProjects:
   - APRICOT
 usedByProjects: []
 links:
@@ -125,7 +125,7 @@ id: apricot-website
 name: APRICOT Project Website
 type: Website
 description: Project website for APRICOT, which develops ontologies to standardize behavioral science constructs in cancer prevention research.
-developedByProjects:
+producedByProjects:
   - APRICOT
 usedByProjects: []
 links:

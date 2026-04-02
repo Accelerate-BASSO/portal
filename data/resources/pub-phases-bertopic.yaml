@@ -4,7 +4,7 @@ type: Publication
 publishedYear: 2025
 publishedMonth: 1
 description: Applies BERTopic modeling to discover concepts in the domains of gerotranscendence and solitude for the PHASES ontology. Published in Journal of Biomedical Semantics.
-developedByProjects:
+producedByProjects:
   - PHASES
 usedByProjects: []
 tags:

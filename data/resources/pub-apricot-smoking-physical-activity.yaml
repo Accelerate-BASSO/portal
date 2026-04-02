@@ -4,7 +4,7 @@ type: Publication
 publishedYear: 2025
 publishedMonth: 1
 description: Evaluates whether ontology-based methods for automated evidence synthesis can generalise from smoking cessation to physical activity domains. Published in Wellcome Open Research.
-developedByProjects:
+producedByProjects:
   - APRICOT
 usedByProjects: []
 links:

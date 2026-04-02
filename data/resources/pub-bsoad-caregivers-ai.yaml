@@ -4,7 +4,7 @@ type: Publication
 publishedYear: 2024
 publishedMonth: 10
 description: Presents a conversational AI approach for supporting Alzheimer's caregivers with enhanced communication and personalized assistance. Published in npj Biomedical Innovations.
-developedByProjects:
+producedByProjects:
   - BSO-AD
 usedByProjects: []
 links:

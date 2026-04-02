@@ -4,7 +4,7 @@ type: Publication
 publishedYear: 2024
 publishedMonth: 7
 description: Describes the initial development of the ODFA ontology for representing dental fear, anxiety, and phobia concepts. Published at ICBO 2024.
-developedByProjects:
+producedByProjects:
   - ODFA
 usedByProjects: []
 links:

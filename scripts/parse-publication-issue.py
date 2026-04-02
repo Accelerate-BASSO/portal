@@ -74,7 +74,7 @@ def generate_summary(yaml_content: str, source_label: str) -> str:
     lines.append(f"| **Published** | {date_str} |")
     lines.append(f"| **Description** | {resource.get('description', '—')} |")
 
-    dev = resource.get("developedByProjects", [])
+    dev = resource.get("producedByProjects", [])
     lines.append(f"| **Project(s)** | {', '.join(dev) if dev else '—'} |")
 
     links = resource.get("links", [])

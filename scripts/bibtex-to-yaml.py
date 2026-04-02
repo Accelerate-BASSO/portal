@@ -158,7 +158,7 @@ def build_resource(entry: dict, args) -> dict:
     if pub_month:
         resource["publishedMonth"] = pub_month
     resource["description"] = description
-    resource["developedByProjects"] = projects if projects else []
+    resource["producedByProjects"] = projects if projects else []
     resource["usedByProjects"] = []
     resource["links"] = links if links else []
     resource["tags"] = tags
@@ -172,7 +172,7 @@ def resource_to_yaml(resource: dict) -> str:
     """Produce clean YAML output with controlled field order."""
     field_order = [
         "id", "name", "type", "publishedYear", "publishedMonth",
-        "description", "developedByProjects", "usedByProjects", "links",
+        "description", "producedByProjects", "usedByProjects", "links",
         "tags", "status", "lastUpdated",
     ]
 

@@ -22,10 +22,10 @@ body:
       required: true
 
   - type: checkboxes
-    id: developed-by
+    id: produced-by
     attributes:
-      label: Developed by (projects)
-      description: Which project(s) develop or maintain this ontology?
+      label: Produced by (projects)
+      description: Which project(s) produce or maintain this ontology?
       options:
         - label: APRICOT
         - label: BSO-AD

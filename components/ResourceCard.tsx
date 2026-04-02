@@ -92,13 +92,13 @@ export default function ResourceCard({ resource }: ResourceCardProps) {
       <div className="flex flex-col gap-1.5 text-xs text-gray-500">
         {resource.type === "Ontology" ? (
           <>
-            {resource.developedByProjects && resource.developedByProjects.length > 0 && (
+            {resource.producedByProjects && resource.producedByProjects.length > 0 && (
               <div className="flex flex-wrap items-center gap-1.5">
-                <span className="text-gray-400">Developed by</span>
-                {resource.developedByProjects.map((project) => (
+                <span className="text-gray-400">Produced by</span>
+                {resource.producedByProjects.map((project) => (
                   <span
                     key={project}
-                    title={`Developed by the ${project} project`}
+                    title={`Produced by the ${project} project`}
                     className="cursor-help rounded bg-gray-100 px-2 py-0.5 font-medium"
                   >
                     {project}

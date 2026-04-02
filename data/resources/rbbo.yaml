@@ -2,7 +2,7 @@ id: rbbo
 name: Relationships Between Behaviours Ontology (RBBO)
 type: Ontology
 description: An ontology for representing relationships between different behaviours.
-developedByProjects: []
+producedByProjects: []
 usedByProjects:
   - APRICOT
 links: []

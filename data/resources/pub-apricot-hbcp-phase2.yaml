@@ -4,7 +4,7 @@ type: Publication
 publishedYear: 2024
 publishedMonth: 12
 description: Describes the second phase of the Human Behaviour-Change Project, advancing behavioural and social sciences through ontology tools. Published in Wellcome Open Research.
-developedByProjects:
+producedByProjects:
   - APRICOT
 usedByProjects: []
 links:

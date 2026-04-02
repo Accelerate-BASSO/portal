@@ -410,7 +410,7 @@ def build_resource(data: dict, args) -> dict:
     if pub_month:
         resource["publishedMonth"] = pub_month
     resource["description"] = description
-    resource["developedByProjects"] = projects if projects else []
+    resource["producedByProjects"] = projects if projects else []
     resource["usedByProjects"] = []
     resource["links"] = links if links else []
     resource["keywords"] = data.get("keywords", [])
@@ -424,7 +424,7 @@ def build_resource(data: dict, args) -> dict:
 def resource_to_yaml(resource: dict) -> str:
     field_order = [
         "id", "name", "type", "publishedYear", "publishedMonth",
-        "description", "keywords", "developedByProjects", "usedByProjects",
+        "description", "keywords", "producedByProjects", "usedByProjects",
         "links", "tags", "status", "lastUpdated",
     ]
 

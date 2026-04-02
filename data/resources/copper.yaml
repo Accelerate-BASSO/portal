@@ -2,7 +2,7 @@ id: copper
 name: COntextualised and Personalised Physical Activity and Exercise Recommendations Ontology (COPPER)
 type: Ontology
 description: An ontology for contextualised physical activity and exercise recommendations.
-developedByProjects: []
+producedByProjects: []
 usedByProjects:
   - APRICOT
 links:

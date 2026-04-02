@@ -4,7 +4,7 @@ type: Publication
 publishedYear: 2025
 publishedMonth: 1
 description: Describes the development of SODA, a schema for ontology-based dataset annotation to promote interoperability in the behavioural and social sciences. Published in Wellcome Open Research.
-developedByProjects:
+producedByProjects:
   - APRICOT
 usedByProjects: []
 links:

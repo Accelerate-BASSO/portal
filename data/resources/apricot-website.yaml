@@ -2,7 +2,7 @@ id: apricot-website
 name: APRICOT Project Website
 type: Website
 description: Project website for APRICOT (Advancing Prevention Research in Cancer through Ontology Tools), which develops and refines ontologies to standardize behavioral science constructs in cancer prevention research.
-developedByProjects:
+producedByProjects:
   - APRICOT
 usedByProjects: []
 links:

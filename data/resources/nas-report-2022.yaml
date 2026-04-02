@@ -4,7 +4,7 @@ type: Publication
 publishedYear: 2022
 publishedMonth: 5
 description: A report describing how ontologies support science and its application to real-world problems, detailing how ontologies can be engineered to better support the behavioral sciences.
-developedByProjects: []
+producedByProjects: []
 usedByProjects:
   - PHASES
   - BSO-AD

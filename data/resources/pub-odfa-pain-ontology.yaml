@@ -4,7 +4,7 @@ type: Publication
 publishedYear: 2024
 publishedMonth: 7
 description: Describes the development of an ontology of pain, related to dental care fear and anxiety research. Published at ICBO 2024.
-developedByProjects:
+producedByProjects:
   - ODFA
 usedByProjects: []
 links:

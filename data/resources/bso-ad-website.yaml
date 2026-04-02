@@ -2,7 +2,7 @@ id: bso-ad-website
 name: BSO-AD Project Website
 type: Website
 description: Project website for BSO-AD (Standardizing and Harmonizing Behavioral and Social Science Research Factors in Alzheimer's Disease through Ontology-Based Approaches), which develops ontology-driven methods to standardize BSSR data related to Alzheimer's Disease.
-developedByProjects:
+producedByProjects:
   - BSO-AD
 usedByProjects: []
 links:

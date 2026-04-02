@@ -15,7 +15,7 @@ export interface Resource {
   name: string;
   type: "Ontology" | "Publication" | "Tool" | "Community" | "Repository" | "Dataset" | "Website" | "Registry";
   description: string;
-  developedByProjects: ProjectName[];
+  producedByProjects: ProjectName[];
   usedByProjects: ProjectName[];
   links: ResourceLink[];
   bssoFoundry?: boolean;
