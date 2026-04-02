@@ -1,0 +1,27 @@
+name: Update an existing resource
+description: Suggest changes to a resource already listed on the portal
+title: "[Update] "
+labels: ["update-resource"]
+body:
+  - type: input
+    id: resource-name
+    attributes:
+      label: Which resource?
+      description: The name of the resource you want to update
+      placeholder: e.g. Behaviour Change Intervention Ontology (BCIO)
+    validations:
+      required: true
+
+  - type: textarea
+    id: changes
+    attributes:
+      label: What should change?
+      description: Describe what needs to be updated (e.g. new link, updated description, project affiliation change)
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Any relevant links or background

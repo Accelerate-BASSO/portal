@@ -21,7 +21,7 @@ const typeLinkColors: Record<string, string> = {
 };
 
 const typeTooltips: Record<string, string> = {
-  Ontology: "A formal representation of knowledge in a specific domain",
+  Ontology: "An ontology developed and maintained by a network member",
   Publication: "A published report, paper, or document",
   Tool: "A software tool, editor, converter, or utility",
   Community: "A forum or group for discussion and collaboration",
