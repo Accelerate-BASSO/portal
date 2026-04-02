@@ -366,7 +366,7 @@ def build_resource(data: dict, args) -> dict:
     # Tags
     tags = ["paper"]
     if data.get("venue"):
-        venue_tag = re.sub(r"[^a-z0-9]+", "-", data["venue"].lower()).strip("-")[:30]
+        venue_tag = re.sub(r"[^a-z0-9]+", "-", data["venue"].lower()).strip("-")
         tags.append(venue_tag)
 
     projects = args.projects or []
