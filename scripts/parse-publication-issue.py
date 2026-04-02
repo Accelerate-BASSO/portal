@@ -84,6 +84,23 @@ def generate_summary(yaml_content: str, source_label: str) -> str:
     else:
         lines.append("| **Links** | — |")
 
+    contributors = resource.get("contributors", [])
+    if contributors:
+        contrib_strs = []
+        for c in contributors:
+            name = c.get("name", "")
+            orcid = c.get("orcid")
+            if orcid:
+                contrib_strs.append(f"{name} ([{orcid}](https://orcid.org/{orcid}))")
+            else:
+                contrib_strs.append(name)
+        lines.append(f"| **Contributors** | {', '.join(contrib_strs)} |")
+    else:
+        lines.append("| **Contributors** | — |")
+
+    keywords = resource.get("keywords", [])
+    lines.append(f"| **Keywords** | {', '.join(keywords) if keywords else '—'} |")
+
     lines.append(f"| **Status** | {resource.get('status', '—')} |")
     lines.append("")
     lines.append("### Generated YAML\n")
