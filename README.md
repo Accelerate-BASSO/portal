@@ -149,30 +149,36 @@ Or edit the YAML file directly and submit a pull request.
 
 ---
 
-## Adding Publications from BibTeX
+## Generating Publication YAML
 
-You can generate a publication YAML file from a BibTeX entry using the Python script. First install the dependencies:
+You can generate a publication YAML file from a PubMed ID, DOI, or BibTeX entry. First install dependencies:
 
 ```bash
 pip install bibtexparser pyyaml
 ```
 
-Then convert:
+Then use any of the three input modes:
 
 ```bash
-# From a file
-python scripts/bibtex-to-yaml.py paper.bib --projects APRICOT
+# From PubMed (easiest — pulls title, journal, date, DOI, abstract)
+python scripts/pub-to-yaml.py --pmid 41001555 --projects PHASES
+python scripts/pub-to-yaml.py --pmid https://pubmed.ncbi.nlm.nih.gov/41001555/ --projects PHASES
 
-# From clipboard / stdin
-pbpaste | python scripts/bibtex-to-yaml.py --projects APRICOT --pubmed https://pubmed.ncbi.nlm.nih.gov/12345/
+# From DOI (pulls metadata from CrossRef)
+python scripts/pub-to-yaml.py --doi 10.12688/wellcomeopenres.23520.1 --projects APRICOT
+
+# From BibTeX file
+python scripts/pub-to-yaml.py --bibtex paper.bib --projects APRICOT
 
 # Write directly to a file
-python scripts/bibtex-to-yaml.py paper.bib --projects PHASES --output data/resources/pub-my-paper.yaml
+python scripts/pub-to-yaml.py --pmid 41001555 --projects PHASES --output data/resources/pub-example.yaml
 ```
 
 Options:
+- `--pmid` — PubMed ID or URL
+- `--doi` — DOI string or URL
+- `--bibtex` — BibTeX file path, or `-` for stdin
 - `--projects` — project names (e.g. `--projects APRICOT PHASES`)
-- `--pubmed` — PubMed URL
 - `--link` — additional link as `"Label - URL"` (can be repeated)
 - `--description` — override the generated description
 - `--output` — write to a file instead of stdout

@@ -6,13 +6,32 @@ body:
   - type: markdown
     attributes:
       value: |
-        You can either paste a BibTeX entry below (recommended — we'll extract the details automatically) or fill in the fields manually.
+        Provide **one** of the following and we'll extract the details automatically:
+        - A **PubMed URL** or PMID (easiest)
+        - A **DOI** URL
+        - A **BibTeX** entry
+
+        You can also fill in fields manually if needed.
+
+  - type: input
+    id: pubmed
+    attributes:
+      label: PubMed URL or PMID
+      description: We'll pull title, journal, date, DOI, and abstract from PubMed automatically.
+      placeholder: https://pubmed.ncbi.nlm.nih.gov/12345678/ or just 12345678
+
+  - type: input
+    id: doi
+    attributes:
+      label: DOI
+      description: If not in PubMed, provide a DOI and we'll pull metadata from CrossRef.
+      placeholder: https://doi.org/10.1234/example or 10.1234/example
 
   - type: textarea
     id: bibtex
     attributes:
       label: BibTeX entry
-      description: Paste the BibTeX entry for this publication. If provided, the title, date, DOI, and description can be generated from it.
+      description: Alternatively, paste a BibTeX entry.
       placeholder: |
         @article{smith2025example,
           title={An Example Paper Title},
@@ -41,36 +60,23 @@ body:
   - type: textarea
     id: description
     attributes:
-      label: Description (optional if BibTeX provided)
-      description: A brief description (1-3 sentences). If left blank and BibTeX is provided, one will be generated from the BibTeX abstract or title.
+      label: Description (optional)
+      description: Override the auto-generated description if needed (1-3 sentences).
       placeholder: What is this publication about?
 
   - type: input
     id: published-year
     attributes:
-      label: Published year (optional if BibTeX provided)
-      description: Will be extracted from BibTeX if available.
+      label: Published year (optional)
+      description: Override if the auto-detected year is wrong.
       placeholder: "2025"
 
   - type: input
     id: published-month
     attributes:
-      label: Published month (optional if BibTeX provided)
-      description: Numeric month (1-12). Will be extracted from BibTeX if available.
+      label: Published month (optional)
+      description: Numeric month (1-12). Override if needed.
       placeholder: "3"
-
-  - type: input
-    id: doi
-    attributes:
-      label: DOI URL (optional if BibTeX provided)
-      description: Will be extracted from BibTeX if available.
-      placeholder: https://doi.org/10.1234/example
-
-  - type: input
-    id: pubmed
-    attributes:
-      label: PubMed URL
-      placeholder: https://pubmed.ncbi.nlm.nih.gov/12345678/
 
   - type: input
     id: other-link
