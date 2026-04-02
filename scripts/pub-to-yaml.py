@@ -135,11 +135,59 @@ def fetch_from_bibtex(bibtex_str: str) -> dict:
 
 # --- PubMed source ---
 
-def extract_pmid(pmid_input: str) -> str:
-    """Extract numeric PMID from a URL or plain number."""
-    match = re.search(r"(\d{5,})", pmid_input)
+def extract_pmcid(input_str: str) -> str | None:
+    """Extract a PMC ID (e.g. PMC10396962) from a URL or string. Returns None if not a PMC reference."""
+    match = re.search(r"PMC(\d+)", input_str, re.IGNORECASE)
     if match:
-        return match.group(1)
+        return f"PMC{match.group(1)}"
+    return None
+
+
+def pmcid_to_pmid(pmcid: str) -> str:
+    """Convert a PMC ID to a PMID using the NCBI ID converter API."""
+    url = f"https://www.ncbi.nlm.nih.gov/pmc/utils/idconv/v1.0/?ids={pmcid}&format=json"
+    print(f"Converting {pmcid} to PMID...", file=sys.stderr)
+
+    try:
+        with urllib.request.urlopen(url) as response:
+            data = json.loads(response.read().decode("utf-8"))
+    except Exception as e:
+        print(f"Error converting PMC ID: {e}", file=sys.stderr)
+        sys.exit(1)
+
+    records = data.get("records", [])
+    if not records or "pmid" not in records[0]:
+        print(f"Error: Could not find a PMID for {pmcid}. The article may only have a PMC ID.", file=sys.stderr)
+        # Try fetching directly from PMC instead
+        return None
+
+    pmid = records[0]["pmid"]
+    print(f"Resolved {pmcid} -> PMID {pmid}", file=sys.stderr)
+    return pmid
+
+
+def extract_pmid(pmid_input: str) -> str:
+    """Extract numeric PMID from a URL or plain number.
+    Also handles PMC URLs/IDs by converting them to PMIDs."""
+    # Check if this is a PMC reference first
+    pmcid = extract_pmcid(pmid_input)
+    if pmcid:
+        pmid = pmcid_to_pmid(pmcid)
+        if pmid:
+            return pmid
+        print(f"Error: Could not resolve {pmcid} to a PMID.", file=sys.stderr)
+        sys.exit(1)
+
+    # Regular PMID extraction (from pubmed.ncbi.nlm.nih.gov URLs or plain numbers)
+    # Match PubMed URLs specifically to avoid grabbing wrong numbers
+    pubmed_match = re.search(r"pubmed\.ncbi\.nlm\.nih\.gov/(\d+)", pmid_input)
+    if pubmed_match:
+        return pubmed_match.group(1)
+
+    # Plain numeric input
+    if pmid_input.strip().isdigit():
+        return pmid_input.strip()
+
     print(f"Error: Could not extract a PMID from '{pmid_input}'", file=sys.stderr)
     sys.exit(1)
 
@@ -147,7 +195,7 @@ def extract_pmid(pmid_input: str) -> str:
 def fetch_from_pubmed(pmid: str) -> dict:
     """Fetch publication metadata from PubMed E-utilities."""
     url = f"https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id={pmid}&retmode=xml"
-    print(f"Fetching from PubMed: {pmid}...", file=sys.stderr)
+    print(f"Fetching from PubMed: PMID {pmid}...", file=sys.stderr)
 
     try:
         with urllib.request.urlopen(url) as response:
