@@ -1,0 +1,56 @@
+id: pub-pmid41001555
+name: Utilizing BERTopic Modeling for Concept Discovery in the Domain of Gerotranscendence and Solitude.
+type: Publication
+publishedYear: 2025
+publishedMonth: 9
+doi: "https://doi.org/10.21203/rs.3.rs-7383440/v1"
+pmid: 41001555
+venue: Research square
+description: >-
+  Ontology development is a complex, iterative process that traditionally
+  requires extensive collaboration between ontology developers and subject
+  matter experts (SMEs). While effective, this manual approach is
+  time-consuming, labor-intensive, and prone to cognitive bias. To streamline
+  early-stage ontology development and uncover concepts that might be
+  overlooked through manual review alone, we applied automated topic modeling
+  with BERTopic to extract topics, keywords, topic labels, and summaries from
+  The Handbook of Solitude: Psychological Perspectives on Social Isolation,
+  Social Withdrawal, and Being Alone and Gerotranscendence: A Developmental
+  Theory of Positive Aging. The extracted topic labels were used as candidate
+  concepts for the Promoting Healthy Aging through Semantic Enrichment of
+  Solitude Research (PHASES) Ontology.
+keywords:
+  - BERTopic
+  - PHASES Ontology
+  - gerotranscendence
+  - ontology development
+  - solitude
+  - topic modeling
+contributors:
+  - name: B Damayanthi Jesudas
+  - name: Finn Wilson
+  - name: Rachel A Mavrovich
+  - name: Sean Kindya
+  - name: Feng-Yu Yeh
+  - name: Sam Smith
+  - name: Jeremy Ravenel
+  - name: Jie Zheng
+  - name: Yongqun He
+  - name: Hollen N Reischer
+  - name: Julie C Bowker
+  - name: John Beverley
+  - name: William D Duncan
+producedByProjects: [PHASES]
+usedByProjects: []
+links:
+  - label: DOI
+    url: https://doi.org/10.21203/rs.3.rs-7383440/v1
+    platform: Website
+  - label: PubMed
+    url: https://pubmed.ncbi.nlm.nih.gov/41001555/
+    platform: Website
+tags:
+  - paper
+  - research-square
+status: Active
+lastUpdated: 2026-04-02
