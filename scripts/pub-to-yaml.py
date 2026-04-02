@@ -137,6 +137,22 @@ def fetch_from_bibtex(bibtex_str: str) -> dict:
         keywords = [kw.strip() for kw in re.split(r"[;,]", raw) if kw.strip()]
     data["keywords"] = keywords
 
+    # Contributors — BibTeX "author" field, typically "Last, First and Last, First"
+    contributors = []
+    if "author" in entry:
+        raw_authors = clean_latex(entry["author"])
+        for author_str in re.split(r"\s+and\s+", raw_authors):
+            author_str = author_str.strip()
+            if not author_str:
+                continue
+            if "," in author_str:
+                parts = author_str.split(",", 1)
+                name = f"{parts[1].strip()} {parts[0].strip()}"
+            else:
+                name = author_str
+            contributors.append({"name": name})
+    data["contributors"] = contributors
+
     return data
 
 
@@ -270,6 +286,21 @@ def fetch_from_pubmed(pmid: str) -> dict:
             seen.add(kw.lower())
             unique_keywords.append(kw)
 
+    # Contributors
+    contributors = []
+    for author_el in article.findall(".//AuthorList/Author"):
+        last = author_el.find("LastName")
+        fore = author_el.find("ForeName")
+        if last is not None and last.text:
+            name = f"{fore.text} {last.text}" if fore is not None and fore.text else last.text
+            contributor = {"name": name}
+            orcid_el = author_el.find("Identifier[@Source='ORCID']")
+            if orcid_el is not None and orcid_el.text:
+                # Normalize ORCID — strip URL prefix if present
+                orcid = orcid_el.text.strip().replace("https://orcid.org/", "").replace("http://orcid.org/", "")
+                contributor["orcid"] = orcid
+            contributors.append(contributor)
+
     return {
         "title": title,
         "key": f"pmid{pmid}",
@@ -279,6 +310,7 @@ def fetch_from_pubmed(pmid: str) -> dict:
         "venue": venue,
         "abstract": abstract,
         "keywords": unique_keywords,
+        "contributors": contributors,
         "pmid": pmid,
     }
 
@@ -346,6 +378,19 @@ def fetch_from_crossref(doi: str) -> dict:
     # Keywords — CrossRef uses "subject" field
     keywords = work.get("subject", [])
 
+    # Contributors
+    contributors = []
+    for author in work.get("author", []):
+        given = author.get("given", "")
+        family = author.get("family", "")
+        if family:
+            name = f"{given} {family}".strip()
+            contributor = {"name": name}
+            orcid_url = author.get("ORCID")
+            if orcid_url:
+                contributor["orcid"] = orcid_url.replace("https://orcid.org/", "").replace("http://orcid.org/", "")
+            contributors.append(contributor)
+
     return {
         "title": title,
         "key": re.sub(r"[^a-z0-9]+", "", doi.lower())[:30],
@@ -355,6 +400,7 @@ def fetch_from_crossref(doi: str) -> dict:
         "venue": venue,
         "abstract": abstract,
         "keywords": keywords,
+        "contributors": contributors,
         "pmid": None,
     }
 
@@ -414,6 +460,7 @@ def build_resource(data: dict, args) -> dict:
     resource["usedByProjects"] = []
     resource["links"] = links if links else []
     resource["keywords"] = data.get("keywords", [])
+    resource["contributors"] = data.get("contributors", [])
     resource["tags"] = tags
     resource["status"] = "Active"
     resource["lastUpdated"] = date.today().isoformat()
@@ -424,8 +471,8 @@ def build_resource(data: dict, args) -> dict:
 def resource_to_yaml(resource: dict) -> str:
     field_order = [
         "id", "name", "type", "publishedYear", "publishedMonth",
-        "description", "keywords", "producedByProjects", "usedByProjects",
-        "links", "tags", "status", "lastUpdated",
+        "description", "keywords", "contributors", "producedByProjects",
+        "usedByProjects", "links", "tags", "status", "lastUpdated",
     ]
 
     lines = []
@@ -442,6 +489,12 @@ def resource_to_yaml(resource: dict) -> str:
                 lines.append(f"  - label: {link['label']}")
                 lines.append(f"    url: {link['url']}")
                 lines.append(f"    platform: {link['platform']}")
+        elif isinstance(value, list) and key == "contributors":
+            lines.append(f"{key}:")
+            for c in value:
+                lines.append(f"  - name: {c['name']}")
+                if c.get("orcid"):
+                    lines.append(f"    orcid: \"{c['orcid']}\"")
         elif isinstance(value, list):
             lines.append(f"{key}:")
             for item in value:

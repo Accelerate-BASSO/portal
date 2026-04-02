@@ -10,6 +10,11 @@ export interface ResourceLink {
 
 export type ProjectName = "PHASES" | "BSO-AD" | "APRICOT" | "ODFA" | "DCC";
 
+export interface Contributor {
+  name: string;
+  orcid?: string;
+}
+
 export interface Resource {
   id: string;
   name: string;
@@ -23,6 +28,7 @@ export interface Resource {
   publishedMonth?: number;
   publishedDay?: number;
   keywords?: string[];
+  contributors?: Contributor[];
   tags: string[];
   status: "Active" | "In Development" | "Archived";
   lastUpdated: string;
