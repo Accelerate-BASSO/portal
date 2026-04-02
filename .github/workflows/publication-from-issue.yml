@@ -52,11 +52,9 @@ jobs:
           OUTPUT="data/resources/${{ steps.resource-id.outputs.slug }}.yaml"
           python scripts/parse-publication-issue.py \
             --issue-body "$ISSUE_BODY" \
-            --output "$OUTPUT"
-          echo "## Generated YAML" >> "$GITHUB_STEP_SUMMARY"
-          echo '```yaml' >> "$GITHUB_STEP_SUMMARY"
-          cat "$OUTPUT" >> "$GITHUB_STEP_SUMMARY"
-          echo '```' >> "$GITHUB_STEP_SUMMARY"
+            --output "$OUTPUT" \
+            --summary /tmp/summary.md
+          cat /tmp/summary.md >> "$GITHUB_STEP_SUMMARY"
 
       - name: Create pull request
         env:
@@ -101,11 +99,14 @@ jobs:
             --base main \
             --head "$BRANCH"
 
-      - name: Comment on issue
+      - name: Comment on issue with extracted fields
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           ISSUE_NUM="${{ github.event.issue.number }}"
-          SLUG="${{ steps.resource-id.outputs.slug }}"
-          gh issue comment "$ISSUE_NUM" \
-            --body "A pull request has been created to add this publication to the portal. A maintainer will review and merge it shortly."
+          {
+            echo "A pull request has been created to add this publication to the portal. A maintainer will review and merge it shortly."
+            echo ""
+            cat /tmp/summary.md
+          } > /tmp/comment.md
+          gh issue comment "$ISSUE_NUM" --body-file /tmp/comment.md

@@ -65,6 +65,7 @@ def main():
     )
     parser.add_argument("--issue-body", required=True, help="The issue body text")
     parser.add_argument("--output", required=True, help="Output YAML file path")
+    parser.add_argument("--summary", help="Write a markdown summary of extracted fields to this file")
     args = parser.parse_args()
 
     body = args.issue_body
@@ -167,7 +168,55 @@ def main():
 
         # Print the generated file for the action log
         with open(args.output) as f:
-            print(f.read())
+            yaml_content = f.read()
+            print(yaml_content)
+
+        # Generate a human-readable summary of extracted fields
+        if args.summary:
+            # Parse the generated YAML to extract fields for the summary
+            import yaml as pyyaml
+            resource = pyyaml.safe_load(yaml_content)
+
+            lines = []
+            lines.append("## Extracted Publication Details\n")
+            lines.append("The following fields were extracted from the BibTeX entry:\n")
+            lines.append(f"| Field | Value |")
+            lines.append(f"|---|---|")
+            lines.append(f"| **Title** | {resource.get('name', '—')} |")
+
+            year = resource.get("publishedYear", "")
+            month = resource.get("publishedMonth", "")
+            if year and month:
+                date_str = f"{year}-{str(month).zfill(2)}"
+            elif year:
+                date_str = str(year)
+            else:
+                date_str = "—"
+            lines.append(f"| **Published** | {date_str} |")
+
+            lines.append(f"| **Description** | {resource.get('description', '—')} |")
+
+            dev = resource.get("developedByProjects", [])
+            lines.append(f"| **Project(s)** | {', '.join(dev) if dev else '—'} |")
+
+            links = resource.get("links", [])
+            if links:
+                link_strs = [f"[{l['label']}]({l['url']})" for l in links]
+                lines.append(f"| **Links** | {', '.join(link_strs)} |")
+            else:
+                lines.append(f"| **Links** | — |")
+
+            lines.append(f"| **Status** | {resource.get('status', '—')} |")
+            lines.append("")
+            lines.append("### Generated YAML\n")
+            lines.append("```yaml")
+            lines.append(yaml_content.strip())
+            lines.append("```")
+
+            summary = "\n".join(lines)
+            with open(args.summary, "w") as f:
+                f.write(summary)
+            print(f"Summary written to {args.summary}", file=sys.stderr)
 
     finally:
         os.unlink(bib_path)
