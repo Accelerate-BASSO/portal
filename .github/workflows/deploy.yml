@@ -39,6 +39,8 @@ jobs:
         run: python scripts/resolve-orcids.py --apply
 
       - name: Fetch BioPortal metrics
+        env:
+          BIOPORTAL_API_KEY: ${{ secrets.BIOPORTAL_API_KEY }}
         run: python scripts/fetch-bioportal-metrics.py
 
       - name: Install dependencies
