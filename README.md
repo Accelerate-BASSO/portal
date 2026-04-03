@@ -2,6 +2,8 @@
 
 A curated discovery portal for resources produced by the [Accelerate BASSO Network](https://accelerate-basso.regenstrief.org) — ontologies, publications, tools, datasets, and communities for the behavioral and social sciences.
 
+**Live site:** https://accelerate-basso.github.io/portal/
+
 Supported by the National Institute of Aging (NIA) U24AG088019.
 
 ## Adding a New Resource
