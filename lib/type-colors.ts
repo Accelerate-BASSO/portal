@@ -8,3 +8,14 @@ export const typeColors: Record<string, string> = {
   Website: "bg-indigo-600 text-white",
   Registry: "bg-teal-600 text-white",
 };
+
+export const typeIconColors: Record<string, string> = {
+  Ontology: "text-violet-600",
+  Publication: "text-orange-600",
+  Tool: "text-purple-600",
+  Community: "text-amber-600",
+  Repository: "text-cyan-600",
+  Dataset: "text-rose-600",
+  Website: "text-indigo-600",
+  Registry: "text-teal-600",
+};

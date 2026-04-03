@@ -9,7 +9,7 @@ import {
   Network, FileText, Globe, FolderGit2, Library, Users, Wrench, Database,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import { typeColors } from "@/lib/type-colors";
+import { typeColors, typeIconColors } from "@/lib/type-colors";
 
 const typeIcons: Record<string, LucideIcon> = {
   Ontology: Network,
@@ -146,7 +146,7 @@ export default function ResourceBrowser({
                       : "bg-white text-gray-600 border border-gray-200 hover:border-gray-400"
                   } ${count === 0 && !active ? "opacity-40" : ""}`}
                 >
-                  {typeIcons[type] && (() => { const Icon = typeIcons[type]; return <Icon size={12} strokeWidth={2.5} />; })()}
+                  {typeIcons[type] && (() => { const Icon = typeIcons[type]; return <Icon size={14} strokeWidth={2} className={active ? "" : typeIconColors[type] || ""} />; })()}
                   {type}
                   <span className={`inline-block min-w-[1.25rem] text-center text-xs font-semibold ${active ? "text-white/70" : "text-gray-400"}`}>
                     {count}

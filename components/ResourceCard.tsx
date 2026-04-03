@@ -41,7 +41,7 @@ interface ResourceCardProps {
   resource: Resource;
 }
 
-import { typeColors } from "@/lib/type-colors";
+import { typeColors, typeIconColors } from "@/lib/type-colors";
 
 const projectFullNames: Record<string, string> = {
   APRICOT: "Advancing Prevention Research in Cancer through Ontology Tools",
@@ -98,12 +98,15 @@ export default function ResourceCard({ resource }: ResourceCardProps) {
     <div className="flex flex-col gap-3 rounded-lg border border-card-border bg-white p-5 shadow-sm transition-shadow hover:shadow-md">
       {/* Top row: type badge left, project badges right */}
       <div className="flex items-start justify-between gap-2">
-        <div className="flex gap-1.5">
+        <div className="flex items-center gap-2">
+          {typeIcons[resource.type] && (() => {
+            const Icon = typeIcons[resource.type];
+            return <Icon size={18} strokeWidth={2} className={typeIconColors[resource.type] || "text-gray-500"} />;
+          })()}
           <span
             title={typeTooltips[resource.type] || `Resource type: ${resource.type}`}
-            className={`inline-flex cursor-help items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-medium ${typeColors[resource.type] || "bg-gray-100 text-gray-800"}`}
+            className={`cursor-help rounded-full px-2.5 py-0.5 text-xs font-medium ${typeColors[resource.type] || "bg-gray-100 text-gray-800"}`}
           >
-            {typeIcons[resource.type] && (() => { const Icon = typeIcons[resource.type]; return <Icon size={12} strokeWidth={2.5} />; })()}
             {resource.type}
           </span>
         </div>
