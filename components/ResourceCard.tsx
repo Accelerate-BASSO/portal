@@ -83,14 +83,6 @@ export default function ResourceCard({ resource }: ResourceCardProps) {
           >
             {resource.type}
           </span>
-          {resource.status !== "Active" && (
-            <span
-              title={statusTooltips[resource.status] || `Status: ${resource.status}`}
-              className={`cursor-help rounded-full px-2.5 py-0.5 text-xs font-medium ${statusColors[resource.status] || ""}`}
-            >
-              {resource.status}
-            </span>
-          )}
         </div>
         <div className="flex flex-wrap justify-end gap-1">
           {getAllProjects(resource).map((project) => (
