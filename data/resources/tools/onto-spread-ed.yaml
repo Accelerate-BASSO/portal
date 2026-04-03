@@ -1,0 +1,24 @@
+id: onto-spread-ed
+name: Ontology Spreadsheet Editor (onto-spread-ed)
+type: Tool
+description: >-
+  A Python-based web platform for collaborative editing of OWL ontologies
+  using spreadsheet interfaces. Makes ontology curation accessible to
+  domain experts without requiring deep knowledge of OWL syntax. Supports
+  real-time collaboration, GitHub integration, search across loaded
+  ontologies, quality validation, and merge conflict resolution.
+producedByProjects:
+  - APRICOT
+usedByProjects: []
+links:
+  - label: GitHub
+    url: https://github.com/ontology-tools/onto-spread-ed
+    platform: GitHub
+tags:
+  - tool
+  - ontology-editor
+  - spreadsheet
+  - owl
+  - collaborative
+status: Active
+lastUpdated: "2026-04-03"

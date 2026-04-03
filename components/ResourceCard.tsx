@@ -63,12 +63,12 @@ const projectUrls: Record<string, string> = {
 const typeLinkColors: Record<string, string> = {
   Ontology: "text-violet-600 hover:text-violet-800",
   Publication: "text-orange-600 hover:text-orange-800",
-  Tool: "text-purple-600 hover:text-purple-800",
-  Community: "text-amber-600 hover:text-amber-800",
-  Repository: "text-cyan-600 hover:text-cyan-800",
-  Dataset: "text-rose-600 hover:text-rose-800",
-  Website: "text-indigo-600 hover:text-indigo-800",
-  Registry: "text-teal-600 hover:text-teal-800",
+  Tool: "text-red-600 hover:text-red-800",
+  Community: "text-pink-600 hover:text-pink-800",
+  Repository: "text-emerald-600 hover:text-emerald-800",
+  Dataset: "text-lime-600 hover:text-lime-800",
+  Website: "text-[#50A0F0] hover:text-[#3080D0]",
+  Registry: "text-slate-500 hover:text-slate-700",
 };
 
 const typeTooltips: Record<string, string> = {
