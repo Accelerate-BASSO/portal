@@ -3,7 +3,22 @@ name: "Building an Ontology of Pain"
 type: Publication
 publishedYear: 2024
 publishedMonth: 7
-description: Describes the development of an ontology of pain, related to dental care fear and anxiety research. Published at ICBO 2024.
+venue: Proceedings of ICBO 2024 (CEUR Workshop Proceedings, Vol 3939)
+description: >-
+  Describes the development of an ontology of pain, related to dental care
+  fear and anxiety research. Published at the International Conference on
+  Biomedical Ontology (ICBO) 2024, Enschede, The Netherlands.
+keywords:
+  - pain
+  - ontology development
+  - ICBO
+contributors:
+  - name: Finn D Wilson
+  - name: Gokul M Chandrasekharan
+  - name: Matthew Diller
+  - name: Jiwoo Seo
+  - name: Alexander D Diehl
+  - name: William D Duncan
 producedByProjects:
   - ODFA
 usedByProjects: []
@@ -13,7 +28,6 @@ links:
     platform: Website
 tags:
   - paper
-  - pain
-  - ontology-development
+  - icbo-2024
 status: Active
-lastUpdated: "2026-04-01"
+lastUpdated: "2026-04-03"

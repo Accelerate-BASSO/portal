@@ -3,7 +3,20 @@ name: "National Academies Report: Ontologies in the Behavioral Sciences (2022)"
 type: Publication
 publishedYear: 2022
 publishedMonth: 5
-description: A report describing how ontologies support science and its application to real-world problems, detailing how ontologies can be engineered to better support the behavioral sciences.
+doi: "https://doi.org/10.17226/26755"
+venue: National Academies Press
+description: >-
+  A report describing how ontologies support science and its application to
+  real-world problems. It details how ontologies function, how they can be
+  engineered to better support the behavioral sciences, and the resources
+  needed to sustain their development and use to help ensure the maximum
+  benefit from investment in behavioral science research.
+keywords:
+  - ontology
+  - behavioral sciences
+  - national academies
+  - policy
+contributors: []
 producedByProjects: []
 usedByProjects:
   - PHASES
@@ -17,6 +30,5 @@ links:
 tags:
   - report
   - national-academies
-  - policy
 status: Active
-lastUpdated: "2026-04-01"
+lastUpdated: "2026-04-03"

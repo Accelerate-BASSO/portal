@@ -1,9 +1,70 @@
 id: pub-apricot-soda
-name: "Annotating datasets in behavioural and social sciences to promote interoperability: development of the Schema for Ontology-based Dataset Annotation (SODA)"
+name: >-
+  Annotating datasets in behavioural and social sciences to promote
+  interoperability: development of the Schema for Ontology-based Dataset
+  Annotation (SODA) version 1.0
 type: Publication
 publishedYear: 2025
-publishedMonth: 1
-description: Describes the development of SODA, a schema for ontology-based dataset annotation to promote interoperability in the behavioural and social sciences. Published in Wellcome Open Research.
+publishedMonth: 8
+doi: "https://doi.org/10.12688/wellcomeopenres.24234.1"
+venue: Wellcome Open Research
+description: >-
+  Background and aims Ontologies are increasingly employed to help find, use
+  and synthesise information, but methods for using them to annotate documents
+  and datasets remain in their infancy in the behavioural and social sciences.
+  The Behavioural Research UK DEMO-DATA project aimed to develop a prototype
+  schema for annotating datasets in behavioural and social sciences. Methods A
+  case-study dataset (the 'Smoking Toolkit Study'), used to inform an
+  Agent-Based Model of trajectories in cigarette smoking and cessation in
+  England, was chosen for annotation using two ontologies - The Behaviour
+  Change Intervention Ontology (BCIO) and the Addiction Ontology (AddictO).
+  The data set included 21 variables representing information about
+  sociodemographic and tobacco and nicotine use attributes of the study
+  population. A preliminary version of the schema for linking variables to
+  ontology classes was developed as a basis for annotating each variable in
+  the dataset. This was applied and revised iteratively until it was judged by
+  an expert panel of domain experts and modellers to represent the variables
+  sufficiently accurately to enable searching for and integration of data.
+  Results The prototype Schema for Ontology-based Dataset Annotation (SODA)
+  version 1.0 was developed over seven iterations. Variables were represented
+  by an 'object property'|'ontology class' expression (e.g., 'has
+  characteristic'|'extent of social smoking') together with information about
+  the data types (e.g., numbers, ontology subclasses, or Boolean values),
+  measurement source, unit of measurement, any coding or data transformations
+  and whether or not the variable was fully characterised by the annotation.
+  The prototype schema was applied successfully to the smoking dataset with 15
+  new ontology classes being created as required. Conclusions A prototype
+  schema for annotating behavioural and social science datasets was developed
+  and successfully applied to a dataset on smoking in England using ontology
+  relations and classes. The next step is to further develop and evaluate the
+  schema by application to case studies with a range of users and other
+  datasets.
+keywords: []
+contributors:
+  - name: Robert West
+    orcid: "0000-0001-6398-0921"
+  - name: Jamie Brown
+    orcid: "0000-0002-2797-5428"
+  - name: Lion Shahab
+    orcid: "0000-0003-4033-442X"
+  - name: Harriet Baird
+    orcid: "0000-0002-1794-3131"
+  - name: Thomas Webb
+    orcid: "0000-0001-9320-0068"
+  - name: Hazel Squires
+    orcid: "0000-0002-2776-4014"
+  - name: Harry Tattan-Birch
+    orcid: "0000-0001-9410-8343"
+  - name: Duncan Gillespie
+    orcid: "0000-0003-3450-5747"
+  - name: Robin Purshouse
+    orcid: "0000-0001-5880-1925"
+  - name: Alan Brennan
+    orcid: "0000-0002-1025-312X"
+  - name: Suvodeep Mazumdar
+  - name: Vitaveska Lamfranchi
+  - name: Susan Michie
+    orcid: "0000-0003-0063-6378"
 producedByProjects:
   - APRICOT
 usedByProjects: []
@@ -13,7 +74,6 @@ links:
     platform: Website
 tags:
   - paper
-  - dataset-annotation
-  - interoperability
+  - wellcome-open-research
 status: Active
-lastUpdated: "2026-04-01"
+lastUpdated: 2026-04-03

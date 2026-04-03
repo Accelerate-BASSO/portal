@@ -1,9 +1,23 @@
 id: pub-bsoad-caregivers-ai
-name: "Empowering Alzheimer's caregivers with conversational AI: a novel approach for enhanced communication and personalized support"
+name: >-
+  Empowering Alzheimer's caregivers with conversational AI: a novel approach
+  for enhanced communication and personalized support
 type: Publication
 publishedYear: 2024
-publishedMonth: 10
-description: Presents a conversational AI approach for supporting Alzheimer's caregivers with enhanced communication and personalized assistance. Published in npj Biomedical Innovations.
+publishedMonth: 12
+doi: "https://doi.org/10.1038/s44385-024-00004-8"
+venue: npj Biomedical Innovations
+description: >-
+  Empowering Alzheimer's caregivers with conversational AI: a novel approach
+  for enhanced communicatio. Published in npj Biomedical Innovations.
+keywords: []
+contributors:
+  - name: Wordh Ul Hasan
+  - name: Kimia Tuz Zaman
+  - name: Xin Wang
+  - name: Juan Li
+  - name: Bo Xie
+  - name: Cui Tao
 producedByProjects:
   - BSO-AD
 usedByProjects: []
@@ -13,7 +27,6 @@ links:
     platform: Website
 tags:
   - paper
-  - alzheimers
-  - conversational-ai
+  - npj-biomedical-innovations
 status: Active
-lastUpdated: "2026-04-01"
+lastUpdated: 2026-04-03

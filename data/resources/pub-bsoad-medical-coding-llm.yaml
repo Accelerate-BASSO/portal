@@ -1,9 +1,34 @@
 id: pub-bsoad-medical-coding-llm
-name: "Enhancing medical coding efficiency through domain-specific fine-tuned large language models"
+name: Enhancing medical coding efficiency through domain-specific fine-tuned large language models
 type: Publication
 publishedYear: 2025
-publishedMonth: 1
-description: Explores the use of domain-specific fine-tuned large language models for enhancing medical coding efficiency. Published in npj Health Systems.
+publishedMonth: 5
+doi: "https://doi.org/10.1038/s44401-025-00018-3"
+venue: npj Health Systems
+description: >-
+  Abstract Medical coding is essential for healthcare operations yet remains
+  predominantly manual, error-prone (up to 20%), and costly (up to $18.2
+  billion annually). Although large language models (LLMs) have shown promise
+  in natural language processing, their application to medical coding has
+  produced limited accuracy. In this study, we evaluated whether fine-tuning
+  LLMs with specialized ICD-10 knowledge can automate code generation across
+  clinical documentation. We adopted a two-phase approach: initial fine-tuning
+  using 74,260 ICD-10 code–description pairs, followed by enhanced training to
+  address linguistic and lexical variations. Evaluations using a proprietary
+  model (GPT-4o mini) on a cloud platform and an open-source model (Llama) on
+  local GPUs demonstrated that initial fine-tuning increased exact matching
+  from &lt;1% to 97%, while enhanced fine-tuning further improved performance
+  in complex scenarios, with real-world clinical notes achieving 69.20% exact
+  match and 87.16% category match. These findings indicate that
+  domain-specific fine-tuned LLMs can reduce manual burdens and improve
+  reliability.
+keywords: []
+contributors:
+  - name: Zhen Hou
+  - name: Hao Liu
+  - name: Jiang Bian
+  - name: Xing He
+  - name: Yan Zhuang
 producedByProjects:
   - BSO-AD
 usedByProjects: []
@@ -13,7 +38,6 @@ links:
     platform: Website
 tags:
   - paper
-  - nlp
-  - medical-coding
+  - npj-health-systems
 status: Active
-lastUpdated: "2026-04-01"
+lastUpdated: 2026-04-03

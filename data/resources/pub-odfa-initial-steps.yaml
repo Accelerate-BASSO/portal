@@ -3,7 +3,25 @@ name: "Initial Steps in Developing an Ontology of Dental Care-Related Fear, Anxi
 type: Publication
 publishedYear: 2024
 publishedMonth: 7
-description: Describes the initial development of the ODFA ontology for representing dental fear, anxiety, and phobia concepts. Published at ICBO 2024.
+doi: "https://doi.org/10.5281/zenodo.13353542"
+venue: Proceedings of ICBO 2024 (CEUR Workshop Proceedings, Vol 3939)
+description: >-
+  Describes the initial development of the ODFA ontology for representing
+  dental fear, anxiety, and phobia concepts to support standardised research.
+  Published at the International Conference on Biomedical Ontology (ICBO)
+  2024, Enschede, The Netherlands.
+keywords:
+  - dental fear
+  - dental anxiety
+  - ontology development
+  - ICBO
+contributors:
+  - name: William D Duncan
+  - name: Abhijeet Singhal
+  - name: Olivia S Ensz
+  - name: Alexander D Diehl
+  - name: Brenda Heaton
+  - name: Daniel W McNeil
 producedByProjects:
   - ODFA
 usedByProjects: []
@@ -13,7 +31,6 @@ links:
     platform: Website
 tags:
   - paper
-  - dental
-  - ontology-development
+  - icbo-2024
 status: Active
-lastUpdated: "2026-04-01"
+lastUpdated: "2026-04-03"

@@ -3,7 +3,42 @@ name: "The Human Behaviour-Change Project Phase 2: Advancing behavioural and soc
 type: Publication
 publishedYear: 2024
 publishedMonth: 12
-description: Describes the second phase of the Human Behaviour-Change Project, advancing behavioural and social sciences through ontology tools. Published in Wellcome Open Research.
+doi: "https://doi.org/10.12688/wellcomeopenres.23520.1"
+venue: Wellcome Open Research
+description: >-
+  Changing behaviour at scale is needed to address the major challenges facing
+  humanity: from preventing and treating disease to tackling the climate
+  crisis. Developing effective interventions to achieve this requires
+  efficient generation and use of scientific evidence. The Human
+  Behaviour-Change Project developed an extensive ontology of behaviour change
+  interventions, their contexts and mechanisms of action to organise global
+  evidence about behaviour change and predict intervention outcomes in novel
+  behaviour change scenarios. The APRICOT (Advancing Prevention Research In
+  Cancer through Ontology Tools) project extends this work by developing (i)
+  ontologies covering health-related behaviours, (ii) a Community of Practice
+  for ontologies in the social and behavioural sciences, and (iii) tools and
+  resources to make ontologies more useable and useful. It will also develop
+  methods to apply and integrate ontologies with real-world data related to
+  the social and environmental determinants of health and inequalities, and to
+  facilitate their uptake in behavioural science practice.
+keywords: []
+contributors:
+  - name: Susan Michie
+    orcid: "0000-0003-0063-6378"
+  - name: Robert West
+    orcid: "0000-0001-6398-0921"
+  - name: Janna Hastings
+    orcid: "0000-0002-3469-4923"
+  - name: William Hogan
+    orcid: "0000-0002-9881-1017"
+  - name: Marta M. Marques
+    orcid: "0000-0002-4797-9557"
+  - name: Marie Johnston
+    orcid: "0000-0003-0124-4827"
+  - name: Paulina Schenk
+    orcid: "0000-0002-5239-1977"
+  - name: Alexander J. Rothman
+    orcid: "0000-0003-3163-1895"
 producedByProjects:
   - APRICOT
 usedByProjects: []
@@ -13,7 +48,6 @@ links:
     platform: Website
 tags:
   - paper
-  - behaviour-change
-  - ontology-tools
+  - wellcome-open-research
 status: Active
-lastUpdated: "2026-04-01"
+lastUpdated: 2026-04-03

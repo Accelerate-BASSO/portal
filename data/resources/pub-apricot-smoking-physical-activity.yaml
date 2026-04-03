@@ -1,9 +1,57 @@
 id: pub-apricot-smoking-physical-activity
-name: "From smoking cessation to physical activity: Can ontology-based methods for automated evidence synthesis generalise across behaviour change domains?"
+name: >-
+  From smoking cessation to physical activity: Can ontology-based methods for
+  automated evidence synthesis generalise across behaviour change domains?
 type: Publication
 publishedYear: 2025
-publishedMonth: 1
-description: Evaluates whether ontology-based methods for automated evidence synthesis can generalise from smoking cessation to physical activity domains. Published in Wellcome Open Research.
+publishedMonth: 3
+doi: "https://doi.org/10.12688/wellcomeopenres.21664.2"
+venue: Wellcome Open Research
+description: >-
+  Background Developing behaviour change interventions able to tackle major
+  challenges such as non-communicable diseases or climate change requires
+  effective and efficient use of scientific evidence. The Human
+  Behaviour-Change Project (HBCP) aims to improve evidence synthesis in
+  behavioural science by compiling intervention reports and annotating them
+  with an ontology to train information extraction and prediction algorithms.
+  The HBCP used smoking cessation as the first 'proof of concept' domain but
+  intends to extend its methodology to other behaviours. The aims of this
+  paper are to (i) assess the extent to which methods developed for annotating
+  smoking cessation intervention reports were generalisable to a corpus of
+  physical activity evidence, and (ii) describe the steps involved in
+  developing this second HBCP corpus. Methods The development of the physical
+  activity corpus involved: (i) reviewing the suitability of smoking cessation
+  codes already used in the HBCP, (ii) defining the selection criteria and
+  scope, (iii) identifying and screening records for inclusion, and (iv)
+  annotating intervention reports using a code set of 200+ entities from the
+  Behaviour Change Intervention Ontology. Results Stage 1 highlighted the need
+  to modify the smoking cessation behavioural outcome codes for application to
+  physical activity. One hundred physical activity intervention reports were
+  reviewed, and 11 physical activity experts were consulted to inform the
+  adapted code set. Stage 2 involved narrowing down the scope of the corpus to
+  interventions targeting moderate-to-vigorous physical activity. In stage 3,
+  111 physical activity intervention reports were identified, which were then
+  annotated in stage 4. Conclusions Smoking cessation annotation methods
+  developed as part of the HBCP were mostly transferable to the physical
+  activity domain. However, the codes applied to behavioural outcome variables
+  required adaptations. This paper can help anyone interested in building a
+  body of research to develop automated evidence synthesis methods in physical
+  activity or for other behaviours.
+keywords: []
+contributors:
+  - name: Oscar Castro
+    orcid: "0000-0001-5332-3557"
+  - name: Emma Norris
+    orcid: "0000-0002-9957-4025"
+  - name: Alison J Wright
+    orcid: "0000-0002-0373-5219"
+  - name: Emily Hayes
+  - name: Ella Howes
+    orcid: "0000-0002-8488-1073"
+  - name: Candice Moore
+  - name: Robert West
+  - name: Susan Michie
+    orcid: "0000-0003-0063-6378"
 producedByProjects:
   - APRICOT
 usedByProjects: []
@@ -13,7 +61,6 @@ links:
     platform: Website
 tags:
   - paper
-  - evidence-synthesis
-  - behaviour-change
+  - wellcome-open-research
 status: Active
-lastUpdated: "2026-04-01"
+lastUpdated: 2026-04-03
