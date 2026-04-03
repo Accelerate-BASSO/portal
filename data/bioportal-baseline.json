@@ -1,0 +1,62 @@
+{
+  "bcio": {
+    "acronym": "BCIO",
+    "classes": 2524,
+    "properties": 49,
+    "individuals": 0,
+    "maxDepth": 12,
+    "released": "2025-07-09T00:00:00.000+00:00",
+    "hasOntologyLanguage": "OWL",
+    "homepage": "https://www.humanbehaviourchange.org/",
+    "status": "production",
+    "description": "The Human Behaviour Change Project (HBCP) funded by the Wellcome Trust, and the Advancing Prevention Research in Cancer through Ontology Tools (APRICOT) Project funded by the US National Institutes of Health, are developing the Behaviour Change Intervention Ontology and associated tools and resources to be used in reporting research; linking datasets and synthesising evidence; and AI/machine learning algorithms to predict intervention outcomes in novel scenarios.\r\n\r\nThe overall aim of these projects is to automate evidence searching, synthesis and interpretation to rapidly address questions from policy-makers, practitioners and others to answer \u2018What works, compared with what, how well, with what exposure, with what behaviours (for how long), for whom, in what settings and why?\u2019. To achieve this, ontologies can help structure evidence, i.e., link evidence with a shared formal description of classes and relationships capturing domain knowledge in order to enable aggregation and semantic querying. We are developing and maintaining the Behaviour Change Intervention Ontology (BCIO) to do this."
+  },
+  "copper": {
+    "acronym": "COPPER",
+    "classes": 363,
+    "properties": 74,
+    "individuals": 316,
+    "maxDepth": 13,
+    "released": "2024-04-05T00:00:00.000+00:00",
+    "hasOntologyLanguage": "OWL",
+    "homepage": null,
+    "status": "production",
+    "description": "The Contextualised and Personalised Physical activity and Exercise Recommendations (COPPER) ontology was created in order to support action and coping planning in the context of physical activity promotion by providing personalised recommendations for activities, activity context, barriers and coping strategies."
+  },
+  "mf": {
+    "acronym": "MF",
+    "classes": 401,
+    "properties": 16,
+    "individuals": 19,
+    "maxDepth": 13,
+    "released": "2026-02-06T18:07:25.000-08:00",
+    "hasOntologyLanguage": "OWL",
+    "homepage": "https://github.com/jannahastings/mental-functioning-ontology/",
+    "status": "alpha",
+    "description": "The Mental Functioning Ontology is an ontology for mental functioning, including mental processes such as cognition and traits such as intelligence, and related diseases and disorders. It is developed in the context of the Ontology for General Medical Science and the Basic Formal Ontology. The project is being developed in collaboration between the University of Geneva, Switzerland, and the University at Buffalo, USA.\\r\\n\\r\\nThe project is being developed with full involvement of all relevant communities, following best practices laid out by the OBO Foundry. Efforts are currently underway to align with related projects including the Behaviour Ontology, the Cognitive Atlas, the Cognitive Paradigm Ontology and the Neural Electro Magnetic Ontologies."
+  },
+  "mfoem": {
+    "acronym": "MFOEM",
+    "classes": 625,
+    "properties": 22,
+    "individuals": 19,
+    "maxDepth": 13,
+    "released": "2025-10-17T18:09:49.000-07:00",
+    "hasOntologyLanguage": "OWL",
+    "homepage": "https://github.com/jannahastings/emotion-ontology",
+    "status": "beta",
+    "description": "An ontology of affective phenomena such as emotions, moods, appraisals and subjective feelings, designed to support interdisciplinary research by providing unified annotations.  The ontology is a domain specialisation of the broader Mental Functioning Ontology. "
+  },
+  "omrse": {
+    "acronym": "OMRSE",
+    "classes": 470,
+    "properties": 166,
+    "individuals": 477,
+    "maxDepth": 11,
+    "released": "2026-03-06T18:12:42.000-08:00",
+    "hasOntologyLanguage": "OWL",
+    "homepage": "https://github.com/mcwdsi/OMRSE",
+    "status": "production",
+    "description": "The Ontology for Modeling and Representation of Social Entities (OMRSE) is an OBO Foundry ontology that represents the various entities that arise from human social interactions, such as social acts, social roles, social groups, and organizations."
+  }
+}
