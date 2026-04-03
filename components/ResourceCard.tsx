@@ -2,6 +2,7 @@ import type { Resource } from "@/lib/resources";
 import { getAllProjects } from "@/lib/resource-utils";
 import { platformLabels, platformTooltips } from "./PlatformIcon";
 import { ExternalLink } from "lucide-react";
+import TruncatedText from "./TruncatedText";
 
 const MONTH_NAMES = [
   "January", "February", "March", "April", "May", "June",
@@ -19,6 +20,22 @@ interface ResourceCardProps {
 }
 
 import { typeColors } from "@/lib/type-colors";
+
+const projectFullNames: Record<string, string> = {
+  APRICOT: "Advancing Prevention Research in Cancer through Ontology Tools",
+  "BSO-AD": "Standardizing and Harmonizing Behavioral and Social Science Research Factors in Alzheimer\u2019s Disease through Ontology-Based Approaches",
+  ODFA: "Ontology of Dental care-related Fear, Anxiety, and/or Phobia",
+  PHASES: "Promoting Health Aging through Semantic Enrichment of Solitude Research",
+  DCC: "Dissemination and Coordination Center",
+};
+
+const projectUrls: Record<string, string> = {
+  APRICOT: "https://accelerate-basso.regenstrief.org/pages/apricot.html",
+  "BSO-AD": "https://accelerate-basso.regenstrief.org/pages/bso-ad.html",
+  ODFA: "https://accelerate-basso.regenstrief.org/pages/odfa.html",
+  PHASES: "https://accelerate-basso.regenstrief.org/pages/phases.html",
+  DCC: "https://accelerate-basso.regenstrief.org",
+};
 
 const typeLinkColors: Record<string, string> = {
   Ontology: "text-violet-600 hover:text-violet-800",
@@ -77,13 +94,16 @@ export default function ResourceCard({ resource }: ResourceCardProps) {
         </div>
         <div className="flex flex-wrap justify-end gap-1">
           {getAllProjects(resource).map((project) => (
-            <span
+            <a
               key={project}
-              title={`Affiliated with the ${project} project`}
-              className="cursor-help rounded bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-500"
+              href={projectUrls[project] || "#"}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={`${project} (${projectFullNames[project] || project})`}
+              className="rounded bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-500 no-underline hover:bg-gray-200"
             >
               {project}
-            </span>
+            </a>
           ))}
         </div>
       </div>
@@ -91,11 +111,24 @@ export default function ResourceCard({ resource }: ResourceCardProps) {
       {/* Name */}
       <h3 className="text-lg font-semibold text-black">{resource.name}</h3>
 
-      {/* Published date and venue */}
+      {/* Published date, venue, DOI */}
       {resource.publishedYear && (
         <p className="text-xs text-gray-400">
           {formatPublishedDate(resource.publishedYear, resource.publishedMonth, resource.publishedDay)}
           {resource.venue && <>{" "}&middot; {resource.venue}</>}
+          {resource.doi && (
+            <>
+              {" "}&middot;{" "}
+              <a
+                href={resource.doi}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline decoration-1 underline-offset-2 hover:text-gray-600"
+              >
+                {resource.doi.replace("https://doi.org/", "doi:")}
+              </a>
+            </>
+          )}
         </p>
       )}
 
@@ -124,7 +157,7 @@ export default function ResourceCard({ resource }: ResourceCardProps) {
       )}
 
       {/* Description */}
-      <p className="text-sm leading-relaxed text-gray-text">{resource.description}</p>
+      <TruncatedText text={resource.description} />
 
       {/* BSSO Foundry badge */}
       {resource.bssoFoundry && (
