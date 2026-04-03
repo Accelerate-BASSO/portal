@@ -156,6 +156,26 @@ export default function ResourceCard({ resource }: ResourceCardProps) {
       {/* Description */}
       <TruncatedText text={resource.description} />
 
+      {/* BioPortal metrics */}
+      {resource.bioportal && (
+        <div className="flex flex-wrap gap-x-3 gap-y-1 text-xs text-gray-400">
+          {resource.bioportal.classes != null && (
+            <span title="Number of classes in this ontology">{resource.bioportal.classes.toLocaleString()} classes</span>
+          )}
+          {resource.bioportal.properties != null && (
+            <span title="Number of properties">{resource.bioportal.properties} properties</span>
+          )}
+          {resource.bioportal.hasOntologyLanguage && (
+            <span title="Ontology language">{resource.bioportal.hasOntologyLanguage}</span>
+          )}
+          {resource.bioportal.released && (
+            <span title="Last released on BioPortal">
+              Released {new Date(resource.bioportal.released).toLocaleDateString("en-US", { year: "numeric", month: "short" })}
+            </span>
+          )}
+        </div>
+      )}
+
       {/* BSSO Foundry badge */}
       {resource.bssoFoundry && (
         <div className="text-xs">

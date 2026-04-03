@@ -35,6 +35,19 @@ export interface Resource {
   tags: string[];
   status: "Active" | "In Development" | "Archived";
   lastUpdated: string;
+  bioportal?: BioportalMetrics;
+}
+
+export interface BioportalMetrics {
+  acronym: string;
+  classes?: number;
+  properties?: number;
+  individuals?: number;
+  maxDepth?: number;
+  released?: string;
+  hasOntologyLanguage?: string;
+  homepage?: string;
+  status?: string;
 }
 
 const resourcesDir = path.join(process.cwd(), "data", "resources");
@@ -52,12 +65,25 @@ function findYamlFiles(dir: string): string[] {
   return results;
 }
 
+function loadBioportalCache(): Record<string, BioportalMetrics> {
+  const cacheFile = path.join(process.cwd(), "data", "bioportal-cache.json");
+  if (fs.existsSync(cacheFile)) {
+    return JSON.parse(fs.readFileSync(cacheFile, "utf-8"));
+  }
+  return {};
+}
+
 export function getAllResources(): Resource[] {
   const files = findYamlFiles(resourcesDir);
+  const bioportalCache = loadBioportalCache();
   return files
     .map((file) => {
       const content = fs.readFileSync(file, "utf-8");
-      return yaml.load(content) as Resource;
+      const resource = yaml.load(content) as Resource;
+      if (bioportalCache[resource.id]) {
+        resource.bioportal = bioportalCache[resource.id];
+      }
+      return resource;
     })
     .sort((a, b) => a.name.localeCompare(b.name));
 }
