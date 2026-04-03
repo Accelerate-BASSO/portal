@@ -30,6 +30,7 @@
 
 # Generated at build time
 data/bioportal-cache.json
+data/github-releases-cache.json
 
 # debug
 npm-debug.log*

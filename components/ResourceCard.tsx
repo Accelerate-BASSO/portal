@@ -63,7 +63,7 @@ const projectUrls: Record<string, string> = {
 const typeLinkColors: Record<string, string> = {
   Ontology: "text-violet-600 hover:text-violet-800",
   Publication: "text-orange-600 hover:text-orange-800",
-  Tool: "text-red-600 hover:text-red-800",
+  Tool: "text-[#D4A820] hover:text-[#B08A10]",
   Community: "text-pink-600 hover:text-pink-800",
   Repository: "text-emerald-600 hover:text-emerald-800",
   Dataset: "text-lime-600 hover:text-lime-800",
@@ -182,6 +182,16 @@ export default function ResourceCard({ resource }: ResourceCardProps) {
 
       {/* Description */}
       <TruncatedText text={resource.description} />
+
+      {/* GitHub release */}
+      {resource.githubRelease && (
+        <div className="flex flex-wrap gap-x-3 gap-y-1 text-xs text-gray-400">
+          <span title="Latest release version">{resource.githubRelease.version}</span>
+          <span title="Release date">
+            Released {new Date(resource.githubRelease.date + "T00:00:00").toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}
+          </span>
+        </div>
+      )}
 
       {/* BioPortal metrics */}
       {resource.bioportal && (

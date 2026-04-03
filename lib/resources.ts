@@ -36,7 +36,13 @@ export interface Resource {
   status: "Active" | "In Development" | "Archived";
   lastUpdated: string;
   bioportal?: BioportalMetrics;
+  githubRelease?: GithubRelease;
   _sourcePath?: string;
+}
+
+export interface GithubRelease {
+  version: string;
+  date: string;
 }
 
 export interface BioportalMetrics {
@@ -74,15 +80,27 @@ function loadBioportalCache(): Record<string, BioportalMetrics> {
   return {};
 }
 
+function loadGithubReleasesCache(): Record<string, GithubRelease> {
+  const cacheFile = path.join(process.cwd(), "data", "github-releases-cache.json");
+  if (fs.existsSync(cacheFile)) {
+    return JSON.parse(fs.readFileSync(cacheFile, "utf-8"));
+  }
+  return {};
+}
+
 export function getAllResources(): Resource[] {
   const files = findYamlFiles(resourcesDir);
   const bioportalCache = loadBioportalCache();
+  const githubReleasesCache = loadGithubReleasesCache();
   return files
     .map((file) => {
       const content = fs.readFileSync(file, "utf-8");
       const resource = yaml.load(content) as Resource;
       if (bioportalCache[resource.id]) {
         resource.bioportal = bioportalCache[resource.id];
+      }
+      if (githubReleasesCache[resource.id]) {
+        resource.githubRelease = githubReleasesCache[resource.id];
       }
       resource._sourcePath = path.relative(process.cwd(), file);
       return resource;
