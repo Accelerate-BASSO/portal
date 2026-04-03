@@ -57,22 +57,35 @@ const statusTooltips: Record<string, string> = {
 export default function ResourceCard({ resource }: ResourceCardProps) {
   return (
     <div className="flex flex-col gap-3 rounded-lg border border-card-border bg-white p-5 shadow-sm transition-shadow hover:shadow-md">
-      {/* Type badge */}
-      <div className="flex gap-1.5">
-        <span
-          title={typeTooltips[resource.type] || `Resource type: ${resource.type}`}
-          className={`cursor-help rounded-full px-2.5 py-0.5 text-xs font-medium ${typeColors[resource.type] || "bg-gray-100 text-gray-800"}`}
-        >
-          {resource.type}
-        </span>
-        {resource.status !== "Active" && (
+      {/* Top row: type badge left, project badges right */}
+      <div className="flex items-start justify-between gap-2">
+        <div className="flex gap-1.5">
           <span
-            title={statusTooltips[resource.status] || `Status: ${resource.status}`}
-            className={`cursor-help rounded-full px-2.5 py-0.5 text-xs font-medium ${statusColors[resource.status] || ""}`}
+            title={typeTooltips[resource.type] || `Resource type: ${resource.type}`}
+            className={`cursor-help rounded-full px-2.5 py-0.5 text-xs font-medium ${typeColors[resource.type] || "bg-gray-100 text-gray-800"}`}
           >
-            {resource.status}
+            {resource.type}
           </span>
-        )}
+          {resource.status !== "Active" && (
+            <span
+              title={statusTooltips[resource.status] || `Status: ${resource.status}`}
+              className={`cursor-help rounded-full px-2.5 py-0.5 text-xs font-medium ${statusColors[resource.status] || ""}`}
+            >
+              {resource.status}
+            </span>
+          )}
+        </div>
+        <div className="flex flex-wrap justify-end gap-1">
+          {getAllProjects(resource).map((project) => (
+            <span
+              key={project}
+              title={`Affiliated with the ${project} project`}
+              className="cursor-help rounded bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-500"
+            >
+              {project}
+            </span>
+          ))}
+        </div>
       </div>
 
       {/* Name */}
@@ -113,65 +126,17 @@ export default function ResourceCard({ resource }: ResourceCardProps) {
       {/* Description */}
       <p className="text-sm leading-relaxed text-gray-text">{resource.description}</p>
 
-      {/* Meta row */}
-      <div className="flex flex-col gap-1.5 text-xs text-gray-500">
-        {resource.type === "Ontology" ? (
-          <>
-            {resource.producedByProjects && resource.producedByProjects.length > 0 && (
-              <div className="flex flex-wrap items-center gap-1.5">
-                <span className="text-gray-400">Produced by</span>
-                {resource.producedByProjects.map((project) => (
-                  <span
-                    key={project}
-                    title={`Produced by the ${project} project`}
-                    className="cursor-help rounded bg-gray-100 px-2 py-0.5 font-medium"
-                  >
-                    {project}
-                  </span>
-                ))}
-              </div>
-            )}
-            {resource.usedByProjects && resource.usedByProjects.length > 0 && (
-              <div className="flex flex-wrap items-center gap-1.5">
-                <span className="text-gray-400">Used by</span>
-                {resource.usedByProjects.map((project) => (
-                  <span
-                    key={project}
-                    title={`Used by the ${project} project`}
-                    className="cursor-help rounded bg-gray-100 px-2 py-0.5 font-medium"
-                  >
-                    {project}
-                  </span>
-                ))}
-              </div>
-            )}
-          </>
-        ) : (
-          getAllProjects(resource).length > 0 && (
-            <div className="flex flex-wrap items-center gap-1.5">
-              {getAllProjects(resource).map((project) => (
-                <span
-                  key={project}
-                  title={`Affiliated with the ${project} project`}
-                  className="cursor-help rounded bg-gray-100 px-2 py-0.5 font-medium"
-                >
-                  {project}
-                </span>
-              ))}
-            </div>
-          )
-        )}
-        {resource.bssoFoundry && (
-          <div className="flex items-center">
-            <span
-              title="Member of the Behavioural and Social Sciences Ontology Foundry — a community of interoperable ontologies"
-              className="cursor-help rounded bg-accent px-2 py-0.5 font-medium text-green-800"
-            >
-              BSSO Foundry
-            </span>
-          </div>
-        )}
-      </div>
+      {/* BSSO Foundry badge */}
+      {resource.bssoFoundry && (
+        <div className="text-xs">
+          <span
+            title="Member of the Behavioural and Social Sciences Ontology Foundry — a community of interoperable ontologies"
+            className="cursor-help rounded bg-accent px-2 py-0.5 font-medium text-green-800"
+          >
+            BSSO Foundry
+          </span>
+        </div>
+      )}
 
       {/* Links */}
       {resource.links && resource.links.length > 0 && (
