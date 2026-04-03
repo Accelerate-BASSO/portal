@@ -111,24 +111,25 @@ export default function ResourceCard({ resource }: ResourceCardProps) {
       {/* Name */}
       <h3 className="text-lg font-semibold text-black">{resource.name}</h3>
 
-      {/* Published date, venue, DOI */}
+      {/* Published date and venue */}
       {resource.publishedYear && (
         <p className="text-xs text-gray-400">
           {formatPublishedDate(resource.publishedYear, resource.publishedMonth, resource.publishedDay)}
           {resource.venue && <>{" "}&middot; {resource.venue}</>}
-          {resource.doi && (
-            <>
-              {" "}&middot;{" "}
-              <a
-                href={resource.doi}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline decoration-1 underline-offset-2 hover:text-gray-600"
-              >
-                {resource.doi.replace("https://doi.org/", "doi:")}
-              </a>
-            </>
-          )}
+        </p>
+      )}
+
+      {/* DOI */}
+      {resource.doi && (
+        <p className="text-xs text-gray-400">
+          <a
+            href={resource.doi}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline decoration-1 underline-offset-2 hover:text-gray-600"
+          >
+            {resource.doi.replace("https://doi.org/", "doi:")}
+          </a>
         </p>
       )}
 
