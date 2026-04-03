@@ -1,0 +1,31 @@
+id: pub-bsoad-llama3-axioms
+name: "Analyzing Llama 3-based approach for axiom translation from ontologies"
+type: Publication
+publishedYear: 2024
+venue: "KBC-LM'24 Workshop at ISWC 2024"
+description: >-
+  Analyzes a Llama 3-based approach for translating axioms from ontologies,
+  presented at the KBC-LM'24 workshop at the International Semantic Web
+  Conference (ISWC) 2024.
+keywords:
+  - LLM
+  - Llama 3
+  - ontology
+  - axiom translation
+  - ISWC
+contributors:
+  - name: Xiao-Bing Hao
+  - name: Ling-Ce Cui
+  - name: Cui Tao
+producedByProjects:
+  - BSO-AD
+usedByProjects: []
+links:
+  - label: CEUR-WS
+    url: https://ceur-ws.org/Vol-3853/paper5.pdf
+    platform: Website
+tags:
+  - paper
+  - iswc-2024
+status: Active
+lastUpdated: "2026-04-03"

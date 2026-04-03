@@ -1,0 +1,31 @@
+id: pub-bsoad-colonoscopy-ontology
+name: "An ontology-based method for formalizing and encoding patient colonoscopy preparation using BPMN and OWL2 for automated tool development"
+type: Publication
+publishedYear: 2025
+doi: "https://doi.org/10.36922/jci.8599"
+venue: Journal of Clinical Informatics
+description: >-
+  Presents an ontology-based method for formalizing and encoding patient
+  colonoscopy preparation using BPMN and OWL2 for automated tool development.
+keywords:
+  - ontology
+  - BPMN
+  - OWL2
+  - colonoscopy
+  - clinical informatics
+contributors:
+  - name: Muhammad Amith
+  - name: Yahan Yu
+  - name: Yun-Hsuan Shi
+producedByProjects:
+  - BSO-AD
+usedByProjects: []
+links:
+  - label: DOI
+    url: https://doi.org/10.36922/jci.8599
+    platform: Website
+tags:
+  - paper
+  - journal-of-clinical-informatics
+status: Active
+lastUpdated: "2026-04-03"
