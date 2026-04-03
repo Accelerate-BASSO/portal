@@ -36,6 +36,7 @@ export interface Resource {
   status: "Active" | "In Development" | "Archived";
   lastUpdated: string;
   bioportal?: BioportalMetrics;
+  _sourcePath?: string;
 }
 
 export interface BioportalMetrics {
@@ -83,6 +84,7 @@ export function getAllResources(): Resource[] {
       if (bioportalCache[resource.id]) {
         resource.bioportal = bioportalCache[resource.id];
       }
+      resource._sourcePath = path.relative(process.cwd(), file);
       return resource;
     })
     .sort((a, b) => a.name.localeCompare(b.name));

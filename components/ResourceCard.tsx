@@ -3,6 +3,7 @@ import { getAllProjects } from "@/lib/resource-utils";
 import { platformLabels, platformTooltips } from "./PlatformIcon";
 import {
   ExternalLink,
+  Pencil,
   Network,
   FileText,
   Globe,
@@ -230,6 +231,21 @@ export default function ResourceCard({ resource }: ResourceCardProps) {
               <ExternalLink size={16} strokeWidth={3} />
             </a>
           ))}
+        </div>
+      )}
+      {/* Edit on GitHub */}
+      {resource._sourcePath && (
+        <div className="flex justify-end">
+          <a
+            href={`https://github.com/Accelerate-BASSO/portal/edit/main/${resource._sourcePath}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Edit this resource on GitHub"
+            className="inline-flex items-center gap-1 text-xs text-gray-300 no-underline hover:text-gray-500"
+          >
+            <Pencil size={11} />
+            Edit
+          </a>
         </div>
       )}
     </div>
