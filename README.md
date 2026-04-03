@@ -23,9 +23,21 @@ Fill out the form and submit. A portal maintainer will create the resource file 
 
 ### Option 2: Add a YAML File Directly
 
-Each resource is a single YAML file in the `data/resources/` directory. To add one:
+Each resource is a single YAML file organized by type under `data/resources/`:
 
-1. Create a new `.yaml` file in `data/resources/` (use a kebab-case filename, e.g. `my-ontology.yaml`)
+```
+data/resources/
+  ontologies/       # Ontology resources
+  publications/     # Papers, reports, articles
+  websites/         # Project and network websites
+  repositories/     # Code and data repositories
+  registries/       # Standards registries
+  communities/      # Forums and communities
+```
+
+To add one:
+
+1. Create a new `.yaml` file in the appropriate subdirectory (use a kebab-case filename)
 2. Follow the schema below
 3. Submit a pull request
 

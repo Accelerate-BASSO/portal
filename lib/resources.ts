@@ -39,11 +39,24 @@ export interface Resource {
 
 const resourcesDir = path.join(process.cwd(), "data", "resources");
 
+function findYamlFiles(dir: string): string[] {
+  const results: string[] = [];
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const fullPath = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      results.push(...findYamlFiles(fullPath));
+    } else if (entry.name.endsWith(".yaml")) {
+      results.push(fullPath);
+    }
+  }
+  return results;
+}
+
 export function getAllResources(): Resource[] {
-  const files = fs.readdirSync(resourcesDir).filter((f) => f.endsWith(".yaml"));
+  const files = findYamlFiles(resourcesDir);
   return files
     .map((file) => {
-      const content = fs.readFileSync(path.join(resourcesDir, file), "utf-8");
+      const content = fs.readFileSync(file, "utf-8");
       return yaml.load(content) as Resource;
     })
     .sort((a, b) => a.name.localeCompare(b.name));
