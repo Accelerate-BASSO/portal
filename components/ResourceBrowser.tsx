@@ -4,8 +4,23 @@ import { useState, useMemo } from "react";
 import type { Resource } from "@/lib/resources";
 import { getAllProjects } from "@/lib/resource-utils";
 import ResourceCard from "./ResourceCard";
-import { Search, X } from "lucide-react";
+import {
+  Search, X,
+  Network, FileText, Globe, FolderGit2, Library, Users, Wrench, Database,
+} from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { typeColors } from "@/lib/type-colors";
+
+const typeIcons: Record<string, LucideIcon> = {
+  Ontology: Network,
+  Publication: FileText,
+  Website: Globe,
+  Repository: FolderGit2,
+  Registry: Library,
+  Community: Users,
+  Tool: Wrench,
+  Dataset: Database,
+};
 
 interface ResourceBrowserProps {
   resources: Resource[];
@@ -131,6 +146,7 @@ export default function ResourceBrowser({
                       : "bg-white text-gray-600 border border-gray-200 hover:border-gray-400"
                   } ${count === 0 && !active ? "opacity-40" : ""}`}
                 >
+                  {typeIcons[type] && (() => { const Icon = typeIcons[type]; return <Icon size={12} strokeWidth={2.5} />; })()}
                   {type}
                   <span className={`inline-block min-w-[1.25rem] text-center text-xs font-semibold ${active ? "text-white/70" : "text-gray-400"}`}>
                     {count}

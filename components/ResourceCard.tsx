@@ -1,7 +1,29 @@
 import type { Resource } from "@/lib/resources";
 import { getAllProjects } from "@/lib/resource-utils";
 import { platformLabels, platformTooltips } from "./PlatformIcon";
-import { ExternalLink } from "lucide-react";
+import {
+  ExternalLink,
+  Network,
+  FileText,
+  Globe,
+  FolderGit2,
+  Library,
+  Users,
+  Wrench,
+  Database,
+} from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+
+const typeIcons: Record<string, LucideIcon> = {
+  Ontology: Network,
+  Publication: FileText,
+  Website: Globe,
+  Repository: FolderGit2,
+  Registry: Library,
+  Community: Users,
+  Tool: Wrench,
+  Dataset: Database,
+};
 import TruncatedText from "./TruncatedText";
 
 const MONTH_NAMES = [
@@ -79,8 +101,9 @@ export default function ResourceCard({ resource }: ResourceCardProps) {
         <div className="flex gap-1.5">
           <span
             title={typeTooltips[resource.type] || `Resource type: ${resource.type}`}
-            className={`cursor-help rounded-full px-2.5 py-0.5 text-xs font-medium ${typeColors[resource.type] || "bg-gray-100 text-gray-800"}`}
+            className={`inline-flex cursor-help items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-medium ${typeColors[resource.type] || "bg-gray-100 text-gray-800"}`}
           >
+            {typeIcons[resource.type] && (() => { const Icon = typeIcons[resource.type]; return <Icon size={12} strokeWidth={2.5} />; })()}
             {resource.type}
           </span>
         </div>
