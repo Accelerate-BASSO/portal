@@ -1,0 +1,25 @@
+# Known network contributors with ORCIDs.
+# The pub-to-yaml.py script uses this file to resolve ORCIDs for authors.
+# Format: list of entries with name and orcid.
+# Names should match how they appear in publication metadata (PubMed, CrossRef, etc.)
+# Add alternate spellings as separate entries with the same ORCID.
+
+contributors:
+  - name: Susan Michie
+    orcid: "0000-0003-0063-6378"
+  - name: Robert West
+    orcid: "0000-0001-6398-0921"
+  - name: Janna Hastings
+    orcid: "0000-0002-3469-4923"
+  - name: William D Duncan
+    orcid: "0000-0001-9625-1899"
+  - name: William Duncan
+    orcid: "0000-0001-9625-1899"
+  - name: Alexander D Diehl
+    orcid: "0000-0001-9990-8331"
+  - name: John Beverley
+    orcid: "0000-0002-6596-4479"
+  - name: Yongqun He
+    orcid: "0000-0001-9189-9661"
+  - name: Cui Tao
+    orcid: "0000-0003-0828-4642"

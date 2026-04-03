@@ -195,6 +195,19 @@ Options:
 - `--description` — override the generated description
 - `--output` — write to a file instead of stdout
 
+### Contributor ORCIDs
+
+The file `data/contributors.yaml` maps known network member names to their ORCIDs. When generating publication YAML, the script automatically resolves ORCIDs from this file — even when the publication source (e.g. PubMed) doesn't provide them.
+
+To add a contributor, add an entry to `data/contributors.yaml`:
+
+```yaml
+  - name: Jane Smith
+    orcid: "0000-0001-2345-6789"
+```
+
+Use alternate spellings as separate entries with the same ORCID if needed.
+
 ---
 
 ## Running the Portal Locally

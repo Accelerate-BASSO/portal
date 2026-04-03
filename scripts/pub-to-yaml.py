@@ -32,6 +32,7 @@ Requirements:
 """
 
 import argparse
+import os
 import json
 import re
 import sys
@@ -87,6 +88,47 @@ def make_id(key: str, title: str) -> str:
     base = key if key else title
     slug = re.sub(r"[^a-z0-9]+", "-", base.lower()).strip("-")[:60]
     return f"pub-{slug}"
+
+
+# --- Contributor ORCID resolution ---
+
+def load_known_contributors() -> dict[str, str]:
+    """Load the known contributors file and return a name->orcid lookup dict.
+    Names are normalized to lowercase for matching."""
+    contributors_file = os.path.join(
+        os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+        "data", "contributors.yaml"
+    )
+    if not os.path.exists(contributors_file):
+        return {}
+
+    with open(contributors_file) as f:
+        data = yaml.safe_load(f)
+
+    lookup = {}
+    for entry in data.get("contributors", []):
+        name = entry.get("name", "").strip()
+        orcid = entry.get("orcid", "").strip()
+        if name and orcid:
+            lookup[name.lower()] = orcid
+    return lookup
+
+
+def resolve_contributor_orcids(contributors: list[dict], known: dict[str, str]) -> list[dict]:
+    """Fill in ORCIDs for contributors from the known contributors lookup."""
+    resolved = []
+    for c in contributors:
+        name = c.get("name", "")
+        orcid = c.get("orcid")
+        if not orcid:
+            orcid = known.get(name.lower())
+            if orcid:
+                print(f"  Resolved ORCID for {name}: {orcid}", file=sys.stderr)
+        entry = {"name": name}
+        if orcid:
+            entry["orcid"] = orcid
+        resolved.append(entry)
+    return resolved
 
 
 # --- BibTeX source ---
@@ -741,7 +783,9 @@ def build_resource(data: dict, args) -> dict:
     resource["usedByProjects"] = []
     resource["links"] = links if links else []
     resource["keywords"] = data.get("keywords", [])
-    resource["contributors"] = data.get("contributors", [])
+    known = load_known_contributors()
+    contributors = resolve_contributor_orcids(data.get("contributors", []), known)
+    resource["contributors"] = contributors
     resource["tags"] = tags
     resource["status"] = "Active"
     resource["lastUpdated"] = date.today().isoformat()
