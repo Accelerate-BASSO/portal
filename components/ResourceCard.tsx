@@ -137,9 +137,13 @@ export default function ResourceCard({ resource }: ResourceCardProps) {
                   target="_blank"
                   rel="noopener noreferrer"
                   title={`ORCID: ${c.orcid}`}
-                  className="underline decoration-1 underline-offset-2 hover:text-gray-800"
+                  className="inline-flex items-center gap-0.5 underline decoration-1 underline-offset-2 hover:text-gray-800"
                 >
                   {c.name}
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" className="inline-block h-3 w-3 flex-shrink-0">
+                    <circle cx="128" cy="128" r="128" fill="#A6CE39"/>
+                    <path fill="#fff" d="M86.3 186.2H70.9V79.1h15.4v107.1zM78.6 50.4c-5.5 0-10 4.5-10 10s4.5 10 10 10 10-4.5 10-10-4.5-10-10-10zM146.1 79.1h-33.6v107.1h33.6c37.2 0 54.2-25.7 54.2-53.6 0-28-17-53.5-54.2-53.5zm-18.2 91.7V94.6h18.2c28.5 0 38.2 21.2 38.2 38.1 0 16.9-9.7 38.1-38.2 38.1h-18.2z"/>
+                  </svg>
                 </a>
               ) : (
                 <span>{c.name}</span>
