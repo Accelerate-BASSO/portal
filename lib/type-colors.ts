@@ -1,7 +1,7 @@
 // Colors chosen for maximum visual distinction across all 8 types
 export const typeColors: Record<string, string> = {
-  Ontology: "bg-violet-700 text-white",
-  Publication: "bg-orange-700 text-white",
+  Ontology: "bg-[#7040C0] text-white",
+  Publication: "bg-[#D06020] text-white",
   Tool: "bg-[#E0A820] text-white",
   Community: "bg-pink-600 text-white",
   Repository: "bg-emerald-600 text-white",
@@ -11,8 +11,8 @@ export const typeColors: Record<string, string> = {
 };
 
 export const typeIconColors: Record<string, string> = {
-  Ontology: "text-violet-700",
-  Publication: "text-orange-700",
+  Ontology: "text-[#7040C0]",
+  Publication: "text-[#D06020]",
   Tool: "text-[#E0A820]",
   Community: "text-pink-600",
   Repository: "text-emerald-600",
