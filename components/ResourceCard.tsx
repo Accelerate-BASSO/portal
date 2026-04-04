@@ -61,8 +61,8 @@ const projectUrls: Record<string, string> = {
 };
 
 const typeLinkColors: Record<string, string> = {
-  Ontology: "text-violet-600 hover:text-violet-800",
-  Publication: "text-orange-600 hover:text-orange-800",
+  Ontology: "text-violet-700 hover:text-violet-900",
+  Publication: "text-orange-700 hover:text-orange-900",
   Tool: "text-[#D4A820] hover:text-[#B08A10]",
   Community: "text-pink-600 hover:text-pink-800",
   Repository: "text-emerald-600 hover:text-emerald-800",
