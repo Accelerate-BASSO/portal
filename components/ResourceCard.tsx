@@ -67,7 +67,7 @@ const typeLinkColors: Record<string, string> = {
   Community: "text-[#D02870] hover:text-[#B02060]",
   Repository: "text-emerald-600 hover:text-emerald-800",
   Dataset: "text-lime-600 hover:text-lime-800",
-  Website: "text-[#50A0F0] hover:text-[#3080D0]",
+  Website: "text-[#4898E8] hover:text-[#3080D0]",
   Registry: "text-cyan-700 hover:text-cyan-900",
 };
 

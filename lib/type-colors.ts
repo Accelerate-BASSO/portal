@@ -6,7 +6,7 @@ export const typeColors: Record<string, string> = {
   Community: "bg-[#D02870] text-white",
   Repository: "bg-emerald-600 text-white",
   Dataset: "bg-lime-600 text-white",
-  Website: "bg-[#50A0F0] text-white",
+  Website: "bg-[#4898E8] text-white",
   Registry: "bg-cyan-700 text-white",
 };
 
@@ -17,6 +17,6 @@ export const typeIconColors: Record<string, string> = {
   Community: "text-[#D02870]",
   Repository: "text-emerald-600",
   Dataset: "text-lime-600",
-  Website: "text-[#50A0F0]",
+  Website: "text-[#4898E8]",
   Registry: "text-cyan-700",
 };
