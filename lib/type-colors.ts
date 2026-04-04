@@ -7,7 +7,7 @@ export const typeColors: Record<string, string> = {
   Repository: "bg-emerald-600 text-white",
   Dataset: "bg-lime-600 text-white",
   Website: "bg-[#50A0F0] text-white",
-  Registry: "bg-slate-500 text-white",
+  Registry: "bg-cyan-700 text-white",
 };
 
 export const typeIconColors: Record<string, string> = {
@@ -18,5 +18,5 @@ export const typeIconColors: Record<string, string> = {
   Repository: "text-emerald-600",
   Dataset: "text-lime-600",
   Website: "text-[#50A0F0]",
-  Registry: "text-slate-500",
+  Registry: "text-cyan-700",
 };

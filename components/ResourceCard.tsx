@@ -68,7 +68,7 @@ const typeLinkColors: Record<string, string> = {
   Repository: "text-emerald-600 hover:text-emerald-800",
   Dataset: "text-lime-600 hover:text-lime-800",
   Website: "text-[#50A0F0] hover:text-[#3080D0]",
-  Registry: "text-slate-500 hover:text-slate-700",
+  Registry: "text-cyan-700 hover:text-cyan-900",
 };
 
 const typeTooltips: Record<string, string> = {
