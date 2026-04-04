@@ -64,7 +64,7 @@ const typeLinkColors: Record<string, string> = {
   Ontology: "text-[#7040C0] hover:text-[#5A30A0]",
   Publication: "text-[#D06020] hover:text-[#B05010]",
   Tool: "text-[#D4A820] hover:text-[#B08A10]",
-  Community: "text-pink-600 hover:text-pink-800",
+  Community: "text-[#C03070] hover:text-[#A02060]",
   Repository: "text-emerald-600 hover:text-emerald-800",
   Dataset: "text-lime-600 hover:text-lime-800",
   Website: "text-[#50A0F0] hover:text-[#3080D0]",
