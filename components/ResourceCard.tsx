@@ -218,7 +218,7 @@ export default function ResourceCard({ resource }: ResourceCardProps) {
         <div className="text-xs">
           <span
             title="Member of the Behavioural and Social Sciences Ontology Foundry — a community of interoperable ontologies"
-            className="cursor-help rounded bg-stone-400 px-2 py-0.5 font-medium text-white"
+            className="cursor-help rounded border border-stone-300 px-2 py-0.5 font-medium text-stone-400"
           >
             BSSO Foundry
           </span>
