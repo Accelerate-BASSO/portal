@@ -6,7 +6,7 @@ producedByProjects: []
 usedByProjects: []
 links:
   - label: GitHub
-    url: https://github.com/galenos-project/gmho
+    url: https://github.com/galenos-project/mental-health-ontology
     platform: GitHub
 bssoFoundry: true
 tags:
