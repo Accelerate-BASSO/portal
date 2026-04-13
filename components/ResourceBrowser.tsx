@@ -1,15 +1,64 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useSyncExternalStore, useCallback } from "react";
 import type { Resource } from "@/lib/resources";
-import { getAllProjects } from "@/lib/resource-utils";
-import ResourceCard from "./ResourceCard";
 import {
-  Search, X,
+  getAllProjects,
+  compareResources,
+  sortLabels,
+  type SortKey,
+} from "@/lib/resource-utils";
+import ResourceCard from "./ResourceCard";
+import ResourceListRow from "./ResourceListRow";
+import {
+  Search, X, LayoutGrid, List, ArrowUpDown, ChevronDown,
   Network, FileText, Globe, FolderGit2, Library, Users, Wrench, Database,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { typeColors, typeIconColors } from "@/lib/type-colors";
+
+type ViewMode = "card" | "list";
+
+const VIEW_STORAGE_KEY = "portal.viewMode";
+const SORT_STORAGE_KEY = "portal.sortKey";
+const SORT_KEYS: SortKey[] = ["name-asc", "name-desc", "type", "date-desc", "date-asc"];
+
+// Hydration-safe localStorage read using useSyncExternalStore.
+// getServerSnapshot returns the default during SSG/first render so client
+// hydration matches the pre-rendered HTML; the stored value takes effect on
+// the next render tick.
+function useLocalStoragePref<T extends string>(
+  key: string,
+  isValid: (v: string) => v is T,
+  defaultValue: T,
+): [T, (v: T) => void] {
+  const subscribe = useCallback((cb: () => void) => {
+    window.addEventListener("storage", cb);
+    return () => window.removeEventListener("storage", cb);
+  }, []);
+  const getSnapshot = useCallback(() => {
+    try {
+      const v = localStorage.getItem(key);
+      return v && isValid(v) ? v : defaultValue;
+    } catch {
+      return defaultValue;
+    }
+  }, [key, isValid, defaultValue]);
+  const getServerSnapshot = useCallback(() => defaultValue, [defaultValue]);
+  const value = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const setValue = useCallback((v: T) => {
+    try {
+      localStorage.setItem(key, v);
+      window.dispatchEvent(new Event("storage"));
+    } catch {
+      // ignore — no persistence available
+    }
+  }, [key]);
+  return [value, setValue];
+}
+
+const isViewMode = (v: string): v is ViewMode => v === "card" || v === "list";
+const isSortKey = (v: string): v is SortKey => (SORT_KEYS as string[]).includes(v);
 
 const typeIcons: Record<string, LucideIcon> = {
   Ontology: Network,
@@ -37,6 +86,8 @@ export default function ResourceBrowser({
   const [selectedTypes, setSelectedTypes] = useState<Set<string>>(new Set());
   const [selectedProjects, setSelectedProjects] = useState<Set<string>>(new Set());
   const [foundryOnly, setFoundryOnly] = useState(false);
+  const [view, updateView] = useLocalStoragePref<ViewMode>(VIEW_STORAGE_KEY, isViewMode, "card");
+  const [sortKey, updateSort] = useLocalStoragePref<SortKey>(SORT_STORAGE_KEY, isSortKey, "name-asc");
 
   const toggleType = (type: string) => {
     setSelectedTypes((prev) => {
@@ -81,10 +132,12 @@ export default function ResourceBrowser({
   const matchesFoundry = (r: Resource) => !foundryOnly || r.bssoFoundry === true;
 
   const filtered = useMemo(() => {
-    return resources.filter(
-      (r) => matchesSearch(r) && matchesType(r) && matchesProject(r) && matchesFoundry(r)
-    );
-  }, [resources, search, selectedTypes, selectedProjects, foundryOnly]);
+    return resources
+      .filter(
+        (r) => matchesSearch(r) && matchesType(r) && matchesProject(r) && matchesFoundry(r)
+      )
+      .sort((a, b) => compareResources(a, b, sortKey));
+  }, [resources, search, selectedTypes, selectedProjects, foundryOnly, sortKey]);
 
   // Counts for type chips: apply all filters except type
   const typeCounts = useMemo(() => {
@@ -211,19 +264,87 @@ export default function ResourceBrowser({
         </div>
       </div>
 
-      {/* Results count */}
-      <p className="mb-4 text-sm text-gray-500">
-        Showing {filtered.length} of {resources.length} resources
-        {search && <span> matching &ldquo;{search}&rdquo;</span>}
-      </p>
-
-      {/* Resource grid */}
-      {filtered.length > 0 ? (
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {filtered.map((resource) => (
-            <ResourceCard key={resource.id} resource={resource} />
-          ))}
+      {/* Results count + view/sort controls */}
+      <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+        <p className="text-sm text-gray-500">
+          Showing {filtered.length} of {resources.length} resources
+          {search && <span> matching &ldquo;{search}&rdquo;</span>}
+        </p>
+        <div className="flex items-center gap-2">
+          <div className="relative flex items-center">
+            <ArrowUpDown
+              size={12}
+              strokeWidth={2}
+              className="pointer-events-none absolute left-2 text-gray-400"
+              aria-hidden
+            />
+            <select
+              value={sortKey}
+              onChange={(e) => updateSort(e.target.value as SortKey)}
+              aria-label="Sort resources"
+              className="cursor-pointer appearance-none rounded-md border border-gray-200 bg-white py-1 pl-7 pr-7 text-xs text-gray-600 transition-colors hover:border-gray-400 hover:text-gray-800 focus:border-black focus:outline-none"
+            >
+              {SORT_KEYS.map((k) => (
+                <option key={k} value={k}>
+                  {sortLabels[k]}
+                </option>
+              ))}
+            </select>
+            <ChevronDown
+              size={12}
+              strokeWidth={2}
+              className="pointer-events-none absolute right-2 text-gray-400"
+              aria-hidden
+            />
+          </div>
+          <div
+            role="group"
+            aria-label="View mode"
+            className="inline-flex overflow-hidden rounded-md border border-gray-200 bg-white"
+          >
+            <button
+              type="button"
+              onClick={() => updateView("card")}
+              title="Card view"
+              aria-pressed={view === "card"}
+              className={`flex items-center gap-1 px-2 py-1 text-xs transition-colors ${
+                view === "card" ? "bg-black text-white" : "text-gray-500 hover:bg-gray-50"
+              }`}
+            >
+              <LayoutGrid size={14} strokeWidth={2} />
+              <span className="hidden sm:inline">Cards</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => updateView("list")}
+              title="List view"
+              aria-pressed={view === "list"}
+              className={`flex items-center gap-1 border-l border-gray-200 px-2 py-1 text-xs transition-colors ${
+                view === "list" ? "bg-black text-white" : "text-gray-500 hover:bg-gray-50"
+              }`}
+            >
+              <List size={14} strokeWidth={2} />
+              <span className="hidden sm:inline">List</span>
+            </button>
+          </div>
         </div>
+      </div>
+
+      {/* Resources */}
+      {filtered.length > 0 ? (
+        view === "card" ? (
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {filtered.map((resource) => (
+              <ResourceCard key={resource.id} resource={resource} />
+            ))}
+          </div>
+        ) : (
+          <div className="overflow-hidden rounded-lg border border-gray-200 bg-white">
+            {filtered.map((resource) => (
+              <ResourceListRow key={resource.id} resource={resource} />
+            ))}
+          </div>
+        )
       ) : (
         <div className="rounded-lg border-2 border-dashed border-gray-200 py-16 text-center">
           <p className="text-lg text-gray-400">No resources match your criteria</p>
