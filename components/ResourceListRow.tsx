@@ -73,40 +73,44 @@ export default function ResourceListRow({ resource }: ResourceListRowProps) {
   const linkColor = typeLinkColors[resource.type] || "text-gray-500 hover:text-gray-800";
 
   return (
-    <div className="flex flex-col gap-1 border-b border-gray-100 px-3 py-3 transition-colors last:border-b-0 hover:bg-gray-50">
-      {/* Line 1: type icon + name + projects */}
-      <div className="flex items-start gap-2">
-        {Icon && (
-          <Icon
-            size={16}
-            strokeWidth={2}
-            className={`mt-0.5 flex-shrink-0 ${typeIconColors[resource.type] || "text-gray-500"}`}
-          />
-        )}
-        <h3 className="flex-1 text-sm font-semibold text-black">{resource.name}</h3>
-        <div className="flex flex-shrink-0 items-center gap-1">
-          {getAllProjects(resource).map((project) => (
-            <a
-              key={project}
-              href={projectUrls[project] || "#"}
-              target="_blank"
-              rel="noopener noreferrer"
-              title={`${project} (${projectFullNames[project] || project})`}
-              className="rounded bg-gray-100 px-1.5 py-0.5 text-[10px] font-medium text-gray-500 no-underline hover:bg-gray-200"
-            >
-              {project}
-            </a>
-          ))}
-        </div>
-      </div>
+    <div className="flex items-start gap-2 border-b border-gray-100 px-3 py-2 transition-colors last:border-b-0 hover:bg-gray-50">
+      {/* Left gutter: icon + type pill */}
+      {Icon && (
+        <Icon
+          size={16}
+          strokeWidth={2}
+          className={`mt-0.5 flex-shrink-0 ${typeIconColors[resource.type] || "text-gray-500"}`}
+        />
+      )}
+      <span
+        className={`w-28 flex-shrink-0 rounded-full px-2.5 py-0.5 text-center text-xs font-medium ${typeColors[resource.type] || "bg-gray-100 text-gray-800"}`}
+      >
+        {resource.type}
+      </span>
 
-      {/* Line 2: type pill + date + links + edit */}
-      <div className="flex flex-wrap items-center gap-x-3 gap-y-1 pl-6 text-xs">
-        <span
-          className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${typeColors[resource.type] || "bg-gray-100 text-gray-800"}`}
-        >
-          {resource.type}
-        </span>
+      {/* Right column: title row + metadata row, both starting at same x */}
+      <div className="flex min-w-0 flex-1 flex-col gap-0.5">
+        {/* Line 1: title + projects */}
+        <div className="flex items-start gap-2">
+          <h3 className="min-w-0 flex-1 text-sm font-semibold text-black">{resource.name}</h3>
+          <div className="flex flex-shrink-0 items-center gap-1">
+            {getAllProjects(resource).map((project) => (
+              <a
+                key={project}
+                href={projectUrls[project] || "#"}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={`${project} (${projectFullNames[project] || project})`}
+                className="rounded bg-gray-100 px-1.5 py-0.5 text-[10px] font-medium text-gray-500 no-underline hover:bg-gray-200"
+              >
+                {project}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {/* Line 2: BSSO Foundry + date + venue + links + edit */}
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs">
         {resource.bssoFoundry && (
           <span
             title="Member of the Behavioural and Social Sciences Ontology Foundry"
@@ -116,12 +120,12 @@ export default function ResourceListRow({ resource }: ResourceListRowProps) {
           </span>
         )}
         {date && (
-          <span title={`Date: ${date}`} className="text-gray-400">
+          <span title={`Date: ${date}`} className="text-gray-600">
             {formatDateShort(date)}
           </span>
         )}
         {resource.venue && (
-          <span title="Publication venue" className="truncate text-gray-400">
+          <span title="Publication venue" className="truncate text-gray-600">
             {resource.venue}
           </span>
         )}
@@ -152,6 +156,7 @@ export default function ResourceListRow({ resource }: ResourceListRowProps) {
             Edit
           </a>
         )}
+        </div>
       </div>
     </div>
   );
