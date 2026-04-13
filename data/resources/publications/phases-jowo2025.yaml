@@ -1,0 +1,47 @@
+id: pub-phases-jowo2025
+name: "Towards Healthy Aging through Semantic Enrichment"
+type: Publication
+publishedYear: 2025
+venue: Proceedings of the Joint Ontology Workshops (JOWO) 2025 - PHASES Workshop (CEUR Workshop Proceedings, Vol 4176)
+description: >-
+  Describes the PHASES (Promoting Healthy Aging through Semantic Enrichment
+  of Solitude Research) project's approach to using ontologies and knowledge
+  graphs to enrich social science research on solitude, gerotranscendence,
+  and narrative identity for healthy aging research. Presented at the PHASES
+  Workshop at JOWO 2025, co-located with FOIS 2025.
+keywords:
+  - PHASES
+  - healthy aging
+  - solitude
+  - gerotranscendence
+  - semantic enrichment
+  - JOWO
+  - FOIS
+contributors:
+  - name: John Beverley
+    orcid: "0000-0002-6596-4479"
+  - name: Julie C Bowker
+  - name: Hollen N Reischer
+  - name: Rachel A Mavrovich
+  - name: Regina Hurley
+  - name: Sean Kindya
+  - name: Sam Smith
+  - name: Jie Zheng
+  - name: Yongqun He
+    orcid: "0000-0001-9189-9661"
+  - name: Damayanthi Beera
+  - name: William D Duncan
+    orcid: "0000-0001-9625-1899"
+producedByProjects:
+  - PHASES
+usedByProjects: []
+links:
+  - label: CEUR-WS
+    url: https://ceur-ws.org/Vol-4176/phases-2.pdf
+    platform: Website
+tags:
+  - paper
+  - jowo-2025
+  - phases-workshop
+status: Active
+lastUpdated: "2026-04-13"
