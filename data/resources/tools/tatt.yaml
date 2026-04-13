@@ -1,0 +1,25 @@
+id: tatt
+name: Theory and Techniques Tool (TaTT)
+type: Tool
+description: >-
+  An interactive online tool that identifies theory-based causal links between
+  Behaviour Change Techniques (BCTs) and Mechanisms of Action (MoAs). Built on
+  expert consensus and synthesised evidence from the Human Behaviour-Change
+  Project, TaTT helps researchers and practitioners design behaviour change
+  interventions by surfacing which techniques are theorised to influence which
+  mechanisms.
+producedByProjects:
+  - APRICOT
+usedByProjects: []
+links:
+  - label: Website
+    url: https://theoryandtechniquetool.humanbehaviourchange.org/tool
+    platform: Website
+tags:
+  - tool
+  - behaviour-change
+  - bct
+  - mechanisms-of-action
+  - hbcp
+status: Active
+lastUpdated: "2026-04-13"

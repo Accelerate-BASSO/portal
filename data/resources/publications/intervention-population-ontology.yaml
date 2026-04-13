@@ -1,0 +1,62 @@
+id: pub-apricot-intervention-population-ontology
+name: Development of an Intervention Population Ontology for specifying the characteristics of intervention participants
+type: Publication
+publishedYear: 2025
+publishedMonth: 3
+doi: "https://doi.org/10.12688/wellcomeopenres.22788.1"
+venue: Wellcome Open Research
+description: >-
+  Background The uptake, effectiveness and generalisability of interventions
+  are influenced by the features of the populations targeted. However,
+  populations exposed to interventions are not consistently specified in
+  published reports. Purpose To create an Intervention Population Ontology
+  providing a clear, usable and reliable classification system to specify
+  characteristics of populations exposed to interventions. Methods The
+  Intervention Population Ontology was developed in seven main stages 1)
+  Defining the ontology’s scope, (2) identifying key entities by reviewing
+  existing classification systems (top-down) and 100 intervention reports
+  (bottom-up), 3) Refining the preliminary ontology by annotating ~150
+  intervention reports, 4) Stakeholder review by 29 behavioural science and
+  public health experts, 5) Assessing inter-rater reliability of using the
+  ontology by two coders familiar with the ontology and two coders unfamiliar
+  with it, 6) Specifying ontological relationships between entities in the
+  ontology and 7) making the Intervention Population Ontology machine-readable
+  using Web Ontology Language (OWL) and publishing online. Results The
+  Intervention Population Ontology features 218 entities representing
+  attributes of human individuals across 12 key groupings: personal
+  attributes, geographic location, person, quality, mental capability, role,
+  expertise, objects possessed, behaviour, personal vulnerability and personal
+  history. It has a further 666 classes relating to how individual-level
+  attributes are aggregated to describe groups of people. Inter-rater
+  reliability was α=0.79 for coders familiar with the ontology and 0.85 for
+  coders unfamiliar with the ontology. Conclusions The Intervention Population
+  Ontology can be applied to specify precisely information from diverse
+  sources, annotate population characteristics in existing intervention
+  evaluation reports and guide future reporting.
+keywords: []
+contributors:
+  - name: Alison J Wright
+    orcid: "0000-0002-0373-5219"
+  - name: Ailbhe N Finnerty Mutlu
+    orcid: "0000-0003-2355-4332"
+  - name: Emma Norris
+    orcid: "0000-0002-9957-4025"
+  - name: Marta M. Marques
+  - name: Janna Hastings
+    orcid: "0000-0002-3469-4923"
+  - name: Robert West
+    orcid: "0000-0001-6398-0921"
+  - name: Susan Michie
+    orcid: "0000-0003-0063-6378"
+producedByProjects:
+  - APRICOT
+usedByProjects: []
+links:
+  - label: DOI
+    url: https://doi.org/10.12688/wellcomeopenres.22788.1
+    platform: Website
+tags:
+  - paper
+  - wellcome-open-research
+status: Active
+lastUpdated: 2026-04-13

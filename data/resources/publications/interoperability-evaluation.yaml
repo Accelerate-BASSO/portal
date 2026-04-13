@@ -1,0 +1,62 @@
+id: pub-apricot-interoperability-evaluation
+name: A Method for Evaluating the Interoperability of Ontology Classes in the Behavioural and Social Sciences
+type: Publication
+publishedYear: 2025
+publishedMonth: 9
+doi: "https://doi.org/10.12688/wellcomeopenres.24206.1"
+venue: Wellcome Open Research
+description: >-
+  Background Ontologies are frameworks for representing information that
+  promote clarity, consistency and coherence, reduce the fragmentation of
+  knowledge, and allow datasets and knowledge to be linked across studies,
+  disciplines and domains. To enable this, it is important to identify how
+  concepts of interest (‘classes’) are represented in different ontologies and
+  evaluate the extent to which such classes align (i.e., are ‘interoperable’).
+  This study aims to provide a method for doing this. Methods An automated
+  tool using Meta’s Llama 3 language model was developed and used to compare
+  artificial intelligence (AI) and human approaches to matching ontology
+  classes. The automated tool was then integrated into a hybrid method for
+  identifying classes that appear to refer to the same thing across pairs of
+  ontologies. The method was evaluated by three behavioural scientists who
+  used it to identify similar classes in two ontologies and provided feedback
+  on their experience. Results The automated tool identified a larger number
+  of potential matches than human-led review, so was used to generate a
+  shortlist. The evaluation of the method produced mixed results. Users agreed
+  which classes were identical or essentially the same across contexts, but
+  none of the users identified similar classes that could be imported into an
+  ontology without causing a contradiction or conflict. Users typically found
+  using the method difficult, but many of the challenges related to using
+  ontologies, rather than to the method specifically. Conclusions A
+  combination of automated and human processes appears to be a feasible way to
+  assess the interoperability of ontology classes. While further refinement is
+  needed along with tools and resources that enable the use of ontologies by a
+  broad range of researchers, the study provides a workable method for
+  matching ontology classes in the behavioural and social sciences and offers
+  a practical guide to support its implementation.
+keywords: []
+contributors:
+  - name: Thomas L. Webb
+    orcid: "0000-0001-9320-0068"
+  - name: Harriet M. Baird
+    orcid: "0000-0002-1794-3131"
+  - name: Fatima S. Maikore
+  - name: Robert West
+    orcid: "0000-0001-6398-0921"
+  - name: Janna Hastings
+    orcid: "0000-0002-3469-4923"
+  - name: Suvodeep Mazumdar
+  - name: Vitaveska Lanfranchi
+  - name: Susan Michie
+    orcid: "0000-0003-0063-6378"
+producedByProjects:
+  - APRICOT
+usedByProjects: []
+links:
+  - label: DOI
+    url: https://doi.org/10.12688/wellcomeopenres.24206.1
+    platform: Website
+tags:
+  - paper
+  - wellcome-open-research
+status: Active
+lastUpdated: 2026-04-13

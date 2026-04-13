@@ -1,0 +1,74 @@
+id: pub-apricot-engagement-ontology
+name: Development of an Ontology of Engagement with Behaviour Change Interventions
+type: Publication
+publishedYear: 2025
+publishedMonth: 8
+doi: "https://doi.org/10.12688/wellcomeopenres.24239.1"
+venue: Wellcome Open Research
+description: >-
+  Background Participants’ engagement with behaviour change interventions is
+  crucial for their effectiveness. However, engagement is conceptualised and
+  measured inconsistently across research domains, limiting the ability to
+  compare and synthesise evidence about engagement and identify strategies to
+  enhance engagement. This study aimed to develop an ontology—a classification
+  framework—to precisely specify and define aspects of engagement with
+  behaviour change interventions. Methods The Intervention Engagement Ontology
+  was developed in seven steps: (1) specifying the ontology’s scope, (2)
+  reviewing intervention reports to identify key classes (categories) of
+  engagement, (3) refining the ontology through literature annotations, (4) a
+  stakeholder review on the ontology’s clarity and comprehensiveness, (5)
+  testing inter-rater reliability in applying the ontology for annotations,
+  (6) specifying relationships between classes, and (7) making the ontology
+  machine-readable. Results Participant engagement with interventions was
+  defined as “ An individual human activity of an intervention participant
+  within one or more parts of the intervention .” Through Steps 1–4, an
+  initial ontology with 48 classes was developed, including 37
+  engagement-specific and 11 structurally supporting classes (e.g., emotional
+  process). Inter-rater reliability for applying these engagement classes was
+  ‘acceptable’ for researchers familiar (α = 0.71) and unfamiliar (α = 0.78)
+  with the ontology. After further refinements (Steps 6-7), the published
+  ontology included 54 classes - 44 engagement-specific and 10 supporting
+  classes. The engagement classes were structured around three key engagement
+  types: (1) behavioural, (2) emotional, and (3) cognitive. Behavioural
+  engagement aspects, such as frequency and duration, were also represented in
+  the ontology. Discussion The Intervention Engagement Ontology provides a
+  structured framework for specifying and defining participant engagement with
+  behaviour change interventions, facilitating clearer communication,
+  comparison and evidence synthesis across research studies and domains.
+  Future work will refine the ontology based on further feedback and empirical
+  validation, enhancing its applicability.
+keywords: []
+contributors:
+  - name: Ailbhe N. Finnerty Mutlu
+    orcid: "0000-0003-2355-4332"
+  - name: Paulina M. Schenk
+    orcid: "0000-0002-5239-1977"
+  - name: Emily J. Eymery
+  - name: Candice Moore
+  - name: Kirsty Atha
+  - name: Emma Norris
+    orcid: "0000-0002-9957-4025"
+  - name: Marta M. Marques
+    orcid: "0000-0002-4797-9557"
+  - name: Micaela Santilli
+    orcid: "0009-0000-2740-8231"
+  - name: Robert West
+    orcid: "0000-0001-6398-0921"
+  - name: Janna Hastings
+    orcid: "0000-0002-3469-4923"
+  - name: Lisa Zhang
+    orcid: "0000-0002-4255-9609"
+  - name: Susan Michie
+    orcid: "0000-0003-0063-6378"
+producedByProjects:
+  - APRICOT
+usedByProjects: []
+links:
+  - label: DOI
+    url: https://doi.org/10.12688/wellcomeopenres.24239.1
+    platform: Website
+tags:
+  - paper
+  - wellcome-open-research
+status: Active
+lastUpdated: 2026-04-13

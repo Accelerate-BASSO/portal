@@ -1,0 +1,54 @@
+id: pub-apricot-ontospreaded-paper
+name: "OntoSpreadEd: Developing Ontologies with a Dedicated Online Template Spreadsheet Editor"
+type: Publication
+publishedYear: 2025
+publishedMonth: 7
+doi: "https://doi.org/10.12688/wellcomeopenres.24408.1"
+venue: Wellcome Open Research
+description: >-
+  Background Ontologies are machine-readable representations of knowledge that
+  can accelerate research across various disciplines. To build ontologies,
+  domain scientists must formally capture their knowledge of their domains in
+  structured forms. However, existing ontology editing tools are often built
+  for ontologists or other technical experts who are familiar with the
+  underlying Web Ontology Language (OWL) and are comfortable working with
+  technically dense interfaces, or even without a visual interface. The
+  resulting technically oriented tools create barriers to adoption and use by
+  nontechnical domain experts. Methods To address this challenge, we present
+  the Ontology Spreadsheet Editor (OntoSpreadEd), a web-based spreadsheet-like
+  editor for ontologies that aims to make ontology development more efficient
+  and accessible to a wide range of users. OntoSpreadEd is a web application
+  that utilizes GitHub as a central version control platform, allowing users
+  to create, edit and review ontologies using a familiar spreadsheet
+  interface. The editor features a range of useful features, including
+  autocomplete, validation and searching, to facilitate the development
+  process. Conclusion OntoSpreadEd offers an accessible approach to ontology
+  development that can help bridge the gap between researchers and ontology
+  editors, accelerating the adoption of ontologies across diverse research
+  fields.
+keywords: []
+contributors:
+  - name: Björn Gehrke
+    orcid: "0009-0007-7488-0257"
+  - name: Maya Braun
+    orcid: "0000-0002-1240-4550"
+  - name: Paulina Schenk
+    orcid: "0000-0002-5239-1977"
+  - name: Robert West
+    orcid: "0000-0001-6398-0921"
+  - name: Susan Michie
+    orcid: "0000-0003-0063-6378"
+  - name: Janna Hastings
+    orcid: "0000-0002-3469-4923"
+producedByProjects:
+  - APRICOT
+usedByProjects: []
+links:
+  - label: DOI
+    url: https://doi.org/10.12688/wellcomeopenres.24408.1
+    platform: Website
+tags:
+  - paper
+  - wellcome-open-research
+status: Active
+lastUpdated: 2026-04-13

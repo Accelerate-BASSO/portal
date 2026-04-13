@@ -1,0 +1,23 @@
+id: theory-database
+name: Theory Database
+type: Tool
+description: >-
+  A searchable database of behaviour change theories developed under the
+  Human Behaviour-Change Project. Catalogues theories with their constructs,
+  propositions, and references, supporting researchers and practitioners in
+  selecting and applying theories relevant to behaviour change interventions.
+producedByProjects:
+  - APRICOT
+usedByProjects: []
+links:
+  - label: Website
+    url: https://theory-database.hbcptools.org/
+    platform: Website
+tags:
+  - tool
+  - behaviour-change
+  - theory
+  - database
+  - hbcp
+status: Active
+lastUpdated: "2026-04-13"

@@ -1,0 +1,64 @@
+id: pub-apricot-rodger-ontology-framework
+name: >-
+  Use of an ontology-based framework for annotating reports of randomised
+  trials of interventions aimed at reducing excessive driving speed: a
+  feasibility study
+type: Publication
+publishedYear: 2025
+publishedMonth: 8
+doi: "https://doi.org/10.12688/wellcomeopenres.24283.1"
+venue: Wellcome Open Research
+description: >-
+  Background The Behaviour Change Intervention Ontology (BCIO) can be used to
+  annotate reports of intervention evaluations for evidence synthesis. Such
+  annotation requires a framework for entering and storing data (a ‘data
+  schema’). This paper assessed the feasibility of using a prototype schema in
+  a systematic review aimed at identifying promising behaviour change
+  techniques (BCTS) to include in interventions designed to reduce speeding by
+  motorists. Methods A systematic search identified randomised trials on
+  interventions to reduce speeding through drivers’ ability and motivation. A
+  prototype schema was created to annotate these papers, capturing information
+  about Behaviour Change Techniques (BCTs), outcomes, and other study
+  features. A team of annotators worked in pairs, independently annotating
+  study reports before discussing their annotations to reach a consensus. The
+  annotators noted issues concerning schema feasibility and identified gaps in
+  the BCIO and possible associations between BCTs and outcomes. Results A
+  total of twenty-nine eligible publications, encompassing 30 studies, were
+  annotated, resulting in 88 study conditions and 2,097 individual
+  annotations. The provided schema established a useful framework for
+  categorising study features, although some inconsistencies and errors were
+  noted in the annotations produced. Sixty BCIO classes effectively
+  represented all but three of the annotated BCTS, yet none of the 70
+  behavioural outcomes were linked to ontology classes. The most frequently
+  cited BCT in interventions was the provision of information regarding the
+  adverse health effects of speeding, followed closely by BCTs offering
+  feedback about speeding. The BCTs that were annotated as effective more
+  often than ineffective involved devices and signage that delivered immediate
+  feedback about speeding. Discussion A prototype schema for annotating
+  behaviour-change intervention evaluations using BCIO could synthesise
+  evidence on interventions to reduce speeding but needs a user interface for
+  real-time validation. BCTs that raise immediate awareness of speeding are
+  promising candidates for future interventions.
+keywords: []
+contributors:
+  - name: Amy Rodger
+    orcid: "0000-0001-5277-740X"
+  - name: Shaun Helman
+  - name: Robert West
+    orcid: "0000-0001-6398-0921"
+  - name: Nia Coupe
+  - name: Jack Hitchings
+  - name: Sancha Martin
+    orcid: "0000-0001-6213-5259"
+producedByProjects:
+  - APRICOT
+usedByProjects: []
+links:
+  - label: DOI
+    url: https://doi.org/10.12688/wellcomeopenres.24283.1
+    platform: Website
+tags:
+  - paper
+  - wellcome-open-research
+status: Active
+lastUpdated: 2026-04-13

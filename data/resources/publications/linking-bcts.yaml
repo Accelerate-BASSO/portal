@@ -1,0 +1,69 @@
+id: pub-apricot-linking-bcts
+name: >-
+  Linking behaviour change techniques to mechanisms of action: Using the
+  Theory and Techniques Tool alongside the Behaviour Change Intervention
+  Ontology
+type: Publication
+publishedYear: 2025
+publishedMonth: 4
+doi: "https://doi.org/10.12688/wellcomeopenres.23879.1"
+venue: Wellcome Open Research
+description: >-
+  Background Understanding how interventions work requires clear hypotheses,
+  rigorous testing, and accurate reporting of links between behaviour change
+  techniques (BCTs)—the smallest replicable active components of
+  interventions—and mechanisms of action (MoAs), the processes through which
+  behaviour changes. The Theory and Technique Tool (TaTT) provides a grid of
+  likely BCT-MoA links to guide intervention design, based on literature
+  synthesis and expert consensus. Recently, the Behaviour Change Intervention
+  Ontology development team introduced detailed, computer-readable lower-level
+  ontologies for BCTs and MoAs, but limited guidance exists on integrating the
+  BCT-MoA links proposed by the TaTT with these ontologies. This study aimed
+  to map BCTs and MoAs from the TaTT to corresponding classes (i.e.,
+  categorisations or groupings) in the Behaviour Change Technique Ontology
+  (BCTO) and Mechanism of Action (MoA) Ontology. Methods Three researchers
+  mapped the classes from the BCTO onto 74 BCTs within the TaTT, using their
+  definitions. Similarly, two researchers mapped classes from the MoA Ontology
+  onto the 26 MoAs within the TaTT. Discrepancies were resolved through
+  discussion with senior researchers. Subsequent updates to the BCT and MoA
+  Ontologies necessitated a researcher updating the mappings, with the
+  revisions being verified by the research team. Results From the BCTO, 85
+  BCTs were mapped to the 74 BCTs present in the TaTT, while 56 MoAs from the
+  MoA Ontology were mapped to the 26 MoAs present in the TaTT. Subclasses of
+  these 85 BCTs and 56 MoAs provide additional specificity and can be found by
+  further engaging with these ontologies. Discussion Mapping the TaTT to the
+  Behaviour Change Intervention Ontology enhances clarity and precision in
+  selecting and reporting BCT-MoA links, enabling integration of data across
+  frameworks. Future work should maintain these mappings as ontologies evolve
+  and users provide more feedback and evidence on BCTs, MoAs, and their links,
+  ensuring they remain relevant and user-friendly.
+keywords: []
+contributors:
+  - name: Lisa Zhang
+    orcid: "0000-0002-4255-9609"
+  - name: Paulina M. Schenk
+    orcid: "0000-0002-5239-1977"
+  - name: Micaela Santilli
+    orcid: "0009-0000-2740-8231"
+  - name: Alison J Wright
+    orcid: "0000-0002-0373-5219"
+  - name: Marta M. Marques
+    orcid: "0000-0002-4797-9557"
+  - name: Marie Johnston
+    orcid: "0000-0003-0124-4827"
+  - name: Robert West
+    orcid: "0000-0001-6398-0921"
+  - name: Susan Michie
+    orcid: "0000-0003-0063-6378"
+producedByProjects:
+  - APRICOT
+usedByProjects: []
+links:
+  - label: DOI
+    url: https://doi.org/10.12688/wellcomeopenres.23879.1
+    platform: Website
+tags:
+  - paper
+  - wellcome-open-research
+status: Active
+lastUpdated: 2026-04-13
