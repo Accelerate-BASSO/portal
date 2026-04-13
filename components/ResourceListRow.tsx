@@ -103,7 +103,7 @@ export default function ResourceListRow({ resource }: ResourceListRowProps) {
       {/* Line 2: type pill + date + links + edit */}
       <div className="flex flex-wrap items-center gap-x-3 gap-y-1 pl-6 text-xs">
         <span
-          className={`rounded-full px-2 py-0.5 text-[10px] font-medium ${typeColors[resource.type] || "bg-gray-100 text-gray-800"}`}
+          className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${typeColors[resource.type] || "bg-gray-100 text-gray-800"}`}
         >
           {resource.type}
         </span>
