@@ -1,0 +1,46 @@
+[default]
+# Allowlist for project-specific terminology that typos would otherwise flag.
+extend-ignore-identifiers-re = [
+  # ORCIDs (e.g. 0000-0002-1825-0097)
+  "^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9X]{4}$",
+]
+
+[default.extend-words]
+# Network and program names
+basso = "basso"
+bsso = "bsso"
+bssr = "bssr"
+regenstrief = "regenstrief"
+apricot = "apricot"
+hbcp = "hbcp"
+phases = "phases"
+jowo = "jowo"
+
+# Ontology acronyms (also covered by being all-caps in the YAML)
+addicto = "addicto"
+bcio = "bcio"
+copper = "copper"
+gmho = "gmho"
+mfoem = "mfoem"
+odfa = "odfa"
+omrse = "omrse"
+rbbo = "rbbo"
+
+# Domain terms that typos sometimes flags
+ontologies = "ontologies"
+ontological = "ontological"
+informatics = "informatics"
+psychoinformatics = "psychoinformatics"
+gerotranscendence = "gerotranscendence"
+holarchic = "holarchic"
+
+[files]
+extend-exclude = [
+  "data/bioportal-baseline.json",
+  "data/bioportal-cache.json",
+  "data/github-releases-cache.json",
+  "node_modules",
+  ".next",
+  "out",
+  "public",
+]

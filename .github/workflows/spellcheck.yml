@@ -1,0 +1,25 @@
+name: Spell check
+
+on:
+  pull_request:
+    paths:
+      - "data/resources/**"
+      - "data/contributors.yaml"
+      - "_typos.toml"
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  typos:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run typos
+        uses: crate-ci/typos@v1
+        with:
+          files: data/resources data/contributors.yaml
+          config: _typos.toml
