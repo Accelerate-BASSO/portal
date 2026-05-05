@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { getAllResources, getResourceTypes, getProjects } from "@/lib/resources";
 import ResourceBrowser from "@/components/ResourceBrowser";
 
@@ -22,11 +23,13 @@ export default function ResourcesPage() {
         </p>
       </div>
 
-      <ResourceBrowser
-        resources={resources}
-        types={types}
-        projects={projects}
-      />
+      <Suspense fallback={null}>
+        <ResourceBrowser
+          resources={resources}
+          types={types}
+          projects={projects}
+        />
+      </Suspense>
     </div>
   );
 }

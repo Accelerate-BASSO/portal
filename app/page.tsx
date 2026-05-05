@@ -46,18 +46,30 @@ export default function Home() {
       {/* Stats */}
       <section className="border-y border-gray-200 bg-gray-50 px-6 py-16">
         <div className="mx-auto grid max-w-4xl grid-cols-2 gap-8 text-center md:grid-cols-4">
-          <div title="Total number of resources indexed in the portal">
+          <Link
+            href="/resources"
+            title="Browse all resources in the portal"
+            className="block no-underline text-black hover:opacity-80"
+          >
             <p className="text-4xl font-semibold">{resources.length}</p>
             <p className="mt-1 text-sm text-gray-text">Resources</p>
-          </div>
-          <div title="Formal representations of knowledge in specific domains">
+          </Link>
+          <Link
+            href="/resources?type=Ontology"
+            title="Browse all ontology resources"
+            className="block no-underline text-black hover:opacity-80"
+          >
             <p className="text-4xl font-semibold">{ontologyCount}</p>
             <p className="mt-1 text-sm text-gray-text">Ontologies</p>
-          </div>
-          <div title="Ontologies that are members of the Behavioural and Social Sciences Ontology Foundry">
+          </Link>
+          <Link
+            href="/resources?foundry=1"
+            title="Browse BSSO Foundry ontologies"
+            className="block no-underline text-black hover:opacity-80"
+          >
             <p className="text-4xl font-semibold">{foundryCount}</p>
             <p className="mt-1 text-sm text-gray-text">BSSO Foundry</p>
-          </div>
+          </Link>
           <div title="Distinct network project affiliations represented">
             <p className="text-4xl font-semibold">{projectCount}</p>
             <p className="mt-1 text-sm text-gray-text">Projects</p>

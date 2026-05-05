@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo, useSyncExternalStore, useCallback } from "react";
+import { useSearchParams } from "next/navigation";
 import type { Resource } from "@/lib/resources";
 import {
   getAllProjects,
@@ -82,10 +83,21 @@ export default function ResourceBrowser({
   types,
   projects,
 }: ResourceBrowserProps) {
+  const searchParams = useSearchParams();
+  const initialTypes = useMemo(() => {
+    const values = searchParams?.getAll("type") ?? [];
+    return new Set(values.filter((t) => types.includes(t)));
+  }, [searchParams, types]);
+  const initialProjects = useMemo(() => {
+    const values = searchParams?.getAll("project") ?? [];
+    return new Set(values.filter((p) => projects.includes(p)));
+  }, [searchParams, projects]);
+  const initialFoundry = searchParams?.get("foundry") === "1";
+
   const [search, setSearch] = useState("");
-  const [selectedTypes, setSelectedTypes] = useState<Set<string>>(new Set());
-  const [selectedProjects, setSelectedProjects] = useState<Set<string>>(new Set());
-  const [foundryOnly, setFoundryOnly] = useState(false);
+  const [selectedTypes, setSelectedTypes] = useState<Set<string>>(initialTypes);
+  const [selectedProjects, setSelectedProjects] = useState<Set<string>>(initialProjects);
+  const [foundryOnly, setFoundryOnly] = useState(initialFoundry);
   const [view, updateView] = useLocalStoragePref<ViewMode>(VIEW_STORAGE_KEY, isViewMode, "card");
   const [sortKey, updateSort] = useLocalStoragePref<SortKey>(SORT_STORAGE_KEY, isSortKey, "name-asc");
 
