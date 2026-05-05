@@ -6,7 +6,11 @@ Usage:
     python scripts/check-ontology-updates.py \
         --previous data/bioportal-baseline.json \
         --current data/bioportal-cache.json \
-        --output /tmp/updates.md
+        --output-dir /tmp/updates
+
+Writes one markdown file per updated ontology (named `<ACRONYM>.md`) into
+the output directory, and emits `has_updates` and a space-separated
+`acronyms` list to GITHUB_OUTPUT.
 """
 
 import argparse
@@ -19,7 +23,7 @@ def main():
     parser = argparse.ArgumentParser(description="Check for ontology updates on BioPortal.")
     parser.add_argument("--previous", required=True, help="Path to previous baseline JSON")
     parser.add_argument("--current", required=True, help="Path to current BioPortal cache JSON")
-    parser.add_argument("--output", required=True, help="Path to write markdown report")
+    parser.add_argument("--output-dir", required=True, help="Directory to write per-ontology markdown reports")
     args = parser.parse_args()
 
     # Load current
@@ -79,44 +83,39 @@ def main():
                     "released": current[resource_id].get("released", ""),
                 })
 
-    # Set output for GitHub Actions
-    github_output = os.environ.get("GITHUB_OUTPUT")
     has_updates = len(updates) > 0
+    github_output = os.environ.get("GITHUB_OUTPUT")
 
-    if github_output:
-        with open(github_output, "a") as f:
-            f.write(f"has_updates={'true' if has_updates else 'false'}\n")
+    os.makedirs(args.output_dir, exist_ok=True)
 
-    if not has_updates:
-        print("No ontology updates detected.", file=sys.stderr)
-        # Write empty report
-        with open(args.output, "w") as f:
-            f.write("No updates detected.\n")
-        return
-
-    # Generate markdown report
-    lines = []
-    lines.append("## Ontology Updates Detected\n")
-    lines.append("The following ontologies have been updated on BioPortal:\n")
-
+    acronyms = []
     for update in updates:
-        lines.append(f"### {update['acronym']}")
+        acronym = update["acronym"]
+        acronyms.append(acronym)
+
+        lines = [f"## Ontology Update Detected: {acronym}", ""]
         for change in update["changes"]:
             lines.append(f"- {change}")
         if update.get("classes"):
             lines.append(f"- Current class count: {update['classes']}")
-        lines.append(f"- [View on BioPortal](https://bioportal.bioontology.org/ontologies/{update['acronym']})")
+        lines.append(f"- [View on BioPortal](https://bioportal.bioontology.org/ontologies/{acronym})")
         lines.append("")
+        lines.append("---")
+        lines.append("*This issue was created automatically by the daily ontology update check.*")
 
-    lines.append("---")
-    lines.append("*This issue was created automatically by the daily ontology update check.*")
+        with open(os.path.join(args.output_dir, f"{acronym}.md"), "w") as f:
+            f.write("\n".join(lines))
 
-    report = "\n".join(lines)
+    if github_output:
+        with open(github_output, "a") as f:
+            f.write(f"has_updates={'true' if has_updates else 'false'}\n")
+            f.write(f"acronyms={' '.join(acronyms)}\n")
 
-    with open(args.output, "w") as f:
-        f.write(report)
+    if not has_updates:
+        print("No ontology updates detected.", file=sys.stderr)
+        return
 
-    print(f"Found updates for {len(updates)} ontologies.", file=sys.stderr)
+    print(f"Found updates for {len(updates)} ontologies: {', '.join(acronyms)}", file=sys.stderr)
 
 
 if __name__ == "__main__":

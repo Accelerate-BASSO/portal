@@ -35,17 +35,24 @@ jobs:
           python scripts/check-ontology-updates.py \
             --previous data/bioportal-baseline.json \
             --current data/bioportal-cache.json \
-            --output /tmp/updates.md
+            --output-dir /tmp/updates
 
-      - name: Create issue if updates found
+      - name: Record updates as closed issues
         if: steps.check.outputs.has_updates == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ACRONYMS: ${{ steps.check.outputs.acronyms }}
         run: |
-          gh issue create \
-            --title "Ontology update detected — $(date +%Y-%m-%d)" \
-            --body-file /tmp/updates.md \
-            --label "ontology-update"
+          for acronym in $ACRONYMS; do
+            ontology_label="ontology:$acronym"
+            gh label create "$ontology_label" --color 1F6FEB --description "Relates to the $acronym ontology" --force >/dev/null
+            issue_url=$(gh issue create \
+              --title "Ontology update detected: $acronym — $(date +%Y-%m-%d)" \
+              --body-file "/tmp/updates/$acronym.md" \
+              --label "ontology-update" \
+              --label "$ontology_label")
+            gh issue close "$issue_url" --reason completed --comment "Baseline updated automatically; recording this release for the changelog."
+          done
 
       - name: Update baseline
         if: steps.check.outputs.has_updates == 'true'

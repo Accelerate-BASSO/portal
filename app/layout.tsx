@@ -18,7 +18,17 @@ export default function RootLayout({
     <html lang="en" className="h-full antialiased">
       <body className="flex min-h-full flex-col">
         <Header />
-        <main className="flex-1 pt-[60px]">{children}</main>
+        <main className="flex-1 pt-[60px]">
+          <div
+            role="note"
+            className="border-b border-amber-300 bg-amber-50 px-[5%] py-2 text-center text-sm text-amber-900"
+          >
+            <strong className="font-semibold">Under development.</strong>{" "}
+            Resources shown here are for illustrative and testing purposes only;
+            the portal is incomplete and content may contain mistakes.
+          </div>
+          {children}
+        </main>
         <Footer />
       </body>
     </html>
