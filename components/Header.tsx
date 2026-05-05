@@ -26,6 +26,12 @@ export default function Header() {
         >
           Resources
         </Link>
+        <Link
+          href="/contribute"
+          className="rounded-full px-4 py-1.5 text-black no-underline transition-colors hover:bg-[#dddcdccf]"
+        >
+          Contribute
+        </Link>
         <a
           href="https://accelerate-basso.regenstrief.org"
           target="_blank"
@@ -61,6 +67,13 @@ export default function Header() {
             onClick={() => setMenuOpen(false)}
           >
             Resources
+          </Link>
+          <Link
+            href="/contribute"
+            className="rounded-lg px-4 py-2 text-black no-underline hover:bg-gray-100"
+            onClick={() => setMenuOpen(false)}
+          >
+            Contribute
           </Link>
           <a
             href="https://accelerate-basso.regenstrief.org"

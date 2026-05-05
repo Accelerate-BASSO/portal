@@ -186,6 +186,23 @@ export default function Home() {
           Supported by the National Institute of Aging (NIA) U24AG088019
         </p>
       </section>
+
+      {/* Contribute */}
+      <section className="border-t border-gray-200 bg-gray-50 px-6 py-16">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="text-3xl font-semibold">Contribute a Resource</h2>
+          <p className="mt-4 text-base leading-relaxed text-gray-text">
+            Have something the network should know about? Submit a new ontology,
+            publication, tool, or community via a short GitHub issue template.
+          </p>
+          <Link
+            href="/contribute"
+            className="mt-6 inline-flex h-11 items-center justify-center rounded-full bg-black px-7 text-white no-underline transition-colors hover:bg-gray-800"
+          >
+            How to contribute &rarr;
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }
