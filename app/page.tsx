@@ -6,7 +6,7 @@ export default function Home() {
   const types = getResourceTypes(resources);
 
   const ontologyCount = resources.filter((r) => r.type === "Ontology").length;
-  const foundryCount = resources.filter((r) => r.bssoFoundry).length;
+  const foundryCount = resources.filter((r) => r.type === "Ontology" && r.bssoFoundry).length;
   const projectCount = new Set(resources.flatMap((r) => getAllProjects(r))).size;
 
   return (

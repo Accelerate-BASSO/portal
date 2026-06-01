@@ -111,7 +111,7 @@ export default function ResourceListRow({ resource }: ResourceListRowProps) {
 
         {/* Line 2: BSSO Foundry + date + venue + links + edit */}
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs">
-        {resource.bssoFoundry && (
+        {resource.type === "Ontology" && resource.bssoFoundry && (
           <span
             title="Member of the Behavioural and Social Sciences Ontology Foundry"
             className="cursor-help rounded border border-stone-300 px-1.5 py-0.5 text-[10px] font-medium text-stone-400"
@@ -124,7 +124,7 @@ export default function ResourceListRow({ resource }: ResourceListRowProps) {
             {formatDateShort(date)}
           </span>
         )}
-        {resource.venue && (
+        {resource.type === "Publication" && resource.venue && (
           <span title="Publication venue" className="truncate text-gray-600">
             {resource.venue}
           </span>

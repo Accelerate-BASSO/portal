@@ -12,7 +12,7 @@ export function getAllProjects(resource: Resource): ProjectName[] {
  * that's about the YAML file, not the resource.
  */
 export function effectiveDate(r: Resource): string | null {
-  if (r.publishedYear) {
+  if (r.type === "Publication" && r.publishedYear) {
     const m = String(r.publishedMonth ?? 1).padStart(2, "0");
     const d = String(r.publishedDay ?? 1).padStart(2, "0");
     return `${r.publishedYear}-${m}-${d}`;

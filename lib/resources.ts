@@ -15,15 +15,35 @@ export interface Contributor {
   orcid?: string;
 }
 
-export interface Resource {
+export type ResourceType =
+  | "Ontology" | "Publication" | "Tool" | "Community"
+  | "Repository" | "Dataset" | "Website" | "Registry";
+
+/** Fields common to every resource, plus build-injected metadata. */
+interface BaseResource {
   id: string;
   name: string;
-  type: "Ontology" | "Publication" | "Tool" | "Community" | "Repository" | "Dataset" | "Website" | "Registry";
   description: string;
   producedByProjects: ProjectName[];
   usedByProjects: ProjectName[];
   links: ResourceLink[];
+  tags: string[];
+  lastUpdated: string;
+  // Injected at build time from caches, keyed by id (see getAllResources).
+  bioportal?: BioportalMetrics;
+  githubRelease?: GithubRelease;
+  _sourcePath?: string;
+}
+
+/** Ontology resources carry BSSO Foundry membership. */
+export interface OntologyResource extends BaseResource {
+  type: "Ontology";
   bssoFoundry?: boolean;
+}
+
+/** Publications carry bibliographic metadata. */
+export interface PublicationResource extends BaseResource {
+  type: "Publication";
   publishedYear?: number;
   publishedMonth?: number;
   publishedDay?: number;
@@ -32,13 +52,14 @@ export interface Resource {
   venue?: string;
   keywords?: string[];
   contributors?: Contributor[];
-  tags: string[];
-  status: "Active" | "In Development" | "Archived";
-  lastUpdated: string;
-  bioportal?: BioportalMetrics;
-  githubRelease?: GithubRelease;
-  _sourcePath?: string;
 }
+
+/** Resource types with no fields beyond the common set. */
+export interface PlainResource extends BaseResource {
+  type: "Tool" | "Community" | "Repository" | "Dataset" | "Website" | "Registry";
+}
+
+export type Resource = OntologyResource | PublicationResource | PlainResource;
 
 export interface GithubRelease {
   version: string;

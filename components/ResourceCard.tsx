@@ -82,18 +82,6 @@ const typeTooltips: Record<string, string> = {
   Registry: "A standards body or curated registry of resources",
 };
 
-const statusColors: Record<string, string> = {
-  Active: "bg-green-100 text-green-700",
-  "In Development": "bg-yellow-100 text-yellow-700",
-  Archived: "bg-gray-100 text-gray-500",
-};
-
-const statusTooltips: Record<string, string> = {
-  Active: "This resource is actively maintained and available",
-  "In Development": "This resource is under active development and may not be complete",
-  Archived: "This resource is no longer actively maintained",
-};
-
 export default function ResourceCard({ resource }: ResourceCardProps) {
   return (
     <div className="flex flex-col gap-3 rounded-lg border border-card-border bg-white p-5 shadow-sm transition-shadow hover:shadow-md">
@@ -131,7 +119,7 @@ export default function ResourceCard({ resource }: ResourceCardProps) {
       <h3 className="text-lg font-semibold text-black">{resource.name}</h3>
 
       {/* Published date and venue */}
-      {resource.publishedYear && (
+      {resource.type === "Publication" && resource.publishedYear && (
         <p className="text-xs text-gray-400">
           {formatPublishedDate(resource.publishedYear, resource.publishedMonth, resource.publishedDay)}
           {resource.venue && <>{" "}&middot; {resource.venue}</>}
@@ -139,7 +127,7 @@ export default function ResourceCard({ resource }: ResourceCardProps) {
       )}
 
       {/* DOI */}
-      {resource.doi && (
+      {resource.type === "Publication" && resource.doi && (
         <p className="text-xs text-gray-400">
           <a
             href={resource.doi}
@@ -153,7 +141,7 @@ export default function ResourceCard({ resource }: ResourceCardProps) {
       )}
 
       {/* Contributors */}
-      {resource.contributors && resource.contributors.length > 0 && (
+      {resource.type === "Publication" && resource.contributors && resource.contributors.length > 0 && (
         <p className="text-xs leading-relaxed text-gray-500">
           {resource.contributors.map((c, i) => (
             <span key={i}>
@@ -214,7 +202,7 @@ export default function ResourceCard({ resource }: ResourceCardProps) {
       )}
 
       {/* BSSO Foundry badge */}
-      {resource.bssoFoundry && (
+      {resource.type === "Ontology" && resource.bssoFoundry && (
         <div className="text-xs">
           <span
             title="Member of the Behavioural and Social Sciences Ontology Foundry — a community of interoperable ontologies"

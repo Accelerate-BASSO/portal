@@ -141,7 +141,8 @@ export default function ResourceBrowser({
   const matchesType = (r: Resource) => selectedTypes.size === 0 || selectedTypes.has(r.type);
   const matchesProject = (r: Resource) =>
     selectedProjects.size === 0 || getAllProjects(r).some((p) => selectedProjects.has(p));
-  const matchesFoundry = (r: Resource) => !foundryOnly || r.bssoFoundry === true;
+  const matchesFoundry = (r: Resource) =>
+    !foundryOnly || (r.type === "Ontology" && r.bssoFoundry === true);
 
   const filtered = useMemo(() => {
     return resources

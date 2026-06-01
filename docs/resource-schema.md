@@ -32,7 +32,6 @@ by `scripts/validate-resources.py`; run it locally with
 | `usedByProjects` | Yes | list | Projects that use the resource — same allowed values as `producedByProjects`. May be empty (`[]`). |
 | `links` | Yes | list | Links to where the resource lives (see below). May be empty (`[]`). |
 | `tags` | Yes | list | Searchable keywords (kebab-case). May be empty (`[]`). |
-| `status` | Yes | enum | One of `Active`, `In Development`, `Archived`. |
 | `lastUpdated` | Yes | date | `YYYY-MM-DD` — when the metadata was last reviewed. |
 
 ### Controlled vocabularies
@@ -43,7 +42,6 @@ by `scripts/validate-resources.py`; run it locally with
   - `ODFA` — Ontology of Dental care-related Fear and Anxiety
   - `PHASES` — Promoting Healthy Aging through Semantic Enrichment of Solitude research
   - `DCC` — Data Coordinating Center (the U24 team)
-- **Status**: `Active`, `In Development`, `Archived`
 - **Link `platform`**: `GitHub`, `BioPortal`, `OLS`, `Ontobee`, `Zenodo`, `OSF`, `Website`, `Discourse`, `Other`
 
 ### Links
@@ -66,6 +64,11 @@ metadata, keyed by `id` — do not add them to resource files:
 - `githubRelease` — latest release version/date from `data/github-releases-cache.json`
 
 ---
+
+Each resource type is listed below with the extra fields it allows. **Type-specific
+fields may only appear on resources of their type** — e.g. `bssoFoundry` only on
+ontologies, `publishedYear`/`venue`/`contributors` only on publications. The
+validator rejects misplaced fields.
 
 ## Ontology
 
@@ -96,7 +99,6 @@ tags:
   - ontology
   - behaviour-change
   - interventions
-status: Active
 lastUpdated: 2026-04-01
 ```
 
@@ -143,7 +145,6 @@ links:
 tags:
   - paper
   - wellcome-open-research
-status: Active
 lastUpdated: 2026-04-03
 ```
 
@@ -166,7 +167,6 @@ links:
 tags:
   - website
   - cancer-prevention
-status: Active
 lastUpdated: 2026-04-01
 ```
 
@@ -189,7 +189,6 @@ links:
 tags:
   - repository
   - solitude
-status: Active
 lastUpdated: 2026-04-01
 ```
 
@@ -212,7 +211,6 @@ links:
 tags:
   - registry
   - foundry
-status: Active
 lastUpdated: 2026-04-01
 ```
 
@@ -235,7 +233,6 @@ links:
 tags:
   - community
   - community-of-practice
-status: Active
 lastUpdated: 2026-04-01
 ```
 
@@ -258,7 +255,6 @@ links:
 tags:
   - tool
   - annotation
-status: Active
 lastUpdated: 2026-04-01
 ```
 
@@ -280,6 +276,5 @@ links:
     platform: Zenodo
 tags:
   - dataset
-status: Active
 lastUpdated: 2026-04-01
 ```

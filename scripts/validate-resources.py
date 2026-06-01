@@ -3,7 +3,7 @@
 Validate the resource metadata files under data/resources/.
 
 Checks every file against the schema documented in docs/resource-schema.md:
-common required fields, controlled vocabularies (type, status, project names,
+common required fields, controlled vocabularies (type, project names,
 link platforms), type-specific fields (e.g. ontologies need bssoFoundry,
 publications need publishedYear/venue), date formats, and globally unique ids.
 
@@ -23,7 +23,6 @@ TYPES = {
     "Ontology", "Publication", "Website", "Repository",
     "Registry", "Community", "Tool", "Dataset",
 }
-STATUSES = {"Active", "In Development", "Archived"}
 PROJECTS = {"APRICOT", "BSO-AD", "ODFA", "PHASES", "DCC"}
 PLATFORMS = {
     "GitHub", "BioPortal", "OLS", "Ontobee", "Zenodo",
@@ -35,10 +34,22 @@ DIR_TYPE = {
     "repositories": "Repository", "registries": "Registry", "communities": "Community",
     "tools": "Tool", "datasets": "Dataset",
 }
+# Fields that may only appear on resources of a given type.
+TYPE_SPECIFIC_FIELDS = {
+    "bssoFoundry": "Ontology",
+    "publishedYear": "Publication",
+    "publishedMonth": "Publication",
+    "publishedDay": "Publication",
+    "venue": "Publication",
+    "doi": "Publication",
+    "pmid": "Publication",
+    "keywords": "Publication",
+    "contributors": "Publication",
+}
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 COMMON_REQUIRED = [
     "id", "name", "type", "description",
-    "producedByProjects", "usedByProjects", "links", "tags", "status", "lastUpdated",
+    "producedByProjects", "usedByProjects", "links", "tags", "lastUpdated",
 ]
 
 
@@ -80,9 +91,6 @@ def validate_file(path, ids, errors):
     expected = DIR_TYPE.get(parent)
     if expected and rtype and rtype != expected:
         err(f"type {rtype!r} does not match directory {parent}/ (expects {expected}).")
-
-    if d.get("status") not in STATUSES and "status" in d:
-        err(f"unknown status {d.get('status')!r} (allowed: {', '.join(sorted(STATUSES))}).")
 
     for key in ("producedByProjects", "usedByProjects"):
         val = d.get(key)
@@ -137,6 +145,11 @@ def validate_file(path, ids, errors):
             for i, c in enumerate(d["contributors"] or []):
                 if not isinstance(c, dict) or not c.get("name"):
                     err(f"contributor[{i}] must have a `name`.")
+
+    # Type-specific fields must not appear on the wrong type.
+    for field, owner in TYPE_SPECIFIC_FIELDS.items():
+        if field in d and rtype != owner:
+            err(f"`{field}` is only valid on {owner} resources, not {rtype}.")
 
 
 def main() -> int:
