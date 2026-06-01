@@ -42,7 +42,7 @@ automatically on the next build. Every file is checked in CI by
 | Field | Required | Type | Description |
 |---|---|---|---|
 | `id` | Yes | string | Stable unique identifier across all resources. Kebab-case — for consistency, to keep cache keys clean, and so ids stay URL-safe if per-resource detail pages are added later. |
-| `name` | Yes | string | Display name. Quote it if it contains a colon. |
+| `name` | Yes | string | Display name. Wrap it in double quotes if it contains a colon (e.g. `name: "Project X: Phase 2"`), since YAML otherwise reads the colon as a key separator and the line fails to parse. |
 | `type` | Yes | enum | One of `Ontology`, `Publication`, `Website`, `Repository`, `Registry`, `Community`, `Tool`, `Dataset`. Must match the file's subdirectory (which is the pluralized type, e.g. `Ontology` → `ontologies/`). |
 | `description` | Yes | string | 1–3 sentence plain-language summary. Use `>-` for multi-line. |
 | `producedByProjects` | Yes | list | Projects that produced the resource — any of `APRICOT`, `BSO-AD`, `ODFA`, `PHASES`, `DCC` (see vocab below for full names). May be empty (`[]`). |
