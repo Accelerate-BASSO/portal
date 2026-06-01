@@ -1,0 +1,34 @@
+name: Validate network members
+
+on:
+  push:
+    paths:
+      - "data/network-members.yaml"
+      - "scripts/validate-network-members.py"
+      - ".github/workflows/validate-network-members.yml"
+  pull_request:
+    paths:
+      - "data/network-members.yaml"
+      - "scripts/validate-network-members.py"
+      - ".github/workflows/validate-network-members.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install PyYAML
+        run: pip install pyyaml
+
+      - name: Validate network-members.yaml
+        run: python scripts/validate-network-members.py

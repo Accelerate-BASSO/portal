@@ -197,18 +197,33 @@ Options:
 - `--description` — override the generated description
 - `--output` — write to a file instead of stdout
 
-### Contributor ORCIDs
+### Network member ORCIDs
 
-The file `data/contributors.yaml` maps known network member names to their ORCIDs. When generating publication YAML, the script automatically resolves ORCIDs from this file — even when the publication source (e.g. PubMed) doesn't provide them.
+The file `data/network-members.yaml` lists known network members and maps their names to ORCIDs. When generating publication YAML, the script automatically resolves ORCIDs from this file — even when the publication source (e.g. PubMed) doesn't provide them.
 
-To add a contributor, add an entry to `data/contributors.yaml`:
+To add a member, add an entry to `data/network-members.yaml`:
 
 ```yaml
-  - name: Jane Smith
-    orcid: "0000-0001-2345-6789"
+  - names: [Jane Smith, J Smith]
+    orcid: "0000-0001-2345-6789"          # optional
+    ror: "https://ror.org/02jx3x895"      # optional, current institution
+    projects:                             # optional, roles per project
+      - {id: APRICOT, role: Co-I}
+      - {id: DCC, role: Researcher}
 ```
 
-Use alternate spellings as separate entries with the same ORCID if needed.
+List every spelling a name may take under `names` (the first is canonical). Both `orcid` and `ror` are optional — a member with no confirmed ORCID is still listed but skipped during ORCID resolution.
+
+A member's role is specific to a project, so roles live in the optional `projects` list (one `{id, role}` per project; a person may appear on several with different roles). `role` may be omitted when not yet known.
+
+- **project ids:** `BSO-AD`, `APRICOT`, `ODFA`, `PHASES`, `DCC`
+- **roles:** `Contact PI`, `Multiple PI`, `Co-I`, `Expert Consultant`, `Consultant`, `Project Manager`, `Administrator`, `Researcher`, `Postdoc`, `Program Officer`, `Project Scientist`
+
+The file is validated on every push and pull request by `scripts/validate-network-members.py` (checks YAML shape, duplicate names, ORCID/ROR formats, and that project ids and roles are from the lists above). Run it locally with:
+
+```bash
+python scripts/validate-network-members.py
+```
 
 ---
 

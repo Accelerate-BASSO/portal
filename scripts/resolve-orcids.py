@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-Resolves ORCIDs in existing resource YAML files using data/contributors.yaml.
+Resolves ORCIDs in existing resource YAML files using data/network-members.yaml.
 
 Scans all YAML files under data/resources/ and fills in missing ORCIDs
-for any contributors whose names match entries in contributors.yaml.
+for any contributors whose names match entries in network-members.yaml.
 
 Usage:
     python scripts/resolve-orcids.py          # dry run — show what would change
@@ -23,16 +23,16 @@ except ImportError:
 
 
 def load_known_contributors(repo_root: str) -> dict[str, str]:
-    contributors_file = os.path.join(repo_root, "data", "contributors.yaml")
-    if not os.path.exists(contributors_file):
-        print(f"Error: {contributors_file} not found.", file=sys.stderr)
+    members_file = os.path.join(repo_root, "data", "network-members.yaml")
+    if not os.path.exists(members_file):
+        print(f"Error: {members_file} not found.", file=sys.stderr)
         sys.exit(1)
 
-    with open(contributors_file) as f:
+    with open(members_file) as f:
         data = yaml.safe_load(f)
 
     lookup = {}
-    for entry in data.get("contributors", []):
+    for entry in data.get("members", []):
         orcid = entry.get("orcid", "").strip()
         if not orcid:
             continue
@@ -102,7 +102,7 @@ def resolve_file(filepath: str, known: dict[str, str], apply: bool) -> int:
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Resolve missing ORCIDs in resource files from contributors.yaml."
+        description="Resolve missing ORCIDs in resource files from network-members.yaml."
     )
     parser.add_argument("--apply", action="store_true", help="Apply changes (default is dry run)")
     args = parser.parse_args()

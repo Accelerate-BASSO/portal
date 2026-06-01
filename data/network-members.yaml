@@ -1,0 +1,308 @@
+# Accelerate BASSO network members.
+# One entry per person. List every spelling a person's name may take in
+# publication metadata (PubMed, CrossRef, etc.) under `names`; the first name
+# is treated as canonical.
+#
+# `orcid` is optional. The pub-to-yaml.py and resolve-orcids.py scripts use this
+# file to resolve ORCIDs for authors by matching names. People without an ORCID
+# are still listed for completeness and are skipped during ORCID resolution.
+# ORCIDs that could not be confidently verified are left off.
+#
+# `ror` is an optional Research Organization Registry ID for the member's
+# current primary institution (https://ror.org/<id>), with the institution name
+# as an inline comment. Not consumed by the scripts.
+#
+# `projects` is an optional list of the member's roles, one per project. Each
+# item is {id, role}. A member may appear on several projects with different
+# roles. `role` may be omitted when the role is not yet known.
+#   project ids: BSO-AD, APRICOT, ODFA, PHASES, DCC
+#   roles: Contact PI, Multiple PI, Co-I, Expert Consultant, Consultant,
+#          Project Manager, Administrator, Researcher, Postdoc,
+#          Program Officer, Project Scientist
+
+members:
+
+  - names: [Susan Michie]
+    orcid: "0000-0003-0063-6378"
+    ror: "https://ror.org/02jx3x895"   # University College London
+    projects:
+      - {id: APRICOT, role: Contact PI}
+
+  - names: [Robert West]
+    orcid: "0000-0001-6398-0921"
+    ror: "https://ror.org/02jx3x895"   # University College London
+    projects:
+      - {id: APRICOT, role: Expert Consultant}
+
+  - names: [Janna Hastings]
+    orcid: "0000-0002-3469-4923"
+    ror: "https://ror.org/05932h694"   # Idiap Research Institute
+    projects:
+      - {id: APRICOT, role: Co-I}
+
+  - names: [William D Duncan, William Duncan, William D. Duncan, Bill Duncan]
+    orcid: "0000-0001-9625-1899"
+    ror: "https://ror.org/02y3ad647"   # University of Florida
+    projects:
+      - {id: ODFA, role: Contact PI}
+      - {id: PHASES, role: Multiple PI}
+      - {id: DCC, role: Co-I}
+
+  - names: [Alexander D Diehl, Alexander Diehl]
+    orcid: "0000-0001-9990-8331"
+    ror: "https://ror.org/01y64my43"   # University at Buffalo
+    projects:
+      - {id: ODFA, role: Co-I}
+
+  - names: [John Beverley]
+    orcid: "0000-0002-6596-4479"
+    ror: "https://ror.org/01y64my43"   # University at Buffalo
+    projects:
+      - {id: PHASES, role: Contact PI}
+
+  - names: [Yongqun He]
+    orcid: "0000-0001-9189-9661"
+    ror: "https://ror.org/00jmfr291"   # University of Michigan
+    projects:
+      - {id: PHASES, role: Co-I}
+
+  - names: [Cui Tao]
+    orcid: "0000-0003-0828-4642"
+    ror: "https://ror.org/02qp3tb03"   # Mayo Clinic
+    projects:
+      - {id: BSO-AD, role: Contact PI}
+      - {id: DCC, role: Multiple PI}
+
+  - names: [Matthew Horridge]
+    orcid: "0000-0001-8921-6593"
+    ror: "https://ror.org/00f54p054"   # Stanford University
+
+  - names: [Muhammad Amith, Tuan]
+    orcid: "0000-0003-4333-1857"
+    ror: "https://ror.org/016tfm930"   # University of Texas Medical Branch
+    projects:
+      - {id: BSO-AD}   # role TBD
+
+  - names: [Daniel W McNeil, Daniel McNeil]
+    orcid: "0000-0002-0766-8455"
+    ror: "https://ror.org/02y3ad647"   # University of Florida
+    projects:
+      - {id: ODFA, role: Multiple PI}
+
+  # U24 Data Coordinating Center team
+
+  - names: [Jiang Bian]
+    orcid: "0000-0002-2238-5429"
+    ror: "https://ror.org/01kg8sb98"   # Indiana University
+    projects:
+      - {id: BSO-AD, role: Multiple PI}
+      - {id: DCC, role: Contact PI}
+
+  - names: [Mark Musen]
+    orcid: "0000-0003-3325-793X"
+    ror: "https://ror.org/00f54p054"   # Stanford University
+    projects:
+      - {id: DCC, role: Multiple PI}
+
+  - names: [Catherine Hartley, Cate Hartley]
+    orcid: "0000-0003-0177-7295"
+    ror: "https://ror.org/0190ak572"   # New York University
+    projects:
+      - {id: DCC, role: Expert Consultant}
+
+  - names: [Timothy Strauman]
+    orcid: "0000-0002-0310-4505"
+    ror: "https://ror.org/00py81415"   # Duke University
+    projects:
+      - {id: DCC, role: Expert Consultant}
+
+  # APRICOT (1U01CA291884-01)
+
+  - names: [Bill Hogan, William Hogan]
+    orcid: "0000-0002-9881-1017"
+    ror: "https://ror.org/00qqv6244"   # Medical College of Wisconsin
+    projects:
+      - {id: APRICOT, role: Co-I}
+
+  - names: [Marta Marques]
+    orcid: "0000-0002-4797-9557"
+    ror: "https://ror.org/02xankh89"   # NOVA University Lisbon
+    projects:
+      - {id: APRICOT, role: Co-I}
+
+  - names: [Marie Johnston]
+    orcid: "0000-0003-0124-4827"
+    ror: "https://ror.org/016476m91"   # University of Aberdeen
+    projects:
+      - {id: APRICOT, role: Expert Consultant}
+
+  - names: [Alex Rothman, Alexander Rothman]
+    orcid: "0000-0003-3163-1895"
+    ror: "https://ror.org/017zqws13"   # University of Minnesota
+    projects:
+      - {id: APRICOT, role: Expert Consultant}
+
+  - names: [Silverback.is]
+    projects:
+      - {id: APRICOT, role: Consultant}
+
+  - names: [Maya Braun]
+    orcid: "0000-0002-1240-4550"
+    ror: "https://ror.org/00cv9y106"   # Ghent University
+    projects:
+      - {id: APRICOT, role: Researcher}
+
+  - names: [Paulina Schenk]
+    orcid: "0000-0002-5239-1977"
+    ror: "https://ror.org/02jx3x895"   # University College London
+    projects:
+      - {id: APRICOT, role: Researcher}
+
+  - names: [Caroline Silva, Carolina Silva]
+    orcid: "0000-0003-1814-032X"
+    ror: "https://ror.org/02xankh89"   # NOVA University Lisbon
+    projects:
+      - {id: APRICOT, role: Researcher}
+
+  - names: [Milly Massoura, Millicent Massoura]
+    ror: "https://ror.org/02jx3x895"   # University College London
+    projects:
+      - {id: APRICOT, role: Administrator}
+    # ORCID unconfirmed
+
+  # ODFA (1U01DE033978-01)
+
+  - names: [Astha Singal, Astha Singhal]
+    orcid: "0000-0001-9191-6978"
+    ror: "https://ror.org/02y3ad647"   # University of Florida
+    projects:
+      - {id: ODFA, role: Co-I}
+
+  - names: [Olga Ensz]
+    ror: "https://ror.org/02y3ad647"   # University of Florida
+    projects:
+      - {id: ODFA, role: Co-I}
+    # ORCID unconfirmed
+
+  - names: [Brenda Heaton]
+    orcid: "0000-0002-3097-4717"
+    ror: "https://ror.org/03r0ha626"   # University of Utah
+    projects:
+      - {id: ODFA, role: Co-I}
+
+  # PHASES (1U01AG088074-01)
+
+  - names: [Julie Bowker]
+    orcid: "0000-0001-7055-9158"
+    ror: "https://ror.org/01y64my43"   # University at Buffalo
+    projects:
+      - {id: PHASES, role: Co-I}
+
+  - names: [Hollen Reischer]
+    orcid: "0000-0002-6538-0265"
+    ror: "https://ror.org/01y64my43"   # University at Buffalo
+    projects:
+      - {id: PHASES, role: Co-I}
+
+  - names: [Damayanthi Jesudas]
+    orcid: "0000-0001-6906-5548"
+    ror: "https://ror.org/02y3ad647"   # University of Florida
+    projects:
+      - {id: PHASES, role: Postdoc}
+
+  - names: [Jie Zheng]
+    orcid: "0000-0002-2999-0103"
+    ror: "https://ror.org/00jmfr291"   # University of Michigan
+    projects:
+      - {id: PHASES, role: Consultant}
+
+  - names: [Sam Smith, Samuel Smith]
+    projects:
+      - {id: PHASES, role: Consultant}
+    # ORCID unconfirmed
+
+  - names: [Regina Hurley]
+    orcid: "0009-0002-9791-3334"
+    ror: "https://ror.org/01y64my43"   # University at Buffalo
+    projects:
+      - {id: PHASES, role: Researcher}
+
+  # BSO-AD / Mayo informatics team (1U01AG088076-01)
+
+  - names: [Jianfu Li]
+    orcid: "0000-0002-9949-7007"
+    ror: "https://ror.org/02qp3tb03"   # Mayo Clinic
+    projects:
+      - {id: BSO-AD, role: Co-I}
+
+  - names: [Fang Li]
+    orcid: "0000-0001-8865-7717"
+    ror: "https://ror.org/02qp3tb03"   # Mayo Clinic
+    projects:
+      - {id: BSO-AD, role: Co-I}
+
+  - names: [Lu Kang]
+    orcid: "0009-0004-4198-8315"
+    ror: "https://ror.org/02qp3tb03"   # Mayo Clinic
+    projects:
+      - {id: BSO-AD, role: Project Manager}
+
+  - names: [Haifang Li]
+    ror: "https://ror.org/02qp3tb03"   # Mayo Clinic
+    projects:
+      - {id: BSO-AD, role: Researcher}
+    # ORCID unconfirmed
+
+  - names: [Yue Yu]
+    orcid: "0000-0002-3900-1217"
+    ror: "https://ror.org/02qp3tb03"   # Mayo Clinic
+    projects:
+      - {id: BSO-AD}   # role TBD
+
+  # NIH program staff (program officers & project scientists)
+
+  - names: [Kriti Jain]
+    ror: "https://ror.org/01cwqze88"   # National Institutes of Health
+    projects:
+      - {id: BSO-AD, role: Program Officer}
+      - {id: PHASES, role: Program Officer}
+      - {id: DCC, role: Program Officer}
+
+  - names: [Liz Necka]
+    ror: "https://ror.org/01cwqze88"   # National Institutes of Health
+    projects:
+      - {id: BSO-AD, role: Program Officer}
+      - {id: PHASES, role: Program Officer}
+
+  - names: [Dana Wolff-Hughes]
+    ror: "https://ror.org/01cwqze88"   # National Institutes of Health
+    projects:
+      - {id: APRICOT, role: Program Officer}
+
+  - names: [Richard Moser, Rick Moser]
+    ror: "https://ror.org/01cwqze88"   # National Institutes of Health
+    projects:
+      - {id: APRICOT, role: Program Officer}
+
+  - names: [Noffisat Oki]
+    ror: "https://ror.org/01cwqze88"   # National Institutes of Health
+    projects:
+      - {id: ODFA, role: Program Officer}
+
+  - names: [William Elwood, Bill Elwood]
+    ror: "https://ror.org/01cwqze88"   # National Institutes of Health
+    projects:
+      - {id: ODFA, role: Program Officer}
+
+  - names: [Janine Simmons]
+    ror: "https://ror.org/01cwqze88"   # National Institutes of Health
+    projects:
+      - {id: DCC, role: Program Officer}
+
+  - names: [Steve Tsang]
+    ror: "https://ror.org/01cwqze88"   # National Institutes of Health
+    # project assignment TBD
+
+  - names: [Michael Spittel]
+    ror: "https://ror.org/01cwqze88"   # National Institutes of Health
+    # project assignment TBD

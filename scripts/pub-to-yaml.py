@@ -93,20 +93,20 @@ def make_id(key: str, title: str) -> str:
 # --- Contributor ORCID resolution ---
 
 def load_known_contributors() -> dict[str, str]:
-    """Load the known contributors file and return a name->orcid lookup dict.
+    """Load the network members file and return a name->orcid lookup dict.
     Names are normalized to lowercase for matching."""
-    contributors_file = os.path.join(
+    members_file = os.path.join(
         os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-        "data", "contributors.yaml"
+        "data", "network-members.yaml"
     )
-    if not os.path.exists(contributors_file):
+    if not os.path.exists(members_file):
         return {}
 
-    with open(contributors_file) as f:
+    with open(members_file) as f:
         data = yaml.safe_load(f)
 
     lookup = {}
-    for entry in data.get("contributors", []):
+    for entry in data.get("members", []):
         orcid = entry.get("orcid", "").strip()
         if not orcid:
             continue
