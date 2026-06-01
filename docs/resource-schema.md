@@ -324,8 +324,8 @@ lastUpdated: 2026-04-01
 ## Tool
 
 A piece of software or an interactive platform produced by network members —
-for example an ontology editor (onto-spread-ed), a theory-and-techniques tool
-(TaTT), or a searchable theory database. This type is for the network's own
+for example the Ontology Spreadsheet Editor (onto-spread-ed), a web tool for
+collaboratively editing OWL ontologies. This type is for the network's own
 tools, not third-party software the network merely uses. Tools may be hosted
 web applications or installable software; the portal links to where each can be
 used or obtained.
