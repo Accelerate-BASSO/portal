@@ -84,6 +84,9 @@ fields may only appear on resources of their type** — e.g. `bssoFoundry` only 
 ontologies, `publishedYear`/`venue`/`contributors` only on publications. The
 validator rejects misplaced fields.
 
+Where a `license` field appears, use an [SPDX license identifier](https://spdx.org/licenses/)
+(e.g. `CC-BY-4.0`, `MIT`, `Apache-2.0`) where one applies.
+
 ## Ontology
 
 Extra fields:
@@ -91,6 +94,7 @@ Extra fields:
 | Field | Required | Type | Description |
 |---|---|---|---|
 | `bssoFoundry` | Yes | boolean | Whether the ontology is part of the BSSO Foundry. |
+| `license` | No | string | License (SPDX id or short name, e.g. `CC-BY-4.0`). |
 
 ```yaml
 id: bcio
@@ -112,6 +116,7 @@ links:
     url: https://www.ebi.ac.uk/ols4/ontologies/bcio
     platform: OLS
 bssoFoundry: true
+license: CC-BY-4.0
 tags:
   - ontology
   - behaviour-change
@@ -201,7 +206,7 @@ Extra fields:
 
 | Field | Required | Type | Description |
 |---|---|---|---|
-| _none_ | | | No fields beyond the common set. |
+| `license` | No | string | License (SPDX id or short name, e.g. `Apache-2.0`). |
 
 ```yaml
 id: phases-github
@@ -285,7 +290,7 @@ Extra fields:
 
 | Field | Required | Type | Description |
 |---|---|---|---|
-| _none_ | | | No fields beyond the common set. |
+| `license` | No | string | License (SPDX id or short name, e.g. `MIT`). |
 
 ```yaml
 id: tatt
@@ -299,6 +304,7 @@ links:
   - label: GitHub
     url: https://github.com/example/tatt
     platform: GitHub
+license: MIT
 tags:
   - tool
   - annotation
@@ -313,13 +319,16 @@ Extra fields:
 
 | Field | Required | Type | Description |
 |---|---|---|---|
-| _none_ | | | No fields beyond the common set. |
+| `doi` | No | string | Dataset DOI (URL or bare). |
+| `license` | No | string | License or access terms (e.g. `CC-BY-4.0`). |
 
 ```yaml
 id: example-dataset
 name: Example Dataset
 type: Dataset
 description: A dataset produced by the network.
+doi: "https://doi.org/10.5281/zenodo.0000000"
+license: CC-BY-4.0
 producedByProjects:
   - PHASES
 usedByProjects: []

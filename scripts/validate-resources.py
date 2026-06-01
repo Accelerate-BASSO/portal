@@ -34,17 +34,18 @@ DIR_TYPE = {
     "repositories": "Repository", "registries": "Registry", "communities": "Community",
     "tools": "Tool", "datasets": "Dataset",
 }
-# Fields that may only appear on resources of a given type.
+# Type-specific fields, each mapped to the set of types it may appear on.
 TYPE_SPECIFIC_FIELDS = {
-    "bssoFoundry": "Ontology",
-    "publishedYear": "Publication",
-    "publishedMonth": "Publication",
-    "publishedDay": "Publication",
-    "venue": "Publication",
-    "doi": "Publication",
-    "pmid": "Publication",
-    "keywords": "Publication",
-    "contributors": "Publication",
+    "bssoFoundry": {"Ontology"},
+    "publishedYear": {"Publication"},
+    "publishedMonth": {"Publication"},
+    "publishedDay": {"Publication"},
+    "venue": {"Publication"},
+    "pmid": {"Publication"},
+    "keywords": {"Publication"},
+    "contributors": {"Publication"},
+    "doi": {"Publication", "Dataset"},
+    "license": {"Ontology", "Tool", "Repository", "Dataset"},
 }
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 COMMON_REQUIRED = [
@@ -146,10 +147,11 @@ def validate_file(path, ids, errors):
                 if not isinstance(c, dict) or not c.get("name"):
                     err(f"contributor[{i}] must have a `name`.")
 
-    # Type-specific fields must not appear on the wrong type.
-    for field, owner in TYPE_SPECIFIC_FIELDS.items():
-        if field in d and rtype != owner:
-            err(f"`{field}` is only valid on {owner} resources, not {rtype}.")
+    # Type-specific fields must not appear on a type that doesn't allow them.
+    for field, allowed in TYPE_SPECIFIC_FIELDS.items():
+        if field in d and rtype not in allowed:
+            err(f"`{field}` is only valid on {' / '.join(sorted(allowed))} "
+                f"resources, not {rtype}.")
 
 
 def main() -> int:

@@ -35,8 +35,13 @@ interface BaseResource {
   _sourcePath?: string;
 }
 
-/** Ontology resources carry BSSO Foundry membership. */
-export interface OntologyResource extends BaseResource {
+/** Reusable artifacts carry an optional license (SPDX id or short name). */
+interface Licensed {
+  license?: string;
+}
+
+/** Ontology resources carry BSSO Foundry membership and a license. */
+export interface OntologyResource extends BaseResource, Licensed {
   type: "Ontology";
   bssoFoundry?: boolean;
 }
@@ -54,12 +59,34 @@ export interface PublicationResource extends BaseResource {
   contributors?: Contributor[];
 }
 
-/** Resource types with no fields beyond the common set. */
-export interface PlainResource extends BaseResource {
-  type: "Tool" | "Community" | "Repository" | "Dataset" | "Website" | "Registry";
+/** Software tools carry a license. */
+export interface ToolResource extends BaseResource, Licensed {
+  type: "Tool";
 }
 
-export type Resource = OntologyResource | PublicationResource | PlainResource;
+/** Code/data repositories carry a license. */
+export interface RepositoryResource extends BaseResource, Licensed {
+  type: "Repository";
+}
+
+/** Datasets carry a license and an optional DOI. */
+export interface DatasetResource extends BaseResource, Licensed {
+  type: "Dataset";
+  doi?: string;
+}
+
+/** Resource types with no fields beyond the common set. */
+export interface PlainResource extends BaseResource {
+  type: "Community" | "Website" | "Registry";
+}
+
+export type Resource =
+  | OntologyResource
+  | PublicationResource
+  | ToolResource
+  | RepositoryResource
+  | DatasetResource
+  | PlainResource;
 
 export interface GithubRelease {
   version: string;
