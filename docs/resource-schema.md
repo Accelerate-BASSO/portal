@@ -28,8 +28,8 @@ by `scripts/validate-resources.py`; run it locally with
 | `name` | Yes | string | Display name. Quote it if it contains a colon. |
 | `type` | Yes | enum | One of `Ontology`, `Publication`, `Website`, `Repository`, `Registry`, `Community`, `Tool`, `Dataset`. Must match the subdirectory. |
 | `description` | Yes | string | 1–3 sentence plain-language summary. Use `>-` for multi-line. |
-| `producedByProjects` | Yes | list | Projects that produced the resource. May be empty (`[]`). |
-| `usedByProjects` | Yes | list | Projects that use the resource. May be empty (`[]`). |
+| `producedByProjects` | Yes | list | Projects that produced the resource — any of `APRICOT`, `BSO-AD`, `ODFA`, `PHASES`, `DCC` (see vocab below for full names). May be empty (`[]`). |
+| `usedByProjects` | Yes | list | Projects that use the resource — same allowed values as `producedByProjects`. May be empty (`[]`). |
 | `links` | Yes | list | Links to where the resource lives (see below). May be empty (`[]`). |
 | `tags` | Yes | list | Searchable keywords (kebab-case). May be empty (`[]`). |
 | `status` | Yes | enum | One of `Active`, `In Development`, `Archived`. |
@@ -37,7 +37,12 @@ by `scripts/validate-resources.py`; run it locally with
 
 ### Controlled vocabularies
 
-- **Projects** (`producedByProjects`, `usedByProjects`): `APRICOT`, `BSO-AD`, `ODFA`, `PHASES`, `DCC`
+- **Projects** (`producedByProjects`, `usedByProjects`):
+  - `APRICOT` — Advancing Prevention Research in Cancer through Ontology Tools
+  - `BSO-AD` — Behavioral and Social factors in Alzheimer's Disease
+  - `ODFA` — Ontology of Dental care-related Fear and Anxiety
+  - `PHASES` — Promoting Healthy Aging through Semantic Enrichment of Solitude research
+  - `DCC` — Data Coordinating Center (the U24 team)
 - **Status**: `Active`, `In Development`, `Archived`
 - **Link `platform`**: `GitHub`, `BioPortal`, `OLS`, `Ontobee`, `Zenodo`, `OSF`, `Website`, `Discourse`, `Other`
 
