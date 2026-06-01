@@ -28,12 +28,14 @@ members:
   - names: [Susan Michie]
     orcid: "0000-0003-0063-6378"
     ror: "https://ror.org/02jx3x895"   # University College London
+    homepage: "https://www.ucl.ac.uk/health-psychology/people/michie/"
     projects:
       - {id: APRICOT, role: Contact PI}
 
   - names: [Robert West]
     orcid: "0000-0001-6398-0921"
     ror: "https://ror.org/02jx3x895"   # University College London
+    homepage: "https://profiles.ucl.ac.uk/10502-robert-west"
     projects:
       - {id: APRICOT, role: Expert Consultant}
 
@@ -54,24 +56,28 @@ members:
   - names: [Alexander D Diehl, Alexander Diehl]
     orcid: "0000-0001-9990-8331"
     ror: "https://ror.org/01y64my43"   # University at Buffalo
+    homepage: "https://medicine.buffalo.edu/faculty/profile.html?ubit=addiehl"
     projects:
       - {id: ODFA, role: Co-I}
 
   - names: [John Beverley]
     orcid: "0000-0002-6596-4479"
     ror: "https://ror.org/01y64my43"   # University at Buffalo
+    homepage: "https://www.buffalo.edu/cas/philosophy/faculty/faculty_directory/john-beverley.html"
     projects:
       - {id: PHASES, role: Contact PI}
 
   - names: [Yongqun He]
     orcid: "0000-0001-9189-9661"
     ror: "https://ror.org/00jmfr291"   # University of Michigan
+    homepage: "https://medschool.umich.edu/profile/4900/yongqun-oliver-he"
     projects:
       - {id: PHASES, role: Co-I}
 
   - names: [Cui Tao]
     orcid: "0000-0003-0828-4642"
     ror: "https://ror.org/02qp3tb03"   # Mayo Clinic
+    homepage: "https://www.mayo.edu/research/faculty/tao-cui-ph-d/bio-20563927"
     projects:
       - {id: BSO-AD, role: Contact PI}
       - {id: DCC, role: Multiple PI}
@@ -79,18 +85,21 @@ members:
   - names: [Matthew Horridge]
     orcid: "0000-0001-8921-6593"
     ror: "https://ror.org/00f54p054"   # Stanford University
+    homepage: "https://web.stanford.edu/~horridge/"
     projects:
       - {id: DCC, role: Researcher}
 
   - names: [Muhammad Amith, Tuan]
     orcid: "0000-0003-4333-1857"
     ror: "https://ror.org/016tfm930"   # University of Texas Medical Branch
+    homepage: "https://www.utmb.edu/spph/department/faculty/profile/spph-people/amith-muamith"
     projects:
       - {id: BSO-AD}   # role TBD
 
   - names: [Daniel W McNeil, Daniel McNeil]
     orcid: "0000-0002-0766-8455"
     ror: "https://ror.org/02y3ad647"   # University of Florida
+    homepage: "https://dental.ufl.edu/profile/mcneil-daniel/"
     projects:
       - {id: ODFA, role: Multiple PI}
 
@@ -99,6 +108,7 @@ members:
   - names: [Jiang Bian]
     orcid: "0000-0002-2238-5429"
     ror: "https://ror.org/01kg8sb98"   # Indiana University
+    homepage: "https://medicine.iu.edu/faculty/69099/bian-jiang"
     projects:
       - {id: BSO-AD, role: Multiple PI}
       - {id: DCC, role: Contact PI}
@@ -106,18 +116,21 @@ members:
   - names: [Mark Musen]
     orcid: "0000-0003-3325-793X"
     ror: "https://ror.org/00f54p054"   # Stanford University
+    homepage: "https://profiles.stanford.edu/mark-musen"
     projects:
       - {id: DCC, role: Multiple PI}
 
   - names: [Catherine Hartley, Cate Hartley]
     orcid: "0000-0003-0177-7295"
     ror: "https://ror.org/0190ak572"   # New York University
+    homepage: "https://as.nyu.edu/faculty/catherine-alexandra-hartley.html"
     projects:
       - {id: DCC, role: Expert Consultant}
 
   - names: [Timothy Strauman]
     orcid: "0000-0002-0310-4505"
     ror: "https://ror.org/00py81415"   # Duke University
+    homepage: "https://psychiatry.duke.edu/profile/timothy-j-strauman"
     projects:
       - {id: DCC, role: Expert Consultant}
 
@@ -126,24 +139,28 @@ members:
   - names: [Bill Hogan, William Hogan]
     orcid: "0000-0002-9881-1017"
     ror: "https://ror.org/00qqv6244"   # Medical College of Wisconsin
+    homepage: "https://www.mcw.edu/departments/data-science-institute/people/william-hogan-md-ms"
     projects:
       - {id: APRICOT, role: Co-I}
 
   - names: [Marta Marques]
     orcid: "0000-0002-4797-9557"
     ror: "https://ror.org/02xankh89"   # NOVA University Lisbon
+    homepage: "https://www.ensp.unl.pt/en/docente/marta-marques-2/"
     projects:
       - {id: APRICOT, role: Co-I}
 
   - names: [Marie Johnston]
     orcid: "0000-0003-0124-4827"
     ror: "https://ror.org/016476m91"   # University of Aberdeen
+    homepage: "https://www.abdn.ac.uk/people/m.johnston"
     projects:
       - {id: APRICOT, role: Expert Consultant}
 
   - names: [Alex Rothman, Alexander Rothman]
     orcid: "0000-0003-3163-1895"
     ror: "https://ror.org/017zqws13"   # University of Minnesota
+    homepage: "https://cla.umn.edu/about/directory/profile/rothm001"
     projects:
       - {id: APRICOT, role: Expert Consultant}
 
@@ -154,23 +171,27 @@ members:
   - names: [Maya Braun]
     orcid: "0000-0002-1240-4550"
     ror: "https://ror.org/00cv9y106"   # Ghent University
+    homepage: "https://research.ugent.be/web/person/maya-braun-0/en"
     projects:
       - {id: APRICOT, role: Researcher}
 
   - names: [Paulina Schenk]
     orcid: "0000-0002-5239-1977"
     ror: "https://ror.org/02jx3x895"   # University College London
+    homepage: "https://profiles.ucl.ac.uk/65538-paulina-schenk"
     projects:
       - {id: APRICOT, role: Researcher}
 
   - names: [Caroline Silva, Carolina Silva]
     orcid: "0000-0003-1814-032X"
     ror: "https://ror.org/02xankh89"   # NOVA University Lisbon
+    homepage: "https://www.ics.ulisboa.pt/en/pessoa/carolina-silva"
     projects:
       - {id: APRICOT, role: Researcher}
 
   - names: [Milly Massoura, Millicent Massoura]
     ror: "https://ror.org/02jx3x895"   # University College London
+    homepage: "https://www.ucl.ac.uk/behaviour-change/about/cbc-people"
     projects:
       - {id: APRICOT, role: Administrator}
     # ORCID unconfirmed
@@ -180,11 +201,13 @@ members:
   - names: [Astha Singal, Astha Singhal]
     orcid: "0000-0001-9191-6978"
     ror: "https://ror.org/02y3ad647"   # University of Florida
+    homepage: "https://dental.ufl.edu/profile/singhal-astha/"
     projects:
       - {id: ODFA, role: Co-I}
 
   - names: [Olga Ensz]
     ror: "https://ror.org/02y3ad647"   # University of Florida
+    homepage: "https://dental.ufl.edu/profile/luaces-olga/"
     projects:
       - {id: ODFA, role: Co-I}
     # ORCID unconfirmed
@@ -192,6 +215,7 @@ members:
   - names: [Brenda Heaton]
     orcid: "0000-0002-3097-4717"
     ror: "https://ror.org/03r0ha626"   # University of Utah
+    homepage: "https://medicine.utah.edu/faculty/brenda-heaton"
     projects:
       - {id: ODFA, role: Co-I}
 
@@ -200,12 +224,14 @@ members:
   - names: [Julie Bowker]
     orcid: "0000-0001-7055-9158"
     ror: "https://ror.org/01y64my43"   # University at Buffalo
+    homepage: "https://arts-sciences.buffalo.edu/psychology/faculty/faculty-directory/bowker.html"
     projects:
       - {id: PHASES, role: Co-I}
 
   - names: [Hollen Reischer]
     orcid: "0000-0002-6538-0265"
     ror: "https://ror.org/01y64my43"   # University at Buffalo
+    homepage: "https://arts-sciences.buffalo.edu/psychology/faculty/faculty-directory/reischer.html"
     projects:
       - {id: PHASES, role: Co-I}
 
@@ -218,6 +244,7 @@ members:
   - names: [Jie Zheng]
     orcid: "0000-0002-2999-0103"
     ror: "https://ror.org/00jmfr291"   # University of Michigan
+    linkedin: "https://www.linkedin.com/in/jie-zheng-b527a8126/"
     projects:
       - {id: PHASES, role: Consultant}
 
@@ -229,6 +256,7 @@ members:
   - names: [Regina Hurley]
     orcid: "0009-0002-9791-3334"
     ror: "https://ror.org/01y64my43"   # University at Buffalo
+    homepage: "https://www.buffalo.edu/cas/philosophy/faculty/faculty_directory/hurley.html"
     projects:
       - {id: PHASES, role: Researcher}
 
@@ -261,6 +289,7 @@ members:
   - names: [Yue Yu]
     orcid: "0000-0002-3900-1217"
     ror: "https://ror.org/02qp3tb03"   # Mayo Clinic
+    linkedin: "https://www.linkedin.com/in/yue-yu-907050173/"
     projects:
       - {id: BSO-AD}   # role TBD
 
@@ -268,6 +297,7 @@ members:
 
   - names: [Kriti Jain]
     ror: "https://ror.org/01cwqze88"   # National Institutes of Health
+    homepage: "https://www.nia.nih.gov/about/staff/jain-kriti"
     projects:
       - {id: BSO-AD, role: Program Officer}
       - {id: PHASES, role: Program Officer}
@@ -281,16 +311,19 @@ members:
 
   - names: [Dana Wolff-Hughes]
     ror: "https://ror.org/01cwqze88"   # National Institutes of Health
+    homepage: "https://epi.grants.cancer.gov/staff/wolff-hughes.html"
     projects:
       - {id: APRICOT, role: Program Officer}
 
   - names: [Richard Moser, Rick Moser]
     ror: "https://ror.org/01cwqze88"   # National Institutes of Health
+    homepage: "https://cancercontrol.cancer.gov/brp/about/staff/moser"
     projects:
       - {id: APRICOT, role: Program Officer}
 
   - names: [Noffisat Oki]
     ror: "https://ror.org/01cwqze88"   # National Institutes of Health
+    homepage: "https://www.nidcr.nih.gov/grants-funding/grant-programs/staff-contacts/noffisat-oki"
     projects:
       - {id: ODFA, role: Program Officer}
 
@@ -301,6 +334,7 @@ members:
 
   - names: [Janine Simmons]
     ror: "https://ror.org/01cwqze88"   # National Institutes of Health
+    linkedin: "https://www.linkedin.com/in/janine-simmons-522890296/"
     projects:
       - {id: DCC, role: Program Officer}
 
