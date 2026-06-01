@@ -49,108 +49,21 @@ That's it — the portal picks up new files automatically on the next build.
 
 ## Resource YAML Schema
 
-Every resource file has these fields:
+Each resource is a YAML file under `data/resources/`, in a subdirectory named
+for its type. The full schema — every field, the controlled vocabularies, and a
+complete example for each resource type — is documented in
+**[docs/resource-schema.md](docs/resource-schema.md)**.
 
-| Field | Required | Description |
-|---|---|---|
-| `id` | Yes | Unique identifier, kebab-case (e.g. `bcio`, `nas-report-2022`) |
-| `name` | Yes | Display name |
-| `type` | Yes | One of: `Ontology`, `Publication`, `Repository`, `Website`, `Registry`, `Community`, `Tool`, `Dataset` |
-| `description` | Yes | 1-3 sentence summary |
-| `producedByProjects` | Yes | List of projects that produced this resource |
-| `usedByProjects` | Yes | List of projects that use this resource |
-| `links` | Yes | List of links (see below) |
-| `status` | Yes | One of: `Active`, `In Development`, `Archived` |
-| `tags` | Yes | List of searchable keywords |
-| `lastUpdated` | Yes | Date the metadata was last reviewed (YYYY-MM-DD) |
-| `bssoFoundry` | Ontologies only | `true` or `false` |
-| `publishedDate` | Publications only | Publication date in YYYY-MM format |
+In brief, every resource has: `id`, `name`, `type`, `description`,
+`producedByProjects`, `usedByProjects`, `links`, `tags`, `status`, and
+`lastUpdated`. Ontologies add `bssoFoundry`; publications add `publishedYear`
+(plus optional month/day), `venue`, `doi`, `keywords`, and `contributors`.
 
-**Project names** must be one of: `APRICOT`, `BSO-AD`, `ODFA`, `PHASES`, `DCC`
+Resource files are validated on every push and pull request by
+`scripts/validate-resources.py`. Run it locally with:
 
-**Links** are a list of objects with:
-- `label` — display text (e.g. `GitHub`, `DOI`, `PubMed`)
-- `url` — the full URL
-- `platform` — one of: `GitHub`, `BioPortal`, `OLS`, `Ontobee`, `Zenodo`, `OSF`, `Website`, `Discourse`, `Other`
-
-Use `producedByProjects: []` or `usedByProjects: []` if a field doesn't apply.
-
----
-
-## Examples
-
-### Ontology
-
-```yaml
-id: bcio
-name: Behaviour Change Intervention Ontology (BCIO)
-type: Ontology
-description: An ontology for annotating and synthesising evidence about behaviour change interventions.
-producedByProjects:
-  - APRICOT
-usedByProjects:
-  - PHASES
-links:
-  - label: BioPortal
-    url: https://bioportal.bioontology.org/ontologies/BCIO
-    platform: BioPortal
-  - label: GitHub
-    url: https://github.com/HumanBehaviourChangeProject/ontologies
-    platform: GitHub
-  - label: OLS
-    url: https://www.ebi.ac.uk/ols4/ontologies/bcio
-    platform: OLS
-bssoFoundry: true
-tags:
-  - ontology
-  - behaviour-change
-  - interventions
-status: Active
-lastUpdated: "2026-04-01"
-```
-
-### Publication
-
-```yaml
-id: pub-apricot-hbcp-phase2
-name: "The Human Behaviour-Change Project Phase 2: Advancing behavioural and social sciences through ontology tools"
-type: Publication
-publishedDate: "2024-12"
-description: Describes the second phase of the Human Behaviour-Change Project. Published in Wellcome Open Research.
-producedByProjects:
-  - APRICOT
-usedByProjects: []
-links:
-  - label: DOI
-    url: https://doi.org/10.12688/wellcomeopenres.23520.1
-    platform: Website
-tags:
-  - paper
-  - behaviour-change
-  - ontology-tools
-status: Active
-lastUpdated: "2026-04-01"
-```
-
-### Website
-
-```yaml
-id: apricot-website
-name: APRICOT Project Website
-type: Website
-description: Project website for APRICOT, which develops ontologies to standardize behavioral science constructs in cancer prevention research.
-producedByProjects:
-  - APRICOT
-usedByProjects: []
-links:
-  - label: Website
-    url: https://accelerate-basso.regenstrief.org/pages/apricot.html
-    platform: Website
-tags:
-  - website
-  - cancer-prevention
-status: Active
-lastUpdated: "2026-04-01"
+```bash
+python scripts/validate-resources.py
 ```
 
 ---
