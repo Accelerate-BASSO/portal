@@ -143,7 +143,7 @@ members:
     projects:
       - {id: APRICOT, role: Co-I}
 
-  - names: [Marta Marques]
+  - names: [Marta Marques, Marta M. Marques]
     orcid: "0000-0002-4797-9557"
     ror: "https://ror.org/02xankh89"   # NOVA University Lisbon
     homepage: "https://www.ensp.unl.pt/en/docente/marta-marques-2/"
@@ -221,21 +221,21 @@ members:
 
   # PHASES (1U01AG088074-01)
 
-  - names: [Julie Bowker]
+  - names: [Julie Bowker, Julie C Bowker]
     orcid: "0000-0001-7055-9158"
     ror: "https://ror.org/01y64my43"   # University at Buffalo
     homepage: "https://arts-sciences.buffalo.edu/psychology/faculty/faculty-directory/bowker.html"
     projects:
       - {id: PHASES, role: Co-I}
 
-  - names: [Hollen Reischer]
+  - names: [Hollen Reischer, Hollen N Reischer]
     orcid: "0000-0002-6538-0265"
     ror: "https://ror.org/01y64my43"   # University at Buffalo
     homepage: "https://arts-sciences.buffalo.edu/psychology/faculty/faculty-directory/reischer.html"
     projects:
       - {id: PHASES, role: Co-I}
 
-  - names: [Damayanthi Jesudas]
+  - names: [Damayanthi Jesudas, B Damayanthi Jesudas]
     orcid: "0000-0001-6906-5548"
     ror: "https://ror.org/02y3ad647"   # University of Florida
     projects:
