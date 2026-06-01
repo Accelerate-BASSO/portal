@@ -29,16 +29,19 @@ data/resources/
   (datasets/)     # Dataset — supported, none yet
 ```
 
-Use a kebab-case filename (e.g. `bcio.yaml`, `nas-report-2022.yaml`). The portal
-picks up new files automatically on the next build. Every file is checked in CI
-by `scripts/validate-resources.py`; run it locally with
+By convention, name the file in kebab-case, often matching the resource `id`
+(e.g. `bcio.yaml`, `nas-report-2022.yaml`) — but the loader ignores the
+filename, so only the `.yaml` extension, the type subdirectory, and a
+kebab-case `id` field actually matter. The portal picks up new files
+automatically on the next build. Every file is checked in CI by
+`scripts/validate-resources.py`; run it locally with
 `python scripts/validate-resources.py`.
 
 ## Common fields (every resource)
 
 | Field | Required | Type | Description |
 |---|---|---|---|
-| `id` | Yes | string | Unique identifier, kebab-case. Must be unique across all resources. |
+| `id` | Yes | string | Stable unique identifier across all resources. Kebab-case — for consistency, to keep cache keys clean, and so ids stay URL-safe if per-resource detail pages are added later. |
 | `name` | Yes | string | Display name. Quote it if it contains a colon. |
 | `type` | Yes | enum | One of `Ontology`, `Publication`, `Website`, `Repository`, `Registry`, `Community`, `Tool`, `Dataset`. Must match the file's subdirectory (which is the pluralized type, e.g. `Ontology` → `ontologies/`). |
 | `description` | Yes | string | 1–3 sentence plain-language summary. Use `>-` for multi-line. |
