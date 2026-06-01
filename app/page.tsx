@@ -24,9 +24,17 @@ export default function Home() {
           </p>
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-gray-text">
             Accelerate BASSO is a research network developing ontologies for the
-            behavioral and social sciences. This portal brings together the
-            ontologies, tools, publications, and communities produced across the
-            network, with links to where each one lives.
+            behavioral and social sciences. It brings together projects spanning
+            healthy aging, Alzheimer&apos;s disease, cancer prevention, and
+            dental care to build shared, reusable standards, and works to make
+            the resulting tools usable by the wider research community.
+          </p>
+          <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-gray-text">
+            This portal is a single place to find the work of the Accelerate
+            BASSO network. It lists each ontology, tool, publication, and
+            community with a short description and a link to where you can
+            access it. You can browse everything or search for something
+            specific.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <Link
