@@ -1,10 +1,9 @@
 import Link from "next/link";
-import { getAllResources, getResourceTypes, getProjects, getAllProjects } from "@/lib/resources";
+import { getAllResources, getResourceTypes, getAllProjects } from "@/lib/resources";
 
 export default function Home() {
   const resources = getAllResources();
   const types = getResourceTypes(resources);
-  const projects = getProjects(resources);
 
   const ontologyCount = resources.filter((r) => r.type === "Ontology").length;
   const foundryCount = resources.filter((r) => r.bssoFoundry).length;
@@ -19,10 +18,15 @@ export default function Home() {
             <span className="bg-accent p-1 px-6">Accelerate BASSO</span>
           </h1>
           <p className="mt-4 text-3xl font-light">Resource Portal</p>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-gray-text">
-            A curated discovery layer for resources produced by the Accelerate
-            BASSO Network — ontologies, tools, publications, and communities for
-            the behavioral and social sciences.
+          <p className="mx-auto mt-6 max-w-2xl text-xl font-light leading-snug text-black">
+            Accelerating Behavioral and Social Science through Ontology
+            Development and Use
+          </p>
+          <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-gray-text">
+            Accelerate BASSO is a research network developing ontologies for the
+            behavioral and social sciences. This portal brings together the
+            ontologies, tools, publications, and communities produced across the
+            network, with links to where each one lives.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <Link
@@ -37,7 +41,7 @@ export default function Home() {
               rel="noopener noreferrer"
               className="flex h-12 items-center justify-center rounded-full border border-black px-8 text-black no-underline transition-colors hover:bg-gray-50"
             >
-              Main Website
+              About the Network
             </a>
           </div>
         </div>
@@ -77,63 +81,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Audience Pathways */}
-      <section className="mx-auto max-w-5xl px-6 py-20">
-        <h2 className="text-center text-4xl font-semibold">
-          Find What You Need
-        </h2>
-        <div className="mt-12 grid gap-8 md:grid-cols-3">
-          {/* Beginners */}
-          <div className="flex flex-col rounded-lg border border-card-border bg-white p-6 shadow-sm">
-            <h3 className="text-xl font-semibold">New to BSSR Ontologies?</h3>
-            <p className="mt-3 flex-1 text-sm leading-relaxed text-gray-text">
-              Explore the network&apos;s resources by topic and project.
-              Discover ontologies, tools, and communities with guided
-              descriptions and context.
-            </p>
-            <Link
-              href="/resources"
-              className="mt-4 text-sm font-medium text-black underline"
-            >
-              Explore resources &rarr;
-            </Link>
-          </div>
-
-          {/* Advanced */}
-          <div className="flex flex-col rounded-lg border border-card-border bg-white p-6 shadow-sm">
-            <h3 className="text-xl font-semibold">Know What You Need?</h3>
-            <p className="mt-3 flex-1 text-sm leading-relaxed text-gray-text">
-              Search and filter across all network resources. Find direct
-              links to GitHub repos, BioPortal entries, Zenodo archives,
-              and more.
-            </p>
-            <Link
-              href="/resources"
-              className="mt-4 text-sm font-medium text-black underline"
-            >
-              Search resources &rarr;
-            </Link>
-          </div>
-
-          {/* Funders */}
-          <div className="flex flex-col rounded-lg border border-card-border bg-white p-6 shadow-sm">
-            <h3 className="text-xl font-semibold">Network Overview</h3>
-            <p className="mt-3 flex-1 text-sm leading-relaxed text-gray-text">
-              See the breadth of the network&apos;s outputs at a glance —
-              {" "}{resources.length} resources across {types.length} types and{" "}
-              {projects.length} projects, with {foundryCount} BSSO Foundry
-              ontologies.
-            </p>
-            <Link
-              href="/resources"
-              className="mt-4 text-sm font-medium text-black underline"
-            >
-              View all resources &rarr;
-            </Link>
-          </div>
-        </div>
-      </section>
-
       {/* Resource Types Overview */}
       <section className="border-t border-gray-200 bg-gray-50 px-6 py-20">
         <div className="mx-auto max-w-5xl">
@@ -162,29 +109,6 @@ export default function Home() {
             })}
           </div>
         </div>
-      </section>
-
-      {/* About */}
-      <section className="mx-auto max-w-3xl px-6 py-20 text-center">
-        <h2 className="text-4xl font-semibold">About This Portal</h2>
-        <p className="mt-6 text-lg leading-relaxed text-gray-text">
-          The Accelerate BASSO Portal is a curated index of resources produced
-          by the{" "}
-          <a
-            href="https://accelerate-basso.regenstrief.org"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-medium text-black underline"
-          >
-            Accelerate BASSO Network
-          </a>
-          . It does not host or duplicate content — instead, it provides
-          metadata, descriptions, and direct links to where resources live
-          across GitHub, BioPortal, Zenodo, OSF, and other platforms.
-        </p>
-        <p className="mt-4 text-sm text-gray-text">
-          Supported by the National Institute of Aging (NIA) U24AG088019
-        </p>
       </section>
 
       {/* Contribute */}
