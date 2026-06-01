@@ -18,7 +18,7 @@ export default function Home() {
             <span className="bg-accent p-1 px-6">Accelerate BASSO</span>
           </h1>
           <p className="mt-4 text-3xl font-light">Resource Portal</p>
-          <p className="mx-auto mt-6 max-w-2xl text-xl font-light leading-snug text-black">
+          <p className="mx-auto mt-6 max-w-2xl text-balance text-xl font-light leading-snug text-black">
             Accelerating Behavioral and Social Science through Ontology
             Development and Use
           </p>
@@ -44,9 +44,10 @@ export default function Home() {
               About the Network
             </a>
           </div>
-          <p className="mt-8 text-sm text-gray-text">
+          <p className="mx-auto mt-8 max-w-xl text-balance text-sm text-gray-text">
             Supported by the National Institute on Aging (NIA), part of the
-            National Institutes of Health (NIH), under award U24AG088019
+            National Institutes of Health (NIH),{" "}
+            <span className="whitespace-nowrap">under award U24AG088019</span>
           </p>
         </div>
       </section>
