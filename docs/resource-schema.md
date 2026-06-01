@@ -63,7 +63,13 @@ automatically on the next build. Every file is checked in CI by
 
 ### Links
 
-Each item in `links` is an object:
+Each item in `links` is an object with these properties:
+
+| Property | Required | Type | Description |
+|---|---|---|---|
+| `label` | Yes | string | Display text for the link (e.g. `GitHub`, `DOI`, `PubMed`, `BioPortal`). |
+| `url` | Yes | string | The full URL. |
+| `platform` | Yes | enum | One of the platforms listed above. |
 
 ```yaml
 links:
@@ -140,6 +146,11 @@ relevant to the network — for example journal articles, conference papers, and
 foundational reports. Publications carry bibliographic metadata (year, venue,
 DOI, authors) and link out to the DOI or landing page; author ORCIDs are
 resolved from `network-members.yaml`.
+
+The aim is just enough metadata to display and search a publication on the
+portal and point to it — not to reproduce a full reference or citation
+manager. Capture what aids discovery (title, year, venue, authors, a link);
+leave exhaustive bibliographic detail to the DOI and citation tools.
 
 Extra fields:
 
