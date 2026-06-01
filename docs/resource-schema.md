@@ -30,7 +30,7 @@ by `scripts/validate-resources.py`; run it locally with
 | `description` | Yes | string | 1–3 sentence plain-language summary. Use `>-` for multi-line. |
 | `producedByProjects` | Yes | list | Projects that produced the resource — any of `APRICOT`, `BSO-AD`, `ODFA`, `PHASES`, `DCC` (see vocab below for full names). May be empty (`[]`). |
 | `usedByProjects` | Yes | list | Projects that use the resource — same allowed values as `producedByProjects`. May be empty (`[]`). |
-| `links` | Yes | list | Links to where the resource lives (see below). May be empty (`[]`). |
+| `links` | Yes | list | Links to where the resource lives (see below). At least one is required. |
 | `tags` | Yes | list | Searchable keywords (kebab-case). May be empty (`[]`). |
 | `lastUpdated` | Yes | date | `YYYY-MM-DD` — when the metadata was last reviewed. |
 

@@ -105,8 +105,8 @@ def validate_file(path, ids, errors):
 
     links = d.get("links")
     if links is not None:
-        if not isinstance(links, list):
-            err("`links` must be a list (use [] if none).")
+        if not isinstance(links, list) or not links:
+            err("`links` must be a non-empty list — every resource needs at least one link.")
         else:
             for i, ln in enumerate(links):
                 if not isinstance(ln, dict):

@@ -5,7 +5,13 @@ description: An ontology for representing relationships between different behavi
 producedByProjects: []
 usedByProjects:
   - APRICOT
-links: []
+links:
+  - label: BSSO Foundry
+    url: https://www.bssofoundry.org/ontology/turbbo.html
+    platform: Website
+  - label: GitHub
+    url: https://github.com/fatibaba/turbbo
+    platform: GitHub
 bssoFoundry: true
 tags:
   - ontology
