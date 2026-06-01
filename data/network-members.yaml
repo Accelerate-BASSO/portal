@@ -12,6 +12,9 @@
 # current primary institution (https://ror.org/<id>), with the institution name
 # as an inline comment. Not consumed by the scripts.
 #
+# `homepage` and `linkedin` are optional URLs for the member's personal or
+# institutional homepage and LinkedIn profile. Populated opportunistically.
+#
 # `projects` is an optional list of the member's roles, one per project. Each
 # item is {id, role}. A member may appear on several projects with different
 # roles. `role` may be omitted when the role is not yet known.
@@ -76,6 +79,8 @@ members:
   - names: [Matthew Horridge]
     orcid: "0000-0001-8921-6593"
     ror: "https://ror.org/00f54p054"   # Stanford University
+    projects:
+      - {id: DCC, role: Researcher}
 
   - names: [Muhammad Amith, Tuan]
     orcid: "0000-0003-4333-1857"

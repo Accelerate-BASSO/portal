@@ -25,6 +25,8 @@ ALLOWED_ROLES = {
 }
 ORCID_RE = re.compile(r"^\d{4}-\d{4}-\d{4}-\d{3}[\dX]$")
 ROR_RE = re.compile(r"^https://ror\.org/[0-9a-z]{9}$")
+URL_RE = re.compile(r"^https?://", re.IGNORECASE)
+LINKEDIN_RE = re.compile(r"^https?://([a-z]{2,3}\.)?linkedin\.com/", re.IGNORECASE)
 
 
 def main() -> int:
@@ -83,6 +85,16 @@ def main() -> int:
         if ror is not None and not ROR_RE.match(str(ror)):
             errors.append(f"{where} ({label}): invalid ROR {ror!r} "
                           f"(expected https://ror.org/<9-char-id>).")
+
+        homepage = entry.get("homepage")
+        if homepage is not None and not URL_RE.match(str(homepage)):
+            errors.append(f"{where} ({label}): invalid homepage {homepage!r} "
+                          f"(expected an http(s) URL).")
+
+        linkedin = entry.get("linkedin")
+        if linkedin is not None and not LINKEDIN_RE.match(str(linkedin)):
+            errors.append(f"{where} ({label}): invalid linkedin {linkedin!r} "
+                          f"(expected a linkedin.com URL).")
 
         projects = entry.get("projects")
         if projects is not None:

@@ -207,12 +207,14 @@ To add a member, add an entry to `data/network-members.yaml`:
   - names: [Jane Smith, J Smith]
     orcid: "0000-0001-2345-6789"          # optional
     ror: "https://ror.org/02jx3x895"      # optional, current institution
+    homepage: "https://example.edu/jsmith"  # optional
+    linkedin: "https://linkedin.com/in/jsmith"  # optional
     projects:                             # optional, roles per project
       - {id: APRICOT, role: Co-I}
       - {id: DCC, role: Researcher}
 ```
 
-List every spelling a name may take under `names` (the first is canonical). Both `orcid` and `ror` are optional — a member with no confirmed ORCID is still listed but skipped during ORCID resolution.
+List every spelling a name may take under `names` (the first is canonical). `orcid`, `ror`, `homepage`, and `linkedin` are all optional — a member with no confirmed ORCID is still listed but skipped during ORCID resolution.
 
 A member's role is specific to a project, so roles live in the optional `projects` list (one `{id, role}` per project; a person may appear on several with different roles). `role` may be omitted when not yet known.
 
