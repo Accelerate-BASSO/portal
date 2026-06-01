@@ -89,6 +89,12 @@ Where a `license` field appears, use an [SPDX license identifier](https://spdx.o
 
 ## Ontology
 
+A formal vocabulary of classes and relationships for a behavioural or social
+science domain, such as the BCIO, ADDICTO, or MFOEM. Ontologies are the
+network's core product; most are part of the BSSO Foundry and are hosted on
+platforms like BioPortal, Ontobee, or OLS. The portal links to where each
+ontology can be browsed or downloaded rather than hosting it.
+
 Extra fields:
 
 | Field | Required | Type | Description |
@@ -125,6 +131,12 @@ lastUpdated: 2026-04-01
 ```
 
 ## Publication
+
+A peer-reviewed paper, preprint, report, or article produced by or directly
+relevant to the network — for example journal articles, conference papers, and
+foundational reports. Publications carry bibliographic metadata (year, venue,
+DOI, authors) and link out to the DOI or landing page; author ORCIDs are
+resolved from `network-members.yaml`.
 
 Extra fields:
 
@@ -172,7 +184,10 @@ lastUpdated: 2026-04-03
 
 ## Website
 
-A project or network website.
+A public-facing website for the network or one of its projects, such as a
+project's landing page or the main Accelerate BASSO site. Use this type for
+informational sites that orient visitors, as distinct from a code repository or
+an ontology browser.
 
 Extra fields:
 
@@ -200,7 +215,11 @@ lastUpdated: 2026-04-01
 
 ## Repository
 
-A code or data repository.
+A version-controlled or curated store of source artifacts — for example a
+GitHub repository holding ontology source files and tooling, or a curated slice
+of an ontology repository like the BSSO BioPortal Slice. Use this type for the
+place the source lives, as opposed to a published release or a browsable
+registry.
 
 Extra fields:
 
@@ -228,7 +247,10 @@ lastUpdated: 2026-04-01
 
 ## Registry
 
-A standards or ontology registry (e.g. BioPortal BSSO Slice, BSSO Foundry).
+A coordinated collection that catalogues and curates many ontologies or
+standards, such as the BSSO Foundry. A registry is about the curated collection
+itself — its interoperability conventions and membership — rather than any
+single ontology within it.
 
 Extra fields:
 
@@ -256,7 +278,10 @@ lastUpdated: 2026-04-01
 
 ## Community
 
-A forum or community of practice.
+A forum or community of practice where people discuss and share knowledge
+around the network's work — for example the APRICOT Discourse community. Use
+this type for ongoing discussion spaces, typically linked via their forum or
+platform URL.
 
 Extra fields:
 
@@ -284,7 +309,12 @@ lastUpdated: 2026-04-01
 
 ## Tool
 
-A software tool or platform.
+A piece of software or an interactive platform produced by network members —
+for example an ontology editor (onto-spread-ed), a theory-and-techniques tool
+(TaTT), or a searchable theory database. This type is for the network's own
+tools, not third-party software the network merely uses. Tools may be hosted
+web applications or installable software; the portal links to where each can be
+used or obtained.
 
 Extra fields:
 
@@ -313,7 +343,10 @@ lastUpdated: 2026-04-01
 
 ## Dataset
 
-A dataset produced by the network. (Supported but none exist yet.)
+A structured collection of data produced or curated by the network, typically
+deposited in an archive such as Zenodo or OSF with a DOI. Datasets carry an
+optional DOI and license/access terms, and link to the archive record. (This
+type is supported but no datasets are listed yet.)
 
 Extra fields:
 
