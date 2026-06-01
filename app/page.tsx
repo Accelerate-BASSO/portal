@@ -30,11 +30,10 @@ export default function Home() {
             the resulting tools usable by the wider research community.
           </p>
           <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-gray-text">
-            This portal is a single place to find the work of the Accelerate
-            BASSO network. It lists each ontology, tool, publication, and
-            community with a short description and a link to where you can
-            access it. You can browse everything or search for something
-            specific.
+            The portal is where you can find everything the network has
+            produced — each ontology, tool, publication, and community, with a
+            short description and a link to where you can access it. Browse the
+            full collection or search for something specific.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <Link
