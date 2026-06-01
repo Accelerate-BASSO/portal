@@ -26,7 +26,7 @@ by `scripts/validate-resources.py`; run it locally with
 |---|---|---|---|
 | `id` | Yes | string | Unique identifier, kebab-case. Must be unique across all resources. |
 | `name` | Yes | string | Display name. Quote it if it contains a colon. |
-| `type` | Yes | enum | One of `Ontology`, `Publication`, `Website`, `Repository`, `Registry`, `Community`, `Tool`, `Dataset`. Must match the subdirectory. |
+| `type` | Yes | enum | One of `Ontology`, `Publication`, `Website`, `Repository`, `Registry`, `Community`, `Tool`, `Dataset`. Must match the file's subdirectory (which is the pluralized type, e.g. `Ontology` → `ontologies/`). |
 | `description` | Yes | string | 1–3 sentence plain-language summary. Use `>-` for multi-line. |
 | `producedByProjects` | Yes | list | Projects that produced the resource — any of `APRICOT`, `BSO-AD`, `ODFA`, `PHASES`, `DCC` (see vocab below for full names). May be empty (`[]`). |
 | `usedByProjects` | Yes | list | Projects that use the resource — same allowed values as `producedByProjects`. May be empty (`[]`). |
