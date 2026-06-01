@@ -44,6 +44,10 @@ export default function Home() {
               About the Network
             </a>
           </div>
+          <p className="mt-8 text-sm text-gray-text">
+            Supported by the National Institute on Aging (NIA), part of the
+            National Institutes of Health (NIH), under award U24AG088019
+          </p>
         </div>
       </section>
 
