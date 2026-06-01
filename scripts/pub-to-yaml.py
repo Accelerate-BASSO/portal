@@ -107,10 +107,13 @@ def load_known_contributors() -> dict[str, str]:
 
     lookup = {}
     for entry in data.get("contributors", []):
-        name = entry.get("name", "").strip()
         orcid = entry.get("orcid", "").strip()
-        if name and orcid:
-            lookup[name.lower()] = orcid
+        if not orcid:
+            continue
+        for name in entry.get("names", []):
+            name = name.strip()
+            if name:
+                lookup[name.lower()] = orcid
     return lookup
 
 

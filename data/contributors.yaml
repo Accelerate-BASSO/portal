@@ -1,34 +1,42 @@
 # Known network contributors with ORCIDs.
 # The pub-to-yaml.py script uses this file to resolve ORCIDs for authors.
-# Format: list of entries with name and orcid.
-# Names should match how they appear in publication metadata (PubMed, CrossRef, etc.)
-# Add alternate spellings as separate entries with the same ORCID.
+# Format: one entry per person, keyed by ORCID, with a `names` list.
+# List every spelling a person's name may take in publication metadata
+# (PubMed, CrossRef, etc.) so author names can be matched to their ORCID.
 
 contributors:
-  - name: Susan Michie
-    orcid: "0000-0003-0063-6378"
-  - name: Robert West
-    orcid: "0000-0001-6398-0921"
-  - name: Janna Hastings
-    orcid: "0000-0002-3469-4923"
-  # William Duncan — alternate spellings, same ORCID
-  - name: William D Duncan
-    orcid: "0000-0001-9625-1899"
-  - name: William Duncan
-    orcid: "0000-0001-9625-1899"
-  - name: William D. Duncan
-    orcid: "0000-0001-9625-1899"
-  - name: Alexander D Diehl
-    orcid: "0000-0001-9990-8331"
-  - name: John Beverley
-    orcid: "0000-0002-6596-4479"
-  - name: Yongqun He
-    orcid: "0000-0001-9189-9661"
-  - name: Cui Tao
-    orcid: "0000-0003-0828-4642"
-  - name: Matthew Horridge
-    orcid: "0000-0001-8921-6593"
-  - name: Muhammad Amith
-    orcid: "0000-0003-4333-1857"
-  - name: Daniel W McNeil
-    orcid: "0000-0002-0766-8455"
+  - orcid: "0000-0003-0063-6378"
+    names:
+      - Susan Michie
+  - orcid: "0000-0001-6398-0921"
+    names:
+      - Robert West
+  - orcid: "0000-0002-3469-4923"
+    names:
+      - Janna Hastings
+  - orcid: "0000-0001-9625-1899"
+    names:
+      - William D Duncan
+      - William Duncan
+      - William D. Duncan
+  - orcid: "0000-0001-9990-8331"
+    names:
+      - Alexander D Diehl
+  - orcid: "0000-0002-6596-4479"
+    names:
+      - John Beverley
+  - orcid: "0000-0001-9189-9661"
+    names:
+      - Yongqun He
+  - orcid: "0000-0003-0828-4642"
+    names:
+      - Cui Tao
+  - orcid: "0000-0001-8921-6593"
+    names:
+      - Matthew Horridge
+  - orcid: "0000-0003-4333-1857"
+    names:
+      - Muhammad Amith
+  - orcid: "0000-0002-0766-8455"
+    names:
+      - Daniel W McNeil
