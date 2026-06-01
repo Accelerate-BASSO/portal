@@ -1,6 +1,20 @@
 # Resource Schema
 
 This is the reference for the resource metadata files under `data/resources/`.
+
+## Resource types
+
+| Type | Description |
+|---|---|
+| `Ontology` | A behavioural/social science ontology. |
+| `Publication` | A paper, report, or article. |
+| `Website` | A project or network website. |
+| `Repository` | A code or data repository. |
+| `Registry` | A standards or ontology registry. |
+| `Community` | A forum or community of practice. |
+| `Tool` | A software tool or platform. |
+| `Dataset` | A dataset produced by the network. |
+
 Each resource is a single YAML file in a subdirectory named for its type:
 
 ```
