@@ -10,7 +10,7 @@ This is the reference for the resource metadata files under `data/resources/`.
 | `Publication` | A paper, report, or article. |
 | `Website` | A project or network website. |
 | `Repository` | A code or data repository. |
-| `Registry` | A standards or ontology registry. |
+| `Registry` | A standards or ontology registry (e.g. BioPortal BSSO Slice, BSSO Foundry). |
 | `Community` | A forum or community of practice. |
 | `Tool` | A software tool or platform. |
 | `Dataset` | A dataset produced by the network. |
@@ -86,8 +86,11 @@ validator rejects misplaced fields.
 
 ## Ontology
 
-Extra field: `bssoFoundry` (boolean, required for ontologies) — whether the
-ontology is part of the BSSO Foundry.
+Extra fields:
+
+| Field | Required | Type | Description |
+|---|---|---|---|
+| `bssoFoundry` | Yes | boolean | Whether the ontology is part of the BSSO Foundry. |
 
 ```yaml
 id: bcio
@@ -164,7 +167,13 @@ lastUpdated: 2026-04-03
 
 ## Website
 
-No extra fields beyond the common set.
+A project or network website.
+
+Extra fields:
+
+| Field | Required | Type | Description |
+|---|---|---|---|
+| _none_ | | | No fields beyond the common set. |
 
 ```yaml
 id: apricot-website
@@ -186,7 +195,13 @@ lastUpdated: 2026-04-01
 
 ## Repository
 
-No extra fields beyond the common set. Use for code or data repositories.
+A code or data repository.
+
+Extra fields:
+
+| Field | Required | Type | Description |
+|---|---|---|---|
+| _none_ | | | No fields beyond the common set. |
 
 ```yaml
 id: phases-github
@@ -208,7 +223,13 @@ lastUpdated: 2026-04-01
 
 ## Registry
 
-No extra fields beyond the common set. Use for standards/ontology registries.
+A standards or ontology registry (e.g. BioPortal BSSO Slice, BSSO Foundry).
+
+Extra fields:
+
+| Field | Required | Type | Description |
+|---|---|---|---|
+| _none_ | | | No fields beyond the common set. |
 
 ```yaml
 id: bsso-foundry
@@ -230,7 +251,13 @@ lastUpdated: 2026-04-01
 
 ## Community
 
-No extra fields beyond the common set. Use for forums and communities of practice.
+A forum or community of practice.
+
+Extra fields:
+
+| Field | Required | Type | Description |
+|---|---|---|---|
+| _none_ | | | No fields beyond the common set. |
 
 ```yaml
 id: apricot-community
@@ -252,7 +279,13 @@ lastUpdated: 2026-04-01
 
 ## Tool
 
-No extra fields beyond the common set. Use for software tools and platforms.
+A software tool or platform.
+
+Extra fields:
+
+| Field | Required | Type | Description |
+|---|---|---|---|
+| _none_ | | | No fields beyond the common set. |
 
 ```yaml
 id: tatt
@@ -274,7 +307,13 @@ lastUpdated: 2026-04-01
 
 ## Dataset
 
-No extra fields beyond the common set. (Supported but none exist yet.)
+A dataset produced by the network. (Supported but none exist yet.)
+
+Extra fields:
+
+| Field | Required | Type | Description |
+|---|---|---|---|
+| _none_ | | | No fields beyond the common set. |
 
 ```yaml
 id: example-dataset
