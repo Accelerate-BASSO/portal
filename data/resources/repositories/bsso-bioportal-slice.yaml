@@ -9,7 +9,7 @@ links:
   - label: Website
     url: https://bsso.bioportal.bioontology.org
     platform: Website
-tags:
+keywords:
   - bioportal
   - browsing
   - ontology-repository

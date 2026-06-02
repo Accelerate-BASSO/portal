@@ -8,10 +8,6 @@ description: >-
   Describes the development of an ontology of pain, related to dental care
   fear and anxiety research. Published at the International Conference on
   Biomedical Ontology (ICBO) 2024, Enschede, The Netherlands.
-keywords:
-  - pain
-  - ontology development
-  - ICBO
 contributors:
   - name: Finn D Wilson
   - name: Gokul M Chandrasekharan
@@ -28,7 +24,7 @@ links:
   - label: CEUR-WS
     url: https://ceur-ws.org/Vol-3939/abstract8.pdf
     platform: Website
-tags:
+keywords:
   - paper
   - icbo-2024
 lastUpdated: "2026-04-03"

@@ -26,7 +26,6 @@ description: >-
   development that can help bridge the gap between researchers and ontology
   editors, accelerating the adoption of ontologies across diverse research
   fields.
-keywords: []
 contributors:
   - name: Björn Gehrke
     orcid: "0009-0007-7488-0257"
@@ -47,7 +46,7 @@ links:
   - label: DOI
     url: https://doi.org/10.12688/wellcomeopenres.24408.1
     platform: Website
-tags:
+keywords:
   - paper
   - wellcome-open-research
 lastUpdated: 2026-04-13

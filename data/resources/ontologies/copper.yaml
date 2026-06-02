@@ -10,7 +10,7 @@ links:
     url: https://bioportal.bioontology.org/ontologies/COPPER
     platform: BioPortal
 bssoFoundry: true
-tags:
+keywords:
   - ontology
   - physical-activity
   - exercise

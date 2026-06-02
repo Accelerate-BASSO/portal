@@ -22,7 +22,6 @@ description: >-
   match and 87.16% category match. These findings indicate that
   domain-specific fine-tuned LLMs can reduce manual burdens and improve
   reliability.
-keywords: []
 contributors:
   - name: Zhen Hou
   - name: Hao Liu
@@ -37,7 +36,7 @@ links:
   - label: DOI
     url: https://doi.org/10.1038/s44401-025-00018-3
     platform: Website
-tags:
+keywords:
   - paper
   - npj-health-systems
 lastUpdated: 2026-04-03

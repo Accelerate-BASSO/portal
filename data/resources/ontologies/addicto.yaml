@@ -10,7 +10,7 @@ links:
     url: https://github.com/addicto-org/addiction-ontology
     platform: GitHub
 bssoFoundry: true
-tags:
+keywords:
   - ontology
   - addiction
   - treatment

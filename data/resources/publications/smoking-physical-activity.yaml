@@ -37,7 +37,6 @@ description: >-
   required adaptations. This paper can help anyone interested in building a
   body of research to develop automated evidence synthesis methods in physical
   activity or for other behaviours.
-keywords: []
 contributors:
   - name: Oscar Castro
     orcid: "0000-0001-5332-3557"
@@ -60,7 +59,7 @@ links:
   - label: DOI
     url: https://doi.org/10.12688/wellcomeopenres.21664.2
     platform: Website
-tags:
+keywords:
   - paper
   - wellcome-open-research
 lastUpdated: 2026-04-03

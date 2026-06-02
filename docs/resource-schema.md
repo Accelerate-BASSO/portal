@@ -48,7 +48,7 @@ automatically on the next build. Every file is checked in CI by
 | `producedByProjects` | Yes | list | Projects that produced the resource — any of `APRICOT`, `BSO-AD`, `ODFA`, `PHASES`, `DCC` (see vocab below for full names). May be empty (`[]`). |
 | `usedByProjects` | Yes | list | Projects that use the resource — same allowed values as `producedByProjects`. May be empty (`[]`). |
 | `links` | Yes | list | Links to where the resource lives (see below). At least one is required. |
-| `tags` | Yes | list | Searchable keywords (kebab-case). May be empty (`[]`). |
+| `keywords` | Yes | list | Searchable keywords/labels (kebab-case), used by the portal's search. May be empty (`[]`). |
 | `lastUpdated` | Yes | date | `YYYY-MM-DD` — when the metadata was last reviewed. |
 
 ### Controlled vocabularies
@@ -132,7 +132,7 @@ links:
     platform: OLS
 bssoFoundry: true
 license: CC-BY-4.0
-tags:
+keywords:
   - ontology
   - behaviour-change
   - interventions
@@ -162,7 +162,6 @@ Extra fields:
 | `venue` | Yes | string | Journal, conference, or publisher. |
 | `doi` | No | string | DOI (URL or bare). |
 | `pmid` | No | string | PubMed ID. |
-| `keywords` | Yes | list | Author/topic keywords. May be empty (`[]`). |
 | `contributors` | Yes | list | Authors — each `{name, orcid?}`. ORCIDs are auto-resolved from `network-members.yaml`; see [network members](#). |
 
 ```yaml
@@ -177,7 +176,6 @@ description: >-
   Describes the second phase of the Human Behaviour-Change Project, which
   extends an ontology of behaviour change interventions with health-related
   behaviours, a community of practice, and tooling.
-keywords: []
 contributors:
   - name: Susan Michie
     orcid: "0000-0003-0063-6378"
@@ -190,7 +188,7 @@ links:
   - label: DOI
     url: https://doi.org/10.12688/wellcomeopenres.23520.1
     platform: Website
-tags:
+keywords:
   - paper
   - wellcome-open-research
 lastUpdated: 2026-04-03
@@ -221,7 +219,7 @@ links:
   - label: Website
     url: https://accelerate-basso.regenstrief.org/pages/apricot.html
     platform: Website
-tags:
+keywords:
   - website
   - cancer-prevention
 lastUpdated: 2026-04-01
@@ -253,7 +251,7 @@ links:
   - label: GitHub
     url: https://github.com/PHASES-project
     platform: GitHub
-tags:
+keywords:
   - repository
   - solitude
 lastUpdated: 2026-04-01
@@ -284,7 +282,7 @@ links:
   - label: Website
     url: https://bssofoundry.org
     platform: Website
-tags:
+keywords:
   - registry
   - foundry
 lastUpdated: 2026-04-01
@@ -315,7 +313,7 @@ links:
   - label: Discourse
     url: https://example.discourse.group
     platform: Discourse
-tags:
+keywords:
   - community
   - community-of-practice
 lastUpdated: 2026-04-01
@@ -349,7 +347,7 @@ links:
     url: https://github.com/example/tatt
     platform: GitHub
 license: MIT
-tags:
+keywords:
   - tool
   - annotation
 lastUpdated: 2026-04-01
@@ -383,7 +381,7 @@ links:
   - label: Zenodo
     url: https://zenodo.org/records/0000000
     platform: Zenodo
-tags:
+keywords:
   - dataset
 lastUpdated: 2026-04-01
 ```

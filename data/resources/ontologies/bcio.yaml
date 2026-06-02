@@ -17,7 +17,7 @@ links:
     url: https://www.ebi.ac.uk/ols4/ontologies/bcio
     platform: OLS
 bssoFoundry: true
-tags:
+keywords:
   - ontology
   - behaviour-change
   - interventions

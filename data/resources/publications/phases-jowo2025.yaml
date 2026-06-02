@@ -9,14 +9,6 @@ description: >-
   graphs to enrich social science research on solitude, gerotranscendence,
   and narrative identity for healthy aging research. Presented at the PHASES
   Workshop at JOWO 2025, co-located with FOIS 2025.
-keywords:
-  - PHASES
-  - healthy aging
-  - solitude
-  - gerotranscendence
-  - semantic enrichment
-  - JOWO
-  - FOIS
 contributors:
   - name: John Beverley
     orcid: "0000-0002-6596-4479"
@@ -43,7 +35,7 @@ links:
   - label: CEUR-WS
     url: https://ceur-ws.org/Vol-4176/phases-2.pdf
     platform: Website
-tags:
+keywords:
   - paper
   - jowo-2025
   - phases-workshop

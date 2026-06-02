@@ -55,9 +55,9 @@ complete example for each resource type — is documented in
 **[docs/resource-schema.md](docs/resource-schema.md)**.
 
 In brief, every resource has: `id`, `name`, `type`, `description`,
-`producedByProjects`, `usedByProjects`, `links`, `tags`, and `lastUpdated`.
+`producedByProjects`, `usedByProjects`, `links`, `keywords`, and `lastUpdated`.
 Ontologies add `bssoFoundry`; publications add `publishedYear` (plus optional
-month/day), `venue`, `doi`, `keywords`, and `contributors`.
+month/day), `venue`, `doi`, and `contributors`.
 
 Resource files are validated on every push and pull request by
 `scripts/validate-resources.py`. Run it locally with:

@@ -7,12 +7,6 @@ description: >-
   Analyzes a Llama 3-based approach for translating axioms from ontologies,
   presented at the KBC-LM'24 workshop at the International Semantic Web
   Conference (ISWC) 2024.
-keywords:
-  - LLM
-  - Llama 3
-  - ontology
-  - axiom translation
-  - ISWC
 contributors:
   - name: Xiao-Bing Hao
   - name: Ling-Ce Cui
@@ -25,7 +19,7 @@ links:
   - label: CEUR-WS
     url: https://ceur-ws.org/Vol-3853/paper5.pdf
     platform: Website
-tags:
+keywords:
   - paper
   - iswc-2024
 lastUpdated: "2026-04-03"

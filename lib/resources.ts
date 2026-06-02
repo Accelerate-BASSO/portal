@@ -27,7 +27,7 @@ interface BaseResource {
   producedByProjects: ProjectName[];
   usedByProjects: ProjectName[];
   links: ResourceLink[];
-  tags: string[];
+  keywords: string[];
   lastUpdated: string;
   // Injected at build time from caches, keyed by id (see getAllResources).
   bioportal?: BioportalMetrics;
@@ -55,7 +55,6 @@ export interface PublicationResource extends BaseResource {
   doi?: string;
   pmid?: string;
   venue?: string;
-  keywords?: string[];
   contributors?: Contributor[];
 }
 
@@ -172,6 +171,6 @@ export function getProjects(resources: Resource[]): string[] {
   return [...new Set(resources.flatMap((r: Resource) => getAllProjects(r)))].sort();
 }
 
-export function getAllTags(resources: Resource[]): string[] {
-  return [...new Set(resources.flatMap((r) => r.tags))].sort();
+export function getAllKeywords(resources: Resource[]): string[] {
+  return [...new Set(resources.flatMap((r) => r.keywords))].sort();
 }

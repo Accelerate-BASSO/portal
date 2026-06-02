@@ -33,7 +33,6 @@ description: >-
   broad range of researchers, the study provides a workable method for
   matching ontology classes in the behavioural and social sciences and offers
   a practical guide to support its implementation.
-keywords: []
 contributors:
   - name: Thomas L. Webb
     orcid: "0000-0001-9320-0068"
@@ -55,7 +54,7 @@ links:
   - label: DOI
     url: https://doi.org/10.12688/wellcomeopenres.24206.1
     platform: Website
-tags:
+keywords:
   - paper
   - wellcome-open-research
 lastUpdated: 2026-04-13

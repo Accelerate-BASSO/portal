@@ -37,7 +37,6 @@ description: >-
   comparison and evidence synthesis across research studies and domains.
   Future work will refine the ontology based on further feedback and empirical
   validation, enhancing its applicability.
-keywords: []
 contributors:
   - name: Ailbhe N. Finnerty Mutlu
     orcid: "0000-0003-2355-4332"
@@ -67,7 +66,7 @@ links:
   - label: DOI
     url: https://doi.org/10.12688/wellcomeopenres.24239.1
     platform: Website
-tags:
+keywords:
   - paper
   - wellcome-open-research
 lastUpdated: 2026-04-13

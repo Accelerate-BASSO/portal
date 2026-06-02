@@ -39,7 +39,6 @@ description: >-
   algorithm, using information about intervention scenarios from reports of
   smoking cessation trials, can predict outcomes in new smoking cessation
   intervention scenarios with moderate accuracy.
-keywords: []
 contributors:
   - name: Janna Hastings
     orcid: "0000-0002-3469-4923"
@@ -60,7 +59,7 @@ links:
   - label: DOI
     url: https://doi.org/10.12688/wellcomeopenres.20012.2
     platform: Website
-tags:
+keywords:
   - paper
   - wellcome-open-research
 lastUpdated: 2026-04-13

@@ -16,7 +16,7 @@ links:
     url: https://ontobee.org/ontology/OMRSE
     platform: Ontobee
 bssoFoundry: true
-tags:
+keywords:
   - ontology
   - social-entities
   - roles

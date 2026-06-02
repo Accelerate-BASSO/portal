@@ -39,7 +39,6 @@ description: >-
   evidence on interventions to reduce speeding but needs a user interface for
   real-time validation. BCTs that raise immediate awareness of speeding are
   promising candidates for future interventions.
-keywords: []
 contributors:
   - name: Amy Rodger
     orcid: "0000-0001-5277-740X"
@@ -57,7 +56,7 @@ links:
   - label: DOI
     url: https://doi.org/10.12688/wellcomeopenres.24283.1
     platform: Website
-tags:
+keywords:
   - paper
   - wellcome-open-research
 lastUpdated: 2026-04-13

@@ -42,15 +42,16 @@ TYPE_SPECIFIC_FIELDS = {
     "publishedDay": {"Publication"},
     "venue": {"Publication"},
     "pmid": {"Publication"},
-    "keywords": {"Publication"},
     "contributors": {"Publication"},
     "doi": {"Publication", "Dataset"},
     "license": {"Ontology", "Tool", "Repository", "Dataset"},
 }
+# (`keywords` was publication-only when it held imported keywords; it is now the
+#  common curated field, formerly `tags`.)
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 COMMON_REQUIRED = [
     "id", "name", "type", "description",
-    "producedByProjects", "usedByProjects", "links", "tags", "lastUpdated",
+    "producedByProjects", "usedByProjects", "links", "keywords", "lastUpdated",
 ]
 
 
@@ -125,7 +126,7 @@ def validate_file(path, ids, errors):
     if lu is not None and not DATE_RE.match(str(lu)):
         err(f"`lastUpdated` {lu!r} must be YYYY-MM-DD.")
 
-    for key in ("tags", "keywords"):
+    for key in ("keywords",):
         if key in d and not isinstance(d[key], list):
             err(f"`{key}` must be a list (use [] if none).")
 

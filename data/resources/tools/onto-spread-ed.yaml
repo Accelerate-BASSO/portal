@@ -14,7 +14,7 @@ links:
   - label: GitHub
     url: https://github.com/ontology-tools/onto-spread-ed
     platform: GitHub
-tags:
+keywords:
   - tool
   - ontology-editor
   - spreadsheet

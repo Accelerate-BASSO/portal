@@ -37,7 +37,6 @@ description: >-
   frameworks. Future work should maintain these mappings as ontologies evolve
   and users provide more feedback and evidence on BCTs, MoAs, and their links,
   ensuring they remain relevant and user-friendly.
-keywords: []
 contributors:
   - name: Lisa Zhang
     orcid: "0000-0002-4255-9609"
@@ -62,7 +61,7 @@ links:
   - label: DOI
     url: https://doi.org/10.12688/wellcomeopenres.23879.1
     platform: Website
-tags:
+keywords:
   - paper
   - wellcome-open-research
 lastUpdated: 2026-04-13

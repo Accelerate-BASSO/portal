@@ -21,7 +21,6 @@ description: >-
   methods to apply and integrate ontologies with real-world data related to
   the social and environmental determinants of health and inequalities, and to
   facilitate their uptake in behavioural science practice.
-keywords: []
 contributors:
   - name: Susan Michie
     orcid: "0000-0003-0063-6378"
@@ -46,7 +45,7 @@ links:
   - label: DOI
     url: https://doi.org/10.12688/wellcomeopenres.23520.1
     platform: Website
-tags:
+keywords:
   - paper
   - wellcome-open-research
 lastUpdated: 2026-04-03

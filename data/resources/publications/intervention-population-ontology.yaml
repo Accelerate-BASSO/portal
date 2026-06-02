@@ -33,7 +33,6 @@ description: >-
   Ontology can be applied to specify precisely information from diverse
   sources, annotate population characteristics in existing intervention
   evaluation reports and guide future reporting.
-keywords: []
 contributors:
   - name: Alison J Wright
     orcid: "0000-0002-0373-5219"
@@ -56,7 +55,7 @@ links:
   - label: DOI
     url: https://doi.org/10.12688/wellcomeopenres.22788.1
     platform: Website
-tags:
+keywords:
   - paper
   - wellcome-open-research
 lastUpdated: 2026-04-13

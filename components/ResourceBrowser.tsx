@@ -136,7 +136,7 @@ export default function ResourceBrowser({
     search === "" ||
     r.name.toLowerCase().includes(search.toLowerCase()) ||
     r.description.toLowerCase().includes(search.toLowerCase()) ||
-    r.tags.some((t) => t.toLowerCase().includes(search.toLowerCase()));
+    r.keywords.some((k) => k.toLowerCase().includes(search.toLowerCase()));
 
   const matchesType = (r: Resource) => selectedTypes.size === 0 || selectedTypes.has(r.type);
   const matchesProject = (r: Resource) =>

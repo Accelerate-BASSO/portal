@@ -39,7 +39,6 @@ description: >-
   relations and classes. The next step is to further develop and evaluate the
   schema by application to case studies with a range of users and other
   datasets.
-keywords: []
 contributors:
   - name: Robert West
     orcid: "0000-0001-6398-0921"
@@ -72,7 +71,7 @@ links:
   - label: DOI
     url: https://doi.org/10.12688/wellcomeopenres.24234.1
     platform: Website
-tags:
+keywords:
   - paper
   - wellcome-open-research
 lastUpdated: 2026-04-03

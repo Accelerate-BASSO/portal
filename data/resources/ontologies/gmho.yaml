@@ -9,7 +9,7 @@ links:
     url: https://github.com/galenos-project/mental-health-ontology
     platform: GitHub
 bssoFoundry: true
-tags:
+keywords:
   - ontology
   - mental-health
   - disorders

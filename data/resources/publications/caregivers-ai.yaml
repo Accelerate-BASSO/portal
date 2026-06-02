@@ -10,7 +10,6 @@ venue: npj Biomedical Innovations
 description: >-
   Empowering Alzheimer's caregivers with conversational AI: a novel approach
   for enhanced communicatio. Published in npj Biomedical Innovations.
-keywords: []
 contributors:
   - name: Wordh Ul Hasan
   - name: Kimia Tuz Zaman
@@ -26,7 +25,7 @@ links:
   - label: DOI
     url: https://doi.org/10.1038/s44385-024-00004-8
     platform: Website
-tags:
+keywords:
   - paper
   - npj-biomedical-innovations
 lastUpdated: 2026-04-03

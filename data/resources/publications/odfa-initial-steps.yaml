@@ -10,11 +10,6 @@ description: >-
   dental fear, anxiety, and phobia concepts to support standardised research.
   Published at the International Conference on Biomedical Ontology (ICBO)
   2024, Enschede, The Netherlands.
-keywords:
-  - dental fear
-  - dental anxiety
-  - ontology development
-  - ICBO
 contributors:
   - name: William D Duncan
     orcid: "0000-0001-9625-1899"
@@ -33,7 +28,7 @@ links:
   - label: CEUR-WS
     url: https://ceur-ws.org/Vol-3939/abstract5.pdf
     platform: Website
-tags:
+keywords:
   - paper
   - icbo-2024
 lastUpdated: "2026-04-03"

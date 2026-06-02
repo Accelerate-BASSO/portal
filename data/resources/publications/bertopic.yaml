@@ -19,13 +19,6 @@ description: >-
   Theory of Positive Aging. The extracted topic labels were used as candidate
   concepts for the Promoting Healthy Aging through Semantic Enrichment of
   Solitude Research (PHASES) Ontology.
-keywords:
-  - BERTopic
-  - PHASES Ontology
-  - gerotranscendence
-  - ontology development
-  - solitude
-  - topic modeling
 contributors:
   - name: B Damayanthi Jesudas
     orcid: "0000-0001-6906-5548"
@@ -57,7 +50,7 @@ links:
   - label: PubMed
     url: https://pubmed.ncbi.nlm.nih.gov/41001555/
     platform: Website
-tags:
+keywords:
   - paper
   - research-square
 lastUpdated: 2026-04-03

@@ -11,11 +11,6 @@ description: >-
   engineered to better support the behavioral sciences, and the resources
   needed to sustain their development and use to help ensure the maximum
   benefit from investment in behavioral science research.
-keywords:
-  - ontology
-  - behavioral sciences
-  - national academies
-  - policy
 contributors: []
 producedByProjects: []
 usedByProjects:
@@ -27,7 +22,7 @@ links:
   - label: Website
     url: https://nap.nationalacademies.org/catalog/26755/ontologies-in-the-behavioral-sciences-accelerating-research-and-the-spread-of-knowledge
     platform: Website
-tags:
+keywords:
   - report
   - national-academies
 lastUpdated: "2026-04-03"
