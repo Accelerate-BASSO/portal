@@ -180,7 +180,7 @@ export default function ResourceBrowser({
           placeholder="Search resources by name, description, or keyword..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="w-full rounded-lg border-2 border-gray-200 bg-white py-3 pl-11 pr-10 text-sm transition-colors focus:border-black focus:outline-none"
+          className="w-full rounded-lg border-2 border-gray-200 bg-white py-3 pl-11 pr-10 text-sm transition-colors focus:border-accent-dark focus:outline-none"
         />
         {search && (
           <button
@@ -193,10 +193,10 @@ export default function ResourceBrowser({
       </div>
 
       {/* Filter bar */}
-      <div className="mb-8 rounded-lg border border-gray-200 bg-gray-50 p-4">
+      <div className="mb-8 rounded-lg bg-accent-band p-4">
         {/* Type chips */}
         <div className="mb-3">
-          <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-400">Type</p>
+          <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-accent-deep/60">Type</p>
           <div className="flex flex-wrap gap-2">
             {types.map((type) => {
               const active = selectedTypes.has(type);
@@ -208,8 +208,8 @@ export default function ResourceBrowser({
                   title={`Filter by ${type} resources`}
                   className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-colors ${
                     active
-                      ? typeColors[type] || "bg-black text-white"
-                      : "bg-white text-gray-600 border border-gray-200 hover:border-gray-400"
+                      ? typeColors[type] || "bg-accent-deep text-white"
+                      : "bg-white text-gray-600 border border-accent-hairline hover:border-accent-dark"
                   } ${count === 0 && !active ? "opacity-40" : ""}`}
                 >
                   {typeIcons[type] && (() => { const Icon = typeIcons[type]; return <Icon size={14} strokeWidth={2} className={active ? "" : typeIconColors[type] || ""} />; })()}
@@ -225,7 +225,7 @@ export default function ResourceBrowser({
 
         {/* Project chips */}
         <div className="mb-3">
-          <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-400">Project</p>
+          <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-accent-deep/60">Project</p>
           <div className="flex flex-wrap gap-2">
             {projects.map((project) => {
               const active = selectedProjects.has(project);
@@ -237,12 +237,12 @@ export default function ResourceBrowser({
                   title={`Filter by ${project} project`}
                   className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-colors ${
                     active
-                      ? "bg-black text-white"
-                      : "bg-white text-gray-600 border border-gray-200 hover:border-gray-400"
+                      ? "bg-accent-deep text-white"
+                      : "bg-white text-gray-600 border border-accent-hairline hover:border-accent-dark"
                   } ${count === 0 && !active ? "opacity-40" : ""}`}
                 >
                   {project}
-                  <span className={`inline-block min-w-[1.25rem] text-center text-xs font-semibold ${active ? "text-green-300" : "text-violet-500"}`}>
+                  <span className={`inline-block min-w-[1.25rem] text-center text-xs font-semibold ${active ? "text-accent" : "text-violet-500"}`}>
                     {count}
                   </span>
                 </button>
@@ -252,7 +252,7 @@ export default function ResourceBrowser({
         </div>
 
         {/* Bottom row: Foundry toggle + clear */}
-        <div className="flex items-center justify-between border-t border-gray-200 pt-3">
+        <div className="flex items-center justify-between border-t border-accent-hairline pt-3">
           <label
             title="Show only ontologies that are members of the Behavioural and Social Sciences Ontology Foundry"
             className="flex cursor-pointer items-center gap-2 text-xs text-gray-500"
@@ -261,7 +261,7 @@ export default function ResourceBrowser({
               type="checkbox"
               checked={foundryOnly}
               onChange={(e) => setFoundryOnly(e.target.checked)}
-              className="h-3.5 w-3.5 rounded accent-green-600"
+              className="h-3.5 w-3.5 rounded accent-accent-dark"
             />
             BSSO Foundry only
           </label>
@@ -295,7 +295,7 @@ export default function ResourceBrowser({
               value={sortKey}
               onChange={(e) => updateSort(e.target.value as SortKey)}
               aria-label="Sort resources"
-              className="cursor-pointer appearance-none rounded-md border border-gray-200 bg-white py-1 pl-7 pr-7 text-xs text-gray-600 transition-colors hover:border-gray-400 hover:text-gray-800 focus:border-black focus:outline-none"
+              className="cursor-pointer appearance-none rounded-md border border-gray-200 bg-white py-1 pl-7 pr-7 text-xs text-gray-600 transition-colors hover:border-gray-400 hover:text-gray-800 focus:border-accent-dark focus:outline-none"
             >
               {SORT_KEYS.map((k) => (
                 <option key={k} value={k}>
@@ -321,7 +321,7 @@ export default function ResourceBrowser({
               title="Card view"
               aria-pressed={view === "card"}
               className={`flex items-center gap-1 px-2 py-1 text-xs transition-colors ${
-                view === "card" ? "bg-black text-white" : "text-gray-500 hover:bg-gray-50"
+                view === "card" ? "bg-accent-deep text-white" : "text-gray-500 hover:bg-gray-50"
               }`}
             >
               <LayoutGrid size={14} strokeWidth={2} />
@@ -333,7 +333,7 @@ export default function ResourceBrowser({
               title="List view"
               aria-pressed={view === "list"}
               className={`flex items-center gap-1 border-l border-gray-200 px-2 py-1 text-xs transition-colors ${
-                view === "list" ? "bg-black text-white" : "text-gray-500 hover:bg-gray-50"
+                view === "list" ? "bg-accent-deep text-white" : "text-gray-500 hover:bg-gray-50"
               }`}
             >
               <List size={14} strokeWidth={2} />
@@ -352,7 +352,7 @@ export default function ResourceBrowser({
             ))}
           </div>
         ) : (
-          <div className="overflow-hidden rounded-lg border border-gray-200 bg-white">
+          <div className="overflow-hidden rounded-lg border border-accent-hairline bg-white">
             {filtered.map((resource) => (
               <ResourceListRow key={resource.id} resource={resource} />
             ))}
@@ -363,7 +363,7 @@ export default function ResourceBrowser({
           <p className="text-lg text-gray-400">No resources match your criteria</p>
           <button
             onClick={clearAll}
-            className="mt-3 text-sm text-black underline"
+            className="mt-3 text-sm text-accent-dark underline hover:text-accent-hover"
           >
             Clear search and filters
           </button>

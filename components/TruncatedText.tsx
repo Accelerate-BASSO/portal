@@ -30,7 +30,7 @@ export default function TruncatedText({ text, className = "" }: TruncatedTextPro
       {isTruncated && !expanded && (
         <button
           onClick={() => setExpanded(true)}
-          className="mt-1 text-xs text-gray-400 underline hover:text-gray-600"
+          className="mt-1 text-xs text-accent-dark underline hover:text-accent-hover"
         >
           Show more
         </button>
@@ -38,7 +38,7 @@ export default function TruncatedText({ text, className = "" }: TruncatedTextPro
       {expanded && (
         <button
           onClick={() => setExpanded(false)}
-          className="mt-1 text-xs text-gray-400 underline hover:text-gray-600"
+          className="mt-1 text-xs text-accent-dark underline hover:text-accent-hover"
         >
           Show less
         </button>

@@ -2,10 +2,15 @@
 @import "tailwindcss";
 
 :root {
+  /* Blue palette matching the main site (accelerate-basso.regenstrief.org) */
   --background: #ffffff;
   --foreground: #171717;
-  --accent: #bbf7d0;
-  --accent-dark: #4ade80;
+  --accent: #cfe6ff; /* light-blue ribbon (site --basso-ribbon) */
+  --accent-dark: #0158b2; /* primary blue (site --basso-primary) */
+  --accent-deep: #05305a; /* dark blue (site --basso-dark) */
+  --accent-band: #edf6ff; /* pale-blue band (site --basso-band) */
+  --accent-hover: #096fd9; /* link hover (site --basso-link-hover) */
+  --accent-hairline: #b2c5d8; /* hairline borders (site --basso-hairline) */
   --gray-text: #595959;
   --card-bg: #edecec79;
   --border: #e5e7eb;
@@ -16,6 +21,10 @@
   --color-foreground: var(--foreground);
   --color-accent: var(--accent);
   --color-accent-dark: var(--accent-dark);
+  --color-accent-deep: var(--accent-deep);
+  --color-accent-band: var(--accent-band);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-hairline: var(--accent-hairline);
   --color-gray-text: var(--gray-text);
   --color-card-bg: var(--card-bg);
   --color-card-border: var(--border);

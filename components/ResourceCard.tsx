@@ -60,17 +60,6 @@ const projectUrls: Record<string, string> = {
   DCC: "https://accelerate-basso.regenstrief.org",
 };
 
-const typeLinkColors: Record<string, string> = {
-  Ontology: "text-[#7040C0] hover:text-[#5A30A0]",
-  Publication: "text-[#D87030] hover:text-[#B86020]",
-  Tool: "text-[#D4A820] hover:text-[#B08A10]",
-  Community: "text-[#D02870] hover:text-[#B02060]",
-  Repository: "text-emerald-600 hover:text-emerald-800",
-  Dataset: "text-lime-600 hover:text-lime-800",
-  Website: "text-[#4898E8] hover:text-[#3080D0]",
-  Registry: "text-cyan-700 hover:text-cyan-900",
-};
-
 const typeTooltips: Record<string, string> = {
   Ontology: "An ontology developed and maintained by a network member",
   Publication: "A published report, paper, or document",
@@ -84,7 +73,7 @@ const typeTooltips: Record<string, string> = {
 
 export default function ResourceCard({ resource }: ResourceCardProps) {
   return (
-    <div className="flex flex-col gap-3 rounded-lg border border-card-border bg-white p-5 shadow-sm transition-shadow hover:shadow-md">
+    <div className="flex flex-col gap-3 rounded-lg border border-accent-hairline bg-white p-5 transition-colors hover:border-accent-dark">
       {/* Top row: type badge left, project badges right */}
       <div className="flex items-start justify-between gap-2">
         <div className="flex items-center gap-2">
@@ -107,7 +96,7 @@ export default function ResourceCard({ resource }: ResourceCardProps) {
               target="_blank"
               rel="noopener noreferrer"
               title={`${project} (${projectFullNames[project] || project})`}
-              className="rounded bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-500 no-underline hover:bg-gray-200"
+              className="rounded bg-accent-band px-2 py-0.5 text-xs font-medium text-accent-deep no-underline hover:bg-accent"
             >
               {project}
             </a>
@@ -215,7 +204,7 @@ export default function ResourceCard({ resource }: ResourceCardProps) {
 
       {/* Links */}
       {resource.links && resource.links.length > 0 && (
-        <div className="mt-auto flex flex-wrap gap-x-4 gap-y-1 border-t border-gray-100 pt-3">
+        <div className="mt-auto flex flex-wrap gap-x-4 gap-y-1 border-t border-accent-hairline/50 pt-3">
           {resource.links.map((link) => (
             <a
               key={link.url}
@@ -223,7 +212,7 @@ export default function ResourceCard({ resource }: ResourceCardProps) {
               target="_blank"
               rel="noopener noreferrer"
               title={platformTooltips[link.platform] || "Visit external link"}
-              className={`inline-flex items-center gap-1 text-sm underline decoration-1 underline-offset-2 transition-colors ${typeLinkColors[resource.type] || "text-gray-500 hover:text-gray-800"}`}
+              className="inline-flex items-center gap-1 text-sm underline decoration-1 underline-offset-2 transition-colors text-accent-dark hover:text-accent-hover"
             >
               {platformLabels[link.platform] || link.platform}
               <ExternalLink size={16} strokeWidth={3} />

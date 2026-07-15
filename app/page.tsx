@@ -38,7 +38,7 @@ export default function Home() {
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <Link
               href="/resources"
-              className="flex h-12 items-center justify-center rounded-full bg-black px-8 text-white no-underline transition-colors hover:bg-gray-800"
+              className="flex h-12 items-center justify-center rounded-full bg-accent-dark px-8 text-white no-underline transition-colors hover:bg-accent-deep"
             >
               Browse Resources
             </Link>
@@ -46,7 +46,7 @@ export default function Home() {
               href="https://accelerate-basso.regenstrief.org"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-12 items-center justify-center rounded-full border border-black px-8 text-black no-underline transition-colors hover:bg-gray-50"
+              className="flex h-12 items-center justify-center rounded-full border border-accent-dark px-8 text-accent-dark no-underline transition-colors hover:bg-accent-band"
             >
               About the Network
             </a>
@@ -96,7 +96,7 @@ export default function Home() {
       {/* Resource Types Overview */}
       <section className="border-t border-gray-200 bg-gray-50 px-6 py-20">
         <div className="mx-auto max-w-5xl">
-          <h2 className="text-center text-4xl font-semibold">
+          <h2 className="text-center text-4xl font-semibold text-accent-deep">
             Resource Types
           </h2>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -107,12 +107,12 @@ export default function Home() {
                   key={type}
                   href={`/resources?type=${type}`}
                   title={`Browse all ${count} ${type.toLowerCase()} resource${count !== 1 ? "s" : ""}`}
-                  className="flex items-center justify-between rounded-lg border border-card-border bg-white p-5 no-underline shadow-sm transition-shadow hover:shadow-md"
+                  className="flex items-center justify-between rounded-lg border border-accent-hairline bg-white p-5 no-underline transition-colors hover:border-accent-dark"
                 >
                   <span className="text-lg font-medium text-black">{type}</span>
                   <span
                     title={`${count} ${type.toLowerCase()} resource${count !== 1 ? "s" : ""} in the portal`}
-                    className="rounded-full bg-accent px-3 py-1 text-sm font-medium text-green-800"
+                    className="rounded-full bg-accent px-3 py-1 text-sm font-medium text-accent-deep"
                   >
                     {count}
                   </span>
@@ -126,14 +126,14 @@ export default function Home() {
       {/* Contribute */}
       <section className="border-t border-gray-200 bg-gray-50 px-6 py-16">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-semibold">Contribute a Resource</h2>
+          <h2 className="text-3xl font-semibold text-accent-deep">Contribute a Resource</h2>
           <p className="mt-4 text-base leading-relaxed text-gray-text">
             Have something the network should know about? Submit a new ontology,
             publication, tool, or community via a short GitHub issue template.
           </p>
           <Link
             href="/contribute"
-            className="mt-6 inline-flex h-11 items-center justify-center rounded-full bg-black px-7 text-white no-underline transition-colors hover:bg-gray-800"
+            className="mt-6 inline-flex h-11 items-center justify-center rounded-full bg-accent-dark px-7 text-white no-underline transition-colors hover:bg-accent-deep"
           >
             How to contribute &rarr;
           </Link>

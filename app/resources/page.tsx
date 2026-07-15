@@ -15,7 +15,7 @@ export default function ResourcesPage() {
   return (
     <div className="mx-auto max-w-6xl px-6 py-12">
       <div className="mb-10">
-        <h1 className="text-4xl font-semibold">Resources</h1>
+        <h1 className="text-4xl font-semibold text-accent-deep">Resources</h1>
         <p className="mt-3 max-w-2xl text-lg text-gray-text">
           Browse, search, and filter resources produced by the Accelerate BASSO
           Network. Each resource links directly to its home on GitHub, BioPortal,

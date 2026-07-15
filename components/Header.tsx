@@ -8,27 +8,27 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 z-50 flex h-[60px] w-full items-center justify-between bg-white px-[5%] shadow-lg">
-      <Link href="/" className="text-2xl font-medium text-black no-underline">
-        Accelerate BASSO <span className="text-base font-normal text-gray-text">Portal</span>
+      <Link href="/" className="text-2xl font-medium text-accent-deep no-underline">
+        Accelerate BASSO <span className="text-base font-normal text-accent-dark">Portal</span>
       </Link>
 
       {/* Desktop nav */}
       <nav className="hidden items-center gap-5 text-base lg:flex">
         <Link
           href="/"
-          className="rounded-full px-4 py-1.5 text-black no-underline transition-colors hover:bg-[#dddcdccf]"
+          className="rounded-full px-4 py-1.5 text-accent-deep no-underline transition-colors hover:bg-accent-band"
         >
           Home
         </Link>
         <Link
           href="/resources"
-          className="rounded-full px-4 py-1.5 text-black no-underline transition-colors hover:bg-[#dddcdccf]"
+          className="rounded-full px-4 py-1.5 text-accent-deep no-underline transition-colors hover:bg-accent-band"
         >
           Resources
         </Link>
         <Link
           href="/contribute"
-          className="rounded-full px-4 py-1.5 text-black no-underline transition-colors hover:bg-[#dddcdccf]"
+          className="rounded-full px-4 py-1.5 text-accent-deep no-underline transition-colors hover:bg-accent-band"
         >
           Contribute
         </Link>
@@ -36,7 +36,7 @@ export default function Header() {
           href="https://accelerate-basso.regenstrief.org"
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-full px-4 py-1.5 text-black no-underline transition-colors hover:bg-[#dddcdccf]"
+          className="rounded-full px-4 py-1.5 text-accent-deep no-underline transition-colors hover:bg-accent-band"
         >
           Main Site
         </a>

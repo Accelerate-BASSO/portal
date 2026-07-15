@@ -27,17 +27,6 @@ const typeIcons: Record<string, LucideIcon> = {
   Dataset: Database,
 };
 
-const typeLinkColors: Record<string, string> = {
-  Ontology: "text-[#7040C0] hover:text-[#5A30A0]",
-  Publication: "text-[#D87030] hover:text-[#B86020]",
-  Tool: "text-[#D4A820] hover:text-[#B08A10]",
-  Community: "text-[#D02870] hover:text-[#B02060]",
-  Repository: "text-emerald-600 hover:text-emerald-800",
-  Dataset: "text-lime-600 hover:text-lime-800",
-  Website: "text-[#4898E8] hover:text-[#3080D0]",
-  Registry: "text-cyan-700 hover:text-cyan-900",
-};
-
 const projectFullNames: Record<string, string> = {
   APRICOT: "Advancing Prevention Research in Cancer through Ontology Tools",
   "BSO-AD": "Standardizing and Harmonizing Behavioral and Social Science Research Factors in Alzheimer\u2019s Disease through Ontology-Based Approaches",
@@ -70,10 +59,10 @@ interface ResourceListRowProps {
 export default function ResourceListRow({ resource }: ResourceListRowProps) {
   const Icon = typeIcons[resource.type];
   const date = effectiveDate(resource);
-  const linkColor = typeLinkColors[resource.type] || "text-gray-500 hover:text-gray-800";
+  const linkColor = "text-accent-dark hover:text-accent-hover";
 
   return (
-    <div className="flex items-start gap-2 border-b border-gray-100 px-3 py-2 transition-colors last:border-b-0 hover:bg-gray-50">
+    <div className="flex items-start gap-2 border-b border-gray-100 px-3 py-2 transition-colors last:border-b-0 hover:bg-accent-band/50">
       {/* Left gutter: icon + type pill */}
       {Icon && (
         <Icon
@@ -101,7 +90,7 @@ export default function ResourceListRow({ resource }: ResourceListRowProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 title={`${project} (${projectFullNames[project] || project})`}
-                className="rounded bg-gray-100 px-1.5 py-0.5 text-[10px] font-medium text-gray-500 no-underline hover:bg-gray-200"
+                className="rounded bg-accent-band px-1.5 py-0.5 text-[10px] font-medium text-accent-deep no-underline hover:bg-accent"
               >
                 {project}
               </a>

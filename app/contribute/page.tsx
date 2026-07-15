@@ -45,7 +45,7 @@ export const metadata = {
 export default function ContributePage() {
   return (
     <div className="mx-auto max-w-3xl px-6 py-12">
-      <h1 className="text-4xl font-semibold">Contribute a Resource</h1>
+      <h1 className="text-4xl font-semibold text-accent-deep">Contribute a Resource</h1>
       <p className="mt-3 text-lg text-gray-text">
         The portal is a curated index of work produced by the Accelerate BASSO
         Network. We welcome submissions of new resources and corrections to
@@ -53,7 +53,7 @@ export default function ContributePage() {
       </p>
 
       <section className="mt-10">
-        <h2 className="text-2xl font-semibold">How submissions work</h2>
+        <h2 className="text-2xl font-semibold text-accent-deep">How submissions work</h2>
         <ol className="mt-4 list-decimal space-y-2 pl-6 text-base leading-relaxed text-gray-text">
           <li>
             Open a GitHub issue using the template that matches the kind of
@@ -76,7 +76,7 @@ export default function ContributePage() {
       </section>
 
       <section className="mt-10">
-        <h2 className="text-2xl font-semibold">Submission templates</h2>
+        <h2 className="text-2xl font-semibold text-accent-deep">Submission templates</h2>
         <p className="mt-2 text-base text-gray-text">
           Pick the template that best fits the resource. If you&apos;re not
           sure, start with whichever is closest — a maintainer can re-route
@@ -115,7 +115,7 @@ export default function ContributePage() {
       </section>
 
       <section className="mt-10">
-        <h2 className="text-2xl font-semibold">Updating an existing resource</h2>
+        <h2 className="text-2xl font-semibold text-accent-deep">Updating an existing resource</h2>
         <p className="mt-2 text-base text-gray-text">
           To correct or extend a record that&apos;s already in the portal, use
           the{" "}
@@ -136,7 +136,7 @@ export default function ContributePage() {
       </section>
 
       <section className="mt-10">
-        <h2 className="text-2xl font-semibold">What we look for</h2>
+        <h2 className="text-2xl font-semibold text-accent-deep">What we look for</h2>
         <ul className="mt-3 list-disc space-y-2 pl-6 text-base leading-relaxed text-gray-text">
           <li>
             A clear connection to the Accelerate BASSO Network — produced,
@@ -158,7 +158,7 @@ export default function ContributePage() {
           href={NEW_ISSUE_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex h-12 items-center justify-center rounded-full bg-black px-8 text-white no-underline transition-colors hover:bg-gray-800"
+          className="flex h-12 items-center justify-center rounded-full bg-accent-dark px-8 text-white no-underline transition-colors hover:bg-accent-deep"
         >
           Open a submission
         </a>
