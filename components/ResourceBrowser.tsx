@@ -5,11 +5,13 @@ import { useSearchParams } from "next/navigation";
 import type { Resource } from "@/lib/resources";
 import {
   getAllProjects,
+  getSharedTermOptions,
   compareResources,
   sortLabels,
   type SortKey,
 } from "@/lib/resource-utils";
 import { buildIndex, runSearch, type SearchHit } from "@/lib/search";
+import OntologyTermFilter from "./OntologyTermFilter";
 import ResourceCard from "./ResourceCard";
 import ResourceListRow from "./ResourceListRow";
 import {
@@ -98,6 +100,7 @@ export default function ResourceBrowser({
   const [search, setSearch] = useState("");
   const [selectedTypes, setSelectedTypes] = useState<Set<string>>(initialTypes);
   const [selectedProjects, setSelectedProjects] = useState<Set<string>>(initialProjects);
+  const [selectedTerms, setSelectedTerms] = useState<Set<string>>(new Set());
   const [foundryOnly, setFoundryOnly] = useState(initialFoundry);
   const [view, updateView] = useLocalStoragePref<ViewMode>(VIEW_STORAGE_KEY, isViewMode, "card");
   const [sortKey, updateSort] = useLocalStoragePref<SortKey>(SORT_STORAGE_KEY, isSortKey, "name-asc");
@@ -120,11 +123,22 @@ export default function ResourceBrowser({
     });
   };
 
-  const hasActiveFilters = selectedTypes.size > 0 || selectedProjects.size > 0 || foundryOnly;
+  const toggleTerm = (iri: string) => {
+    setSelectedTerms((prev) => {
+      const next = new Set(prev);
+      if (next.has(iri)) next.delete(iri);
+      else next.add(iri);
+      return next;
+    });
+  };
+
+  const hasActiveFilters =
+    selectedTypes.size > 0 || selectedProjects.size > 0 || selectedTerms.size > 0 || foundryOnly;
 
   const clearFilters = () => {
     setSelectedTypes(new Set());
     setSelectedProjects(new Set());
+    setSelectedTerms(new Set());
     setFoundryOnly(false);
   };
 
@@ -170,10 +184,25 @@ export default function ResourceBrowser({
     selectedProjects.size === 0 || getAllProjects(r).some((p) => selectedProjects.has(p));
   const matchesFoundry = (r: Resource) =>
     !foundryOnly || (r.type === "Ontology" && r.bssoFoundry === true);
+  // OR within selected terms: a resource passes if it's annotated with any of them.
+  const matchesTerms = (r: Resource) =>
+    selectedTerms.size === 0 ||
+    (r.annotations?.some((a) => selectedTerms.has(a.iri)) ?? false);
+
+  // Term options grouped by ontology, from the resources that pass every filter
+  // *except* the term filter — so the offered terms reflect the current view but
+  // don't collapse to only the already-selected ones.
+  const termGroups = useMemo(() => {
+    const base = resources.filter(
+      (r) => matchesSearch(r) && matchesType(r) && matchesProject(r) && matchesFoundry(r)
+    );
+    return getSharedTermOptions(base);
+  }, [resources, search, selectedTypes, selectedProjects, foundryOnly]);
 
   const filtered = useMemo(() => {
     const result = resources.filter(
-      (r) => matchesSearch(r) && matchesType(r) && matchesProject(r) && matchesFoundry(r)
+      (r) =>
+        matchesSearch(r) && matchesType(r) && matchesProject(r) && matchesFoundry(r) && matchesTerms(r)
     );
     // While searching, rank by relevance score; otherwise apply the chosen sort.
     if (searching) {
@@ -182,25 +211,40 @@ export default function ResourceBrowser({
       );
     }
     return result.sort((a, b) => compareResources(a, b, sortKey));
-  }, [resources, searching, hitsById, selectedTypes, selectedProjects, foundryOnly, sortKey]);
+  }, [resources, searching, hitsById, selectedTypes, selectedProjects, selectedTerms, foundryOnly, sortKey]);
+
+  // Per-term counts: resources passing all filters except the term filter that
+  // carry each term (mirrors the "all filters except this one" chip counting).
+  const termCounts = useMemo(() => {
+    const base = resources.filter(
+      (r) => matchesSearch(r) && matchesType(r) && matchesProject(r) && matchesFoundry(r)
+    );
+    const counts: Record<string, number> = {};
+    for (const r of base) {
+      for (const a of r.annotations ?? []) {
+        counts[a.iri] = (counts[a.iri] ?? 0) + 1;
+      }
+    }
+    return counts;
+  }, [resources, search, selectedTypes, selectedProjects, foundryOnly]);
 
   // Counts for type chips: apply all filters except type
   const typeCounts = useMemo(() => {
     const base = resources.filter(
-      (r) => matchesSearch(r) && matchesProject(r) && matchesFoundry(r)
+      (r) => matchesSearch(r) && matchesProject(r) && matchesFoundry(r) && matchesTerms(r)
     );
     return Object.fromEntries(types.map((t) => [t, base.filter((r) => r.type === t).length]));
-  }, [resources, search, selectedProjects, foundryOnly, types]);
+  }, [resources, search, selectedProjects, selectedTerms, foundryOnly, types]);
 
   // Counts for project chips: apply all filters except project
   const projectCounts = useMemo(() => {
     const base = resources.filter(
-      (r) => matchesSearch(r) && matchesType(r) && matchesFoundry(r)
+      (r) => matchesSearch(r) && matchesType(r) && matchesFoundry(r) && matchesTerms(r)
     );
     return Object.fromEntries(
       projects.map((p) => [p, base.filter((r) => getAllProjects(r).includes(p as never)).length])
     );
-  }, [resources, search, selectedTypes, foundryOnly, projects]);
+  }, [resources, search, selectedTypes, selectedTerms, foundryOnly, projects]);
 
   return (
     <div>
@@ -282,6 +326,14 @@ export default function ResourceBrowser({
             })}
           </div>
         </div>
+
+        {/* Ontology term facet */}
+        <OntologyTermFilter
+          groups={termGroups}
+          selectedTerms={selectedTerms}
+          termCounts={termCounts}
+          onToggle={toggleTerm}
+        />
 
         {/* Bottom row: Foundry toggle + clear */}
         <div className="flex items-center justify-between border-t border-accent-hairline pt-3">

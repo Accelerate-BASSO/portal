@@ -4,6 +4,46 @@ export function getAllProjects(resource: Resource): ProjectName[] {
   return [...new Set([...(resource.producedByProjects || []), ...(resource.usedByProjects || [])])];
 }
 
+export interface TermOption {
+  iri: string;
+  prefLabel: string;
+  ontology: string;
+  /** Number of resources (within the given set) annotated with this term. */
+  count: number;
+}
+
+/**
+ * Ontology terms worth offering as filter chips: those annotated on at least
+ * `minResources` resources in the given set. A term on a single resource
+ * filters to that one resource, which free-text search already does better, so
+ * such terms are excluded. Returned grouped by ontology, each group's terms
+ * sorted by descending resource count then label.
+ */
+export function getSharedTermOptions(
+  resources: Resource[],
+  minResources = 2,
+): Map<string, TermOption[]> {
+  const byIri = new Map<string, TermOption>();
+  for (const r of resources) {
+    for (const a of r.annotations ?? []) {
+      const existing = byIri.get(a.iri);
+      if (existing) existing.count += 1;
+      else byIri.set(a.iri, { iri: a.iri, prefLabel: a.prefLabel, ontology: a.ontology, count: 1 });
+    }
+  }
+  const groups = new Map<string, TermOption[]>();
+  for (const opt of byIri.values()) {
+    if (opt.count < minResources) continue;
+    const group = groups.get(opt.ontology) ?? [];
+    group.push(opt);
+    groups.set(opt.ontology, group);
+  }
+  for (const group of groups.values()) {
+    group.sort((a, b) => b.count - a.count || a.prefLabel.localeCompare(b.prefLabel));
+  }
+  return groups;
+}
+
 /**
  * Best-available date for a resource, as a YYYY-MM-DD string suitable for
  * lexical comparison. Returns only dates that mean something about the

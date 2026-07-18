@@ -40,14 +40,19 @@ annotation data exists.
   provenance display. Abstracts landed first (commit e06d22d); term labels + synonyms
   switched on once the Phase B lexicon and annotation caches landed — synonym
   expansion is now live (e.g. "quit smoking" → ADDICTO *age of smoking cessation*).
-- **Step 2 — ontology-term facet.** The *filter-chip* half of decision 1. Deferred until
-  we can measure real annotation volume — now available: ~12 publications annotated,
-  a long tail of terms per paper (see below), so the facet needs top-N-by-frequency or
-  grouping-by-ontology rather than a flat chip row.
+- **Step 2 — ontology-term facet. DONE (2026-07-18).** `OntologyTermFilter.tsx`, wired
+  into `ResourceBrowser`. Shows only terms shared by ≥2 filtered resources (a single-
+  resource term filters to one result — no better than search), grouped by ontology
+  (PHASES first, then Foundry), each group collapsible with top-8 + "show all". Chips
+  carry live counts that respect the other filters, like Type/Project. Selection is OR
+  within terms, AND across filter groups. `getSharedTermOptions` in resource-utils
+  computes the grouped, thresholded option set.
 
-Real annotation volume (for the facet-layout decision): annotated papers carry from a
-handful to 260+ term mentions each; a flat chip row is not viable. Lean toward grouping
-by ontology with a per-group top-N, or a searchable facet.
+Real annotation volume drove the design: 673 distinct terms but only ~136 shared by ≥2
+resources, so the facet thresholds at ≥2 and groups by ontology rather than showing a
+flat row. The ≥2 threshold interacts with catalog size — with few papers, even key
+PHASES terms (solitude, gerotranscendence) sit right at the boundary, so the facet will
+surface more of the network's own vocabulary as more publications are added.
 
 ## Data flow
 
