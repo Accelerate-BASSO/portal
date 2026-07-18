@@ -9,6 +9,7 @@ import {
   sortLabels,
   type SortKey,
 } from "@/lib/resource-utils";
+import { buildIndex, runSearch, type SearchHit } from "@/lib/search";
 import ResourceCard from "./ResourceCard";
 import ResourceListRow from "./ResourceListRow";
 import {
@@ -132,11 +133,37 @@ export default function ResourceBrowser({
     clearFilters();
   };
 
-  const matchesSearch = (r: Resource) =>
-    search === "" ||
-    r.name.toLowerCase().includes(search.toLowerCase()) ||
-    r.description.toLowerCase().includes(search.toLowerCase()) ||
-    r.keywords.some((k) => k.toLowerCase().includes(search.toLowerCase()));
+  // Build the lexical index once from the resource set, then re-query on each
+  // keystroke. hitsById gives O(1) membership + rank + provenance lookup; when
+  // there's no query, search is inactive and every resource passes.
+  const index = useMemo(() => buildIndex(resources), [resources]);
+  const hitsById = useMemo(() => {
+    const map = new Map<string, SearchHit>();
+    if (search.trim() === "") return map;
+    for (const hit of runSearch(index, search)) map.set(hit.id, hit);
+    return map;
+  }, [index, search]);
+
+  const searching = search.trim() !== "";
+  const matchesSearch = (r: Resource) => !searching || hitsById.has(r.id);
+
+  // When a result matched only via body text the card doesn't show (abstract or
+  // description), surface why. Fields visible on the card (name, keywords) need
+  // no explanation.
+  const VISIBLE_FIELDS = new Set(["name", "keywords"]);
+  const FIELD_LABELS: Record<string, string> = {
+    description: "description",
+    abstract: "abstract",
+  };
+  const matchProvenance = (id: string): string | null => {
+    const hit = hitsById.get(id);
+    if (!hit) return null;
+    if (hit.matchedFields.some((f) => VISIBLE_FIELDS.has(f))) return null;
+    const labels = hit.matchedFields
+      .map((f) => FIELD_LABELS[f])
+      .filter((l): l is string => Boolean(l));
+    return labels.length ? `matched in ${[...new Set(labels)].join(", ")}` : null;
+  };
 
   const matchesType = (r: Resource) => selectedTypes.size === 0 || selectedTypes.has(r.type);
   const matchesProject = (r: Resource) =>
@@ -145,12 +172,17 @@ export default function ResourceBrowser({
     !foundryOnly || (r.type === "Ontology" && r.bssoFoundry === true);
 
   const filtered = useMemo(() => {
-    return resources
-      .filter(
-        (r) => matchesSearch(r) && matchesType(r) && matchesProject(r) && matchesFoundry(r)
-      )
-      .sort((a, b) => compareResources(a, b, sortKey));
-  }, [resources, search, selectedTypes, selectedProjects, foundryOnly, sortKey]);
+    const result = resources.filter(
+      (r) => matchesSearch(r) && matchesType(r) && matchesProject(r) && matchesFoundry(r)
+    );
+    // While searching, rank by relevance score; otherwise apply the chosen sort.
+    if (searching) {
+      return result.sort(
+        (a, b) => (hitsById.get(b.id)?.score ?? 0) - (hitsById.get(a.id)?.score ?? 0)
+      );
+    }
+    return result.sort((a, b) => compareResources(a, b, sortKey));
+  }, [resources, searching, hitsById, selectedTypes, selectedProjects, foundryOnly, sortKey]);
 
   // Counts for type chips: apply all filters except type
   const typeCounts = useMemo(() => {
@@ -292,11 +324,14 @@ export default function ResourceBrowser({
               aria-hidden
             />
             <select
-              value={sortKey}
+              value={searching ? "relevance" : sortKey}
               onChange={(e) => updateSort(e.target.value as SortKey)}
+              disabled={searching}
               aria-label="Sort resources"
-              className="cursor-pointer appearance-none rounded-md border border-gray-200 bg-white py-1 pl-7 pr-7 text-xs text-gray-600 transition-colors hover:border-gray-400 hover:text-gray-800 focus:border-accent-dark focus:outline-none"
+              title={searching ? "Results are ranked by relevance while searching" : undefined}
+              className="cursor-pointer appearance-none rounded-md border border-gray-200 bg-white py-1 pl-7 pr-7 text-xs text-gray-600 transition-colors hover:border-gray-400 hover:text-gray-800 focus:border-accent-dark focus:outline-none disabled:cursor-default disabled:opacity-60"
             >
+              {searching && <option value="relevance">Relevance</option>}
               {SORT_KEYS.map((k) => (
                 <option key={k} value={k}>
                   {sortLabels[k]}
@@ -347,15 +382,33 @@ export default function ResourceBrowser({
       {filtered.length > 0 ? (
         view === "card" ? (
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {filtered.map((resource) => (
-              <ResourceCard key={resource.id} resource={resource} />
-            ))}
+            {filtered.map((resource) => {
+              const provenance = searching ? matchProvenance(resource.id) : null;
+              return (
+                <div key={resource.id} className="flex flex-col gap-1">
+                  <ResourceCard resource={resource} />
+                  {provenance && (
+                    <p className="px-1 text-xs italic text-gray-400">{provenance}</p>
+                  )}
+                </div>
+              );
+            })}
           </div>
         ) : (
           <div className="overflow-hidden rounded-lg border border-accent-hairline bg-white">
-            {filtered.map((resource) => (
-              <ResourceListRow key={resource.id} resource={resource} />
-            ))}
+            {filtered.map((resource) => {
+              const provenance = searching ? matchProvenance(resource.id) : null;
+              return (
+                <div key={resource.id}>
+                  <ResourceListRow resource={resource} />
+                  {provenance && (
+                    <p className="border-b border-accent-hairline bg-accent-band/40 px-4 py-1 text-xs italic text-gray-400">
+                      {provenance}
+                    </p>
+                  )}
+                </div>
+              );
+            })}
           </div>
         )
       ) : (
