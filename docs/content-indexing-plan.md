@@ -64,27 +64,40 @@ Implemented (2026-07-18) as `scripts/fetch-paper-content.py`:
 
 ### Lexicon
 
-New script `scripts/build-term-lexicon.py`:
+Implemented as `scripts/build-term-lexicon.py`:
 
-- Download the eight Foundry ontologies (sources already tracked for the release
-  cache) and extract, per term: IRI, ontology, `rdfs:label`, synonyms
-  (`oboInOwl:hasExactSynonym` and related properties, IAO alternative term).
-- Restrict to each ontology's own namespace — imported upper-level terms (BFO, RO)
-  are too generic to be useful annotations.
-- Apply a curation layer: minimum label length, a stoplist for ambiguous
-  general-language labels ("role", "quality", "person"), reviewable in the repo.
-- Output: `data/ontology-lexicon.json`.
+- Terms come from the **EBI OLS4 REST API** for the six Foundry ontologies it hosts
+  (ADDICTO, BCIO, GMHO, MF, MFOEM, OMRSE), and from the **BioPortal REST API** for
+  **PHASES** (the network's own ontology, richest for these papers' domain terms)
+  and **COPPER**, which OLS4 does not serve terms for. Both return JSON, so no OWL
+  parser is needed — this replaced the originally-planned OWL download.
+- Own-namespace only: OLS4's `is_defining_ontology` flag, or an id-space check on
+  the IRI for BioPortal, drops imported upper-level terms (BFO, RO).
+- Per term: IRI, ontology, prefLabel, and a de-duplicated set of surface forms
+  (label + synonyms) for matching. Deprecated ("obsolete …") classes are excluded.
+- Curation (reviewable in the script): a min-length floor and a two-part stoplist —
+  upper-ontology jargon, plus common-English words that are also ontology labels
+  ("communication", "knowledge", "language", …). The generic list was set
+  empirically from the first annotation run, where those forms matched ~half the
+  papers while saying nothing about topic. The stoplist drops only the bare form,
+  so multi-word domain phrases ("gender identity", "social identity") survive.
+- **Coverage gap:** RBBO is on neither OLS4 nor BioPortal (only an OWL at
+  github.com/fatibaba/turbbo); it is not yet in the lexicon and is logged as the
+  single known gap. Adding it needs an OWL parser (deferred to avoid the dep).
+- Output: `data/ontology-lexicon.json` (~4,100 terms; gitignored, rebuilt in CI).
 
 ### Annotation
 
-New script `scripts/annotate-papers.py`:
+Implemented as `scripts/annotate-papers.py`:
 
-- Dictionary matching (case-insensitive, word-boundary, longest-match) of lexicon
-  labels/synonyms over each paper's abstract and locally cached full text.
-- Output: `data/paper-annotations-cache.json` — per publication: matched term IRI,
-  ontology, label, match count, and whether the match came from the abstract or
-  full text. Annotations are automated enrichment and are displayed as such,
-  distinct from curated `keywords`.
+- One case-insensitive, word-boundary, longest-match-preferring regex over all
+  surface forms, run over each paper's abstract and locally cached full-text JATS
+  body. Longest-match means "smoking cessation" is not also counted as "smoking".
+- Output: `data/paper-annotations-cache.json` — per publication, a list of matched
+  terms with IRI, curie, prefLabel, ontology, surface `forms` (for synonym
+  indexing), match `count`, and `source` (abstract vs. fulltext; abstract ranks
+  higher). Gitignored, rebuilt in CI. Automated enrichment, displayed distinctly
+  from curated `keywords`.
 
 ### Build and UI
 

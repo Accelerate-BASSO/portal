@@ -51,6 +51,14 @@ jobs:
       - name: Fetch paper content
         run: python scripts/fetch-paper-content.py
 
+      - name: Build ontology term lexicon
+        env:
+          BIOPORTAL_API_KEY: ${{ secrets.BIOPORTAL_API_KEY }}
+        run: python scripts/build-term-lexicon.py
+
+      - name: Annotate papers with ontology terms
+        run: python scripts/annotate-papers.py
+
       - name: Install dependencies
         run: npm ci
 

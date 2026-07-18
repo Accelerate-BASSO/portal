@@ -35,18 +35,19 @@ Ship in two steps; the ranked synonym-aware **search** is separable from the **t
 facet**, and the facet's main open question (volume) answers itself once real
 annotation data exists.
 
-- **Step 1 — ranked synonym-aware search.** Decisions 2, 3, 4, and the *searchable-text*
-  half of decision 1. MiniSearch index over name/keywords/term-labels/term-synonyms/
-  description/abstract, relevance ranking, provenance display. This is the high-value,
-  lower-risk piece.
+- **Step 1 — ranked synonym-aware search. DONE (2026-07-18).** MiniSearch index over
+  name/keywords/term-labels/term-synonyms/description/abstract, relevance ranking,
+  provenance display. Abstracts landed first (commit e06d22d); term labels + synonyms
+  switched on once the Phase B lexicon and annotation caches landed — synonym
+  expansion is now live (e.g. "quit smoking" → ADDICTO *age of smoking cessation*).
 - **Step 2 — ontology-term facet.** The *filter-chip* half of decision 1. Deferred until
-  Step 1 is live and we can measure how many distinct terms real annotation produces,
-  which decides the facet layout (top-N vs. grouped vs. searchable).
+  we can measure real annotation volume — now available: ~12 publications annotated,
+  a long tail of terms per paper (see below), so the facet needs top-N-by-frequency or
+  grouping-by-ontology rather than a flat chip row.
 
-Note both steps depend on the annotation cache existing. Step 1 can begin against
-name/keywords/description + abstract as soon as Phase A's `paper-content-cache.json` is
-wired into `getAllResources()`; term-label/synonym fields switch on when
-`paper-annotations-cache.json` (Phase B lexicon + annotation) lands.
+Real annotation volume (for the facet-layout decision): annotated papers carry from a
+handful to 260+ term mentions each; a flat chip row is not viable. Lean toward grouping
+by ontology with a per-group top-N, or a searchable facet.
 
 ## Data flow
 

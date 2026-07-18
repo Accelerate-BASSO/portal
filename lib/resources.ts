@@ -33,6 +33,7 @@ interface BaseResource {
   bioportal?: BioportalMetrics;
   githubRelease?: GithubRelease;
   paperContent?: PaperContent;
+  annotations?: TermAnnotation[];
   _sourcePath?: string;
 }
 
@@ -104,6 +105,23 @@ export interface PaperContent {
   retrieved?: string;
 }
 
+/**
+ * An ontology term matched in a publication's text (see
+ * scripts/annotate-papers.py). Automated enrichment, displayed distinctly from
+ * curated `keywords`. `forms` holds the term's label plus synonyms, indexed for
+ * search so a query in lay terms can find a paper annotated with the technical
+ * term.
+ */
+export interface TermAnnotation {
+  iri: string;
+  curie: string;
+  prefLabel: string;
+  ontology: string;
+  forms: string[];
+  count: number;
+  source: "abstract" | "fulltext";
+}
+
 export interface BioportalMetrics {
   acronym: string;
   classes?: number;
@@ -171,11 +189,20 @@ function loadPaperContentCache(): Record<string, PaperContent> {
   return result;
 }
 
+function loadAnnotationsCache(): Record<string, TermAnnotation[]> {
+  const cacheFile = path.join(process.cwd(), "data", "paper-annotations-cache.json");
+  if (fs.existsSync(cacheFile)) {
+    return JSON.parse(fs.readFileSync(cacheFile, "utf-8"));
+  }
+  return {};
+}
+
 export function getAllResources(): Resource[] {
   const files = findYamlFiles(resourcesDir);
   const bioportalCache = loadBioportalCache();
   const githubReleasesCache = loadGithubReleasesCache();
   const paperContentCache = loadPaperContentCache();
+  const annotationsCache = loadAnnotationsCache();
   return files
     .map((file) => {
       const content = fs.readFileSync(file, "utf-8");
@@ -188,6 +215,9 @@ export function getAllResources(): Resource[] {
       }
       if (paperContentCache[resource.id]) {
         resource.paperContent = paperContentCache[resource.id];
+      }
+      if (annotationsCache[resource.id]?.length) {
+        resource.annotations = annotationsCache[resource.id];
       }
       resource._sourcePath = path.relative(process.cwd(), file);
       return resource;

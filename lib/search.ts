@@ -4,11 +4,11 @@ import type { Resource } from "./resources";
 /**
  * Lexical search over resources (Phase B, step 1).
  *
- * The index covers the curated metadata plus each publication's fetched
- * abstract, with field boosts so a name hit outranks a description or abstract
- * hit. Ontology-term labels/synonyms will join the indexed fields once the
- * annotation cache lands (Phase B, step 2); the `prefLabels`/`synonyms` fields
- * below are already wired so that becomes a data change, not a code change.
+ * The index covers the curated metadata, each publication's fetched abstract,
+ * and the labels + synonyms of the ontology terms it was annotated with, with
+ * field boosts so a name hit outranks a body hit. Indexing term synonyms as
+ * document text is what gives synonym expansion: a query in lay terms matches a
+ * paper annotated with the technical term, with no query-time machinery.
  */
 
 /** Fields extracted per resource for indexing. */
@@ -43,14 +43,21 @@ const FIELD_BOOSTS: Record<string, number> = {
 };
 
 function toDoc(r: Resource): IndexDoc {
+  const annotations = r.annotations ?? [];
+  const prefLabels = annotations.map((a) => a.prefLabel);
+  // All surface forms except the prefLabel are synonyms; index them so a lay
+  // query resolves to the paper carrying the technical term.
+  const synonyms = annotations.flatMap((a) =>
+    a.forms.filter((f) => f.toLowerCase() !== a.prefLabel.toLowerCase())
+  );
   return {
     id: r.id,
     name: r.name,
     keywords: r.keywords.join(" "),
     description: r.description,
     abstract: r.paperContent?.abstract ?? "",
-    prefLabels: "",
-    synonyms: "",
+    prefLabels: prefLabels.join(" "),
+    synonyms: synonyms.join(" "),
   };
 }
 
