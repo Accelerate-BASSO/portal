@@ -12,6 +12,7 @@ import {
 } from "@/lib/resource-utils";
 import { buildIndex, runSearch, type SearchHit } from "@/lib/search";
 import OntologyTermFilter from "./OntologyTermFilter";
+import ResourceTerms from "./ResourceTerms";
 import ResourceCard from "./ResourceCard";
 import ResourceListRow from "./ResourceListRow";
 import {
@@ -25,6 +26,7 @@ type ViewMode = "card" | "list";
 
 const VIEW_STORAGE_KEY = "portal.viewMode";
 const SORT_STORAGE_KEY = "portal.sortKey";
+const TERMS_STORAGE_KEY = "portal.showTerms";
 const SORT_KEYS: SortKey[] = ["name-asc", "name-desc", "type", "date-desc", "date-asc"];
 
 // Hydration-safe localStorage read using useSyncExternalStore.
@@ -104,6 +106,12 @@ export default function ResourceBrowser({
   const [foundryOnly, setFoundryOnly] = useState(initialFoundry);
   const [view, updateView] = useLocalStoragePref<ViewMode>(VIEW_STORAGE_KEY, isViewMode, "card");
   const [sortKey, updateSort] = useLocalStoragePref<SortKey>(SORT_STORAGE_KEY, isSortKey, "name-asc");
+  const [showTermsPref, updateShowTerms] = useLocalStoragePref<"0" | "1">(
+    TERMS_STORAGE_KEY,
+    (v): v is "0" | "1" => v === "0" || v === "1",
+    "0",
+  );
+  const showTerms = showTermsPref === "1";
 
   const toggleType = (type: string) => {
     setSelectedTypes((prev) => {
@@ -160,6 +168,12 @@ export default function ResourceBrowser({
 
   const searching = search.trim() !== "";
   const matchesSearch = (r: Resource) => !searching || hitsById.has(r.id);
+
+  // Only offer the term-display toggle when some resource actually has annotations.
+  const anyAnnotations = useMemo(
+    () => resources.some((r) => r.annotations?.length),
+    [resources],
+  );
 
   // When a result matched only via body text the card doesn't show (abstract or
   // description), surface why. Fields visible on the card (name, keywords) need
@@ -335,20 +349,37 @@ export default function ResourceBrowser({
           onToggle={toggleTerm}
         />
 
-        {/* Bottom row: Foundry toggle + clear */}
+        {/* Bottom row: display toggles + clear */}
         <div className="flex items-center justify-between border-t border-accent-hairline pt-3">
-          <label
-            title="Show only ontologies that are members of the Behavioural and Social Sciences Ontology Foundry"
-            className="flex cursor-pointer items-center gap-2 text-xs text-gray-500"
-          >
-            <input
-              type="checkbox"
-              checked={foundryOnly}
-              onChange={(e) => setFoundryOnly(e.target.checked)}
-              className="h-3.5 w-3.5 rounded accent-accent-dark"
-            />
-            BSSO Foundry only
-          </label>
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            <label
+              title="Show only ontologies that are members of the Behavioural and Social Sciences Ontology Foundry"
+              className="flex cursor-pointer items-center gap-2 text-xs text-gray-500"
+            >
+              <input
+                type="checkbox"
+                checked={foundryOnly}
+                onChange={(e) => setFoundryOnly(e.target.checked)}
+                className="h-3.5 w-3.5 rounded accent-accent-dark"
+              />
+              BSSO Foundry only
+            </label>
+
+            {anyAnnotations && (
+              <label
+                title="Show the ontology terms each resource was automatically annotated with"
+                className="flex cursor-pointer items-center gap-2 text-xs text-gray-500"
+              >
+                <input
+                  type="checkbox"
+                  checked={showTerms}
+                  onChange={(e) => updateShowTerms(e.target.checked ? "1" : "0")}
+                  className="h-3.5 w-3.5 rounded accent-accent-dark"
+                />
+                Show ontology terms
+              </label>
+            )}
+          </div>
 
           {hasActiveFilters && (
             <button
@@ -439,6 +470,11 @@ export default function ResourceBrowser({
               return (
                 <div key={resource.id} className="flex flex-col gap-1">
                   <ResourceCard resource={resource} />
+                  {showTerms && resource.annotations?.length ? (
+                    <div className="px-1">
+                      <ResourceTerms annotations={resource.annotations} />
+                    </div>
+                  ) : null}
                   {provenance && (
                     <p className="px-1 text-xs italic text-gray-400">{provenance}</p>
                   )}
@@ -453,6 +489,11 @@ export default function ResourceBrowser({
               return (
                 <div key={resource.id}>
                   <ResourceListRow resource={resource} />
+                  {showTerms && resource.annotations?.length ? (
+                    <div className="border-b border-accent-hairline bg-accent-band/20 px-4 py-2">
+                      <ResourceTerms annotations={resource.annotations} />
+                    </div>
+                  ) : null}
                   {provenance && (
                     <p className="border-b border-accent-hairline bg-accent-band/40 px-4 py-1 text-xs italic text-gray-400">
                       {provenance}
