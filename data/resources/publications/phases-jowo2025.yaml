@@ -2,6 +2,7 @@ id: pub-phases-jowo2025
 name: "Towards Healthy Aging through Semantic Enrichment"
 type: Publication
 publishedYear: 2025
+pmid: 42371556
 venue: Proceedings of the Joint Ontology Workshops (JOWO) 2025 - PHASES Workshop (CEUR Workshop Proceedings, Vol 4176)
 description: >-
   Describes the PHASES (Promoting Healthy Aging through Semantic Enrichment
@@ -34,6 +35,9 @@ usedByProjects: []
 links:
   - label: CEUR-WS
     url: https://ceur-ws.org/Vol-4176/phases-2.pdf
+    platform: Website
+  - label: PubMed
+    url: https://pubmed.ncbi.nlm.nih.gov/42371556/
     platform: Website
 keywords:
   - paper
