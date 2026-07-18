@@ -32,6 +32,7 @@ interface BaseResource {
   // Injected at build time from caches, keyed by id (see getAllResources).
   bioportal?: BioportalMetrics;
   githubRelease?: GithubRelease;
+  paperContent?: PaperContent;
   _sourcePath?: string;
 }
 
@@ -92,6 +93,17 @@ export interface GithubRelease {
   date: string;
 }
 
+/**
+ * Publication content fetched offline from Europe PMC (see
+ * scripts/fetch-paper-content.py). Only the abstract and its provenance are
+ * exposed here; full text is cached out-of-band for indexing and never shipped.
+ */
+export interface PaperContent {
+  abstract?: string;
+  isOpenAccess?: boolean;
+  retrieved?: string;
+}
+
 export interface BioportalMetrics {
   acronym: string;
   classes?: number;
@@ -135,10 +147,35 @@ function loadGithubReleasesCache(): Record<string, GithubRelease> {
   return {};
 }
 
+function loadPaperContentCache(): Record<string, PaperContent> {
+  const cacheFile = path.join(process.cwd(), "data", "paper-content-cache.json");
+  if (!fs.existsSync(cacheFile)) {
+    return {};
+  }
+  const raw = JSON.parse(fs.readFileSync(cacheFile, "utf-8")) as Record<
+    string,
+    Record<string, unknown>
+  >;
+  // Expose only the abstract and its provenance; the cache also holds internal
+  // pipeline fields (EPMC ids, full-text flags) that shouldn't ship to the client.
+  const result: Record<string, PaperContent> = {};
+  for (const [id, entry] of Object.entries(raw)) {
+    if (typeof entry.abstract === "string") {
+      result[id] = {
+        abstract: entry.abstract,
+        isOpenAccess: entry.isOpenAccess === true,
+        retrieved: typeof entry.retrieved === "string" ? entry.retrieved : undefined,
+      };
+    }
+  }
+  return result;
+}
+
 export function getAllResources(): Resource[] {
   const files = findYamlFiles(resourcesDir);
   const bioportalCache = loadBioportalCache();
   const githubReleasesCache = loadGithubReleasesCache();
+  const paperContentCache = loadPaperContentCache();
   return files
     .map((file) => {
       const content = fs.readFileSync(file, "utf-8");
@@ -148,6 +185,9 @@ export function getAllResources(): Resource[] {
       }
       if (githubReleasesCache[resource.id]) {
         resource.githubRelease = githubReleasesCache[resource.id];
+      }
+      if (paperContentCache[resource.id]) {
+        resource.paperContent = paperContentCache[resource.id];
       }
       resource._sourcePath = path.relative(process.cwd(), file);
       return resource;

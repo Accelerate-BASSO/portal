@@ -13,12 +13,13 @@ same approach to other resource types.
 
 - The portal is a static export with no backend and no API keys at runtime. All
   indexing happens offline; the browser only consumes precomputed artifacts.
-- The portal is not a content repository. We commit **derived artifacts**
-  (abstracts, term annotations, index structures, later embeddings) — never
-  full text obtained from publishers.
-- Follow the existing enrichment pattern: offline script → committed JSON cache in
-  `data/` → merged into resources at build time by `lib/resources.ts` (as
-  `bioportal-cache.json` and `github-releases-cache.json` already are).
+- The portal is not a content repository. The build consumes and ships **derived
+  artifacts** (abstracts, term annotations, index structures, later embeddings) —
+  never full text obtained from publishers.
+- Follow the existing enrichment pattern: fetch script run at deploy time → JSON
+  cache in `data/` (gitignored, regenerated per build) → merged into resources at
+  build time by `lib/resources.ts` (as `bioportal-cache.json` and
+  `github-releases-cache.json` already are).
 - Every cached record carries provenance: source, identifier used, retrieval date.
 
 ## Agreed decisions
@@ -38,17 +39,26 @@ same approach to other resource types.
 
 ## Phase A — content acquisition pipeline
 
-New script `scripts/fetch-paper-content.py`:
+Implemented (2026-07-18) as `scripts/fetch-paper-content.py`:
 
-- For each publication with a `pmid` or `doi`, query Europe PMC
-  (`/webservices/rest/search`) for the abstract, open-access status, and full-text
-  availability; fetch full-text XML (`/fullTextXML`) for open-access articles.
-- Committed output: `data/paper-content-cache.json` — abstract text, source,
-  retrieval date, open-access status, full-text availability. Abstracts are the
-  only primary text committed.
-- Full text is written to a **gitignored** local cache (e.g. `.cache/fulltext/`)
-  used only as input to the annotation/indexing scripts. Re-running the fetch
-  script repopulates it on any machine.
+- For each publication with a `pmid` or `doi`, queries Europe PMC
+  (`/webservices/rest/search`, `resultType=core`) for the abstract, identifiers,
+  open-access status, and license.
+- Full-text JATS XML comes from two routes: Europe PMC (`/{pmcid}/fullTextXML`)
+  when the article is in its open-access set, otherwise the publisher's
+  Crossref-advertised `text-mining` XML link, fetched only for CC-licensed
+  articles. The second route matters because Europe PMC indexes Wellcome Open
+  Research articles as preprint (PPR) records without full text — and these are
+  the majority of the catalog.
+- Output: `data/paper-content-cache.json` (abstract text, identifiers, license,
+  open-access status, full-text availability/source, retrieval date) and raw XML
+  in `.cache/fulltext/`. Both are gitignored; the JSON cache follows the
+  regenerated-per-build pattern, and full text is never committed.
+- Coverage on first run (20 publications): 14 found in Europe PMC (14 abstracts,
+  12 full texts). Not found: Zenodo- and NAS-DOI records and three publications
+  with no `pmid`/`doi`. No full text: one article that is not openly licensed and
+  one Nature-journal article whose text-mining links are PDF/HTML only.
+- Not yet wired into `deploy.yml` — nothing consumes the cache until Phase B.
 
 ## Phase B — ontology annotation and lexical search
 
@@ -95,8 +105,8 @@ New script `scripts/annotate-papers.py`:
 ## Phase C — semantic search (deferred)
 
 - Chunk abstracts/full text, embed at index time with a small sentence-embedding
-  model, quantize, commit vectors to `data/` (at current scale: hundreds of chunks,
-  a few hundred KB).
+  model, quantize, write vectors to a `data/` cache (at current scale: hundreds of
+  chunks, a few hundred KB).
 - Query-time embedding in the browser via transformers.js (one-time model download,
   no keys, keeps the static-export property), used to re-rank or blend with the
   lexical results. Evaluate whether Phase B already suffices before building this.

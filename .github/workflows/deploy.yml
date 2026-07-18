@@ -48,6 +48,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python scripts/fetch-github-releases.py
 
+      - name: Fetch paper content
+        run: python scripts/fetch-paper-content.py
+
       - name: Install dependencies
         run: npm ci
 

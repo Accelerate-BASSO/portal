@@ -34,6 +34,10 @@ __pycache__/
 # Generated at build time
 data/bioportal-cache.json
 data/github-releases-cache.json
+data/paper-content-cache.json
+
+# Fetched full text for indexing — never committed
+.cache/
 
 # debug
 npm-debug.log*
