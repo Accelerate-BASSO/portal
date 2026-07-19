@@ -37,15 +37,18 @@ export default function ResourceTerms({ annotations }: ResourceTermsProps) {
       </p>
       <div className="flex flex-wrap gap-1">
         {shown.map((a) => (
-          <span
+          <a
             key={a.iri}
-            title={`${a.prefLabel} — ${a.ontology} (${a.count} mention${a.count === 1 ? "" : "s"})`}
-            className={`cursor-help rounded border bg-white px-1.5 py-0.5 font-medium ${
+            href={a.iri}
+            target="_blank"
+            rel="noopener noreferrer"
+            title={`${a.prefLabel} — ${a.ontology} (${a.count} mention${a.count === 1 ? "" : "s"})\n${a.iri}`}
+            className={`rounded border bg-white px-1.5 py-0.5 font-medium no-underline hover:bg-gray-50 ${
               ontologyTint[a.ontology] || "border-gray-300 text-gray-600"
             }`}
           >
             {a.prefLabel}
-          </span>
+          </a>
         ))}
         {hidden > 0 && (
           <button
