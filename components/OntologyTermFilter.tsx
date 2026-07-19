@@ -37,12 +37,19 @@ export default function OntologyTermFilter({
 }: OntologyTermFilterProps) {
   // Ontology groups start collapsed except the first; "show all" is per-group.
   const ordered = orderOntologies([...groups.keys()]);
+  // The whole section is collapsed by default — expanded, it's tall.
+  const [sectionOpen, setSectionOpen] = useState(false);
   const [openGroups, setOpenGroups] = useState<Set<string>>(
     () => new Set(ordered.slice(0, 1)),
   );
   const [expandedGroups, setExpandedGroups] = useState<Set<string>>(new Set());
 
   if (ordered.length === 0) return null;
+
+  const selectedCount = [...selectedTerms].filter((iri) =>
+    ordered.some((onto) => (groups.get(onto) ?? []).some((t) => t.iri === iri)),
+  ).length;
+  const SectionChevron = sectionOpen ? ChevronDown : ChevronRight;
 
   const toggleOpen = (onto: string) =>
     setOpenGroups((prev) => {
@@ -59,10 +66,22 @@ export default function OntologyTermFilter({
 
   return (
     <div className="mb-3">
-      <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-accent-deep/60">
+      <button
+        type="button"
+        onClick={() => setSectionOpen((v) => !v)}
+        aria-expanded={sectionOpen}
+        className="flex w-full items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-accent-deep/60 hover:text-accent-deep"
+      >
+        <SectionChevron size={14} strokeWidth={2} />
         Ontology terms
-      </p>
-      <div className="space-y-2">
+        {selectedCount > 0 && (
+          <span className="rounded-full bg-accent-deep px-1.5 text-[10px] font-semibold normal-case text-white">
+            {selectedCount} selected
+          </span>
+        )}
+      </button>
+      {!sectionOpen ? null : (
+      <div className="mt-2 space-y-2">
         {ordered.map((onto) => {
           const terms = groups.get(onto) ?? [];
           const isOpen = openGroups.has(onto);
@@ -129,6 +148,7 @@ export default function OntologyTermFilter({
           );
         })}
       </div>
+      )}
     </div>
   );
 }
