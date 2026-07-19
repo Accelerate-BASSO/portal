@@ -120,6 +120,10 @@ export interface TermAnnotation {
   forms: string[];
   count: number;
   source: "abstract" | "fulltext";
+  // Browsable link for the term, resolved at build time (see resolveTermUrl):
+  // the BioPortal term page when the ontology is in BioPortal
+  // (data/ontology-term-links.yaml), else the term's raw IRI.
+  url: string;
 }
 
 export interface BioportalMetrics {
@@ -189,12 +193,46 @@ function loadPaperContentCache(): Record<string, PaperContent> {
   return result;
 }
 
-function loadAnnotationsCache(): Record<string, TermAnnotation[]> {
+// Raw annotation records in the cache lack the resolved `url` (the Python
+// annotator is unaware of link config); it's added at load time.
+type RawAnnotation = Omit<TermAnnotation, "url">;
+
+function loadAnnotationsCache(): Record<string, RawAnnotation[]> {
   const cacheFile = path.join(process.cwd(), "data", "paper-annotations-cache.json");
   if (fs.existsSync(cacheFile)) {
     return JSON.parse(fs.readFileSync(cacheFile, "utf-8"));
   }
   return {};
+}
+
+/**
+ * Per-ontology term-link config (data/ontology-term-links.yaml): ontology
+ * acronym -> BioPortal acronym. Ontologies present here are in BioPortal and
+ * their terms link there; others fall back to the raw IRI.
+ */
+function loadTermLinkConfig(): Record<string, { bioportal: string }> {
+  const file = path.join(process.cwd(), "data", "ontology-term-links.yaml");
+  if (!fs.existsSync(file)) return {};
+  return (yaml.load(fs.readFileSync(file, "utf-8")) as Record<string, { bioportal: string }>) ?? {};
+}
+
+/**
+ * Browsable URL for an annotated term. When the term's ontology is in BioPortal
+ * (per config), link to the BioPortal term page, which resolves reliably even
+ * where the raw IRI 404s (e.g. PHASES); otherwise link to the raw IRI.
+ */
+function resolveTermUrl(
+  ann: RawAnnotation,
+  config: Record<string, { bioportal: string }>,
+): string {
+  const entry = config[ann.ontology];
+  if (entry?.bioportal) {
+    return (
+      `https://bioportal.bioontology.org/ontologies/${entry.bioportal}` +
+      `?p=classes&conceptid=${encodeURIComponent(ann.iri)}`
+    );
+  }
+  return ann.iri;
 }
 
 export function getAllResources(): Resource[] {
@@ -203,6 +241,7 @@ export function getAllResources(): Resource[] {
   const githubReleasesCache = loadGithubReleasesCache();
   const paperContentCache = loadPaperContentCache();
   const annotationsCache = loadAnnotationsCache();
+  const termLinkConfig = loadTermLinkConfig();
   return files
     .map((file) => {
       const content = fs.readFileSync(file, "utf-8");
@@ -217,7 +256,10 @@ export function getAllResources(): Resource[] {
         resource.paperContent = paperContentCache[resource.id];
       }
       if (annotationsCache[resource.id]?.length) {
-        resource.annotations = annotationsCache[resource.id];
+        resource.annotations = annotationsCache[resource.id].map((a) => ({
+          ...a,
+          url: resolveTermUrl(a, termLinkConfig),
+        }));
       }
       resource._sourcePath = path.relative(process.cwd(), file);
       return resource;

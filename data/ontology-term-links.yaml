@@ -1,0 +1,27 @@
+# How to link an annotated ontology term to a browsable page, per ontology.
+#
+# Annotated terms (see scripts/annotate-papers.py) carry a raw IRI. Some IRIs
+# resolve to a useful term page in a browser; many do not (e.g. PHASES OBO PURLs
+# 404 because PHASES isn't registered in the OBO Library; COPPER's IRI is a
+# GitHub blob). When an ontology is in BioPortal, its term pages resolve
+# reliably there, so we prefer BioPortal for those.
+#
+# Keyed by ontology acronym (as it appears in annotations). `bioportal` names the
+# BioPortal ontology acronym to build a term URL against:
+#   https://bioportal.bioontology.org/ontologies/<ACRONYM>?p=classes&conceptid=<url-encoded-IRI>
+#
+# Ontologies not listed here (ADDICTO, GMHO — not in BioPortal) fall back to the
+# term's raw IRI. Verified against the BioPortal API 2026-07-19.
+
+BCIO:
+  bioportal: BCIO
+COPPER:
+  bioportal: COPPER
+MF:
+  bioportal: MF
+MFOEM:
+  bioportal: MFOEM
+OMRSE:
+  bioportal: OMRSE
+PHASES:
+  bioportal: PHASES

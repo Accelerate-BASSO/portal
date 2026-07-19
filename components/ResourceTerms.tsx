@@ -39,10 +39,10 @@ export default function ResourceTerms({ annotations }: ResourceTermsProps) {
         {shown.map((a) => (
           <a
             key={a.iri}
-            href={a.iri}
+            href={a.url}
             target="_blank"
             rel="noopener noreferrer"
-            title={`${a.prefLabel} — ${a.ontology} (${a.count} mention${a.count === 1 ? "" : "s"})\n${a.iri}`}
+            title={`${a.prefLabel} — ${a.ontology} (${a.count} mention${a.count === 1 ? "" : "s"})\n${a.url}`}
             className={`rounded border bg-white px-1.5 py-0.5 font-medium no-underline hover:bg-gray-50 ${
               ontologyTint[a.ontology] || "border-gray-300 text-gray-600"
             }`}
