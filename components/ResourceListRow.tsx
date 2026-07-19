@@ -54,9 +54,12 @@ function formatDateShort(iso: string): string {
 
 interface ResourceListRowProps {
   resource: Resource;
+  // When the row is wrapped in a per-resource block that owns the divider (so
+  // metadata strips can attach beneath it), suppress the row's own border.
+  noBorder?: boolean;
 }
 
-export default function ResourceListRow({ resource }: ResourceListRowProps) {
+export default function ResourceListRow({ resource, noBorder = false }: ResourceListRowProps) {
   const Icon = typeIcons[resource.type];
   const date = effectiveDate(resource);
   const linkColor = "text-accent-dark hover:text-accent-hover";
@@ -64,7 +67,9 @@ export default function ResourceListRow({ resource }: ResourceListRowProps) {
   return (
     <div
       id={resource.id}
-      className="flex items-start gap-2 border-b border-gray-100 px-3 py-2 transition-colors last:border-b-0 scroll-mt-24 hover:bg-accent-band/50 target:bg-accent-band"
+      className={`flex items-start gap-2 px-3 py-2 transition-colors scroll-mt-24 hover:bg-accent-band/50 target:bg-accent-band ${
+        noBorder ? "" : "border-b border-gray-100 last:border-b-0"
+      }`}
     >
       {/* Left gutter: icon + type pill */}
       {Icon && (

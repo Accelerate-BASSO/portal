@@ -501,26 +501,28 @@ export default function ResourceBrowser({
           <div className="overflow-hidden rounded-lg border border-accent-hairline bg-white">
             {filtered.map((resource) => {
               const provenance = searching ? matchProvenance(resource.id) : null;
+              const related = getRelatedOntologies(resource, ontologyIndex);
+              const showTermsRow = showTerms && resource.annotations?.length;
+              const hasExtras = related.length > 0 || showTermsRow || provenance;
               return (
-                <div key={resource.id}>
-                  <ResourceListRow resource={resource} />
-                  {(() => {
-                    const related = getRelatedOntologies(resource, ontologyIndex);
-                    return related.length ? (
-                      <div className="border-b border-accent-hairline bg-accent-band/20 px-4 py-2">
-                        <RelatedOntologies ontologies={related} />
-                      </div>
-                    ) : null;
-                  })()}
-                  {showTerms && resource.annotations?.length ? (
-                    <div className="border-b border-accent-hairline bg-accent-band/20 px-4 py-2">
-                      <ResourceTerms annotations={resource.annotations} />
+                // One bordered block per resource: the row, plus any metadata
+                // strips indented beneath it so they read as attached, not as
+                // separate entries.
+                <div
+                  key={resource.id}
+                  className="border-b border-accent-hairline last:border-b-0"
+                >
+                  <ResourceListRow resource={resource} noBorder />
+                  {hasExtras && (
+                    <div className="space-y-1 pb-2 pl-12 pr-4">
+                      {related.length > 0 && <RelatedOntologies ontologies={related} />}
+                      {showTermsRow ? (
+                        <ResourceTerms annotations={resource.annotations!} />
+                      ) : null}
+                      {provenance && (
+                        <p className="text-xs italic text-gray-400">{provenance}</p>
+                      )}
                     </div>
-                  ) : null}
-                  {provenance && (
-                    <p className="border-b border-accent-hairline bg-accent-band/40 px-4 py-1 text-xs italic text-gray-400">
-                      {provenance}
-                    </p>
                   )}
                 </div>
               );
