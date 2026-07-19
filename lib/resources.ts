@@ -29,6 +29,10 @@ interface BaseResource {
   links: ResourceLink[];
   keywords: string[];
   lastUpdated: string;
+  // Curated ids of Ontology resources this resource is *about* (a human-asserted
+  // "this resource concerns this ontology" relationship, unrelated to the
+  // automated term annotations). Rendered as the "Ontologies" links.
+  aboutOntologies?: string[];
   // Injected at build time from caches, keyed by id (see getAllResources).
   bioportal?: BioportalMetrics;
   githubRelease?: GithubRelease;

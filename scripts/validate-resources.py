@@ -55,7 +55,7 @@ COMMON_REQUIRED = [
 ]
 
 
-def validate_file(path, ids, errors):
+def validate_file(path, ids, errors, ontology_ids, about_refs):
     rel = os.path.relpath(path)
 
     try:
@@ -130,6 +130,20 @@ def validate_file(path, ids, errors):
         if key in d and not isinstance(d[key], list):
             err(f"`{key}` must be a list (use [] if none).")
 
+    # `aboutOntologies`: curated ids of Ontology resources this resource is
+    # about. Shape checked here; referential validity (each id exists and is an
+    # Ontology) is checked in a second pass once all ids are known.
+    ao = d.get("aboutOntologies")
+    if ao is not None:
+        if not isinstance(ao, list) or not all(isinstance(x, str) for x in ao):
+            err("`aboutOntologies` must be a list of ontology resource ids (use [] or omit if none).")
+        else:
+            for oid in ao:
+                about_refs.append((rel, oid))
+
+    if rtype == "Ontology" and isinstance(rid, str):
+        ontology_ids.add(rid)
+
     # --- type-specific rules ---
     if rtype == "Ontology":
         if not isinstance(d.get("bssoFoundry"), bool):
@@ -166,8 +180,18 @@ def main() -> int:
 
     ids: dict[str, str] = {}
     errors: list[str] = []
+    ontology_ids: set[str] = set()
+    about_refs: list[tuple[str, str]] = []
     for f in files:
-        validate_file(f, ids, errors)
+        validate_file(f, ids, errors, ontology_ids, about_refs)
+
+    # Second pass: every aboutOntologies id must reference a catalogued Ontology.
+    for rel, oid in about_refs:
+        if oid not in ontology_ids:
+            if oid in ids:
+                errors.append(f"{rel}: `aboutOntologies` id {oid!r} is not an Ontology resource.")
+            else:
+                errors.append(f"{rel}: `aboutOntologies` references unknown id {oid!r}.")
 
     if errors:
         print(f"Found {len(errors)} problem(s) in resource files:", file=sys.stderr)

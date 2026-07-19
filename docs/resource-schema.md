@@ -49,6 +49,7 @@ automatically on the next build. Every file is checked in CI by
 | `usedByProjects` | Yes | list | Projects that use the resource — same allowed values as `producedByProjects`. May be empty (`[]`). |
 | `links` | Yes | list | Links to where the resource lives (see below). At least one is required. |
 | `keywords` | Yes | list | Searchable keywords/labels (kebab-case), used by the portal's search. May be empty (`[]`). |
+| `aboutOntologies` | No | list | Curated ids of `Ontology` resources this resource is *about* (e.g. a publication describing an ontology). Each id must reference an existing `Ontology` resource. Shown as "About" links to those ontologies. A human-asserted relationship — unrelated to the automated ontology-term annotations. Omit or `[]` if none. |
 | `lastUpdated` | Yes | date | `YYYY-MM-DD` — when the metadata was last reviewed. |
 
 ### Controlled vocabularies

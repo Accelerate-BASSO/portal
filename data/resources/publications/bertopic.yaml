@@ -43,6 +43,8 @@ contributors:
 producedByProjects:
   - PHASES
 usedByProjects: []
+aboutOntologies:
+  - phases
 links:
   - label: DOI
     url: https://doi.org/10.21203/rs.3.rs-7383440/v1

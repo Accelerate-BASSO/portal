@@ -41,6 +41,8 @@ contributors:
 producedByProjects:
   - APRICOT
 usedByProjects: []
+aboutOntologies:
+  - bcio
 links:
   - label: DOI
     url: https://doi.org/10.12688/wellcomeopenres.23520.1

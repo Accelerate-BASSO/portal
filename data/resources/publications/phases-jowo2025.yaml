@@ -32,6 +32,8 @@ contributors:
 producedByProjects:
   - PHASES
 usedByProjects: []
+aboutOntologies:
+  - phases
 links:
   - label: CEUR-WS
     url: https://ceur-ws.org/Vol-4176/phases-2.pdf

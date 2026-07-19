@@ -7,39 +7,27 @@ export function getAllProjects(resource: Resource): ProjectName[] {
 export interface RelatedOntology {
   /** Ontology resource id (the link target within the portal). */
   id: string;
-  /** Acronym as it appears in annotations (e.g. "BCIO"). */
-  acronym: string;
   /** Display name of the ontology resource. */
   name: string;
-  /** Distinct annotated terms from this ontology on the source resource. */
-  termCount: number;
 }
 
 /**
- * The portal ontologies a resource "talks about", derived from its annotations:
- * distinct annotation ontologies that have a catalogued Ontology resource
- * (matched by id === acronym.toLowerCase()). Used to link a resource — e.g. a
- * publication — to the ontology entries it references. Ontologies with no portal
- * entry (none, now that PHASES is catalogued) are omitted. Sorted by term count.
+ * The portal ontologies a resource is *about*, from its curated
+ * `aboutOntologies` field — a human-asserted relationship, not derived from the
+ * automated term annotations. Each id is resolved to a catalogued Ontology
+ * resource; ids that don't resolve (should not happen — the validator enforces
+ * it) are skipped. Order follows the field.
  */
 export function getRelatedOntologies(
   resource: Resource,
   ontologyIndex: Map<string, { id: string; name: string }>,
-  minTerms = 2,
 ): RelatedOntology[] {
-  const counts = new Map<string, number>();
-  for (const a of resource.annotations ?? []) {
-    counts.set(a.ontology, (counts.get(a.ontology) ?? 0) + 1);
-  }
   const related: RelatedOntology[] = [];
-  for (const [acronym, termCount] of counts) {
-    // A single incidental term match doesn't make a resource "about" an
-    // ontology; require at least `minTerms` distinct terms.
-    if (termCount < minTerms) continue;
-    const onto = ontologyIndex.get(acronym.toLowerCase());
-    if (onto) related.push({ id: onto.id, acronym, name: onto.name, termCount });
+  for (const id of resource.aboutOntologies ?? []) {
+    const onto = ontologyIndex.get(id);
+    if (onto) related.push({ id: onto.id, name: onto.name });
   }
-  return related.sort((a, b) => b.termCount - a.termCount || a.acronym.localeCompare(b.acronym));
+  return related;
 }
 
 /** Index of Ontology resources by id, for getRelatedOntologies. */
