@@ -1,0 +1,25 @@
+id: phases
+name: Promoting Healthy Aging through Semantic Enrichment of Solitude Research Ontology (PHASES)
+type: Ontology
+description: >-
+  An ontology for integrating research in solitude and gerotranscendence,
+  developed to deepen understanding of each and of how they promote healthy
+  aging. It formalizes psychological constructs such as solitude, loneliness,
+  and gerotranscendence and the distinctions between them.
+producedByProjects:
+  - PHASES
+usedByProjects: []
+bssoFoundry: false
+links:
+  - label: BioPortal
+    url: https://bioportal.bioontology.org/ontologies/PHASES
+    platform: BioPortal
+  - label: GitHub
+    url: https://github.com/Buffalo-Ontology-Group/phases
+    platform: GitHub
+keywords:
+  - ontology
+  - solitude
+  - gerotranscendence
+  - healthy-aging
+lastUpdated: "2026-07-19"

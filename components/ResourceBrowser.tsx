@@ -6,6 +6,8 @@ import type { Resource } from "@/lib/resources";
 import {
   getAllProjects,
   getSharedTermOptions,
+  getRelatedOntologies,
+  buildOntologyIndex,
   compareResources,
   sortLabels,
   type SortKey,
@@ -13,6 +15,7 @@ import {
 import { buildIndex, runSearch, type SearchHit } from "@/lib/search";
 import OntologyTermFilter from "./OntologyTermFilter";
 import ResourceTerms from "./ResourceTerms";
+import RelatedOntologies from "./RelatedOntologies";
 import ResourceCard from "./ResourceCard";
 import ResourceListRow from "./ResourceListRow";
 import {
@@ -174,6 +177,10 @@ export default function ResourceBrowser({
     () => resources.some((r) => r.annotations?.length),
     [resources],
   );
+
+  // Index of Ontology resources, for linking a resource to the portal ontologies
+  // it is annotated against.
+  const ontologyIndex = useMemo(() => buildOntologyIndex(resources), [resources]);
 
   // When a result matched only via body text the card doesn't show (abstract or
   // description), surface why. Fields visible on the card (name, keywords) need
@@ -470,6 +477,14 @@ export default function ResourceBrowser({
               return (
                 <div key={resource.id} className="flex flex-col gap-1">
                   <ResourceCard resource={resource} />
+                  {(() => {
+                    const related = getRelatedOntologies(resource, ontologyIndex);
+                    return related.length ? (
+                      <div className="px-1">
+                        <RelatedOntologies ontologies={related} />
+                      </div>
+                    ) : null;
+                  })()}
                   {showTerms && resource.annotations?.length ? (
                     <div className="px-1">
                       <ResourceTerms annotations={resource.annotations} />
@@ -489,6 +504,14 @@ export default function ResourceBrowser({
               return (
                 <div key={resource.id}>
                   <ResourceListRow resource={resource} />
+                  {(() => {
+                    const related = getRelatedOntologies(resource, ontologyIndex);
+                    return related.length ? (
+                      <div className="border-b border-accent-hairline bg-accent-band/20 px-4 py-2">
+                        <RelatedOntologies ontologies={related} />
+                      </div>
+                    ) : null;
+                  })()}
                   {showTerms && resource.annotations?.length ? (
                     <div className="border-b border-accent-hairline bg-accent-band/20 px-4 py-2">
                       <ResourceTerms annotations={resource.annotations} />

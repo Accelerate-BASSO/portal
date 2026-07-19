@@ -4,6 +4,55 @@ export function getAllProjects(resource: Resource): ProjectName[] {
   return [...new Set([...(resource.producedByProjects || []), ...(resource.usedByProjects || [])])];
 }
 
+export interface RelatedOntology {
+  /** Ontology resource id (the link target within the portal). */
+  id: string;
+  /** Acronym as it appears in annotations (e.g. "BCIO"). */
+  acronym: string;
+  /** Display name of the ontology resource. */
+  name: string;
+  /** Distinct annotated terms from this ontology on the source resource. */
+  termCount: number;
+}
+
+/**
+ * The portal ontologies a resource "talks about", derived from its annotations:
+ * distinct annotation ontologies that have a catalogued Ontology resource
+ * (matched by id === acronym.toLowerCase()). Used to link a resource — e.g. a
+ * publication — to the ontology entries it references. Ontologies with no portal
+ * entry (none, now that PHASES is catalogued) are omitted. Sorted by term count.
+ */
+export function getRelatedOntologies(
+  resource: Resource,
+  ontologyIndex: Map<string, { id: string; name: string }>,
+  minTerms = 2,
+): RelatedOntology[] {
+  const counts = new Map<string, number>();
+  for (const a of resource.annotations ?? []) {
+    counts.set(a.ontology, (counts.get(a.ontology) ?? 0) + 1);
+  }
+  const related: RelatedOntology[] = [];
+  for (const [acronym, termCount] of counts) {
+    // A single incidental term match doesn't make a resource "about" an
+    // ontology; require at least `minTerms` distinct terms.
+    if (termCount < minTerms) continue;
+    const onto = ontologyIndex.get(acronym.toLowerCase());
+    if (onto) related.push({ id: onto.id, acronym, name: onto.name, termCount });
+  }
+  return related.sort((a, b) => b.termCount - a.termCount || a.acronym.localeCompare(b.acronym));
+}
+
+/** Index of Ontology resources by id, for getRelatedOntologies. */
+export function buildOntologyIndex(
+  resources: Resource[],
+): Map<string, { id: string; name: string }> {
+  const index = new Map<string, { id: string; name: string }>();
+  for (const r of resources) {
+    if (r.type === "Ontology") index.set(r.id, { id: r.id, name: r.name });
+  }
+  return index;
+}
+
 export interface TermOption {
   iri: string;
   prefLabel: string;

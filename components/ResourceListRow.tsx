@@ -62,7 +62,10 @@ export default function ResourceListRow({ resource }: ResourceListRowProps) {
   const linkColor = "text-accent-dark hover:text-accent-hover";
 
   return (
-    <div className="flex items-start gap-2 border-b border-gray-100 px-3 py-2 transition-colors last:border-b-0 hover:bg-accent-band/50">
+    <div
+      id={resource.id}
+      className="flex items-start gap-2 border-b border-gray-100 px-3 py-2 transition-colors last:border-b-0 scroll-mt-24 hover:bg-accent-band/50 target:bg-accent-band"
+    >
       {/* Left gutter: icon + type pill */}
       {Icon && (
         <Icon

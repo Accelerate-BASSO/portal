@@ -73,7 +73,10 @@ const typeTooltips: Record<string, string> = {
 
 export default function ResourceCard({ resource }: ResourceCardProps) {
   return (
-    <div className="flex flex-col gap-3 rounded-lg border border-accent-hairline bg-white p-5 transition-colors hover:border-accent-dark">
+    <div
+      id={resource.id}
+      className="flex flex-col gap-3 rounded-lg border border-accent-hairline bg-white p-5 transition-colors hover:border-accent-dark scroll-mt-24 target:border-accent-dark target:ring-2 target:ring-accent"
+    >
       {/* Top row: type badge left, project badges right */}
       <div className="flex items-start justify-between gap-2">
         <div className="flex items-center gap-2">
