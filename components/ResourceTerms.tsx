@@ -3,7 +3,10 @@
 import { useState } from "react";
 import type { TermAnnotation } from "@/lib/resources";
 
+// Collapsed and expanded display caps. The full annotation set can run to ~90
+// terms with a noisy single-mention tail; the display shows a confident subset.
 const TOP_N = 8;
+const MAX_SHOWN = 20;
 
 // Muted, ontology-distinct chip tints. Automated annotations are shown more
 // quietly than curated keywords — outlined, not filled — to signal provenance.
@@ -26,9 +29,25 @@ export default function ResourceTerms({ annotations }: ResourceTermsProps) {
   const [expanded, setExpanded] = useState(false);
   if (annotations.length === 0) return null;
 
+  // Show only confident matches: from the abstract (dense, curated) or mentioned
+  // more than once. A single incidental full-text mention is usually a generic
+  // word that happens to be an ontology label, not a topic of the paper.
+  const confident = annotations.filter((a) => a.source === "abstract" || a.count >= 2);
+  // Fall back to the raw list if the filter left nothing (short papers).
+  const filtered = confident.length > 0 ? confident : annotations;
+  // Collapse same-label terms from different ontologies (they read as
+  // duplicates); keep the first, which is the highest-salience instance.
+  const seen = new Set<string>();
+  const pool = filtered.filter((a) => {
+    const key = a.prefLabel.toLowerCase();
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+
   // annotations arrive sorted by salience (abstract-first, then count).
-  const shown = expanded ? annotations : annotations.slice(0, TOP_N);
-  const hidden = annotations.length - shown.length;
+  const shown = expanded ? pool.slice(0, MAX_SHOWN) : pool.slice(0, TOP_N);
+  const hidden = pool.length - shown.length;
 
   return (
     <div className="text-xs">
@@ -50,7 +69,7 @@ export default function ResourceTerms({ annotations }: ResourceTermsProps) {
             {a.prefLabel}
           </a>
         ))}
-        {hidden > 0 && (
+        {!expanded && hidden > 0 && (
           <button
             type="button"
             onClick={() => setExpanded(true)}
@@ -59,14 +78,21 @@ export default function ResourceTerms({ annotations }: ResourceTermsProps) {
             +{hidden} more
           </button>
         )}
-        {expanded && annotations.length > TOP_N && (
-          <button
-            type="button"
-            onClick={() => setExpanded(false)}
-            className="px-1 py-0.5 text-gray-400 underline hover:text-gray-600"
-          >
-            show fewer
-          </button>
+        {expanded && (
+          <>
+            {hidden > 0 && (
+              <span className="px-1 py-0.5 text-gray-400" title="More terms matched; capped for readability">
+                +{hidden} not shown
+              </span>
+            )}
+            <button
+              type="button"
+              onClick={() => setExpanded(false)}
+              className="px-1 py-0.5 text-gray-400 underline hover:text-gray-600"
+            >
+              show fewer
+            </button>
+          </>
         )}
       </div>
     </div>

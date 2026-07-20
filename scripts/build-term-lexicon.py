@@ -80,6 +80,13 @@ STOPLIST_GENERIC = {
     "money", "intelligence", "decision", "policy", "employed", "professional",
     "theory", "individual", "population", "behaviour", "action", "response",
     "meaning", "experience", "belief", "identity", "feeling", "emotion",
+    # Second tier, from annotation-noise review: repeated ordinary words that
+    # survived the count>=2 display filter while saying nothing about topic.
+    # Deliberately excludes borderline-real terms (study arm, questionnaire,
+    # child/adult demographics) — pruning only clear general-language noise.
+    "follow-up", "parent", "awareness", "cleaning", "problem solving",
+    "location", "country", "planning", "wanting", "facility", "concern",
+    "confusion", "medicine",
 }
 STOPLIST = STOPLIST_STRUCTURAL | STOPLIST_GENERIC
 
