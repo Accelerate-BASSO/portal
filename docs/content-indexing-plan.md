@@ -99,6 +99,22 @@ Implemented as `scripts/annotate-papers.py`:
   higher). Gitignored, rebuilt in CI. Automated enrichment, displayed distinctly
   from curated `keywords`.
 
+### Faceting
+
+`scripts/assign-term-facets.py` categorises each annotated term so the UI can
+group a paper's terms rather than show a flat list:
+
+- Fetches the BFO upper-ontology ancestry for each *distinct annotated* term
+  (not the whole lexicon) — OLS4 `hierarchicalAncestors` for the six ontologies
+  it hosts, BioPortal `/ancestors` for PHASES and COPPER. Concurrent fetch;
+  ancestry cached in gitignored `.cache/term-ancestry.json` so reruns are instant.
+- Derives a `facet` per term: BFO process / planned process → `method`; role or
+  person / material entity → `population`; else `other`. Stamped back onto the
+  annotations cache.
+- The UI adds a fourth grouping, `subject`, from abstract-matched terms (the
+  paper's foregrounded contribution), overriding the facet; the noisy
+  single-mention tier is dropped from display. Grouping lives in `ResourceTerms`.
+
 ### Build and UI
 
 - `lib/resources.ts` merges abstract + annotations into publication resources at

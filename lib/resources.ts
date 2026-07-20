@@ -124,6 +124,10 @@ export interface TermAnnotation {
   forms: string[];
   count: number;
   source: "abstract" | "fulltext";
+  // Facet from BFO ancestry (see scripts/assign-term-facets.py): "method",
+  // "population", or "other". The UI treats abstract-matched terms as the
+  // paper's subject, overriding this. Absent if faceting hasn't run.
+  facet?: "method" | "population" | "other";
   // Browsable link for the term, resolved at build time (see resolveTermUrl):
   // the BioPortal term page when the ontology is in BioPortal
   // (data/ontology-term-links.yaml), else the term's raw IRI.
