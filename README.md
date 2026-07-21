@@ -56,9 +56,11 @@ complete example for each resource type — is documented in
 
 In brief, every resource has: `id`, `name`, `type`, `description`,
 `producedByProjects`, `usedByProjects`, `links`, `keywords`, and `lastUpdated`,
-plus an optional `aboutOntologies` (ids of `Ontology` resources the resource is
-about). Ontologies add `bssoFoundry`; publications add `publishedYear` (plus
-optional month/day), `venue`, `doi`, and `contributors`.
+plus optional `aboutOntologies` (ids of `Ontology` resources the resource is
+about) and `ontologyTerms` (curated terms it concerns, each with a facet from
+`data/facets.yaml` and optional ontology backing; draft these with
+`scripts/suggest-terms.py`). Ontologies add `bssoFoundry`; publications add
+`publishedYear` (plus optional month/day), `venue`, `doi`, and `contributors`.
 
 Resource files are validated on every push and pull request by
 `scripts/validate-resources.py`. Run it locally with:
