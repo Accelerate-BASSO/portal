@@ -1,8 +1,7 @@
 import type { Resource } from "@/lib/resources";
 import { getAllProjects, effectiveDate } from "@/lib/resource-utils";
-import { platformLabels, platformTooltips } from "./PlatformIcon";
+import { platformLabels, platformTooltips, PlatformGlyph } from "./PlatformIcon";
 import {
-  ExternalLink,
   Pencil,
   Network,
   FileText,
@@ -137,7 +136,7 @@ export default function ResourceListRow({ resource, noBorder = false }: Resource
               className={`inline-flex items-center gap-0.5 underline decoration-1 underline-offset-2 transition-colors ${linkColor}`}
             >
               {platformLabels[link.platform] || link.platform}
-              <ExternalLink size={12} strokeWidth={3} />
+              <PlatformGlyph platform={link.platform} />
             </a>
           ))}
         </div>

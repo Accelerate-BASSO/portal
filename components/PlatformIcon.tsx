@@ -4,6 +4,75 @@ interface PlatformIconProps {
   className?: string;
 }
 
+/**
+ * Flat monochrome glyph per link platform, drawn to sit with the lucide icons
+ * used elsewhere: 16-unit viewBox, `currentColor` fill/stroke so it inherits the
+ * link's text colour, no brand colours. Used as the trailing icon on resource
+ * links so BioPortal / Ontobee / OLS / GitHub etc. are distinguishable at a
+ * glance. Platforms without a specific glyph fall back to a generic
+ * external-link mark.
+ */
+const PLATFORM_PATHS: Record<string, React.ReactNode> = {
+  // GitHub — the Octocat silhouette, simplified to a single monochrome path.
+  GitHub: (
+    <path fill="currentColor" d="M8 .8a7.2 7.2 0 0 0-2.28 14.03c.36.07.49-.16.49-.35v-1.24c-2 .43-2.42-.96-2.42-.96-.33-.83-.8-1.05-.8-1.05-.65-.45.05-.44.05-.44.72.05 1.1.74 1.1.74.64 1.1 1.68.78 2.09.6.06-.47.25-.78.45-.96-1.6-.18-3.28-.8-3.28-3.56 0-.79.28-1.43.74-1.93-.07-.18-.32-.91.07-1.9 0 0 .6-.19 1.98.73a6.9 6.9 0 0 1 3.6 0c1.37-.92 1.97-.73 1.97-.73.39.99.14 1.72.07 1.9.46.5.74 1.14.74 1.93 0 2.77-1.69 3.38-3.29 3.56.26.22.49.66.49 1.33v1.97c0 .19.13.42.5.35A7.2 7.2 0 0 0 8 .8Z" />
+  ),
+  // BioPortal — stacked layers (a class hierarchy / repository stack).
+  BioPortal: (
+    <path
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.4"
+      strokeLinejoin="round"
+      d="M8 1.6 14.5 5 8 8.4 1.5 5 8 1.6ZM2.2 8 8 11l5.8-3M2.2 11 8 14l5.8-3"
+    />
+  ),
+  // OLS (EBI Ontology Lookup Service) — a magnifier over nodes (a lookup).
+  OLS: (
+    <g fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round">
+      <circle cx="6.5" cy="6.5" r="4" />
+      <path d="M9.5 9.5 14 14" />
+    </g>
+  ),
+  // Ontobee — a small linked-node graph (linked-data server).
+  Ontobee: (
+    <g stroke="currentColor" strokeWidth="1.3" fill="currentColor">
+      <path d="M4 4.5 8 8M12 4.5 8 8M8 8v4" fill="none" strokeLinecap="round" />
+      <circle cx="4" cy="4" r="1.7" />
+      <circle cx="12" cy="4" r="1.7" />
+      <circle cx="8" cy="13" r="1.7" />
+    </g>
+  ),
+  // Zenodo — an archive box.
+  Zenodo: (
+    <g fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round">
+      <path d="M2 3.5h12v3H2zM3 6.5h10V14H3z" />
+      <path d="M6.5 9.5h3" strokeLinecap="round" />
+    </g>
+  ),
+  // OSF / Website / Discourse / Other reuse the generic external-link mark below.
+};
+
+const EXTERNAL_LINK = (
+  <g fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M9 2h5v5M14 2 7 9M12 9.5V13a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3.5" />
+  </g>
+);
+
+export function PlatformGlyph({ platform, size = 13 }: { platform: string; size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 16 16"
+      aria-hidden
+      className="inline-block flex-shrink-0"
+    >
+      {PLATFORM_PATHS[platform] ?? EXTERNAL_LINK}
+    </svg>
+  );
+}
+
 export const platformLabels: Record<string, string> = {
   GitHub: "GitHub",
   BioPortal: "BioPortal",

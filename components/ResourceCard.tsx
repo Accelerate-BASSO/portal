@@ -1,8 +1,7 @@
 import type { Resource } from "@/lib/resources";
 import { getAllProjects } from "@/lib/resource-utils";
-import { platformLabels, platformTooltips } from "./PlatformIcon";
+import { platformLabels, platformTooltips, PlatformGlyph } from "./PlatformIcon";
 import {
-  ExternalLink,
   Pencil,
   Network,
   FileText,
@@ -218,7 +217,7 @@ export default function ResourceCard({ resource }: ResourceCardProps) {
               className="inline-flex items-center gap-1 text-sm underline decoration-1 underline-offset-2 transition-colors text-accent-dark hover:text-accent-hover"
             >
               {platformLabels[link.platform] || link.platform}
-              <ExternalLink size={16} strokeWidth={3} />
+              <PlatformGlyph platform={link.platform} size={15} />
             </a>
           ))}
         </div>
