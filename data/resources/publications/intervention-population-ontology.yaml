@@ -59,3 +59,414 @@ keywords:
   - paper
   - wellcome-open-research
 lastUpdated: 2026-04-13
+# --- suggested ontologyTerms (review & uncomment; delete this block) ---
+# ontologyTerms:
+#   # subject
+#   - prefLabel: "intervention"
+#     facet: subject
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_037000
+#   - prefLabel: "intervention population"
+#     facet: subject
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015095
+#   - prefLabel: "personal history"
+#     facet: subject
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015161
+#   - prefLabel: "mental capability"
+#     facet: subject
+#     ontology: MF
+#     iri: http://purl.obolibrary.org/obo/MF_0000048
+#   - prefLabel: "personal vulnerability"
+#     facet: subject
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015160
+#   # method
+#   - prefLabel: "personal history part"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_050487
+#   - prefLabel: "individual human behaviour"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_036000
+#   - prefLabel: "behaviour change intervention"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_003000
+#   - prefLabel: "individual human behaviour change"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_050209
+#   - prefLabel: "population behaviour"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_034000
+#   - prefLabel: "employment process"
+#     facet: method
+#     ontology: OMRSE
+#     iri: http://purl.obolibrary.org/obo/OMRSE_00000146
+#   - prefLabel: "education process"
+#     facet: method
+#     ontology: OMRSE
+#     iri: http://purl.obolibrary.org/obo/OMRSE_00002029
+#   - prefLabel: "tobacco smoking behaviour"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_036103
+#   - prefLabel: "expose to stimulus BCT"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_007085
+#   - prefLabel: "behaviour pattern"
+#     facet: method
+#     ontology: ADDICTO
+#     iri: http://addictovocab.org/ADDICTO_0000122
+#   - prefLabel: "intervention content"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_046000
+#   - prefLabel: "individual human behaviour pattern"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_036100
+#   - prefLabel: "beneficial process"
+#     facet: method
+#     ontology: ADDICTO
+#     iri: http://addictovocab.org/ADDICTO_0001303
+#   - prefLabel: "physical activity intervention"
+#     facet: method
+#     ontology: GMHO
+#     iri: https://galenos.org.uk/ontologies/GMHO_0000264
+#   - prefLabel: "past behaviour"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_050481
+#   - prefLabel: "individual human activity"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_040000
+#   # population
+#   - prefLabel: "family member"
+#     facet: population
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_010095
+#   - prefLabel: "student or trainee role"
+#     facet: population
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_010084
+#   - prefLabel: "child relation"
+#     facet: population
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015123
+#   - prefLabel: "sibling"
+#     facet: population
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015136
+#   - prefLabel: "child"
+#     facet: population
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015096
+#   - prefLabel: "residential facility"
+#     facet: population
+#     ontology: OMRSE
+#     iri: http://purl.obolibrary.org/obo/OMRSE_00000191
+#   - prefLabel: "household"
+#     facet: population
+#     ontology: OMRSE
+#     iri: http://purl.obolibrary.org/obo/OMRSE_00000076
+#   - prefLabel: "residential facility owner"
+#     facet: population
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015028
+#   - prefLabel: "higher education student role"
+#     facet: population
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015087
+#   - prefLabel: "member of a multi-person household"
+#     facet: population
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015021
+#   - prefLabel: "child relationship"
+#     facet: population
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_010099
+#   - prefLabel: "step-parent"
+#     facet: population
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015117
+#   - prefLabel: "social group"
+#     facet: population
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_050891
+#   - prefLabel: "biological parent"
+#     facet: population
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015111
+#   - prefLabel: "human population"
+#     facet: population
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_041000
+#   - prefLabel: "foster child"
+#     facet: population
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015133
+#   - prefLabel: "adoptive child"
+#     facet: population
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015127
+#   - prefLabel: "biological child"
+#     facet: population
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015124
+#   - prefLabel: "rent-free occupier"
+#     facet: population
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015032
+#   - prefLabel: "grandparent"
+#     facet: population
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015150
+#   - prefLabel: "behaviour change intervention population"
+#     facet: population
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015000
+#   - prefLabel: "adoptive parent"
+#     facet: population
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015114
+#   - prefLabel: "foster parent"
+#     facet: population
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015120
+#   - prefLabel: "biological sibling"
+#     facet: population
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015137
+#   - prefLabel: "patient role"
+#     facet: population
+#     ontology: OMRSE
+#     iri: http://purl.obolibrary.org/obo/OMRSE_00000011
+#   - prefLabel: "stepchild"
+#     facet: population
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015130
+#   - prefLabel: "step-sibling"
+#     facet: population
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015143
+#   - prefLabel: "adoptive sibling"
+#     facet: population
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015140
+#   - prefLabel: "foster sibling"
+#     facet: population
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015146
+#   - prefLabel: "Home"
+#     facet: population
+#     ontology: COPPER
+#     iri: https://github.com/EBehaviourChange-COPPER/ontology/blob/main/COPPER_2014
+#   - prefLabel: "social role"
+#     facet: population
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_006082
+#   - prefLabel: "owner"
+#     facet: population
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_051000
+#   - prefLabel: "social grouping"
+#     facet: population
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_050892
+#   - prefLabel: "policy holder role"
+#     facet: population
+#     ontology: OMRSE
+#     iri: http://purl.obolibrary.org/obo/OMRSE_00000094
+#   - prefLabel: "interpersonal role"
+#     facet: population
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015070
+#   - prefLabel: "renter"
+#     facet: population
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015030
+#   - prefLabel: "insured party role"
+#     facet: population
+#     ontology: OMRSE
+#     iri: http://purl.obolibrary.org/obo/OMRSE_00000092
+#   - prefLabel: "intervention participant"
+#     facet: population
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015094
+#   - prefLabel: "household income"
+#     facet: population
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015027
+#   - prefLabel: "immigrant"
+#     facet: population
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015012
+#   - prefLabel: "adult"
+#     facet: population
+#     ontology: ADDICTO
+#     iri: http://addictovocab.org/ADDICTO_0000352
+#   - prefLabel: "occupational role"
+#     facet: population
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015430
+#   - prefLabel: "aunt"
+#     facet: population
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015153
+#   - prefLabel: "caregiving role"
+#     facet: population
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015077
+#   - prefLabel: "uncle"
+#     facet: population
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015154
+#   - prefLabel: "employer"
+#     facet: population
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_010103
+#   # other
+#   - prefLabel: "personal attribute"
+#     facet: other
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_050300
+#   - prefLabel: "employment status"
+#     facet: other
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_050999
+#   - prefLabel: "sexual orientation"
+#     facet: other
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015003
+#   - prefLabel: "female gender"
+#     facet: other
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_010111
+#   - prefLabel: "male gender"
+#     facet: other
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_010112
+#   - prefLabel: "highest level of formal educational qualification achieved"
+#     facet: other
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015043
+#   - prefLabel: "relationship status"
+#     facet: other
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015071
+#   - prefLabel: "gender identity"
+#     facet: other
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015098
+#   - prefLabel: "self-identity"
+#     facet: other
+#     ontology: ADDICTO
+#     iri: http://addictovocab.org/ADDICTO_0000399
+#   - prefLabel: "linguistic capability"
+#     facet: other
+#     ontology: MF
+#     iri: http://purl.obolibrary.org/obo/MF_0000050
+#   - prefLabel: "biological sex"
+#     facet: other
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015105
+#   - prefLabel: "situational personal attribute"
+#     facet: other
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_050491
+#   - prefLabel: "expertise discipline"
+#     facet: other
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_010123
+#   - prefLabel: "homosexual"
+#     facet: other
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015007
+#   - prefLabel: "heterosexual"
+#     facet: other
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015006
+#   - prefLabel: "bodily disposition"
+#     facet: other
+#     ontology: MF
+#     iri: http://purl.obolibrary.org/obo/MF_0000032
+#   - prefLabel: "bodily quality"
+#     facet: other
+#     ontology: MF
+#     iri: http://purl.obolibrary.org/obo/MF_0000074
+#   - prefLabel: "bisexual"
+#     facet: other
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015005
+#   - prefLabel: "disabled"
+#     facet: other
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_050474
+#   - prefLabel: "contract"
+#     facet: other
+#     ontology: OMRSE
+#     iri: http://purl.obolibrary.org/obo/OMRSE_00000089
+#   - prefLabel: "individual income"
+#     facet: other
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015026
+#   - prefLabel: "health status attribute"
+#     facet: other
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015092
+#   - prefLabel: "human age"
+#     facet: other
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015002
+#   - prefLabel: "health status"
+#     facet: other
+#     ontology: ADDICTO
+#     iri: http://addictovocab.org/ADDICTO_0001315
+#   - prefLabel: "asexual"
+#     facet: other
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015004
+#   - prefLabel: "ethnic group membership"
+#     facet: other
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015097
+#   - prefLabel: "personal psychological attribute"
+#     facet: other
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015159
+#   - prefLabel: "addiction"
+#     facet: other
+#     ontology: ADDICTO
+#     iri: http://addictovocab.org/ADDICTO_0000349
+#   - prefLabel: "cognitive representation"
+#     facet: other
+#     ontology: MF
+#     iri: http://purl.obolibrary.org/obo/MF_0000031
+#   - prefLabel: "religious group membership"
+#     facet: other
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015014
+#   - prefLabel: "personal capability"
+#     facet: other
+#     ontology: MF
+#     iri: http://purl.obolibrary.org/obo/MF_0000043
+#   - prefLabel: "queer"
+#     facet: other
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015009
+#   - prefLabel: "financial cost of a product or service"
+#     facet: other
+#     ontology: ADDICTO
+#     iri: http://addictovocab.org/ADDICTO_0000750
+#   - prefLabel: "language proficiency"
+#     facet: other
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015015
+# --- end suggested ontologyTerms ---

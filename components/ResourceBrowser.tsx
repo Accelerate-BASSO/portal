@@ -2,7 +2,7 @@
 
 import { useState, useMemo, useSyncExternalStore, useCallback } from "react";
 import { useSearchParams } from "next/navigation";
-import type { Resource } from "@/lib/resources";
+import type { Resource, Facet } from "@/lib/resources";
 import {
   getAllProjects,
   getSharedTermOptions,
@@ -84,12 +84,14 @@ interface ResourceBrowserProps {
   resources: Resource[];
   types: string[];
   projects: string[];
+  facets: Facet[];
 }
 
 export default function ResourceBrowser({
   resources,
   types,
   projects,
+  facets,
 }: ResourceBrowserProps) {
   const searchParams = useSearchParams();
   const initialTypes = useMemo(() => {
@@ -172,9 +174,9 @@ export default function ResourceBrowser({
   const searching = search.trim() !== "";
   const matchesSearch = (r: Resource) => !searching || hitsById.has(r.id);
 
-  // Only offer the term-display toggle when some resource actually has annotations.
+  // Only offer the term-display toggle when some resource has curated terms.
   const anyAnnotations = useMemo(
-    () => resources.some((r) => r.annotations?.length),
+    () => resources.some((r) => r.ontologyTerms?.length),
     [resources],
   );
 
@@ -485,9 +487,9 @@ export default function ResourceBrowser({
                       </div>
                     ) : null;
                   })()}
-                  {showTerms && resource.annotations?.length ? (
+                  {showTerms && resource.ontologyTerms?.length ? (
                     <div className="px-1">
-                      <ResourceTerms annotations={resource.annotations} />
+                      <ResourceTerms terms={resource.ontologyTerms} facets={facets} />
                     </div>
                   ) : null}
                   {provenance && (
@@ -502,7 +504,7 @@ export default function ResourceBrowser({
             {filtered.map((resource) => {
               const provenance = searching ? matchProvenance(resource.id) : null;
               const related = getRelatedOntologies(resource, ontologyIndex);
-              const showTermsRow = showTerms && resource.annotations?.length;
+              const showTermsRow = showTerms && resource.ontologyTerms?.length;
               const hasExtras = related.length > 0 || showTermsRow || provenance;
               return (
                 // One bordered block per resource: the row, plus any metadata
@@ -517,7 +519,7 @@ export default function ResourceBrowser({
                     <div className="space-y-1 pb-2 pl-12 pr-4">
                       {related.length > 0 && <RelatedOntologies ontologies={related} />}
                       {showTermsRow ? (
-                        <ResourceTerms annotations={resource.annotations!} />
+                        <ResourceTerms terms={resource.ontologyTerms!} facets={facets} />
                       ) : null}
                       {provenance && (
                         <p className="text-xs italic text-gray-400">{provenance}</p>

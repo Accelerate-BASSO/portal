@@ -46,3 +46,27 @@ keywords:
   - jowo-2025
   - phases-workshop
 lastUpdated: "2026-04-13"
+# --- suggested ontologyTerms (review & uncomment; delete this block) ---
+# ontologyTerms:
+#   # subject
+#   - prefLabel: "solitude"
+#     facet: subject
+#     ontology: PHASES
+#     iri: http://purl.obolibrary.org/obo/PHASES_0002000
+#   - prefLabel: "gerotranscendence"
+#     facet: subject
+#     ontology: PHASES
+#     iri: http://purl.obolibrary.org/obo/PHASES_0002001
+#   - prefLabel: "intervention"
+#     facet: subject
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_037000
+#   - prefLabel: "self-transcendence"
+#     facet: subject
+#     ontology: PHASES
+#     iri: http://purl.obolibrary.org/obo/PHASES_0000012
+#   - prefLabel: "healthy aging"
+#     facet: subject
+#     ontology: PHASES
+#     iri: http://purl.obolibrary.org/obo/PHASES_0000024
+# --- end suggested ontologyTerms ---

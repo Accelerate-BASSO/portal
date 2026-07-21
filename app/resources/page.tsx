@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { getAllResources, getResourceTypes, getProjects } from "@/lib/resources";
+import { getAllResources, getResourceTypes, getProjects, getFacets } from "@/lib/resources";
 import ResourceBrowser from "@/components/ResourceBrowser";
 
 export const metadata = {
@@ -11,6 +11,7 @@ export default function ResourcesPage() {
   const resources = getAllResources();
   const types = getResourceTypes(resources);
   const projects = getProjects(resources);
+  const facets = getFacets();
 
   return (
     <div className="mx-auto max-w-6xl px-6 py-12">
@@ -28,6 +29,7 @@ export default function ResourcesPage() {
           resources={resources}
           types={types}
           projects={projects}
+          facets={facets}
         />
       </Suspense>
     </div>

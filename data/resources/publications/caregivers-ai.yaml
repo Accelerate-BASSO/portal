@@ -29,3 +29,36 @@ keywords:
   - paper
   - npj-biomedical-innovations
 lastUpdated: 2026-04-03
+# --- suggested ontologyTerms (review & uncomment; delete this block) ---
+# ontologyTerms:
+#   # method
+#   - prefLabel: "prompt intended action BCT"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_007080
+#   - prefLabel: "decision-making"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_006116
+#   # other
+#   - prefLabel: "personality"
+#     facet: other
+#     ontology: MF
+#     iri: http://purl.obolibrary.org/obo/MF_0000202
+#   - prefLabel: "privacy"
+#     facet: other
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_050742
+#   - prefLabel: "safety"
+#     facet: other
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_050913
+#   - prefLabel: "empathy"
+#     facet: other
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_050942
+#   - prefLabel: "questionnaire"
+#     facet: other
+#     ontology: ADDICTO
+#     iri: http://addictovocab.org/ADDICTO_0000150
+# --- end suggested ontologyTerms ---

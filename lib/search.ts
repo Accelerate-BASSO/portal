@@ -44,7 +44,13 @@ const FIELD_BOOSTS: Record<string, number> = {
 
 function toDoc(r: Resource): IndexDoc {
   const annotations = r.annotations ?? [];
-  const prefLabels = annotations.map((a) => a.prefLabel);
+  // Index automated-annotation labels plus the curator-asserted term labels, so
+  // both the recall-oriented matches and the authoritative curated terms are
+  // findable.
+  const prefLabels = [
+    ...annotations.map((a) => a.prefLabel),
+    ...(r.ontologyTerms ?? []).map((t) => t.prefLabel),
+  ];
   // All surface forms except the prefLabel are synonyms; index them so a lay
   // query resolves to the paper carrying the technical term.
   const synonyms = annotations.flatMap((a) =>

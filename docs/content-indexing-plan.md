@@ -115,6 +115,25 @@ group a paper's terms rather than show a flat list:
   paper's foregrounded contribution), overriding the facet; the noisy
   single-mention tier is dropped from display. Grouping lives in `ResourceTerms`.
 
+### Curated display (Model B, 2026-07-21)
+
+The automated annotations proved too noisy to display *as authoritative* per
+resource. So the automation was demoted to a **drafting aid**, and the published
+per-resource term display now reads only a curated field:
+
+- **`ontologyTerms`** on a resource is a human-reviewed list, each term with a
+  `facet` (key from `data/facets.yaml`) and, when ontology-backed, `iri` +
+  `ontology`. Unbacked *concept* terms (a relevant topic with no matching
+  ontology class) carry just `prefLabel` + `facet`. `ResourceTerms` renders this,
+  grouped by the facet vocabulary; no curated terms → no term section shown.
+- **`scripts/suggest-terms.py`** drafts suggestions into each publication's YAML
+  as a commented-out `ontologyTerms:` block (grouped by facet, facet pre-guessed
+  from BFO ancestry) for a curator to accept/edit. Dev-time tool — not a CI step.
+- The automated `annotations` still power **search** (recall + synonym
+  expansion); curated `ontologyTerms` labels are indexed too. Because the
+  deployed site no longer needs facets for display, `assign-term-facets.py` was
+  removed from `deploy.yml` (it's only needed when regenerating suggestions).
+
 ### Build and UI
 
 - `lib/resources.ts` merges abstract + annotations into publication resources at

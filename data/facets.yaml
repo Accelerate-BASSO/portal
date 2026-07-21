@@ -1,0 +1,28 @@
+# Controlled vocabulary of facets (roles) a curated ontology term can play for a
+# resource. Each curated term in a resource's `ontologyTerms` carries one of
+# these `key`s; the portal groups the term display under the `label`s below, in
+# `order`. Editable: add a facet by adding an entry here (key + label + order);
+# the validator accepts any key defined in this file.
+#
+#   key    — value stored per curated term (stable; don't rename casually)
+#   label  — display heading shown to readers
+#   order  — group ordering in the display (ascending)
+#   tint   — chip border/text colour classes (Tailwind); optional
+
+facets:
+  - key: subject
+    label: Subject
+    order: 1
+    tint: border-sky-400 text-sky-800
+  - key: method
+    label: Method & intervention
+    order: 2
+    tint: border-emerald-400 text-emerald-800
+  - key: population
+    label: Population & context
+    order: 3
+    tint: border-indigo-400 text-indigo-800
+  - key: other
+    label: Other concepts
+    order: 4
+    tint: border-gray-400 text-gray-700

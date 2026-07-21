@@ -51,3 +51,40 @@ keywords:
   - paper
   - wellcome-open-research
 lastUpdated: 2026-04-03
+# --- suggested ontologyTerms (review & uncomment; delete this block) ---
+# ontologyTerms:
+#   # subject
+#   - prefLabel: "intervention"
+#     facet: subject
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_037000
+#   - prefLabel: "individual human behaviour change"
+#     facet: subject
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_050209
+#   - prefLabel: "individual human behaviour"
+#     facet: subject
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_036000
+#   - prefLabel: "population behaviour"
+#     facet: subject
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_034000
+#   # method
+#   - prefLabel: "behaviour change intervention"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_003000
+#   - prefLabel: "tobacco use behaviour"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_036114
+#   - prefLabel: "tobacco use behaviour pattern"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_036102
+#   - prefLabel: "tobacco smoking behaviour"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_036103
+# --- end suggested ontologyTerms ---

@@ -55,7 +55,7 @@ COMMON_REQUIRED = [
 ]
 
 
-def validate_file(path, ids, errors, ontology_ids, about_refs):
+def validate_file(path, ids, errors, ontology_ids, about_refs, facet_keys):
     rel = os.path.relpath(path)
 
     try:
@@ -141,6 +141,29 @@ def validate_file(path, ids, errors, ontology_ids, about_refs):
             for oid in ao:
                 about_refs.append((rel, oid))
 
+    ot = d.get("ontologyTerms")
+    if ot is not None:
+        if not isinstance(ot, list):
+            err("`ontologyTerms` must be a list (omit if none).")
+        else:
+            for i, t in enumerate(ot):
+                if not isinstance(t, dict):
+                    err(f"ontologyTerms[{i}] must be a mapping.")
+                    continue
+                # prefLabel + facet are always required; iri/ontology are optional
+                # (a term may be an unbacked concept with no ontology class). But
+                # they come as a pair — one without the other is an error.
+                for key in ("prefLabel", "facet"):
+                    if not t.get(key):
+                        err(f"ontologyTerms[{i}] missing `{key}`.")
+                has_iri, has_onto = bool(t.get("iri")), bool(t.get("ontology"))
+                if has_iri != has_onto:
+                    err(f"ontologyTerms[{i}] must have both `iri` and `ontology`, or neither "
+                        f"(an unbacked concept term).")
+                if t.get("facet") and t["facet"] not in facet_keys:
+                    err(f"ontologyTerms[{i}] has unknown facet {t.get('facet')!r} "
+                        f"(allowed: {', '.join(sorted(facet_keys))}).")
+
     if rtype == "Ontology" and isinstance(rid, str):
         ontology_ids.add(rid)
 
@@ -178,12 +201,20 @@ def main() -> int:
         print(f"No resource files found under {resources_dir}.", file=sys.stderr)
         return 1
 
+    # Facet keys from data/facets.yaml (controlled vocabulary for ontologyTerms).
+    facets_file = os.path.join(root, "data", "facets.yaml")
+    facet_keys: set[str] = set()
+    if os.path.exists(facets_file):
+        with open(facets_file) as fh:
+            doc = yaml.safe_load(fh) or {}
+        facet_keys = {f.get("key") for f in doc.get("facets", []) if f.get("key")}
+
     ids: dict[str, str] = {}
     errors: list[str] = []
     ontology_ids: set[str] = set()
     about_refs: list[tuple[str, str]] = []
     for f in files:
-        validate_file(f, ids, errors, ontology_ids, about_refs)
+        validate_file(f, ids, errors, ontology_ids, about_refs, facet_keys)
 
     # Second pass: every aboutOntologies id must reference a catalogued Ontology.
     for rel, oid in about_refs:

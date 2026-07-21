@@ -70,3 +70,130 @@ keywords:
   - paper
   - wellcome-open-research
 lastUpdated: 2026-04-13
+# --- suggested ontologyTerms (review & uncomment; delete this block) ---
+# ontologyTerms:
+#   # subject
+#   - prefLabel: "intervention"
+#     facet: subject
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_037000
+#   - prefLabel: "individual human behaviour change"
+#     facet: subject
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_050209
+#   - prefLabel: "individual human activity"
+#     facet: subject
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_040000
+#   - prefLabel: "intervention participant"
+#     facet: subject
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015094
+#   # method
+#   - prefLabel: "behaviour change intervention"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_003000
+#   - prefLabel: "participant engagement with behaviour change intervention"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_013000
+#   - prefLabel: "behavioural BCI engagement"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_013010
+#   - prefLabel: "emotional BCI engagement"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_013060
+#   - prefLabel: "cognitive BCI engagement"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_013040
+#   - prefLabel: "participant engagement with intervention"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_050916
+#   - prefLabel: "attending"
+#     facet: method
+#     ontology: MF
+#     iri: http://purl.obolibrary.org/obo/MF_0000018
+#   - prefLabel: "emotion process"
+#     facet: method
+#     ontology: MFOEM
+#     iri: http://purl.obolibrary.org/obo/MFOEM_000001
+#   - prefLabel: "tobacco smoking behaviour"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_036103
+#   - prefLabel: "judging"
+#     facet: method
+#     ontology: MF
+#     iri: http://purl.obolibrary.org/obo/MF_0000006
+#   - prefLabel: "comprehension"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_006110
+#   - prefLabel: "individual human behaviour"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_036000
+#   - prefLabel: "population behaviour"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_034000
+#   - prefLabel: "cognitive process"
+#     facet: method
+#     ontology: MF
+#     iri: http://purl.obolibrary.org/obo/MF_0000008
+#   - prefLabel: "cognitive BCI engagement through attention"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_013045
+#   - prefLabel: "intervention content"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_046000
+#   - prefLabel: "temporal reference point associated with behavioural BCI engagement"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_050549
+#   - prefLabel: "fear"
+#     facet: method
+#     ontology: MFOEM
+#     iri: http://purl.obolibrary.org/obo/MFOEM_000026
+#   - prefLabel: "satisfaction"
+#     facet: method
+#     ontology: MFOEM
+#     iri: http://purl.obolibrary.org/obo/MFOEM_000169
+#   - prefLabel: "BCI attribute"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_050315
+#   - prefLabel: "behavioural BCI engagement duration"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_013025
+#   - prefLabel: "enjoyment"
+#     facet: method
+#     ontology: MFOEM
+#     iri: http://purl.obolibrary.org/obo/MFOEM_000218
+#   - prefLabel: "cognitive BCI engagement through judging"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_013055
+#   # population
+#   - prefLabel: "child"
+#     facet: population
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015096
+#   # other
+#   - prefLabel: "behavioural BCI engagement frequency"
+#     facet: other
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_013020
+#   - prefLabel: "number of behavioural BCI engagements"
+#     facet: other
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_013015
+# --- end suggested ontologyTerms ---

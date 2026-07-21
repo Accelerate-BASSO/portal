@@ -33,6 +33,11 @@ interface BaseResource {
   // "this resource concerns this ontology" relationship, unrelated to the
   // automated term annotations). Rendered as the "Ontologies" links.
   aboutOntologies?: string[];
+  // Curated ontology terms this resource concerns, each in an asserted facet/role
+  // (see data/facets.yaml). Human-reviewed — the published term display reads
+  // only this, not the automated `annotations` (which power search). The
+  // suggestion script drafts these from the annotations for a curator to accept.
+  ontologyTerms?: CuratedTerm[];
   // Injected at build time from caches, keyed by id (see getAllResources).
   bioportal?: BioportalMetrics;
   githubRelease?: GithubRelease;
@@ -109,12 +114,35 @@ export interface PaperContent {
   retrieved?: string;
 }
 
+/** A facet (role) a curated term can play; defined in data/facets.yaml. */
+export interface Facet {
+  key: string;
+  label: string;
+  order: number;
+  tint?: string;
+}
+
+/**
+ * A curator-asserted term for a resource, with the facet/role it plays. Usually
+ * backed by an ontology class (iri + ontology + resolved url), but may be an
+ * unbacked concept the curator considers relevant with no matching ontology term
+ * — then iri/ontology/url are absent and it renders as a plain concept chip.
+ * Self-contained so the display links and groups without any lookup.
+ */
+export interface CuratedTerm {
+  prefLabel: string;
+  facet: string;
+  iri?: string;
+  ontology?: string;
+  url?: string;
+}
+
 /**
  * An ontology term matched in a publication's text (see
- * scripts/annotate-papers.py). Automated enrichment, displayed distinctly from
- * curated `keywords`. `forms` holds the term's label plus synonyms, indexed for
- * search so a query in lay terms can find a paper annotated with the technical
- * term.
+ * scripts/annotate-papers.py). Automated enrichment used for SEARCH ONLY — no
+ * longer shown per-resource (the curated `ontologyTerms` is). `forms` holds the
+ * term's label plus synonyms, indexed for search so a query in lay terms can
+ * find a paper annotated with the technical term.
  */
 export interface TermAnnotation {
   iri: string;
@@ -225,22 +253,36 @@ function loadTermLinkConfig(): Record<string, { bioportal: string }> {
 }
 
 /**
- * Browsable URL for an annotated term. When the term's ontology is in BioPortal
- * (per config), link to the BioPortal term page, which resolves reliably even
- * where the raw IRI 404s (e.g. PHASES); otherwise link to the raw IRI.
+ * Browsable URL for a term (annotated or curated), by ontology + IRI. When the
+ * ontology is in BioPortal (per config), link to the BioPortal term page, which
+ * resolves reliably even where the raw IRI 404s (e.g. PHASES); else the raw IRI.
  */
 function resolveTermUrl(
-  ann: RawAnnotation,
+  ontology: string,
+  iri: string,
   config: Record<string, { bioportal: string }>,
 ): string {
-  const entry = config[ann.ontology];
+  const entry = config[ontology];
   if (entry?.bioportal) {
     return (
       `https://bioportal.bioontology.org/ontologies/${entry.bioportal}` +
-      `?p=classes&conceptid=${encodeURIComponent(ann.iri)}`
+      `?p=classes&conceptid=${encodeURIComponent(iri)}`
     );
   }
-  return ann.iri;
+  return iri;
+}
+
+let facetsCache: Facet[] | null = null;
+
+/** The controlled facet vocabulary (data/facets.yaml), ordered. */
+export function getFacets(): Facet[] {
+  if (facetsCache) return facetsCache;
+  const file = path.join(process.cwd(), "data", "facets.yaml");
+  const doc = fs.existsSync(file)
+    ? (yaml.load(fs.readFileSync(file, "utf-8")) as { facets?: Facet[] })
+    : {};
+  facetsCache = (doc.facets ?? []).slice().sort((a, b) => a.order - b.order);
+  return facetsCache;
 }
 
 export function getAllResources(): Resource[] {
@@ -266,8 +308,17 @@ export function getAllResources(): Resource[] {
       if (annotationsCache[resource.id]?.length) {
         resource.annotations = annotationsCache[resource.id].map((a) => ({
           ...a,
-          url: resolveTermUrl(a, termLinkConfig),
+          url: resolveTermUrl(a.ontology, a.iri, termLinkConfig),
         }));
+      }
+      // Resolve links for ontology-backed curated terms; leave unbacked concept
+      // terms (no iri/ontology) as-is.
+      if (resource.ontologyTerms?.length) {
+        resource.ontologyTerms = resource.ontologyTerms.map((t) =>
+          t.iri && t.ontology
+            ? { ...t, url: resolveTermUrl(t.ontology, t.iri, termLinkConfig) }
+            : t,
+        );
       }
       resource._sourcePath = path.relative(process.cwd(), file);
       return resource;

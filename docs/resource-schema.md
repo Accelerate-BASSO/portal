@@ -48,8 +48,9 @@ automatically on the next build. Every file is checked in CI by
 | `producedByProjects` | Yes | list | Projects that produced the resource — any of `APRICOT`, `BSO-AD`, `ODFA`, `PHASES`, `DCC` (see vocab below for full names). May be empty (`[]`). |
 | `usedByProjects` | Yes | list | Projects that use the resource — same allowed values as `producedByProjects`. May be empty (`[]`). |
 | `links` | Yes | list | Links to where the resource lives (see below). At least one is required. |
-| `keywords` | Yes | list | Searchable keywords/labels (kebab-case), used by the portal's search. May be empty (`[]`). |
+| `keywords` | Yes | list | Free-text searchable tags (kebab-case), e.g. `paper`, `jowo-2025`. Loose labels, *not* topical concepts — for the latter use `ontologyTerms` (incl. unbacked concept terms). May be empty (`[]`). |
 | `aboutOntologies` | No | list | Curated ids of `Ontology` resources this resource is *about* (e.g. a publication describing an ontology). Each id must reference an existing `Ontology` resource. Shown as "About" links to those ontologies. A human-asserted relationship — unrelated to the automated ontology-term annotations. Omit or `[]` if none. |
+| `ontologyTerms` | No | list | Curator-asserted terms this resource concerns, each grouped by a facet/role. Each entry has `prefLabel` and `facet` (a key from `data/facets.yaml`), plus optional `iri` + `ontology` (both or neither) when the term is backed by an ontology class — backed terms link out, unbacked concept terms render as plain chips. This is the *published* term display; the automated `annotations` (below) power search only. Draft entries with `scripts/suggest-terms.py`. Omit if none. |
 | `lastUpdated` | Yes | date | `YYYY-MM-DD` — when the metadata was last reviewed. |
 
 ### Controlled vocabularies

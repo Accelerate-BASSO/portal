@@ -63,3 +63,57 @@ keywords:
   - paper
   - wellcome-open-research
 lastUpdated: 2026-04-03
+# --- suggested ontologyTerms (review & uncomment; delete this block) ---
+# ontologyTerms:
+#   # subject
+#   - prefLabel: "intervention"
+#     facet: subject
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_037000
+#   - prefLabel: "tobacco smoking behaviour"
+#     facet: subject
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_036103
+#   - prefLabel: "individual human behaviour change"
+#     facet: subject
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_050209
+#   - prefLabel: "behaviour change intervention"
+#     facet: subject
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_003000
+#   - prefLabel: "physical activity intervention"
+#     facet: subject
+#     ontology: GMHO
+#     iri: https://galenos.org.uk/ontologies/GMHO_0000264
+#   - prefLabel: "individual human behaviour"
+#     facet: subject
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_036000
+#   - prefLabel: "population behaviour"
+#     facet: subject
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_034000
+#   # method
+#   - prefLabel: "intervention content"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_046000
+#   - prefLabel: "structured communication style"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_044120
+#   - prefLabel: "behaviour change intervention scenario"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_001000
+#   - prefLabel: "study randomisation processes"
+#     facet: method
+#     ontology: ADDICTO
+#     iri: http://addictovocab.org/ADDICTO_0001260
+#   # other
+#   - prefLabel: "research literature"
+#     facet: other
+#     ontology: ADDICTO
+#     iri: http://addictovocab.org/ADDICTO_0000889
+# --- end suggested ontologyTerms ---

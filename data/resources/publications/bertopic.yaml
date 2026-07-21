@@ -45,6 +45,27 @@ producedByProjects:
 usedByProjects: []
 aboutOntologies:
   - phases
+ontologyTerms:
+  # subject
+  - prefLabel: solitude
+    facet: subject
+    ontology: PHASES
+    iri: http://purl.obolibrary.org/obo/PHASES_0002000
+  - prefLabel: gerotranscendence
+    facet: subject
+    ontology: PHASES
+    iri: http://purl.obolibrary.org/obo/PHASES_0002001
+  - prefLabel: healthy aging
+    facet: subject
+    ontology: PHASES
+    iri: http://purl.obolibrary.org/obo/PHASES_0000024
+  - prefLabel: shyness
+    facet: subject
+    ontology: PHASES
+    iri: http://purl.obolibrary.org/obo/PHASES_0000028
+  # method — an unbacked concept term: the paper's method, no ontology class for it
+  - prefLabel: topic modelling
+    facet: method
 links:
   - label: DOI
     url: https://doi.org/10.21203/rs.3.rs-7383440/v1
@@ -56,3 +77,70 @@ keywords:
   - paper
   - research-square
 lastUpdated: 2026-04-03
+# --- suggested ontologyTerms (review & uncomment; delete this block) ---
+# ontologyTerms:
+#   # subject
+#   - prefLabel: "solitude"
+#     facet: subject
+#     ontology: PHASES
+#     iri: http://purl.obolibrary.org/obo/PHASES_0002000
+#   - prefLabel: "gerotranscendence"
+#     facet: subject
+#     ontology: PHASES
+#     iri: http://purl.obolibrary.org/obo/PHASES_0002001
+#   - prefLabel: "healthy aging"
+#     facet: subject
+#     ontology: PHASES
+#     iri: http://purl.obolibrary.org/obo/PHASES_0000024
+#   - prefLabel: "social withdrawal"
+#     facet: subject
+#     ontology: PHASES
+#     iri: http://purl.obolibrary.org/obo/PHASES_0000011
+#   - prefLabel: "social isolation"
+#     facet: subject
+#     ontology: PHASES
+#     iri: http://purl.obolibrary.org/obo/PHASES_0002002
+#   # method
+#   - prefLabel: "intervention"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_037000
+#   - prefLabel: "cue BCT"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_007081
+#   - prefLabel: "perception"
+#     facet: method
+#     ontology: MF
+#     iri: http://purl.obolibrary.org/obo/MF_0000019
+#   # population
+#   - prefLabel: "woman"
+#     facet: population
+#     ontology: ADDICTO
+#     iri: http://addictovocab.org/ADDICTO_0001186
+#   # other
+#   - prefLabel: "transcendence"
+#     facet: other
+#     ontology: PHASES
+#     iri: http://purl.obolibrary.org/obo/phases.owl/PHASES_0000050
+#   - prefLabel: "quality of life"
+#     facet: other
+#     ontology: ADDICTO
+#     iri: http://addictovocab.org/ADDICTO_0000397
+#   - prefLabel: "shyness"
+#     facet: other
+#     ontology: PHASES
+#     iri: http://purl.obolibrary.org/obo/PHASES_0000028
+#   - prefLabel: "symptom severity"
+#     facet: other
+#     ontology: GMHO
+#     iri: https://galenos.org.uk/ontologies/GMHO_0000087
+#   - prefLabel: "preference"
+#     facet: other
+#     ontology: MF
+#     iri: http://purl.obolibrary.org/obo/MF_0000042
+#   - prefLabel: "mortality"
+#     facet: other
+#     ontology: ADDICTO
+#     iri: http://addictovocab.org/ADDICTO_0000324
+# --- end suggested ontologyTerms ---
