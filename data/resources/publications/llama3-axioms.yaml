@@ -2,6 +2,7 @@ id: pub-bsoad-llama3-axioms
 name: "Analyzing Llama 3-based approach for axiom translation from ontologies"
 type: Publication
 publishedYear: 2024
+pmid: 40538705
 venue: "KBC-LM'24 Workshop at ISWC 2024"
 description: >-
   Analyzes a Llama 3-based approach for translating axioms from ontologies,
@@ -18,6 +19,9 @@ usedByProjects: []
 links:
   - label: CEUR-WS
     url: https://ceur-ws.org/Vol-3853/paper5.pdf
+    platform: Website
+  - label: PubMed
+    url: https://pubmed.ncbi.nlm.nih.gov/40538705/
     platform: Website
 keywords:
   - paper
