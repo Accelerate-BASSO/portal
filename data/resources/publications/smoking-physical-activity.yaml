@@ -82,6 +82,10 @@ lastUpdated: 2026-04-03
 #     facet: subject
 #     ontology: BCIO
 #     iri: http://humanbehaviourchange.org/ontology/BCIO_003000
+#   - prefLabel: "population behaviour"
+#     facet: subject
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_034000
 #   - prefLabel: "physical activity intervention"
 #     facet: subject
 #     ontology: GMHO
@@ -90,10 +94,6 @@ lastUpdated: 2026-04-03
 #     facet: subject
 #     ontology: BCIO
 #     iri: http://humanbehaviourchange.org/ontology/BCIO_036000
-#   - prefLabel: "population behaviour"
-#     facet: subject
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_034000
 #   # method
 #   - prefLabel: "intervention content"
 #     facet: method
@@ -103,14 +103,14 @@ lastUpdated: 2026-04-03
 #     facet: method
 #     ontology: BCIO
 #     iri: http://humanbehaviourchange.org/ontology/BCIO_044120
-#   - prefLabel: "behaviour change intervention scenario"
-#     facet: method
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_001000
 #   - prefLabel: "study randomisation processes"
 #     facet: method
 #     ontology: ADDICTO
 #     iri: http://addictovocab.org/ADDICTO_0001260
+#   - prefLabel: "behaviour change intervention scenario"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_001000
 #   # other
 #   - prefLabel: "research literature"
 #     facet: other

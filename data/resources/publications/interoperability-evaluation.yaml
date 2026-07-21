@@ -84,3 +84,101 @@ keywords:
   - paper
   - wellcome-open-research
 lastUpdated: 2026-04-13
+# --- suggested ontologyTerms (review & uncomment; delete this block) ---
+# ontologyTerms:
+#   # method
+#   - prefLabel: "walking"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_036108
+#   - prefLabel: "individual human behaviour change"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_050209
+#   - prefLabel: "harmful behaviour to others"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_050398
+#   - prefLabel: "education process"
+#     facet: method
+#     ontology: OMRSE
+#     iri: http://purl.obolibrary.org/obo/OMRSE_00002029
+#   - prefLabel: "health-related behaviour"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_050437
+#   - prefLabel: "completing a program of education"
+#     facet: method
+#     ontology: OMRSE
+#     iri: http://purl.obolibrary.org/obo/OMRSE_00002032
+#   - prefLabel: "physical performance behaviour"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_036042
+#   - prefLabel: "goal setting BCT"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_007002
+#   - prefLabel: "social influence behaviour"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_006099
+#   - prefLabel: "population behaviour"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_034000
+#   - prefLabel: "individual human behaviour"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_036000
+#   # population
+#   - prefLabel: "health care provider role"
+#     facet: population
+#     ontology: OMRSE
+#     iri: http://purl.obolibrary.org/obo/OMRSE_00000012
+#   - prefLabel: "nursing professional"
+#     facet: population
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_010013
+#   - prefLabel: "nurse role"
+#     facet: population
+#     ontology: OMRSE
+#     iri: http://purl.obolibrary.org/obo/OMRSE_00000014
+#   - prefLabel: "health professional"
+#     facet: population
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_010008
+#   - prefLabel: "patient role"
+#     facet: population
+#     ontology: OMRSE
+#     iri: http://purl.obolibrary.org/obo/OMRSE_00000011
+#   - prefLabel: "child"
+#     facet: population
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015096
+#   - prefLabel: "artifact"
+#     facet: population
+#     ontology: ADDICTO
+#     iri: http://addictovocab.org/ADDICTO_0001017
+#   - prefLabel: "researcher"
+#     facet: population
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_010083
+#   # other
+#   - prefLabel: "personal attribute"
+#     facet: other
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_050300
+#   - prefLabel: "evaluative belief about the consequences of behaviour"
+#     facet: other
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_006148
+#   - prefLabel: "social identity information content entity"
+#     facet: other
+#     ontology: OMRSE
+#     iri: http://purl.obolibrary.org/obo/OMRSE_00000204
+#   - prefLabel: "positive behavioural consequence"
+#     facet: other
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_050828
+# --- end suggested ontologyTerms ---

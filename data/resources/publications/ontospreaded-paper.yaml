@@ -57,26 +57,22 @@ lastUpdated: 2026-04-13
 #     facet: method
 #     ontology: BCIO
 #     iri: http://humanbehaviourchange.org/ontology/BCIO_003000
-#   - prefLabel: "individual human behaviour"
-#     facet: method
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_036000
 #   - prefLabel: "population behaviour"
 #     facet: method
 #     ontology: BCIO
 #     iri: http://humanbehaviourchange.org/ontology/BCIO_034000
-#   - prefLabel: "readability"
+#   - prefLabel: "individual human behaviour"
 #     facet: method
 #     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_044130
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_036000
+#   - prefLabel: "Climbing"
+#     facet: method
+#     ontology: COPPER
+#     iri: https://github.com/EBehaviourChange-COPPER/ontology/blob/main/COPPER_1000
 #   - prefLabel: "push mode of delivery"
 #     facet: method
 #     ontology: BCIO
 #     iri: http://humanbehaviourchange.org/ontology/BCIO_011062
-#   - prefLabel: "behaviour change intervention outcome behaviour"
-#     facet: method
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_002000
 #   - prefLabel: "intervention"
 #     facet: method
 #     ontology: BCIO
@@ -85,10 +81,14 @@ lastUpdated: 2026-04-13
 #     facet: method
 #     ontology: BCIO
 #     iri: http://humanbehaviourchange.org/ontology/BCIO_011063
-#   - prefLabel: "Climbing"
+#   - prefLabel: "behaviour change intervention outcome behaviour"
 #     facet: method
-#     ontology: COPPER
-#     iri: https://github.com/EBehaviourChange-COPPER/ontology/blob/main/COPPER_1000
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_002000
+#   - prefLabel: "readability"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_044130
 #   # population
 #   - prefLabel: "adult"
 #     facet: population

@@ -49,24 +49,24 @@ lastUpdated: "2026-04-13"
 # --- suggested ontologyTerms (review & uncomment; delete this block) ---
 # ontologyTerms:
 #   # subject
-#   - prefLabel: "solitude"
-#     facet: subject
-#     ontology: PHASES
-#     iri: http://purl.obolibrary.org/obo/PHASES_0002000
-#   - prefLabel: "gerotranscendence"
-#     facet: subject
-#     ontology: PHASES
-#     iri: http://purl.obolibrary.org/obo/PHASES_0002001
 #   - prefLabel: "intervention"
 #     facet: subject
 #     ontology: BCIO
 #     iri: http://humanbehaviourchange.org/ontology/BCIO_037000
-#   - prefLabel: "self-transcendence"
+#   - prefLabel: "gerotranscendence"
 #     facet: subject
 #     ontology: PHASES
-#     iri: http://purl.obolibrary.org/obo/PHASES_0000012
+#     iri: http://purl.obolibrary.org/obo/PHASES_0002001
+#   - prefLabel: "solitude"
+#     facet: subject
+#     ontology: PHASES
+#     iri: http://purl.obolibrary.org/obo/PHASES_0002000
 #   - prefLabel: "healthy aging"
 #     facet: subject
 #     ontology: PHASES
 #     iri: http://purl.obolibrary.org/obo/PHASES_0000024
+#   - prefLabel: "self-transcendence"
+#     facet: subject
+#     ontology: PHASES
+#     iri: http://purl.obolibrary.org/obo/PHASES_0000012
 # --- end suggested ontologyTerms ---
