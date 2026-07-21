@@ -55,6 +55,36 @@ contributors:
 producedByProjects:
   - APRICOT
 usedByProjects: []
+ontologyTerms:
+  # subject
+  - prefLabel: "tobacco smoking behaviour"
+    facet: subject
+    ontology: BCIO
+    iri: http://humanbehaviourchange.org/ontology/BCIO_036103
+  - prefLabel: "behaviour change intervention"
+    facet: subject
+    ontology: BCIO
+    iri: http://humanbehaviourchange.org/ontology/BCIO_003000
+  # method
+  - prefLabel: "nicotine replacement therapy"
+    facet: method
+    ontology: ADDICTO
+    iri: http://addictovocab.org/ADDICTO_0000262
+  - prefLabel: "behaviour change technique"
+    facet: method
+    ontology: BCIO
+    iri: http://humanbehaviourchange.org/ontology/BCIO_033000
+  - prefLabel: "self-monitoring"
+    facet: method
+    ontology: BCIO
+    iri: http://humanbehaviourchange.org/ontology/BCIO_006137
+  - prefLabel: "interpretable machine learning"
+    facet: method
+  # population
+  - prefLabel: "health professional"
+    facet: population
+    ontology: BCIO
+    iri: http://humanbehaviourchange.org/ontology/BCIO_010008
 links:
   - label: DOI
     url: https://doi.org/10.12688/wellcomeopenres.20012.2
@@ -63,154 +93,3 @@ keywords:
   - paper
   - wellcome-open-research
 lastUpdated: 2026-04-13
-# --- suggested ontologyTerms (review & uncomment; delete this block) ---
-# ontologyTerms:
-#   # subject
-#   - prefLabel: "intervention"
-#     facet: subject
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_037000
-#   - prefLabel: "tobacco smoking behaviour"
-#     facet: subject
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_036103
-#   - prefLabel: "intervention content"
-#     facet: subject
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_046000
-#   - prefLabel: "behaviour change intervention"
-#     facet: subject
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_003000
-#   - prefLabel: "individual human behaviour"
-#     facet: subject
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_036000
-#   - prefLabel: "population behaviour"
-#     facet: subject
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_034000
-#   # method
-#   - prefLabel: "behaviour change technique"
-#     facet: method
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_033000
-#   - prefLabel: "individual human behaviour change"
-#     facet: method
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_050209
-#   - prefLabel: "goal directed BCT"
-#     facet: method
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_007001
-#   - prefLabel: "prompt intended action BCT"
-#     facet: method
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_007080
-#   - prefLabel: "somatic mode of delivery"
-#     facet: method
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_011034
-#   - prefLabel: "cue BCT"
-#     facet: method
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_007081
-#   - prefLabel: "monitoring BCT"
-#     facet: method
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_007017
-#   - prefLabel: "follow-up point"
-#     facet: method
-#     ontology: ADDICTO
-#     iri: http://addictovocab.org/ADDICTO_0001269
-#   - prefLabel: "deliver support BCT"
-#     facet: method
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_007039
-#   - prefLabel: "social support BCT"
-#     facet: method
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_007028
-#   - prefLabel: "self-monitor behaviour BCT"
-#     facet: method
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_007024
-#   - prefLabel: "self-monitoring"
-#     facet: method
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_006137
-#   - prefLabel: "restructure the environment BCT"
-#     facet: method
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_007150
-#   - prefLabel: "ingestion mode of delivery"
-#     facet: method
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_011035
-#   - prefLabel: "affirm commitment BCT"
-#     facet: method
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_007015
-#   - prefLabel: "expose to stimulus BCT"
-#     facet: method
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_007085
-#   - prefLabel: "nicotine replacement therapy"
-#     facet: method
-#     ontology: ADDICTO
-#     iri: http://addictovocab.org/ADDICTO_0000262
-#   - prefLabel: "alter external stimulus BCT"
-#     facet: method
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_007079
-#   - prefLabel: "intervention delivery"
-#     facet: method
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_045000
-#   # population
-#   - prefLabel: "health professional"
-#     facet: population
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_010008
-#   - prefLabel: "pharmaceutical company"
-#     facet: population
-#     ontology: ADDICTO
-#     iri: http://addictovocab.org/ADDICTO_0001420
-#   - prefLabel: "tobacco"
-#     facet: population
-#     ontology: ADDICTO
-#     iri: http://addictovocab.org/ADDICTO_0000303
-#   - prefLabel: "intervention source"
-#     facet: population
-#     ontology: GMHO
-#     iri: https://galenos.org.uk/ontologies/GMHO_0000246
-#   - prefLabel: "nicotine transdermal patch"
-#     facet: population
-#     ontology: ADDICTO
-#     iri: http://addictovocab.org/ADDICTO_0000263
-#   # other
-#   - prefLabel: "learned stimulus-behaviour co-occurrence"
-#     facet: other
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_006155
-#   - prefLabel: "study arm"
-#     facet: other
-#     ontology: GMHO
-#     iri: https://galenos.org.uk/ontologies/GMHO_0000127
-#   - prefLabel: "cigarette consumption"
-#     facet: other
-#     ontology: ADDICTO
-#     iri: http://addictovocab.org/ADDICTO_0001336
-#   - prefLabel: "male gender"
-#     facet: other
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_010112
-#   - prefLabel: "reduction in cigarettes per day"
-#     facet: other
-#     ontology: ADDICTO
-#     iri: http://addictovocab.org/ADDICTO_0000629
-#   - prefLabel: "female gender"
-#     facet: other
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_010111
-# --- end suggested ontologyTerms ---

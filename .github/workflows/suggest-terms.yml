@@ -1,0 +1,75 @@
+name: Refresh ontology-term suggestions
+
+# Manually triggered. Regenerates the automated annotations, runs the suggestion
+# script (which writes commented-out `ontologyTerms:` blocks into each
+# publication's YAML), and opens a PR for a curator to review. The blocks are
+# suggestions only — curation happens by editing the YAML on the PR/branch.
+on:
+  workflow_dispatch:
+
+jobs:
+  suggest:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install pyyaml
+
+      # The annotation + facet pipeline the suggestion script consumes. These
+      # caches are gitignored, so they must be regenerated here.
+      - name: Fetch paper content
+        run: python scripts/fetch-paper-content.py
+
+      - name: Build ontology term lexicon
+        env:
+          BIOPORTAL_API_KEY: ${{ secrets.BIOPORTAL_API_KEY }}
+        run: python scripts/build-term-lexicon.py
+
+      - name: Annotate papers with ontology terms
+        run: python scripts/annotate-papers.py
+
+      - name: Assign facets to annotations
+        env:
+          BIOPORTAL_API_KEY: ${{ secrets.BIOPORTAL_API_KEY }}
+        run: python scripts/assign-term-facets.py
+
+      - name: Write suggestion blocks
+        run: python scripts/suggest-terms.py
+
+      - name: Open pull request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          BRANCH="refresh-term-suggestions"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          if git diff --quiet -- data/resources/publications; then
+            echo "No suggestion changes; nothing to do."
+            exit 0
+          fi
+
+          git push origin --delete "$BRANCH" 2>/dev/null || true
+          git checkout -b "$BRANCH"
+          git add data/resources/publications
+          git commit -m "Refresh ontology-term suggestions"
+          git push origin "$BRANCH"
+
+          gh pr create \
+            --title "Refresh ontology-term suggestions" \
+            --body "Regenerated \`ontologyTerms:\` suggestion blocks (commented out) in the publication YAML from the automated annotations. Review: uncomment the terms to keep, fix their facets, add any unbacked concept terms, and delete the rest and the suggestion markers. Curated (uncommented) terms are left untouched." \
+            --base main \
+            --head "$BRANCH"
