@@ -9,6 +9,9 @@ links:
   - label: GitHub
     url: https://github.com/odfa-ontology/odfa
     platform: GitHub
+  - label: BioPortal
+    url: https://bioportal.bioontology.org/ontologies/ODFA
+    platform: BioPortal
 bssoFoundry: false
 keywords:
   - ontology
