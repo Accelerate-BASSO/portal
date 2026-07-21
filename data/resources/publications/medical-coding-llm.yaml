@@ -32,6 +32,25 @@ contributors:
 producedByProjects:
   - BSO-AD
 usedByProjects: []
+ontologyTerms:
+  # subject — unbacked concepts (medical-informatics domain, no Foundry class)
+  - prefLabel: medical coding
+    facet: subject
+  - prefLabel: ICD-10
+    facet: subject
+  - prefLabel: clinical documentation
+    facet: subject
+  # method — the NLP/LLM techniques the paper evaluates (unbacked concepts)
+  - prefLabel: large language models
+    facet: method
+  - prefLabel: fine-tuning
+    facet: method
+  - prefLabel: natural language processing
+    facet: method
+  - prefLabel: named entity recognition
+    facet: method
+  - prefLabel: retrieval-augmented generation
+    facet: method
 links:
   - label: DOI
     url: https://doi.org/10.1038/s44401-025-00018-3
