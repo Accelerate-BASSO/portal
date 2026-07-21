@@ -20,6 +20,26 @@ contributors:
 producedByProjects:
   - ODFA
 usedByProjects: []
+ontologyTerms:
+  # subject
+  - prefLabel: feeling of pain
+    facet: subject
+    ontology: MFOEM
+    iri: http://purl.obolibrary.org/obo/MFOEM_000203
+  - prefLabel: pain
+    facet: subject
+  - prefLabel: orofacial pain
+    facet: subject
+  # method — pain-measurement instruments (unbacked concepts)
+  - prefLabel: quantitative sensory testing
+    facet: method
+  - prefLabel: McGill Pain Questionnaire
+    facet: method
+  # artifact & engineering
+  - prefLabel: Pain Ontology
+    facet: artifact
+  - prefLabel: International Classification of Orofacial Pain (ICOP)
+    facet: artifact
 links:
   - label: CEUR-WS
     url: https://ceur-ws.org/Vol-3939/abstract8.pdf
