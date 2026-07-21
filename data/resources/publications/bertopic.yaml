@@ -46,7 +46,9 @@ usedByProjects: []
 aboutOntologies:
   - phases
 ontologyTerms:
-  # subject
+  # subject — the solitude/aging domain the paper draws from, plus its own topic
+  - prefLabel: ontology development
+    facet: subject
   - prefLabel: solitude
     facet: subject
     ontology: PHASES
@@ -59,13 +61,34 @@ ontologyTerms:
     facet: subject
     ontology: PHASES
     iri: http://purl.obolibrary.org/obo/PHASES_0000024
+  - prefLabel: social withdrawal
+    facet: subject
+    ontology: PHASES
+    iri: http://purl.obolibrary.org/obo/PHASES_0000011
+  - prefLabel: social isolation
+    facet: subject
+    ontology: PHASES
+    iri: http://purl.obolibrary.org/obo/PHASES_0002002
+  - prefLabel: loneliness
+    facet: subject
+    ontology: PHASES
+    iri: http://purl.obolibrary.org/obo/PHASES_0002003
   - prefLabel: shyness
     facet: subject
     ontology: PHASES
     iri: http://purl.obolibrary.org/obo/PHASES_0000028
-  # method — an unbacked concept term: the paper's method, no ontology class for it
+  # method — the paper's NLP techniques (unbacked concepts)
   - prefLabel: topic modelling
     facet: method
+  - prefLabel: BERTopic
+    facet: method
+  - prefLabel: natural language processing
+    facet: method
+  - prefLabel: large language models
+    facet: method
+  # artifact & engineering
+  - prefLabel: competency question
+    facet: artifact
 links:
   - label: DOI
     url: https://doi.org/10.21203/rs.3.rs-7383440/v1

@@ -18,11 +18,15 @@ facets:
     label: Method & intervention
     order: 2
     tint: border-emerald-400 text-emerald-800
+  - key: artifact
+    label: Artifacts & engineering
+    order: 3
+    tint: border-amber-500 text-amber-800
   - key: population
     label: Population & context
-    order: 3
+    order: 4
     tint: border-indigo-400 text-indigo-800
   - key: other
     label: Other concepts
-    order: 4
+    order: 5
     tint: border-gray-400 text-gray-700
