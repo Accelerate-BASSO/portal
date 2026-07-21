@@ -17,30 +17,30 @@ const PLATFORM_PATHS: Record<string, React.ReactNode> = {
   GitHub: (
     <path fill="currentColor" d="M8 .8a7.2 7.2 0 0 0-2.28 14.03c.36.07.49-.16.49-.35v-1.24c-2 .43-2.42-.96-2.42-.96-.33-.83-.8-1.05-.8-1.05-.65-.45.05-.44.05-.44.72.05 1.1.74 1.1.74.64 1.1 1.68.78 2.09.6.06-.47.25-.78.45-.96-1.6-.18-3.28-.8-3.28-3.56 0-.79.28-1.43.74-1.93-.07-.18-.32-.91.07-1.9 0 0 .6-.19 1.98.73a6.9 6.9 0 0 1 3.6 0c1.37-.92 1.97-.73 1.97-.73.39.99.14 1.72.07 1.9.46.5.74 1.14.74 1.93 0 2.77-1.69 3.38-3.29 3.56.26.22.49.66.49 1.33v1.97c0 .19.13.42.5.35A7.2 7.2 0 0 0 8 .8Z" />
   ),
-  // BioPortal — stacked layers (a class hierarchy / repository stack).
+  // BioPortal — its swooshing orbit "O" mark, as two open elliptical arcs.
   BioPortal: (
-    <path
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.4"
-      strokeLinejoin="round"
-      d="M8 1.6 14.5 5 8 8.4 1.5 5 8 1.6ZM2.2 8 8 11l5.8-3M2.2 11 8 14l5.8-3"
-    />
-  ),
-  // OLS (EBI Ontology Lookup Service) — a magnifier over nodes (a lookup).
-  OLS: (
     <g fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round">
-      <circle cx="6.5" cy="6.5" r="4" />
-      <path d="M9.5 9.5 14 14" />
+      <path d="M12.6 5.4a5.6 3.4 28 1 0 1.2 3.2" />
+      <path d="M3.4 10.6a5.6 3.4 28 1 0-1.2-3.2" />
     </g>
   ),
-  // Ontobee — a small linked-node graph (linked-data server).
+  // OLS (EBI Ontology Lookup Service) — its logo renders the letters as dotted
+  // nodes; evoke that with a small connected-node network.
+  OLS: (
+    <g stroke="currentColor" strokeWidth="1.2" fill="currentColor">
+      <path d="M4 4 8 5.5M12 4 8 5.5M8 5.5v4.5M4 12 8 10M12 12 8 10" fill="none" strokeLinecap="round" />
+      <circle cx="4" cy="4" r="1.5" />
+      <circle cx="12" cy="4" r="1.5" />
+      <circle cx="8" cy="5.5" r="1.5" />
+      <circle cx="4" cy="12" r="1.5" />
+      <circle cx="12" cy="12" r="1.5" />
+    </g>
+  ),
+  // Ontobee — its logo is a magnifying glass over the wordmark's "O".
   Ontobee: (
-    <g stroke="currentColor" strokeWidth="1.3" fill="currentColor">
-      <path d="M4 4.5 8 8M12 4.5 8 8M8 8v4" fill="none" strokeLinecap="round" />
-      <circle cx="4" cy="4" r="1.7" />
-      <circle cx="12" cy="4" r="1.7" />
-      <circle cx="8" cy="13" r="1.7" />
+    <g fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+      <circle cx="6.5" cy="6.5" r="4" />
+      <path d="M9.6 9.6 14 14" />
     </g>
   ),
   // Zenodo — an archive box.

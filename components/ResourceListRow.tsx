@@ -133,10 +133,10 @@ export default function ResourceListRow({ resource, noBorder = false }: Resource
               target="_blank"
               rel="noopener noreferrer"
               title={platformTooltips[link.platform] || "Visit external link"}
-              className={`inline-flex items-center gap-0.5 underline decoration-1 underline-offset-2 transition-colors ${linkColor}`}
+              className={`inline-flex items-center gap-1 underline decoration-1 underline-offset-2 transition-colors ${linkColor}`}
             >
-              {platformLabels[link.platform] || link.platform}
               <PlatformGlyph platform={link.platform} />
+              {platformLabels[link.platform] || link.platform}
             </a>
           ))}
         </div>

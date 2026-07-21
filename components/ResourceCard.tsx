@@ -216,8 +216,8 @@ export default function ResourceCard({ resource }: ResourceCardProps) {
               title={platformTooltips[link.platform] || "Visit external link"}
               className="inline-flex items-center gap-1 text-sm underline decoration-1 underline-offset-2 transition-colors text-accent-dark hover:text-accent-hover"
             >
-              {platformLabels[link.platform] || link.platform}
               <PlatformGlyph platform={link.platform} size={15} />
+              {platformLabels[link.platform] || link.platform}
             </a>
           ))}
         </div>
