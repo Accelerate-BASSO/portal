@@ -47,16 +47,40 @@
     "status": "beta",
     "description": "An ontology of affective phenomena such as emotions, moods, appraisals and subjective feelings, designed to support interdisciplinary research by providing unified annotations.  The ontology is a domain specialisation of the broader Mental Functioning Ontology. "
   },
+  "odfa": {
+    "acronym": "ODFA",
+    "classes": 237,
+    "properties": 17,
+    "individuals": 10,
+    "maxDepth": 11,
+    "released": "2026-04-09T18:16:30.000-07:00",
+    "hasOntologyLanguage": "OWL",
+    "homepage": null,
+    "status": "production",
+    "description": "The Ontology of Dental care-related Fear, Anxiety, and/or Phobia (ODFA) contains terms for defining and classifying dental-care related fear, anxiety, and/or phobia (DFA). The ODFA\u2019s concepts and relations facilitate the development of tools and resources capable of enhancing our understanding of the impacts of DFA, and when applied to study data, the ODFA enables the integration and interoperability of data from multiple studies.\r\n\r\nThe ODFA is developed as a subset of the Oral Health and Disease Ontology (http://purl.obolibrary.org/obo/ohd.owl). Issues and new term requests can be submitted at https://github.com/oral-health-and-disease-ontologies/ohd-ontology/issues., the ODFA enables the integration and interoperability of data from multiple studies.\n\nThe ODFA is developed as a subset of the Oral Health and Disease Ontology (http://purl.obolibrary.org/obo/ohd.owl). Issues and new term requests can be submitted at https://github.com/oral-health-and-disease-ontologies/ohd-ontology/issues."
+  },
   "omrse": {
     "acronym": "OMRSE",
-    "classes": 470,
+    "classes": 539,
     "properties": 166,
-    "individuals": 477,
+    "individuals": 480,
     "maxDepth": 11,
-    "released": "2026-03-06T18:12:42.000-08:00",
+    "released": "2026-07-11T18:08:02.000-07:00",
     "hasOntologyLanguage": "OWL",
     "homepage": "https://github.com/mcwdsi/OMRSE",
     "status": "production",
     "description": "The Ontology for Modeling and Representation of Social Entities (OMRSE) is an OBO Foundry ontology that represents the various entities that arise from human social interactions, such as social acts, social roles, social groups, and organizations."
+  },
+  "phases": {
+    "acronym": "PHASES",
+    "classes": 85,
+    "properties": 22,
+    "individuals": 44,
+    "maxDepth": 9,
+    "released": "2026-02-26T18:11:47.000-08:00",
+    "hasOntologyLanguage": "OWL",
+    "homepage": null,
+    "status": "production",
+    "description": "PHASES provides an ontology for integrating research in solitude and gerotranscendence. By integrating these areas of study, we aim to deepen our understanding of each and how they promote healthy aging."
   }
 }
