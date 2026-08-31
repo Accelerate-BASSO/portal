@@ -62,23 +62,19 @@ lastUpdated: 2026-04-03
 #     facet: subject
 #     ontology: BCIO
 #     iri: http://humanbehaviourchange.org/ontology/BCIO_050209
-#   - prefLabel: "individual human behaviour"
-#     facet: subject
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_036000
 #   - prefLabel: "population behaviour"
 #     facet: subject
 #     ontology: BCIO
 #     iri: http://humanbehaviourchange.org/ontology/BCIO_034000
+#   - prefLabel: "individual human behaviour"
+#     facet: subject
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_036000
 #   # method
 #   - prefLabel: "behaviour change intervention"
 #     facet: method
 #     ontology: BCIO
 #     iri: http://humanbehaviourchange.org/ontology/BCIO_003000
-#   - prefLabel: "tobacco use behaviour"
-#     facet: method
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_036114
 #   - prefLabel: "tobacco use behaviour pattern"
 #     facet: method
 #     ontology: BCIO
@@ -87,4 +83,8 @@ lastUpdated: 2026-04-03
 #     facet: method
 #     ontology: BCIO
 #     iri: http://humanbehaviourchange.org/ontology/BCIO_036103
+#   - prefLabel: "tobacco use behaviour"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_036114
 # --- end suggested ontologyTerms ---
