@@ -1,0 +1,46 @@
+id: pub-osf-652vg
+name: "Holarchic Psychoinformatics: A Mathematical Ontology for General and Psychological Realities"
+type: Publication
+publishedYear: 2019
+publishedMonth: 3
+description: >-
+  This article builds upon a formal person-situation framework by offering
+  formalisms for its subcomponents, as well as for reality more generally.
+  More specifically, a system of mathematical formalisms is offered relating
+  the following constructs: holarchy, reality, and psychological reality.
+  Psychological reality is offered a portmanteau in the neologism,
+  “psychologicality”. Psychologicality denotes mind and behavior, both of
+  which are subcomponents of Sood’s person-situation formula. The mathematics
+  offered is woven into a broader, subjective-objective ontology that is
+  required for any truly representative virtual world. The result from above,
+  when synthesized with informatics, is a novel “holarchic informatics” and
+  more specific holarchic psychoinformatics (HPI). Holarchic psychoinformatics
+  is related with Sood’s psychoinformatic complexity (PIC) paradigm. The aim
+  of this article is to build upon “third force”—i.e., existential-humanistic
+  (E-H)—psychology. We depart from more traditional approaches in defining E-H
+  psychology as the study of the existence of human minds and behaviors as
+  emergent, interdependent properties of people’s interactions with
+  situations. This definition results from the enactive person-situation
+  framework as situated within PIC.
+keywords:
+  - holarchy
+  - ontology
+  - person-situation interaction
+  - psychoinformatics
+  - third-force psychology
+contributors:
+  - name: Suraj Sood
+producedByProjects:
+  - ODFA
+  - PHASES
+  - DCC
+usedByProjects: []
+links:
+  - label: PsyArXiv
+    url: https://osf.io/652vg
+    platform: Website
+tags:
+  - paper
+  - psyarxiv
+status: Active
+lastUpdated: 2026-04-02
