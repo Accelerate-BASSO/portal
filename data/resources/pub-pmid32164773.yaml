@@ -1,0 +1,44 @@
+id: pub-pmid32164773
+name: >-
+  The effectiveness of a comprehensive corrective exercises program and
+  subsequent detraining on alignment, muscle activation, and movement pattern
+  in men with upper crossed syndrome: protocol for a parallel-group randomized
+  controlled trial.
+type: Publication
+publishedYear: 2020
+publishedMonth: 3
+description: >-
+  Upper crossed syndrome (UCS) refers to specific altered muscle activation
+  and changed movement patterns along with some postural deviations in the
+  upper quarter of the body. This syndrome might contribute to the dysfunction
+  of the cervicothoracic and glenohumeral joints.
+keywords:
+  - Alignment
+  - Corrective exercises
+  - Movement pattern
+  - Muscle activation
+  - UCS
+  - Electromyography
+  - Exercise Therapy
+  - Humans
+  - Iran
+  - Male
+  - Musculoskeletal Diseases
+  - Neck Muscles
+  - Randomized Controlled Trials as Topic
+  - Superficial Back Muscles
+  - Syndrome
+developedByProjects: []
+usedByProjects: []
+links:
+  - label: DOI
+    url: https://doi.org/10.1186/s13063-020-4159-9
+    platform: Website
+  - label: PubMed
+    url: https://pubmed.ncbi.nlm.nih.gov/32164773/
+    platform: Website
+tags:
+  - paper
+  - trials
+status: Active
+lastUpdated: 2026-04-02
