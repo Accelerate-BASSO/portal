@@ -61,11 +61,11 @@
   },
   "omrse": {
     "acronym": "OMRSE",
-    "classes": 539,
+    "classes": 532,
     "properties": 166,
     "individuals": 480,
     "maxDepth": 11,
-    "released": "2026-07-11T18:08:02.000-07:00",
+    "released": "2026-09-04T18:09:17.000-07:00",
     "hasOntologyLanguage": "OWL",
     "homepage": "https://github.com/mcwdsi/OMRSE",
     "status": "production",
