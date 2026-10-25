@@ -100,3 +100,93 @@ keywords:
   - paper
   - wellcome-open-research
 lastUpdated: 2026-04-03
+# --- suggested ontologyTerms (review & uncomment; delete this block) ---
+# ontologyTerms:
+#   # subject
+#   - prefLabel: "tobacco smoking behaviour"
+#     facet: subject
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_036103
+#   - prefLabel: "addiction"
+#     facet: subject
+#     ontology: ADDICTO
+#     iri: http://addictovocab.org/ADDICTO_0000349
+#   - prefLabel: "behaviour change intervention"
+#     facet: subject
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_003000
+#   - prefLabel: "tobacco"
+#     facet: subject
+#     ontology: ADDICTO
+#     iri: http://addictovocab.org/ADDICTO_0000303
+#   - prefLabel: "extent of social smoking"
+#     facet: subject
+#     ontology: ADDICTO
+#     iri: http://addictovocab.org/ADDICTO_0001369
+#   - prefLabel: "cigarette"
+#     facet: subject
+#     ontology: ADDICTO
+#     iri: http://addictovocab.org/ADDICTO_0000201
+#   # method
+#   - prefLabel: "structured communication style"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_044120
+#   - prefLabel: "self-report questionnaire"
+#     facet: method
+#     ontology: ADDICTO
+#     iri: http://addictovocab.org/ADDICTO_0000155
+#   - prefLabel: "desire"
+#     facet: method
+#     ontology: ADDICTO
+#     iri: http://addictovocab.org/ADDICTO_0001127
+#   - prefLabel: "e-cigarette use"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_050377
+#   - prefLabel: "pleasure associated with cigarette smoking"
+#     facet: method
+#     ontology: ADDICTO
+#     iri: http://addictovocab.org/ADDICTO_0001326
+#   # other
+#   - prefLabel: "social grade"
+#     facet: other
+#     ontology: ADDICTO
+#     iri: http://addictovocab.org/ADDICTO_0001324
+#   - prefLabel: "gender identity"
+#     facet: other
+#     ontology: OMRSE
+#     iri: http://purl.obolibrary.org/obo/OMRSE_00000296
+#   - prefLabel: "social grade AB"
+#     facet: other
+#     ontology: ADDICTO
+#     iri: http://addictovocab.org/ADDICTO_0001389
+#   - prefLabel: "reduction in cigarettes per day"
+#     facet: other
+#     ontology: ADDICTO
+#     iri: http://addictovocab.org/ADDICTO_0000629
+#   - prefLabel: "human age in years"
+#     facet: other
+#     ontology: ADDICTO
+#     iri: http://addictovocab.org/ADDICTO_0001370
+#   - prefLabel: "questionnaire"
+#     facet: other
+#     ontology: ADDICTO
+#     iri: http://addictovocab.org/ADDICTO_0000150
+#   - prefLabel: "achieved lower secondary education"
+#     facet: other
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015047
+#   - prefLabel: "highest level of formal educational qualification achieved"
+#     facet: other
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_015043
+#   - prefLabel: "AUDIT-C score"
+#     facet: other
+#     ontology: ADDICTO
+#     iri: http://addictovocab.org/ADDICTO_0001395
+#   - prefLabel: "disposition to want to stop cigarette smoking to some degree"
+#     facet: other
+#     ontology: ADDICTO
+#     iri: http://addictovocab.org/ADDICTO_0001415
+# --- end suggested ontologyTerms ---

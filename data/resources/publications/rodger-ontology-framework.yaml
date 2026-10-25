@@ -84,14 +84,14 @@ lastUpdated: 2026-04-13
 #     facet: method
 #     ontology: BCIO
 #     iri: http://humanbehaviourchange.org/ontology/BCIO_046000
-#   - prefLabel: "individual human behaviour"
-#     facet: method
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_036000
 #   - prefLabel: "population behaviour"
 #     facet: method
 #     ontology: BCIO
 #     iri: http://humanbehaviourchange.org/ontology/BCIO_034000
+#   - prefLabel: "individual human behaviour"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_036000
 #   - prefLabel: "feedback on behaviour"
 #     facet: method
 #     ontology: BCIO
@@ -100,10 +100,6 @@ lastUpdated: 2026-04-13
 #     facet: method
 #     ontology: BCIO
 #     iri: http://humanbehaviourchange.org/ontology/BCIO_044120
-#   - prefLabel: "prompt intended action BCT"
-#     facet: method
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_007080
 #   - prefLabel: "increase salience of behaviour BCT"
 #     facet: method
 #     ontology: BCIO
@@ -116,6 +112,10 @@ lastUpdated: 2026-04-13
 #     facet: method
 #     ontology: BCIO
 #     iri: http://humanbehaviourchange.org/ontology/BCIO_033000
+#   - prefLabel: "prompt intended action BCT"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_007080
 #   # other
 #   - prefLabel: "safety"
 #     facet: other

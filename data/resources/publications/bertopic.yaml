@@ -146,14 +146,14 @@ lastUpdated: 2026-04-03
 #     facet: other
 #     ontology: PHASES
 #     iri: http://purl.obolibrary.org/obo/phases.owl/PHASES_0000050
-#   - prefLabel: "quality of life"
-#     facet: other
-#     ontology: ADDICTO
-#     iri: http://addictovocab.org/ADDICTO_0000397
 #   - prefLabel: "shyness"
 #     facet: other
 #     ontology: PHASES
 #     iri: http://purl.obolibrary.org/obo/PHASES_0000028
+#   - prefLabel: "quality of life"
+#     facet: other
+#     ontology: ADDICTO
+#     iri: http://addictovocab.org/ADDICTO_0000397
 #   - prefLabel: "symptom severity"
 #     facet: other
 #     ontology: GMHO

@@ -113,6 +113,10 @@ lastUpdated: 2026-04-13
 #     facet: method
 #     ontology: BCIO
 #     iri: http://humanbehaviourchange.org/ontology/BCIO_007001
+#   - prefLabel: "expose to stimulus BCT"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_007085
 #   - prefLabel: "deliver support BCT"
 #     facet: method
 #     ontology: BCIO
@@ -121,214 +125,202 @@ lastUpdated: 2026-04-13
 #     facet: method
 #     ontology: BCIO
 #     iri: http://humanbehaviourchange.org/ontology/BCIO_007017
-#   - prefLabel: "expose to stimulus BCT"
-#     facet: method
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_007085
 #   - prefLabel: "record behaviour without feedback BCT"
 #     facet: method
 #     ontology: BCIO
 #     iri: http://humanbehaviourchange.org/ontology/BCIO_007019
-#   - prefLabel: "advise specific behaviour BCT"
-#     facet: method
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_007168
 #   - prefLabel: "interpersonal process"
 #     facet: method
 #     ontology: MF
 #     iri: http://purl.obolibrary.org/obo/MF_0000021
+#   - prefLabel: "advise specific behaviour BCT"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_007168
 #   - prefLabel: "provide positive consequence for behaviour BCT"
 #     facet: method
 #     ontology: BCIO
 #     iri: http://humanbehaviourchange.org/ontology/BCIO_007252
-#   - prefLabel: "affirm commitment BCT"
-#     facet: method
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_007015
-#   - prefLabel: "alter external stimulus BCT"
-#     facet: method
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_007079
-#   - prefLabel: "memory process"
-#     facet: method
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_050319
 #   - prefLabel: "prompt thinking related to successful performance BCT"
 #     facet: method
 #     ontology: BCIO
 #     iri: http://humanbehaviourchange.org/ontology/BCIO_007239
-#   - prefLabel: "individual human behaviour"
-#     facet: method
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_036000
-#   - prefLabel: "social support BCT"
-#     facet: method
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_007028
-#   - prefLabel: "suggest different perspective on behaviour BCT"
-#     facet: method
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_007302
-#   - prefLabel: "remembering"
-#     facet: method
-#     ontology: MF
-#     iri: http://purl.obolibrary.org/obo/MF_0000002
 #   - prefLabel: "self-monitor behaviour BCT"
 #     facet: method
 #     ontology: BCIO
 #     iri: http://humanbehaviourchange.org/ontology/BCIO_007024
+#   - prefLabel: "suggest different perspective on behaviour BCT"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_007302
+#   - prefLabel: "affirm commitment BCT"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_007015
+#   - prefLabel: "memory process"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_050319
 #   - prefLabel: "goal setting BCT"
 #     facet: method
 #     ontology: BCIO
 #     iri: http://humanbehaviourchange.org/ontology/BCIO_007002
-#   - prefLabel: "inform about emotional consequences BCT"
+#   - prefLabel: "social support BCT"
 #     facet: method
 #     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_007065
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_007028
+#   - prefLabel: "remembering"
+#     facet: method
+#     ontology: MF
+#     iri: http://purl.obolibrary.org/obo/MF_0000002
 #   - prefLabel: "mental process"
 #     facet: method
 #     ontology: MF
 #     iri: http://purl.obolibrary.org/obo/MF_0000020
-#   - prefLabel: "provide consequence for behaviour BCT"
+#   - prefLabel: "inform about emotional consequences BCT"
 #     facet: method
 #     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_007240
-#   - prefLabel: "arrange support BCT"
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_007065
+#   - prefLabel: "alter external stimulus BCT"
 #     facet: method
 #     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_007034
-#   - prefLabel: "judging"
-#     facet: method
-#     ontology: MF
-#     iri: http://purl.obolibrary.org/obo/MF_0000006
-#   - prefLabel: "decision-making"
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_007079
+#   - prefLabel: "individual human behaviour"
 #     facet: method
 #     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_006116
-#   - prefLabel: "observational learning"
-#     facet: method
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_050800
-#   - prefLabel: "promote pharmacological support BCT"
-#     facet: method
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_007144
-#   - prefLabel: "restructure the social environment BCT"
-#     facet: method
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_050349
-#   - prefLabel: "self-monitoring"
-#     facet: method
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_006137
-#   - prefLabel: "inform about environmental consequences BCT"
-#     facet: method
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_007176
-#   - prefLabel: "prompt focus on self-identity BCT"
-#     facet: method
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_007157
-#   - prefLabel: "inform about social consequences BCT"
-#     facet: method
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_007064
-#   - prefLabel: "attending"
-#     facet: method
-#     ontology: MF
-#     iri: http://purl.obolibrary.org/obo/MF_0000018
-#   - prefLabel: "provide feedback BCT"
-#     facet: method
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_007022
-#   - prefLabel: "advise to seek support BCT"
-#     facet: method
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_007029
-#   - prefLabel: "behavioural motivation"
-#     facet: method
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_006133
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_036000
 #   - prefLabel: "guide how to perform behaviour BCT"
 #     facet: method
 #     ontology: BCIO
 #     iri: http://humanbehaviourchange.org/ontology/BCIO_007050
-#   - prefLabel: "inform about health consequences BCT"
+#   - prefLabel: "behavioural motivation"
 #     facet: method
 #     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_007063
-#   - prefLabel: "add objects to the environment BCT"
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_006133
+#   - prefLabel: "observational learning"
 #     facet: method
 #     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_007156
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_050800
 #   - prefLabel: "aspect"
 #     facet: method
 #     ontology: ADDICTO
 #     iri: http://addictovocab.org/ADDICTO_0000359
-#   - prefLabel: "prompt social comparison BCT"
+#   - prefLabel: "inform about social consequences BCT"
 #     facet: method
 #     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_007073
-#   - prefLabel: "create behavioural contract BCT"
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_007064
+#   - prefLabel: "self-monitoring"
 #     facet: method
 #     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_007014
-#   - prefLabel: "draw attention to incompatible beliefs BCT"
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_006137
+#   - prefLabel: "judging"
+#     facet: method
+#     ontology: MF
+#     iri: http://purl.obolibrary.org/obo/MF_0000006
+#   - prefLabel: "inform about environmental consequences BCT"
 #     facet: method
 #     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_007057
-#   - prefLabel: "re-attribute cause BCT"
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_007176
+#   - prefLabel: "add objects to the environment BCT"
 #     facet: method
 #     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_007053
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_007156
+#   - prefLabel: "promote pharmacological support BCT"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_007144
+#   - prefLabel: "decision-making"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_006116
+#   - prefLabel: "inform about health consequences BCT"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_007063
+#   - prefLabel: "advise to seek support BCT"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_007029
+#   - prefLabel: "provide feedback BCT"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_007022
+#   - prefLabel: "restructure the social environment BCT"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_050349
+#   - prefLabel: "attending"
+#     facet: method
+#     ontology: MF
+#     iri: http://purl.obolibrary.org/obo/MF_0000018
+#   - prefLabel: "arrange support BCT"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_007034
+#   - prefLabel: "provide consequence for behaviour BCT"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_007240
+#   - prefLabel: "prompt focus on self-identity BCT"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_007157
 #   - prefLabel: "regret"
 #     facet: method
 #     ontology: MFOEM
 #     iri: http://purl.obolibrary.org/obo/MFOEM_000217
-#   - prefLabel: "provide positive social consequence for behaviour BCT"
-#     facet: method
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_007265
-#   - prefLabel: "inter-personal behaviour"
-#     facet: method
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_036025
-#   - prefLabel: "past behaviour"
-#     facet: method
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_050481
-#   - prefLabel: "set behaviour goal BCT"
-#     facet: method
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_007003
-#   - prefLabel: "goal strategising BCT"
-#     facet: method
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_007008
-#   - prefLabel: "provide aversive consequence for behaviour BCT"
-#     facet: method
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_007241
 #   - prefLabel: "set graded tasks BCT"
 #     facet: method
 #     ontology: BCIO
 #     iri: http://humanbehaviourchange.org/ontology/BCIO_007100
-#   - prefLabel: "imagine reward BCT"
+#   - prefLabel: "re-attribute cause BCT"
 #     facet: method
 #     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_007119
-#   - prefLabel: "advise paradoxical behaviour BCT"
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_007053
+#   - prefLabel: "draw attention to incompatible beliefs BCT"
 #     facet: method
 #     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_007135
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_007057
+#   - prefLabel: "provide aversive consequence for behaviour BCT"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_007241
 #   - prefLabel: "advise how to reduce negative emotions BCT"
 #     facet: method
 #     ontology: BCIO
 #     iri: http://humanbehaviourchange.org/ontology/BCIO_050344
-#   - prefLabel: "promise positive material consequence for behaviour BCT"
+#   - prefLabel: "inter-personal behaviour"
 #     facet: method
 #     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_007209
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_036025
+#   - prefLabel: "subjective affective feeling"
+#     facet: method
+#     ontology: MFOEM
+#     iri: http://purl.obolibrary.org/obo/MFOEM_000006
+#   - prefLabel: "goal strategising BCT"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_007008
+#   - prefLabel: "set outcome goal BCT"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_007005
+#   - prefLabel: "population behaviour"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_034000
+#   - prefLabel: "deliver emotional support BCT"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_007041
+#   - prefLabel: "associative learning"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_006119
+#   - prefLabel: "imagine reward BCT"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_007119
 #   - prefLabel: "socially-related behaviour"
 #     facet: method
 #     ontology: BCIO
@@ -337,38 +329,46 @@ lastUpdated: 2026-04-13
 #     facet: method
 #     ontology: BCIO
 #     iri: http://humanbehaviourchange.org/ontology/BCIO_007026
-#   - prefLabel: "set outcome goal BCT"
+#   - prefLabel: "prompt social comparison BCT"
 #     facet: method
 #     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_007005
-#   - prefLabel: "conserve mental resources BCT"
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_007073
+#   - prefLabel: "create behavioural contract BCT"
 #     facet: method
 #     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_007134
-#   - prefLabel: "restructure the environment BCT"
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_007014
+#   - prefLabel: "advise paradoxical behaviour BCT"
 #     facet: method
 #     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_007150
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_007135
 #   - prefLabel: "promise consequence for behaviour BCT"
 #     facet: method
 #     ontology: BCIO
 #     iri: http://humanbehaviourchange.org/ontology/BCIO_007187
-#   - prefLabel: "deliver emotional support BCT"
+#   - prefLabel: "conserve mental resources BCT"
 #     facet: method
 #     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_007041
-#   - prefLabel: "population behaviour"
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_007134
+#   - prefLabel: "promise positive material consequence for behaviour BCT"
 #     facet: method
 #     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_034000
-#   - prefLabel: "associative learning"
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_007209
+#   - prefLabel: "past behaviour"
 #     facet: method
 #     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_006119
-#   - prefLabel: "subjective affective feeling"
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_050481
+#   - prefLabel: "set behaviour goal BCT"
 #     facet: method
-#     ontology: MFOEM
-#     iri: http://purl.obolibrary.org/obo/MFOEM_000006
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_007003
+#   - prefLabel: "restructure the environment BCT"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_007150
+#   - prefLabel: "provide positive social consequence for behaviour BCT"
+#     facet: method
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_007265
 #   # population
 #   - prefLabel: "social group"
 #     facet: population
@@ -382,14 +382,14 @@ lastUpdated: 2026-04-13
 #     facet: population
 #     ontology: BCIO
 #     iri: http://humanbehaviourchange.org/ontology/BCIO_006081
-#   - prefLabel: "intervention source"
-#     facet: population
-#     ontology: GMHO
-#     iri: https://galenos.org.uk/ontologies/GMHO_0000246
 #   - prefLabel: "occupational role"
 #     facet: population
 #     ontology: BCIO
 #     iri: http://humanbehaviourchange.org/ontology/BCIO_015430
+#   - prefLabel: "intervention source"
+#     facet: population
+#     ontology: GMHO
+#     iri: https://galenos.org.uk/ontologies/GMHO_0000246
 #   # other
 #   - prefLabel: "stimulus"
 #     facet: other
@@ -403,14 +403,14 @@ lastUpdated: 2026-04-13
 #     facet: other
 #     ontology: ADDICTO
 #     iri: http://addictovocab.org/ADDICTO_0000399
-#   - prefLabel: "attitude"
-#     facet: other
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_050328
 #   - prefLabel: "evaluative belief"
 #     facet: other
 #     ontology: BCIO
 #     iri: http://humanbehaviourchange.org/ontology/BCIO_006038
+#   - prefLabel: "attitude"
+#     facet: other
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_050328
 #   - prefLabel: "perceived norm"
 #     facet: other
 #     ontology: BCIO
@@ -419,6 +419,14 @@ lastUpdated: 2026-04-13
 #     facet: other
 #     ontology: BCIO
 #     iri: http://humanbehaviourchange.org/ontology/BCIO_050326
+#   - prefLabel: "self-efficacy belief"
+#     facet: other
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_050898
+#   - prefLabel: "social group attribute"
+#     facet: other
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_050774
 #   - prefLabel: "behavioural goal"
 #     facet: other
 #     ontology: BCIO
@@ -427,10 +435,6 @@ lastUpdated: 2026-04-13
 #     facet: other
 #     ontology: MF
 #     iri: http://purl.obolibrary.org/obo/MF_0000031
-#   - prefLabel: "social group attribute"
-#     facet: other
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_050774
 #   - prefLabel: "empathy"
 #     facet: other
 #     ontology: BCIO
@@ -439,48 +443,44 @@ lastUpdated: 2026-04-13
 #     facet: other
 #     ontology: BCIO
 #     iri: http://humanbehaviourchange.org/ontology/BCIO_006155
-#   - prefLabel: "self-efficacy belief"
-#     facet: other
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_050898
-#   - prefLabel: "mental capability"
-#     facet: other
-#     ontology: MF
-#     iri: http://purl.obolibrary.org/obo/MF_0000048
-#   - prefLabel: "harm"
-#     facet: other
-#     ontology: ADDICTO
-#     iri: http://addictovocab.org/ADDICTO_0001363
-#   - prefLabel: "affective attitude towards a behaviour"
-#     facet: other
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_050327
-#   - prefLabel: "external stimulus"
-#     facet: other
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_050654
-#   - prefLabel: "self-regulation capability"
-#     facet: other
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_006005
 #   - prefLabel: "attentional disposition"
 #     facet: other
 #     ontology: BCIO
 #     iri: http://humanbehaviourchange.org/ontology/BCIO_050572
-#   - prefLabel: "self-efficacy belief for a behaviour"
-#     facet: other
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_006154
-#   - prefLabel: "belief about likelihood of consequences of an occurrence"
-#     facet: other
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_006026
-#   - prefLabel: "attitude towards a behaviour"
-#     facet: other
-#     ontology: BCIO
-#     iri: http://humanbehaviourchange.org/ontology/BCIO_050329
 #   - prefLabel: "self-efficacy belief for a behaviour and its associated outcomes"
 #     facet: other
 #     ontology: BCIO
 #     iri: http://humanbehaviourchange.org/ontology/BCIO_006043
+#   - prefLabel: "self-regulation capability"
+#     facet: other
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_006005
+#   - prefLabel: "mental capability"
+#     facet: other
+#     ontology: MF
+#     iri: http://purl.obolibrary.org/obo/MF_0000048
+#   - prefLabel: "affective attitude towards a behaviour"
+#     facet: other
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_050327
+#   - prefLabel: "self-efficacy belief for a behaviour"
+#     facet: other
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_006154
+#   - prefLabel: "external stimulus"
+#     facet: other
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_050654
+#   - prefLabel: "attitude towards a behaviour"
+#     facet: other
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_050329
+#   - prefLabel: "belief about likelihood of consequences of an occurrence"
+#     facet: other
+#     ontology: BCIO
+#     iri: http://humanbehaviourchange.org/ontology/BCIO_006026
+#   - prefLabel: "harm"
+#     facet: other
+#     ontology: ADDICTO
+#     iri: http://addictovocab.org/ADDICTO_0001363
 # --- end suggested ontologyTerms ---
