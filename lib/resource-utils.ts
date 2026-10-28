@@ -94,6 +94,11 @@ export function effectiveDate(r: Resource): string | null {
     const d = String(r.publishedDay ?? 1).padStart(2, "0");
     return `${r.publishedYear}-${m}-${d}`;
   }
+  if ((r.type === "Presentation" || r.type === "Poster") && r.presentedYear) {
+    const m = String(r.presentedMonth ?? 1).padStart(2, "0");
+    const d = String(r.presentedDay ?? 1).padStart(2, "0");
+    return `${r.presentedYear}-${m}-${d}`;
+  }
   if (r.githubRelease?.date) return r.githubRelease.date.slice(0, 10);
   if (r.bioportal?.released) return r.bioportal.released.slice(0, 10);
   return null;

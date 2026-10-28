@@ -1,4 +1,4 @@
-// Colors chosen for maximum visual distinction across all 8 types
+// Colors chosen for maximum visual distinction across all resource types
 export const typeColors: Record<string, string> = {
   Ontology: "bg-[#7040C0] text-white",
   Publication: "bg-[#D87030] text-white",
@@ -8,6 +8,9 @@ export const typeColors: Record<string, string> = {
   Dataset: "bg-lime-600 text-white",
   Website: "bg-[#4898E8] text-white",
   Registry: "bg-cyan-700 text-white",
+  Presentation: "bg-[#2F7D6D] text-white",
+  Poster: "bg-[#9B4A6F] text-white",
+  Tutorial: "bg-[#5F6FA8] text-white",
 };
 
 export const typeIconColors: Record<string, string> = {
@@ -19,4 +22,7 @@ export const typeIconColors: Record<string, string> = {
   Dataset: "text-lime-600",
   Website: "text-[#4898E8]",
   Registry: "text-cyan-700",
+  Presentation: "text-[#2F7D6D]",
+  Poster: "text-[#9B4A6F]",
+  Tutorial: "text-[#5F6FA8]",
 };

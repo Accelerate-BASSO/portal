@@ -21,6 +21,7 @@ import ResourceListRow from "./ResourceListRow";
 import {
   Search, X, LayoutGrid, List, ArrowUpDown, ChevronDown,
   Network, FileText, Globe, FolderGit2, Library, Users, Wrench, Database,
+  Presentation as PresentationIcon, Image as ImageIcon, GraduationCap,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { typeColors, typeIconColors } from "@/lib/type-colors";
@@ -78,6 +79,9 @@ const typeIcons: Record<string, LucideIcon> = {
   Community: Users,
   Tool: Wrench,
   Dataset: Database,
+  Presentation: PresentationIcon,
+  Poster: ImageIcon,
+  Tutorial: GraduationCap,
 };
 
 interface ResourceBrowserProps {

@@ -56,7 +56,7 @@ Each resource indexed by the portal is described by a lightweight metadata schem
 |---|---|---|---|
 | `id` | string | Yes | Unique identifier (slug), e.g. `bcio`, `nas-report-2022` |
 | `name` | string | Yes | Human-readable display name |
-| `type` | enum | Yes | One of: `Ontology`, `Publication`, `Dataset`, `Tool`, `Community`, `Repository` |
+| `type` | enum | Yes | One of: `Ontology`, `Publication`, `Dataset`, `Tool`, `Community`, `Repository`, `Website`, `Registry`, `Presentation`, `Poster`, `Tutorial` |
 | `description` | string | Yes | Brief plain-language description (1--3 sentences) |
 | `projectAffiliation` | enum | Yes | One of: `PHASES`, `BSO-AD`, `APRICOT`, `ODFA`, `Cross-cutting`, `DCC` |
 | `links` | array | Yes | One or more links, each with `label`, `url`, and `platform` |
@@ -151,7 +151,7 @@ The primary working view of the portal.
 
 - **Search bar:** Full-text search across resource names, descriptions, and tags.
 - **Filters:** Faceted filtering by:
-  - Resource type (Ontology, Publication, Dataset, Tool, Community, Repository)
+  - Resource type (Ontology, Publication, Dataset, Tool, Community, Repository, Website, Registry, Presentation, Poster, Tutorial)
   - Project affiliation (PHASES, BSO-AD, APRICOT, ODFA, Cross-cutting, DCC)
   - BSSO Foundry membership (Yes/No)
   - Status (Active, In Development, Archived)

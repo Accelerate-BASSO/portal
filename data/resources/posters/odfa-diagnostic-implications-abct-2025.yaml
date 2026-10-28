@@ -1,0 +1,36 @@
+id: odfa-diagnostic-implications-abct-2025
+name: "Toward an Ontology of Dental Care-Related Fear and Anxiety: Diagnostic Implications"
+type: Poster
+presentedYear: 2025
+presentedMonth: 11
+presentedDay: 21
+event: 59th Annual Convention of the Association for Behavioral and Cognitive Therapies (ABCT 2025)
+description: >-
+  Presents the development of the Ontology of Dental Care-Related Fear,
+  Anxiety, and/or Phobia (ODFA) and its use in analysing terminology,
+  assessment instruments, and avoidance behaviour across multiple datasets.
+contributors:
+  - name: Daniel W McNeil
+  - name: Alexander D Diehl
+  - name: Astha Singhal
+  - name: Olga Ensz
+  - name: Brenda Heaton
+  - name: Ram Challa
+  - name: Finn Wilson
+  - name: William D Duncan
+producedByProjects:
+  - ODFA
+usedByProjects: []
+aboutOntologies:
+  - odfa
+links:
+  - label: Poster abstract
+    url: https://abct2025.eventscribe.net/fsPopup.asp?PosterID=747942&efp=Rk9DRVhGRlgyMTQwMA&mode=posterInfo
+    platform: Website
+keywords:
+  - poster
+  - dental-fear
+  - dental-anxiety
+  - diagnostic-implications
+  - abct-2025
+lastUpdated: "2026-10-28"

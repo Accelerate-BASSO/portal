@@ -14,6 +14,9 @@ This is the reference for the resource metadata files under `data/resources/`.
 | `Community` | A forum or community of practice. |
 | `Tool` | A software tool or platform. |
 | `Dataset` | A dataset produced by the network. |
+| `Presentation` | A talk or slide deck presented by network members. |
+| `Poster` | A research poster presented by network members. |
+| `Tutorial` | Written or recorded instructional material. |
 
 Each resource is a single YAML file in a subdirectory named for its type:
 
@@ -27,6 +30,9 @@ data/resources/
   communities/    # Community
   tools/          # Tool
   (datasets/)     # Dataset — supported, none yet
+  presentations/  # Presentation
+  posters/        # Poster
+  tutorials/      # Tutorial
 ```
 
 By convention, name the file in kebab-case, often matching the resource `id`
@@ -43,7 +49,7 @@ automatically on the next build. Every file is checked in CI by
 |---|---|---|---|
 | `id` | Yes | string | Stable unique identifier across all resources. Kebab-case — for consistency, to keep cache keys clean, and so ids stay URL-safe if per-resource detail pages are added later. |
 | `name` | Yes | string | Display name. Wrap it in double quotes if it contains a colon (e.g. `name: "Project X: Phase 2"`), since YAML otherwise reads the colon as a key separator and the line fails to parse. |
-| `type` | Yes | enum | One of `Ontology`, `Publication`, `Website`, `Repository`, `Registry`, `Community`, `Tool`, `Dataset`. Must match the file's subdirectory (which is the pluralized type, e.g. `Ontology` → `ontologies/`). |
+| `type` | Yes | enum | One of `Ontology`, `Publication`, `Website`, `Repository`, `Registry`, `Community`, `Tool`, `Dataset`, `Presentation`, `Poster`, `Tutorial`. Must match the file's subdirectory (which is the pluralized type, e.g. `Ontology` → `ontologies/`). |
 | `description` | Yes | string | 1–3 sentence plain-language summary. Use `>-` for multi-line. |
 | `producedByProjects` | Yes | list | Projects that produced the resource — any of `APRICOT`, `BSO-AD`, `ODFA`, `PHASES`, `DCC` (see vocab below for full names). May be empty (`[]`). |
 | `usedByProjects` | Yes | list | Projects that use the resource — same allowed values as `producedByProjects`. May be empty (`[]`). |
@@ -386,4 +392,86 @@ links:
 keywords:
   - dataset
 lastUpdated: 2026-04-01
+```
+
+## Presentation
+
+A talk or slide presentation given by network members. A presentation may link
+to a PowerPoint or PDF slide deck, a recording, and an abstract; these are links
+on one resource record rather than separate resources.
+
+Extra fields:
+
+| Field | Required | Type | Description |
+|---|---|---|---|
+| `presentedYear` | Yes | number | Four-digit year. |
+| `presentedMonth` | No | number | 1–12. |
+| `presentedDay` | No | number | 1–31. |
+| `event` | Yes | string | Meeting, conference, webinar, or other event. |
+| `contributors` | Yes | list | Presenters, each `{name, orcid?}`. |
+| `license` | No | string | License for the shared slides, where known. |
+
+```yaml
+id: example-presentation
+name: Introducing the Accelerate-BASSO Resource Portal
+type: Presentation
+presentedYear: 2026
+presentedMonth: 7
+presentedDay: 17
+event: Accelerate-BASSO Annual Network Meeting
+description: An overview and demonstration of the network resource portal.
+contributors:
+  - name: Matthew Horridge
+producedByProjects: [DCC]
+usedByProjects: []
+links:
+  - label: Slides
+    url: https://example.org/slides.pdf
+    platform: Website
+keywords: [presentation, resource-portal]
+lastUpdated: 2026-10-28
+```
+
+## Poster
+
+A research poster presented at a conference or meeting. Use one record for the
+poster and link its PDF, abstract, or repository deposit from that record.
+
+Poster fields are the same as presentation fields: `presentedYear` (required),
+optional month/day, `event` (required), `contributors` (required), and optional
+`license`.
+
+## Tutorial
+
+Written or recorded instructional material that teaches a method, workflow, or
+tool. A tutorial can link to text, video, exercises, and supporting files from a
+single record.
+
+Extra fields:
+
+| Field | Required | Type | Description |
+|---|---|---|---|
+| `level` | Yes | enum | `Introductory`, `Intermediate`, `Advanced`, or `All levels`. |
+| `prerequisites` | No | string | Knowledge or software expected before starting. |
+| `learningObjectives` | No | list | Short statements describing what a learner should be able to do. |
+| `license` | No | string | License for the tutorial material, where known. |
+
+```yaml
+id: example-tutorial
+name: Finding and evaluating behavioral science ontologies
+type: Tutorial
+level: Introductory
+prerequisites: None
+learningObjectives:
+  - Find relevant ontologies in the portal and BioPortal.
+  - Assess whether an ontology is suitable for a research use case.
+description: A practical introduction for behavioral and social science researchers.
+producedByProjects: [DCC]
+usedByProjects: []
+links:
+  - label: Tutorial
+    url: https://example.org/tutorial
+    platform: Website
+keywords: [tutorial, ontology-discovery]
+lastUpdated: 2026-10-28
 ```

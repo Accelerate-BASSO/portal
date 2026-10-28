@@ -17,7 +17,8 @@ export interface Contributor {
 
 export type ResourceType =
   | "Ontology" | "Publication" | "Tool" | "Community"
-  | "Repository" | "Dataset" | "Website" | "Registry";
+  | "Repository" | "Dataset" | "Website" | "Registry"
+  | "Presentation" | "Poster" | "Tutorial";
 
 /** Fields common to every resource, plus build-injected metadata. */
 interface BaseResource {
@@ -85,6 +86,24 @@ export interface DatasetResource extends BaseResource, Licensed {
   doi?: string;
 }
 
+/** Talks and posters carry event metadata and credited presenters/authors. */
+export interface EventResource extends BaseResource, Licensed {
+  type: "Presentation" | "Poster";
+  presentedYear: number;
+  presentedMonth?: number;
+  presentedDay?: number;
+  event: string;
+  contributors: Contributor[];
+}
+
+/** Instructional material carries an audience level and optional learning detail. */
+export interface TutorialResource extends BaseResource, Licensed {
+  type: "Tutorial";
+  level: "Introductory" | "Intermediate" | "Advanced" | "All levels";
+  prerequisites?: string;
+  learningObjectives?: string[];
+}
+
 /** Resource types with no fields beyond the common set. */
 export interface PlainResource extends BaseResource {
   type: "Community" | "Website" | "Registry";
@@ -96,6 +115,8 @@ export type Resource =
   | ToolResource
   | RepositoryResource
   | DatasetResource
+  | EventResource
+  | TutorialResource
   | PlainResource;
 
 export interface GithubRelease {

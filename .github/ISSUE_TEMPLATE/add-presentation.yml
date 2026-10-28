@@ -1,0 +1,69 @@
+name: Add a presentation
+description: Submit a talk or slide deck to be listed on the portal
+title: "[Presentation] "
+labels: ["resource: new"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Presentation title
+    validations:
+      required: true
+  - type: textarea
+    id: contributors
+    attributes:
+      label: Presenters
+      description: List one presenter per line.
+    validations:
+      required: true
+  - type: input
+    id: event
+    attributes:
+      label: Event
+      placeholder: Conference, network meeting, webinar, or workshop
+    validations:
+      required: true
+  - type: input
+    id: date
+    attributes:
+      label: Date presented
+      description: Use YYYY-MM-DD when the full date is known.
+      placeholder: "2026-07-17"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A brief description for a non-specialist reader.
+    validations:
+      required: true
+  - type: checkboxes
+    id: projects
+    attributes:
+      label: Project(s)
+      options:
+        - label: APRICOT
+        - label: BSO-AD
+        - label: ODFA
+        - label: PHASES
+        - label: DCC
+  - type: input
+    id: slides-url
+    attributes:
+      label: Slides URL
+      description: Link to the PowerPoint, PDF slide deck, or its stable landing page.
+    validations:
+      required: true
+  - type: input
+    id: recording-url
+    attributes:
+      label: Recording URL (optional)
+  - type: input
+    id: abstract-url
+    attributes:
+      label: Abstract URL (optional)
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context

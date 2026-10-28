@@ -15,6 +15,21 @@ const TEMPLATES: { label: string; href: string; blurb: string }[] = [
     blurb: "Papers, preprints, or workshop contributions produced by the network.",
   },
   {
+    label: "Presentation",
+    href: `${REPO_URL}/issues/new?template=add-presentation.yml`,
+    blurb: "Talks and slide decks, with links to recordings or abstracts where available.",
+  },
+  {
+    label: "Poster",
+    href: `${REPO_URL}/issues/new?template=add-poster.yml`,
+    blurb: "Research posters, with links to abstracts or repository deposits where available.",
+  },
+  {
+    label: "Tutorial",
+    href: `${REPO_URL}/issues/new?template=add-tutorial.yml`,
+    blurb: "Written or recorded instructional material for learning an ontology-related method or tool.",
+  },
+  {
     label: "Tool or registry",
     href: `${REPO_URL}/issues/new?template=add-tool-or-registry.yml`,
     blurb: "Software, services, or curated registries produced by the network.",
@@ -39,7 +54,7 @@ const TEMPLATES: { label: string; href: string; blurb: string }[] = [
 export const metadata = {
   title: "Contribute — Accelerate BASSO Portal",
   description:
-    "How to submit a new resource — ontology, publication, tool, repository, website, or community — to the Accelerate BASSO Portal.",
+    "How to submit an ontology, publication, presentation, poster, tutorial, tool, repository, website, or community to the Accelerate BASSO Portal.",
 };
 
 export default function ContributePage() {

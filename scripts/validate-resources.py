@@ -22,6 +22,7 @@ import yaml
 TYPES = {
     "Ontology", "Publication", "Website", "Repository",
     "Registry", "Community", "Tool", "Dataset",
+    "Presentation", "Poster", "Tutorial",
 }
 PROJECTS = {"APRICOT", "BSO-AD", "ODFA", "PHASES", "DCC"}
 PLATFORMS = {
@@ -33,6 +34,7 @@ DIR_TYPE = {
     "ontologies": "Ontology", "publications": "Publication", "websites": "Website",
     "repositories": "Repository", "registries": "Registry", "communities": "Community",
     "tools": "Tool", "datasets": "Dataset",
+    "presentations": "Presentation", "posters": "Poster", "tutorials": "Tutorial",
 }
 # Type-specific fields, each mapped to the set of types it may appear on.
 TYPE_SPECIFIC_FIELDS = {
@@ -42,9 +44,16 @@ TYPE_SPECIFIC_FIELDS = {
     "publishedDay": {"Publication"},
     "venue": {"Publication"},
     "pmid": {"Publication"},
-    "contributors": {"Publication"},
+    "contributors": {"Publication", "Presentation", "Poster"},
     "doi": {"Publication", "Dataset"},
-    "license": {"Ontology", "Tool", "Repository", "Dataset"},
+    "license": {"Ontology", "Tool", "Repository", "Dataset", "Presentation", "Poster", "Tutorial"},
+    "presentedYear": {"Presentation", "Poster"},
+    "presentedMonth": {"Presentation", "Poster"},
+    "presentedDay": {"Presentation", "Poster"},
+    "event": {"Presentation", "Poster"},
+    "level": {"Tutorial"},
+    "prerequisites": {"Tutorial"},
+    "learningObjectives": {"Tutorial"},
 }
 # (`keywords` was publication-only when it held imported keywords; it is now the
 #  common curated field, formerly `tags`.)
@@ -184,6 +193,33 @@ def validate_file(path, ids, errors, ontology_ids, about_refs, facet_keys):
             for i, c in enumerate(d["contributors"] or []):
                 if not isinstance(c, dict) or not c.get("name"):
                     err(f"contributor[{i}] must have a `name`.")
+
+    if rtype in {"Presentation", "Poster"}:
+        if not isinstance(d.get("presentedYear"), int):
+            err(f"{rtype.lower()} requires integer `presentedYear`.")
+        for key in ("presentedMonth", "presentedDay"):
+            if key in d and not isinstance(d[key], int):
+                err(f"`{key}` must be an integer.")
+        if not d.get("event"):
+            err(f"{rtype.lower()} requires `event`.")
+        contributors = d.get("contributors")
+        if not isinstance(contributors, list) or not contributors:
+            err(f"{rtype.lower()} requires a non-empty `contributors` list.")
+        else:
+            for i, c in enumerate(contributors):
+                if not isinstance(c, dict) or not c.get("name"):
+                    err(f"contributor[{i}] must have a `name`.")
+
+    if rtype == "Tutorial":
+        levels = {"Introductory", "Intermediate", "Advanced", "All levels"}
+        if d.get("level") not in levels:
+            err("tutorial requires `level` to be one of: " + ", ".join(sorted(levels)) + ".")
+        if "prerequisites" in d and not isinstance(d["prerequisites"], str):
+            err("`prerequisites` must be a string.")
+        if "learningObjectives" in d:
+            objectives = d["learningObjectives"]
+            if not isinstance(objectives, list) or not all(isinstance(x, str) for x in objectives):
+                err("`learningObjectives` must be a list of strings.")
 
     # Type-specific fields must not appear on a type that doesn't allow them.
     for field, allowed in TYPE_SPECIFIC_FIELDS.items():

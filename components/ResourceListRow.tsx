@@ -11,6 +11,9 @@ import {
   Users,
   Wrench,
   Database,
+  Presentation as PresentationIcon,
+  Image as ImageIcon,
+  GraduationCap,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { typeColors, typeIconColors } from "@/lib/type-colors";
@@ -24,6 +27,9 @@ const typeIcons: Record<string, LucideIcon> = {
   Community: Users,
   Tool: Wrench,
   Dataset: Database,
+  Presentation: PresentationIcon,
+  Poster: ImageIcon,
+  Tutorial: GraduationCap,
 };
 
 const projectFullNames: Record<string, string> = {
@@ -123,6 +129,16 @@ export default function ResourceListRow({ resource, noBorder = false }: Resource
         {resource.type === "Publication" && resource.venue && (
           <span title="Publication venue" className="truncate text-gray-600">
             {resource.venue}
+          </span>
+        )}
+        {(resource.type === "Presentation" || resource.type === "Poster") && (
+          <span title="Event" className="truncate text-gray-600">
+            {resource.event}
+          </span>
+        )}
+        {resource.type === "Tutorial" && (
+          <span title="Tutorial level" className="truncate text-gray-600">
+            {resource.level}
           </span>
         )}
         <div className="flex flex-wrap gap-x-3">

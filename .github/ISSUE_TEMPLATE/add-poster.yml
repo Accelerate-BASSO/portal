@@ -1,0 +1,70 @@
+name: Add a poster
+description: Submit a research poster to be listed on the portal
+title: "[Poster] "
+labels: ["resource: new"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Poster title
+    validations:
+      required: true
+  - type: textarea
+    id: contributors
+    attributes:
+      label: Authors
+      description: List one author per line.
+    validations:
+      required: true
+  - type: input
+    id: event
+    attributes:
+      label: Event
+      placeholder: Conference or meeting
+    validations:
+      required: true
+  - type: input
+    id: date
+    attributes:
+      label: Date presented
+      description: Use YYYY-MM-DD when the full date is known.
+      placeholder: "2026-07-17"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A brief description for a non-specialist reader.
+    validations:
+      required: true
+  - type: checkboxes
+    id: projects
+    attributes:
+      label: Project(s)
+      options:
+        - label: APRICOT
+        - label: BSO-AD
+        - label: ODFA
+        - label: PHASES
+        - label: DCC
+  - type: input
+    id: poster-url
+    attributes:
+      label: Poster URL
+      description: Link to the poster PDF or its stable landing page.
+    validations:
+      required: true
+  - type: input
+    id: abstract-url
+    attributes:
+      label: Abstract URL (optional)
+  - type: input
+    id: repository-url
+    attributes:
+      label: Repository deposit URL (optional)
+      description: For example, Zenodo or OSF.
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context

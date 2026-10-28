@@ -16,6 +16,10 @@ Go to the [New Issue](../../issues/new/choose) page and pick the template that m
 
 - **Add an ontology**
 - **Add a publication**
+- **Add a presentation**
+- **Add a poster**
+- **Add a tutorial**
+- **Add a tool, registry, or dataset**
 - **Add a repository**
 - **Add a website**
 - **Add a community**
@@ -31,6 +35,9 @@ Each resource is a single YAML file organized by type under `data/resources/`:
 data/resources/
   ontologies/       # Ontology resources
   publications/     # Papers, reports, articles
+  presentations/    # Talks and slide decks
+  posters/          # Research posters
+  tutorials/        # Written or recorded instructional material
   websites/         # Project and network websites
   repositories/     # Code and data repositories
   registries/       # Standards registries

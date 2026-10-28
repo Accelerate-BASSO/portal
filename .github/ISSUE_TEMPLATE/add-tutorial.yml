@@ -1,0 +1,62 @@
+name: Add a tutorial
+description: Submit written or recorded instructional material to be listed on the portal
+title: "[Tutorial] "
+labels: ["resource: new"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Tutorial title
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What does the tutorial teach, and who is it for?
+    validations:
+      required: true
+  - type: dropdown
+    id: level
+    attributes:
+      label: Level
+      options:
+        - Introductory
+        - Intermediate
+        - Advanced
+        - All levels
+    validations:
+      required: true
+  - type: input
+    id: prerequisites
+    attributes:
+      label: Prerequisites (optional)
+  - type: textarea
+    id: learning-objectives
+    attributes:
+      label: Learning objectives (optional)
+      description: List one objective per line.
+  - type: checkboxes
+    id: projects
+    attributes:
+      label: Project(s)
+      options:
+        - label: APRICOT
+        - label: BSO-AD
+        - label: ODFA
+        - label: PHASES
+        - label: DCC
+  - type: input
+    id: primary-url
+    attributes:
+      label: Tutorial URL
+    validations:
+      required: true
+  - type: input
+    id: video-url
+    attributes:
+      label: Video URL (optional)
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context

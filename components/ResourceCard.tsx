@@ -11,6 +11,9 @@ import {
   Users,
   Wrench,
   Database,
+  Presentation as PresentationIcon,
+  Image as ImageIcon,
+  GraduationCap,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -23,6 +26,9 @@ const typeIcons: Record<string, LucideIcon> = {
   Community: Users,
   Tool: Wrench,
   Dataset: Database,
+  Presentation: PresentationIcon,
+  Poster: ImageIcon,
+  Tutorial: GraduationCap,
 };
 import TruncatedText from "./TruncatedText";
 
@@ -68,6 +74,9 @@ const typeTooltips: Record<string, string> = {
   Dataset: "A structured collection of data",
   Website: "A project or network website",
   Registry: "A standards body or curated registry of resources",
+  Presentation: "A talk or slide presentation given by network members",
+  Poster: "A research poster presented by network members",
+  Tutorial: "Instructional material for learning an ontology-related method or tool",
 };
 
 export default function ResourceCard({ resource }: ResourceCardProps) {
@@ -117,6 +126,20 @@ export default function ResourceCard({ resource }: ResourceCardProps) {
         </p>
       )}
 
+      {(resource.type === "Presentation" || resource.type === "Poster") && (
+        <p className="text-xs text-gray-400">
+          {formatPublishedDate(resource.presentedYear, resource.presentedMonth, resource.presentedDay)}
+          {resource.event && <>{" "}&middot; {resource.event}</>}
+        </p>
+      )}
+
+      {resource.type === "Tutorial" && (
+        <p className="text-xs text-gray-400">
+          {resource.level}
+          {resource.prerequisites && <>{" "}&middot; Prerequisites: {resource.prerequisites}</>}
+        </p>
+      )}
+
       {/* DOI */}
       {resource.type === "Publication" && resource.doi && (
         <p className="text-xs text-gray-400">
@@ -132,7 +155,7 @@ export default function ResourceCard({ resource }: ResourceCardProps) {
       )}
 
       {/* Contributors */}
-      {resource.type === "Publication" && resource.contributors && resource.contributors.length > 0 && (
+      {"contributors" in resource && resource.contributors && resource.contributors.length > 0 && (
         <p className="text-xs leading-relaxed text-gray-500">
           {resource.contributors.map((c, i) => (
             <span key={i}>
