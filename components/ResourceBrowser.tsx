@@ -24,7 +24,7 @@ import {
   Presentation as PresentationIcon, Image as ImageIcon, GraduationCap,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import { typeColors, typeIconColors } from "@/lib/type-colors";
+import { typeColors, typeDescriptions, typeIconColors } from "@/lib/type-colors";
 
 type ViewMode = "card" | "list";
 
@@ -97,6 +97,14 @@ export default function ResourceBrowser({
   projects,
   facets,
 }: ResourceBrowserProps) {
+  const filterTypes = useMemo(() => {
+    const ordered = types.filter((type) => type !== "Poster");
+    const publicationIndex = ordered.indexOf("Publication");
+    if (types.includes("Poster")) {
+      ordered.splice(publicationIndex >= 0 ? publicationIndex + 1 : ordered.length, 0, "Poster");
+    }
+    return ordered;
+  }, [types]);
   const searchParams = useSearchParams();
   const initialTypes = useMemo(() => {
     const values = searchParams?.getAll("type") ?? [];
@@ -301,14 +309,14 @@ export default function ResourceBrowser({
         <div className="mb-3">
           <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-accent-deep/60">Type</p>
           <div className="flex flex-wrap gap-2">
-            {types.map((type) => {
+            {filterTypes.map((type) => {
               const active = selectedTypes.has(type);
               const count = typeCounts[type] || 0;
               return (
                 <button
                   key={type}
                   onClick={() => toggleType(type)}
-                  title={`Filter by ${type} resources`}
+                  title={typeDescriptions[type] || `Filter by ${type} resources`}
                   className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-colors ${
                     active
                       ? typeColors[type] || "bg-accent-deep text-white"
@@ -324,6 +332,11 @@ export default function ResourceBrowser({
               );
             })}
           </div>
+          <p className="mt-2 text-xs text-accent-deep/60">
+            <span className="font-semibold">Repository</span> hosts files or source. {" "}
+            <span className="font-semibold">Registry</span> is a curated catalogue or view for
+            discovery&mdash;such as the BSSO collection within BioPortal.
+          </p>
         </div>
 
         {/* Project chips */}

@@ -26,3 +26,19 @@ export const typeIconColors: Record<string, string> = {
   Poster: "text-[#9B4A6F]",
   Tutorial: "text-[#5F6FA8]",
 };
+
+export const typeDescriptions: Record<string, string> = {
+  Ontology: "An ontology developed or used by the network",
+  Publication: "A published paper, report, preprint, or proceedings contribution",
+  Poster: "A research poster presented by network members",
+  Presentation: "A talk or slide presentation given by network members",
+  Tutorial: "Instructional material for learning an ontology-related method or tool",
+  Tool: "A software tool, editor, converter, or utility",
+  Community: "A forum or group for discussion and collaboration",
+  Repository:
+    "A place that hosts and maintains files, source code, ontology source, or data",
+  Registry:
+    "A curated catalogue or view for discovering resources, sometimes provided within a larger repository platform",
+  Dataset: "A structured collection of data",
+  Website: "A project or network website",
+};

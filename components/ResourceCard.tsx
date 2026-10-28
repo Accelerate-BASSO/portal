@@ -47,7 +47,7 @@ interface ResourceCardProps {
   resource: Resource;
 }
 
-import { typeColors, typeIconColors } from "@/lib/type-colors";
+import { typeColors, typeDescriptions, typeIconColors } from "@/lib/type-colors";
 
 const projectFullNames: Record<string, string> = {
   APRICOT: "Advancing Prevention Research in Cancer through Ontology Tools",
@@ -65,20 +65,6 @@ const projectUrls: Record<string, string> = {
   DCC: "https://accelerate-basso.regenstrief.org",
 };
 
-const typeTooltips: Record<string, string> = {
-  Ontology: "An ontology developed and maintained by a network member",
-  Publication: "A published report, paper, or document",
-  Tool: "A software tool, editor, converter, or utility",
-  Community: "A forum or group for discussion and collaboration",
-  Repository: "A browsable collection of ontologies or data",
-  Dataset: "A structured collection of data",
-  Website: "A project or network website",
-  Registry: "A standards body or curated registry of resources",
-  Presentation: "A talk or slide presentation given by network members",
-  Poster: "A research poster presented by network members",
-  Tutorial: "Instructional material for learning an ontology-related method or tool",
-};
-
 export default function ResourceCard({ resource }: ResourceCardProps) {
   return (
     <div
@@ -93,7 +79,7 @@ export default function ResourceCard({ resource }: ResourceCardProps) {
             return <Icon size={18} strokeWidth={2} className={typeIconColors[resource.type] || "text-gray-500"} />;
           })()}
           <span
-            title={typeTooltips[resource.type] || `Resource type: ${resource.type}`}
+            title={typeDescriptions[resource.type] || `Resource type: ${resource.type}`}
             className={`cursor-help rounded-full px-2.5 py-0.5 text-xs font-medium ${typeColors[resource.type] || "bg-gray-100 text-gray-800"}`}
           >
             {resource.type}
