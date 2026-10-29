@@ -1,0 +1,58 @@
+id: pub-pmid42371556
+name: Towards Healthy Aging through Semantic Enrichment.
+type: Publication
+publishedYear: 2025
+doi: "https://doi.org/10.1093/geronb/gby037"
+pmid: 42371556
+venue: CEUR workshop proceedings.
+description: >-
+  This paper introduces two interoperable ontologies-SOLO (Solitude Ontology)
+  and GERO (Gerotranscendence Ontology)-developed to formalize key
+  psychological constructs relevant to healthy aging. Grounded in the
+  Behavioral Change Intervention Ontology, the ontologies clarify distinctions
+  between terms such as solitude, loneliness, self-transcendence, and
+  gerotranscendence, and encode their realization conditions across the
+  lifespan. By integrating validated psychometric instruments and supporting
+  structured responses to competency questions, the ontologies enable semantic
+  reasoning, cross-disciplinary data integration, and development of
+  ontology-driven tools for aging research and intervention design.
+keywords:
+  - Basic Formal Ontology
+  - Gerotranscendence
+  - Healthy Aging
+  - Ontology Engineering
+  - Solitude
+contributors:
+  - name: John Beverley
+    orcid: "0000-0002-6596-4479"
+  - name: Julie C Bowker
+    orcid: "0000-0001-7055-9158"
+  - name: Hollen N Reischer
+    orcid: "0000-0002-6538-0265"
+  - name: Rachel A Mavrovich
+  - name: Regina Hurley
+    orcid: "0009-0002-9791-3334"
+  - name: Sean Kindya
+  - name: Sam Smith
+  - name: Jie Zheng
+    orcid: "0000-0002-2999-0103"
+  - name: Yongqun He
+    orcid: "0000-0001-9189-9661"
+  - name: Damayanthi Beera
+  - name: William D Duncan
+    orcid: "0000-0001-9625-1899"
+producedByProjects:
+  - PHASES
+usedByProjects: []
+links:
+  - label: DOI
+    url: https://doi.org/10.1093/geronb/gby037
+    platform: Website
+  - label: PubMed
+    url: https://pubmed.ncbi.nlm.nih.gov/42371556/
+    platform: Website
+tags:
+  - paper
+  - ceur-workshop-proceedings
+status: Active
+lastUpdated: 2026-07-17
