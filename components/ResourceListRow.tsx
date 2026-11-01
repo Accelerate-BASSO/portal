@@ -62,9 +62,14 @@ interface ResourceListRowProps {
   // When the row is wrapped in a per-resource block that owns the divider (so
   // metadata strips can attach beneath it), suppress the row's own border.
   noBorder?: boolean;
+  highlighted?: boolean;
 }
 
-export default function ResourceListRow({ resource, noBorder = false }: ResourceListRowProps) {
+export default function ResourceListRow({
+  resource,
+  noBorder = false,
+  highlighted = false,
+}: ResourceListRowProps) {
   const Icon = typeIcons[resource.type];
   const date = effectiveDate(resource);
   const linkColor = "text-accent-dark hover:text-accent-hover";
@@ -73,6 +78,8 @@ export default function ResourceListRow({ resource, noBorder = false }: Resource
     <div
       id={resource.id}
       className={`flex items-start gap-2 px-3 py-2 transition-colors scroll-mt-24 hover:bg-accent-band/50 target:bg-accent-band ${
+        highlighted ? "bg-accent-band ring-2 ring-inset ring-accent" : ""
+      } ${
         noBorder ? "" : "border-b border-gray-100 last:border-b-0"
       }`}
     >

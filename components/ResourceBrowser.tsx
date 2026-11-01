@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useSyncExternalStore, useCallback } from "react";
+import { useState, useMemo, useSyncExternalStore, useCallback, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import type { Resource, Facet } from "@/lib/resources";
 import {
@@ -121,6 +121,7 @@ export default function ResourceBrowser({
   const [selectedProjects, setSelectedProjects] = useState<Set<string>>(initialProjects);
   const [selectedTerms, setSelectedTerms] = useState<Set<string>>(new Set());
   const [foundryOnly, setFoundryOnly] = useState(initialFoundry);
+  const [highlightedResourceId, setHighlightedResourceId] = useState<string | null>(null);
   const [view, updateView] = useLocalStoragePref<ViewMode>(VIEW_STORAGE_KEY, isViewMode, "card");
   const [sortKey, updateSort] = useLocalStoragePref<SortKey>(SORT_STORAGE_KEY, isSortKey, "name-asc");
   const [showTermsPref, updateShowTerms] = useLocalStoragePref<"0" | "1">(
@@ -247,6 +248,62 @@ export default function ResourceBrowser({
     }
     return result.sort((a, b) => compareResources(a, b, sortKey));
   }, [resources, searching, hitsById, selectedTypes, selectedProjects, selectedTerms, foundryOnly, sortKey]);
+
+  const resourceIds = useMemo(() => new Set(resources.map((resource) => resource.id)), [resources]);
+
+  // Native fragment navigation runs before the client restores view preferences,
+  // which can replace the resource DOM and lose the browser's initial scroll.
+  // Synchronize the hash after hydration and reveal the requested resource even
+  // if filters would otherwise hide it.
+  useEffect(() => {
+    const syncHash = () => {
+      const rawHash = window.location.hash.slice(1);
+      if (!rawHash) {
+        setHighlightedResourceId(null);
+        return;
+      }
+
+      let resourceId: string;
+      try {
+        resourceId = decodeURIComponent(rawHash);
+      } catch {
+        return;
+      }
+      if (!resourceIds.has(resourceId)) return;
+
+      setHighlightedResourceId(resourceId);
+      setSearch("");
+      setSelectedTypes(new Set());
+      setSelectedProjects(new Set());
+      setSelectedTerms(new Set());
+      setFoundryOnly(false);
+    };
+
+    syncHash();
+    window.addEventListener("hashchange", syncHash);
+    return () => window.removeEventListener("hashchange", syncHash);
+  }, [resourceIds]);
+
+  useEffect(() => {
+    if (!highlightedResourceId || !filtered.some((resource) => resource.id === highlightedResourceId)) {
+      return;
+    }
+
+    let innerFrame: number | undefined;
+    const outerFrame = window.requestAnimationFrame(() => {
+      innerFrame = window.requestAnimationFrame(() => {
+        document.getElementById(highlightedResourceId)?.scrollIntoView({
+          behavior: "auto",
+          block: "start",
+        });
+      });
+    });
+
+    return () => {
+      window.cancelAnimationFrame(outerFrame);
+      if (innerFrame !== undefined) window.cancelAnimationFrame(innerFrame);
+    };
+  }, [filtered, highlightedResourceId, view]);
 
   // Per-term counts: resources passing all filters except the term filter that
   // carry each term (mirrors the "all filters except this one" chip counting).
@@ -495,7 +552,10 @@ export default function ResourceBrowser({
               const provenance = searching ? matchProvenance(resource.id) : null;
               return (
                 <div key={resource.id} className="flex flex-col gap-1">
-                  <ResourceCard resource={resource} />
+                  <ResourceCard
+                    resource={resource}
+                    highlighted={resource.id === highlightedResourceId}
+                  />
                   {(() => {
                     const related = getRelatedOntologies(resource, ontologyIndex);
                     return related.length ? (
@@ -531,7 +591,11 @@ export default function ResourceBrowser({
                   key={resource.id}
                   className="border-b border-accent-hairline last:border-b-0"
                 >
-                  <ResourceListRow resource={resource} noBorder />
+                  <ResourceListRow
+                    resource={resource}
+                    noBorder
+                    highlighted={resource.id === highlightedResourceId}
+                  />
                   {hasExtras && (
                     <div className="space-y-1 pb-2 pl-12 pr-4">
                       {related.length > 0 && <RelatedOntologies ontologies={related} />}

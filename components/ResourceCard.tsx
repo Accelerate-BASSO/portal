@@ -45,6 +45,7 @@ function formatPublishedDate(year: number, month?: number, day?: number): string
 
 interface ResourceCardProps {
   resource: Resource;
+  highlighted?: boolean;
 }
 
 import { typeColors, typeDescriptions, typeIconColors } from "@/lib/type-colors";
@@ -65,11 +66,13 @@ const projectUrls: Record<string, string> = {
   DCC: "https://accelerate-basso.regenstrief.org",
 };
 
-export default function ResourceCard({ resource }: ResourceCardProps) {
+export default function ResourceCard({ resource, highlighted = false }: ResourceCardProps) {
   return (
     <div
       id={resource.id}
-      className="flex flex-col gap-3 rounded-lg border border-accent-hairline bg-white p-5 transition-colors hover:border-accent-dark scroll-mt-24 target:border-accent-dark target:ring-2 target:ring-accent"
+      className={`flex flex-col gap-3 rounded-lg border border-accent-hairline bg-white p-5 transition-colors hover:border-accent-dark scroll-mt-24 target:border-accent-dark target:ring-2 target:ring-accent ${
+        highlighted ? "border-accent-dark ring-2 ring-accent" : ""
+      }`}
     >
       {/* Top row: type badge left, project badges right */}
       <div className="flex items-start justify-between gap-2">
