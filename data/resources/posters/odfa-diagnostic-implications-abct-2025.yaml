@@ -1,4 +1,4 @@
-id: odfa-diagnostic-implications-abct-2025
+id: poster-odfa-2025-abct-diagnostic-implications
 name: "Toward an Ontology of Dental Care-Related Fear and Anxiety: Diagnostic Implications"
 type: Poster
 presentedYear: 2025
@@ -22,7 +22,7 @@ producedByProjects:
   - ODFA
 usedByProjects: []
 aboutOntologies:
-  - odfa
+  - ontology-odfa
 links:
   - label: Poster abstract
     url: https://abct2025.eventscribe.net/fsPopup.asp?PosterID=747942&efp=Rk9DRVhGRlgyMTQwMA&mode=posterInfo

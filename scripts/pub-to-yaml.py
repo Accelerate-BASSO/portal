@@ -47,6 +47,8 @@ except ImportError:
     print("Error: pyyaml is required. Install it with: pip install pyyaml", file=sys.stderr)
     sys.exit(1)
 
+from resource_ids import make_publication_id
+
 
 MONTH_MAP = {
     "jan": "01", "january": "01", "1": "01",
@@ -82,12 +84,6 @@ def clean_latex(text: str) -> str:
     text = re.sub(r"\\[a-zA-Z]+\s*", "", text)
     text = re.sub(r"\s+", " ", text).strip()
     return text
-
-
-def make_id(key: str, title: str) -> str:
-    base = key if key else title
-    slug = re.sub(r"[^a-z0-9]+", "-", base.lower()).strip("-")[:60]
-    return f"pub-{slug}"
 
 
 # --- Contributor ORCID resolution ---
@@ -725,10 +721,10 @@ def detect_and_fetch(source_input: str) -> tuple[dict, str]:
 
 def build_resource(data: dict, args) -> dict:
     title = data["title"]
-    resource_id = make_id(data.get("key", ""), title)
-
     pub_year = data.get("year")
     pub_month = data.get("month")
+    projects = args.projects or []
+    resource_id = make_publication_id(title, projects, pub_year, data.get("venue", ""))
 
     # Description — use full abstract if available
     if args.description:
@@ -763,8 +759,6 @@ def build_resource(data: dict, args) -> dict:
     if data.get("venue"):
         venue_tag = re.sub(r"[^a-z0-9]+", "-", data["venue"].lower()).strip("-")
         tags.append(venue_tag)
-
-    projects = args.projects or []
 
     resource = {
         "id": resource_id,

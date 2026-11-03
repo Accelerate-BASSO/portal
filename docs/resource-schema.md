@@ -43,6 +43,72 @@ automatically on the next build. Every file is checked in CI by
 `scripts/validate-resources.py`; run it locally with
 `python scripts/validate-resources.py`.
 
+### Resource ID naming
+
+Resource IDs are permanent identifiers, not display names. Use lowercase ASCII
+letters and numbers separated by single hyphens. Every ID starts with the
+lowercase resource type:
+
+~~~yaml
+id: poster-odfa-2025-abct-diagnostic-implications
+# data/resources/posters/odfa-diagnostic-implications-abct-2025.yaml
+~~~
+
+Use these structures:
+
+- Durable named resources: <code>&lt;type&gt;-&lt;canonical-name&gt;</code>
+- Project publications: <code>publication-&lt;project&gt;-&lt;yyyy&gt;-&lt;venue&gt;-&lt;topic&gt;</code>
+- Other publications: <code>publication-&lt;venue&gt;-&lt;yyyy&gt;-&lt;topic&gt;</code>
+- Other dated project outputs: <code>&lt;type&gt;-&lt;project&gt;-&lt;yyyy&gt;-&lt;topic&gt;</code>
+
+Include a project ID only when the resource was produced by that project; a
+`usedByProjects` relationship does not make the project part of the ID. Write
+the year with four digits for publications and event materials. Every
+publication includes the controlled venue identifier from
+`data/venue-identifiers.yaml`. A preprint and a later journal article are
+separate resources and receive separate IDs.
+
+Recommended patterns:
+
+| Resource | Pattern | Example |
+|---|---|---|
+| Ontology, website, registry, or community | Type plus canonical name or acronym | `ontology-bcio`, `website-apricot`, `registry-bsso-foundry` |
+| Tool or repository | Type, producing project when useful, and purpose | `tool-apricot-tatt`, `repository-phases-github` |
+| Project publication | Type, project, year, venue, and topic | `publication-apricot-2025-wor-soda` |
+| External publication or report | Type, venue or publisher, year, and topic | `publication-nap-2022-ontologies-behavioral-sciences` |
+| Presentation or poster | Type, project, year, event, and topic | `poster-odfa-2025-abct-diagnostic-implications` |
+| Tutorial | Type, project when applicable, and topic | `tutorial-dcc-ontology-authoring` |
+
+Current publication venue identifiers:
+
+| Identifier | Venue |
+|---|---|
+| `rs` | Research Square |
+| `npj-bi` | npj Biomedical Innovations |
+| `jci` | Journal of Clinical Informatics |
+| `wor` | Wellcome Open Research |
+| `kbc-lm` | KBC-LM workshop |
+| `npj-hs` | npj Health Systems |
+| `nap` | National Academies Press |
+| `icbo` | International Conference on Biomedical Ontology |
+| `jowo` | Joint Ontology Workshops |
+
+- IDs must be globally unique across every resource type.
+- Prefer the canonical name used by the resource itself after the type and
+  contextual components.
+- Omit the month and day unless they are needed to distinguish otherwise
+  identical resources.
+- Use the resource's publication or presentation date, never lastUpdated or the
+  date on which its portal record was created.
+- Avoid version numbers, publication status, and other values that are expected
+  to change. Store those in metadata instead.
+- Add or update venue aliases in `data/venue-identifiers.yaml`; do not invent a
+  second abbreviation in an individual resource ID.
+- Once published, do not rename an ID merely to improve its spelling. IDs are
+  used by cross-resource references and build caches.
+- Existing IDs are grandfathered in and should remain stable even if they do
+  not exactly follow these recommendations.
+
 ## Common fields (every resource)
 
 | Field | Required | Type | Description |
@@ -173,7 +239,7 @@ Extra fields:
 | `contributors` | Yes | list | Authors — each `{name, orcid?}`. ORCIDs are auto-resolved from `network-members.yaml`; see [network members](#). |
 
 ```yaml
-id: pub-apricot-hbcp-phase2
+id: publication-apricot-2024-wor-hbcp-phase-2
 name: "The Human Behaviour-Change Project Phase 2: Advancing behavioural and social sciences through ontology tools"
 type: Publication
 publishedYear: 2024
@@ -216,7 +282,7 @@ Extra fields:
 | _none_ | | | No fields beyond the common set. |
 
 ```yaml
-id: apricot-website
+id: website-apricot
 name: APRICOT Project Website
 type: Website
 description: Project website for APRICOT, which develops ontologies to standardize behavioral science constructs in cancer prevention research.
@@ -248,7 +314,7 @@ Extra fields:
 | `license` | No | string | License (SPDX id or short name, e.g. `Apache-2.0`). |
 
 ```yaml
-id: phases-github
+id: repository-phases-github
 name: PHASES GitHub Organization
 type: Repository
 description: GitHub organization hosting the ontology sources and tooling for the PHASES project.
@@ -279,7 +345,7 @@ Extra fields:
 | _none_ | | | No fields beyond the common set. |
 
 ```yaml
-id: bsso-foundry
+id: registry-bsso-foundry
 name: BSSO Foundry
 type: Registry
 description: A coordinated registry of interoperable behavioural and social science ontologies.
@@ -310,7 +376,7 @@ Extra fields:
 | _none_ | | | No fields beyond the common set. |
 
 ```yaml
-id: apricot-community
+id: community-apricot
 name: APRICOT Community of Practice
 type: Community
 description: A community of practice for ontologies in the social and behavioural sciences.

@@ -35,6 +35,8 @@ except ImportError:
     print("Error: pyyaml is required. Install it with: pip install pyyaml", file=sys.stderr)
     sys.exit(1)
 
+from resource_ids import make_publication_id
+
 
 MONTH_MAP = {
     "jan": "01", "january": "01",
@@ -73,12 +75,6 @@ def clean_latex(text: str) -> str:
     return text
 
 
-def make_id(key: str, title: str) -> str:
-    base = key if key else title
-    slug = re.sub(r"[^a-z0-9]+", "-", base.lower()).strip("-")[:60]
-    return f"pub-{slug}"
-
-
 def extract_entry(bibtex_str: str) -> dict:
     parser = bibtexparser.bparser.BibTexParser(common_strings=True)
     library = bibtexparser.loads(bibtex_str, parser=parser)
@@ -90,8 +86,6 @@ def extract_entry(bibtex_str: str) -> dict:
 
 def build_resource(entry: dict, args) -> dict:
     title = clean_latex(entry.get("title", "Untitled"))
-    entry_key = entry.get("ID", "")
-    resource_id = make_id(entry_key, title)
 
     # Date
     year = entry.get("year")
@@ -145,8 +139,8 @@ def build_resource(entry: dict, args) -> dict:
         venue_tag = re.sub(r"[^a-z0-9]+", "-", venue.lower()).strip("-")[:30]
         tags.append(venue_tag)
 
-    # Projects
     projects = args.projects or []
+    resource_id = make_publication_id(title, projects, pub_year, venue or "")
 
     resource = {
         "id": resource_id,

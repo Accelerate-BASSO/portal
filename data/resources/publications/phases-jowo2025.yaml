@@ -1,4 +1,4 @@
-id: pub-phases-jowo2025
+id: publication-phases-2025-jowo-semantic-enrichment
 name: "Towards Healthy Aging through Semantic Enrichment"
 type: Publication
 publishedYear: 2025
@@ -33,7 +33,7 @@ producedByProjects:
   - PHASES
 usedByProjects: []
 aboutOntologies:
-  - phases
+  - ontology-phases
 links:
   - label: CEUR-WS
     url: https://ceur-ws.org/Vol-4176/phases-2.pdf

@@ -1,4 +1,4 @@
-id: pub-phases-bertopic
+id: publication-phases-2025-rs-bertopic
 name: Utilizing BERTopic Modeling for Concept Discovery in the Domain of Gerotranscendence and Solitude.
 type: Publication
 publishedYear: 2025
@@ -44,7 +44,7 @@ producedByProjects:
   - PHASES
 usedByProjects: []
 aboutOntologies:
-  - phases
+  - ontology-phases
 ontologyTerms:
   # subject — the solitude/aging domain the paper draws from, plus its own topic
   - prefLabel: ontology development

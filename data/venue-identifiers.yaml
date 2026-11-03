@@ -1,0 +1,28 @@
+venues:
+  - id: rs
+    names:
+      - Research Square
+  - id: npj-bi
+    names:
+      - npj Biomedical Innovations
+  - id: jci
+    names:
+      - Journal of Clinical Informatics
+  - id: wor
+    names:
+      - Wellcome Open Research
+  - id: kbc-lm
+    names:
+      - KBC-LM'24 Workshop at ISWC 2024
+  - id: npj-hs
+    names:
+      - npj Health Systems
+  - id: nap
+    names:
+      - National Academies Press
+  - id: icbo
+    names:
+      - Proceedings of ICBO 2024 (CEUR Workshop Proceedings, Vol 3939)
+  - id: jowo
+    names:
+      - Proceedings of the Joint Ontology Workshops (JOWO) 2025 - PHASES Workshop (CEUR Workshop Proceedings, Vol 4176)

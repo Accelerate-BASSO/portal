@@ -54,7 +54,7 @@ Each resource indexed by the portal is described by a lightweight metadata schem
 
 | Field | Type | Required | Description |
 |---|---|---|---|
-| `id` | string | Yes | Unique identifier (slug), e.g. `bcio`, `nas-report-2022` |
+| `id` | string | Yes | Permanent type-prefixed identifier, e.g. `ontology-bcio`, `publication-nap-2022-ontologies-behavioral-sciences` |
 | `name` | string | Yes | Human-readable display name |
 | `type` | enum | Yes | One of: `Ontology`, `Publication`, `Dataset`, `Tool`, `Community`, `Repository`, `Website`, `Registry`, `Presentation`, `Poster`, `Tutorial` |
 | `description` | string | Yes | Brief plain-language description (1--3 sentences) |

@@ -1,4 +1,4 @@
-id: pub-apricot-hbcp-phase2
+id: publication-apricot-2024-wor-hbcp-phase-2
 name: "The Human Behaviour-Change Project Phase 2: Advancing behavioural and social sciences through ontology tools"
 type: Publication
 publishedYear: 2024
@@ -42,7 +42,7 @@ producedByProjects:
   - APRICOT
 usedByProjects: []
 aboutOntologies:
-  - bcio
+  - ontology-bcio
 links:
   - label: DOI
     url: https://doi.org/10.12688/wellcomeopenres.23520.1
