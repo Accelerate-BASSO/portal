@@ -1,5 +1,5 @@
 {
-  "bcio": {
+  "ontology-bcio": {
     "acronym": "BCIO",
     "classes": 2524,
     "properties": 49,
@@ -11,7 +11,7 @@
     "status": "production",
     "description": "The Human Behaviour Change Project (HBCP) funded by the Wellcome Trust, and the Advancing Prevention Research in Cancer through Ontology Tools (APRICOT) Project funded by the US National Institutes of Health, are developing the Behaviour Change Intervention Ontology and associated tools and resources to be used in reporting research; linking datasets and synthesising evidence; and AI/machine learning algorithms to predict intervention outcomes in novel scenarios.\r\n\r\nThe overall aim of these projects is to automate evidence searching, synthesis and interpretation to rapidly address questions from policy-makers, practitioners and others to answer \u2018What works, compared with what, how well, with what exposure, with what behaviours (for how long), for whom, in what settings and why?\u2019. To achieve this, ontologies can help structure evidence, i.e., link evidence with a shared formal description of classes and relationships capturing domain knowledge in order to enable aggregation and semantic querying. We are developing and maintaining the Behaviour Change Intervention Ontology (BCIO) to do this."
   },
-  "copper": {
+  "ontology-copper": {
     "acronym": "COPPER",
     "classes": 363,
     "properties": 74,
@@ -23,7 +23,7 @@
     "status": "production",
     "description": "The Contextualised and Personalised Physical activity and Exercise Recommendations (COPPER) ontology was created in order to support action and coping planning in the context of physical activity promotion by providing personalised recommendations for activities, activity context, barriers and coping strategies."
   },
-  "mf": {
+  "ontology-mf": {
     "acronym": "MF",
     "classes": 401,
     "properties": 16,
@@ -35,7 +35,7 @@
     "status": "alpha",
     "description": "The Mental Functioning Ontology is an ontology for mental functioning, including mental processes such as cognition and traits such as intelligence, and related diseases and disorders. It is developed in the context of the Ontology for General Medical Science and the Basic Formal Ontology. The project is being developed in collaboration between the University of Geneva, Switzerland, and the University at Buffalo, USA.\\r\\n\\r\\nThe project is being developed with full involvement of all relevant communities, following best practices laid out by the OBO Foundry. Efforts are currently underway to align with related projects including the Behaviour Ontology, the Cognitive Atlas, the Cognitive Paradigm Ontology and the Neural Electro Magnetic Ontologies."
   },
-  "mfoem": {
+  "ontology-mfoem": {
     "acronym": "MFOEM",
     "classes": 625,
     "properties": 22,
@@ -47,7 +47,7 @@
     "status": "beta",
     "description": "An ontology of affective phenomena such as emotions, moods, appraisals and subjective feelings, designed to support interdisciplinary research by providing unified annotations.  The ontology is a domain specialisation of the broader Mental Functioning Ontology. "
   },
-  "odfa": {
+  "ontology-odfa": {
     "acronym": "ODFA",
     "classes": 259,
     "properties": 19,
@@ -59,7 +59,7 @@
     "status": "production",
     "description": "The Ontology of Dental care-related Fear, Anxiety, and/or Phobia (ODFA) contains terms for defining and classifying dental-care related fear, anxiety, and/or phobia (DFA). The ODFA\u2019s concepts and relations facilitate the development of tools and resources capable of enhancing our understanding of the impacts of DFA, and when applied to study data, the ODFA enables the integration and interoperability of data from multiple studies.\r\n\r\nThe ODFA is developed as a subset of the Oral Health and Disease Ontology (http://purl.obolibrary.org/obo/ohd.owl). Issues and new term requests can be submitted at https://github.com/oral-health-and-disease-ontologies/ohd-ontology/issues., the ODFA enables the integration and interoperability of data from multiple studies.\n\nThe ODFA is developed as a subset of the Oral Health and Disease Ontology (http://purl.obolibrary.org/obo/ohd.owl). Issues and new term requests can be submitted at https://github.com/oral-health-and-disease-ontologies/ohd-ontology/issues."
   },
-  "omrse": {
+  "ontology-omrse": {
     "acronym": "OMRSE",
     "classes": 532,
     "properties": 166,
@@ -71,7 +71,7 @@
     "status": "production",
     "description": "The Ontology for Modeling and Representation of Social Entities (OMRSE) is an OBO Foundry ontology that represents the various entities that arise from human social interactions, such as social acts, social roles, social groups, and organizations."
   },
-  "phases": {
+  "ontology-phases": {
     "acronym": "PHASES",
     "classes": 85,
     "properties": 22,
